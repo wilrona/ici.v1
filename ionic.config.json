@@ -1,0 +1,8 @@
+{
+  "name": "ici-tab.v1",
+  "app_id": "6d1d54f2",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
