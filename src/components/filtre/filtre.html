@@ -1,0 +1,53 @@
+<!-- Generated template for the FilterComponent component -->
+
+
+      <div class="uk-padding-small">
+        <ion-item no-margin no-padding>
+          <ion-label stacked>Par ville</ion-label>
+          <ion-select [(ngModel)]="notifications" interface="action-sheet" multiple="true">
+            <ion-option value="mute_15">For 15 Minutes</ion-option>
+            <ion-option value="mute_1">For 1 Hour</ion-option>
+            <ion-option value="mute_23">For 24 Hours</ion-option>
+            <ion-option value="mute_inf">Until I turn it back on</ion-option>
+            <ion-option value="mute_inf">Until I turn it back on</ion-option>
+            <ion-option value="mute_inf">Until I turn it back on</ion-option>
+            <ion-option value="mute_inf">Until I turn it back on</ion-option>
+            <ion-option value="mute_inf">Until I turn it back on</ion-option>
+            <ion-option value="mute_inf">Until I turn it back on</ion-option>
+            <ion-option value="mute_inf">Until I turn it back on</ion-option>
+            <ion-option value="mute_inf">Until I turn it back on</ion-option>
+            <ion-option value="mute_inf">Until I turn it back on</ion-option>
+            <ion-option value="mute_inf">Until I turn it back on</ion-option>
+            <ion-option value="mute_inf">Until I turn it back on</ion-option>
+            <ion-option value="mute_inf">Until I turn it back on</ion-option>
+            <ion-option value="mute_inf">Until I turn it back on</ion-option>
+          </ion-select>
+        </ion-item>
+      </div>
+      <ion-label padding-left="">Par catégorie</ion-label>
+      <ion-item-group>
+        <ion-item-divider color="primary" (click)="toggleGroup(1)">
+          A
+          <ion-icon name="add" color="light" class="uk-position-center-right" padding-right *ngIf="!isGroupShown(1)"></ion-icon>
+          <ion-icon name="close" color="light" class="uk-position-center-right" padding-right *ngIf="isGroupShown(1)"></ion-icon>
+
+        </ion-item-divider>
+        <div *ngIf="isGroupShown(1)" class="expand-wrapper">
+          <ion-item>Angola</ion-item>
+          <ion-item>Argentina</ion-item>
+        </div>
+      </ion-item-group>
+      <ion-item-group>
+        <ion-item-divider color="primary" (click)="toggleGroup(2)">
+          B
+          <ion-icon name="add" color="light" class="uk-position-center-right" padding-right *ngIf="!isGroupShown(2)"></ion-icon>
+          <ion-icon name="close" color="light" class="uk-position-center-right" padding-right *ngIf="isGroupShown(2)"></ion-icon>
+
+        </ion-item-divider>
+        <div *ngIf="isGroupShown(2)" class="expand-wrapper">
+          <ion-item>Angola 2</ion-item>
+          <ion-item>Argentina 2</ion-item>
+        </div>
+      </ion-item-group>
+
+

@@ -1,3 +1,39 @@
 page-home {
 
+  .hidden{
+    display: none;
+  }
+
+  .searchbar-ios{
+    padding: 0 8px !important;
+  }
+
+  .cover{
+    background-color: rgba(0,0,0,.6);
+  }
+
+  .uk-content-cover{
+    z-index: 200;
+  }
+
+  ion-slides {
+    height: auto !important;
+  }
+
+  .swiper-slide{
+    background-color: transparent !important;
+  }
+
+  .header{
+    background-color: #fff;
+  }
+
+  .uk-h2{
+    color: #ffffff;
+    text-align: center;
+  }
+
+  .slide-zoom{
+    text-align: left;
+  }
 }

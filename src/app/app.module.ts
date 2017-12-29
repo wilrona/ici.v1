@@ -3,31 +3,37 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import {NativePageTransitions} from "@ionic-native/native-page-transitions";
+import {AutoCompleteModule} from "ionic2-auto-complete";
+import {Ionic2RatingModule} from "ionic2-rating";
+import {AnnuairePage} from "../pages/annuaire/annuaire";
+import {FiltreComponent} from "../components/filtre/filtre";
 
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
+    AnnuairePage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    FiltreComponent
+
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AutoCompleteModule,
+    Ionic2RatingModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
+    AnnuairePage,
     ContactPage,
     HomePage,
     TabsPage
@@ -35,8 +41,7 @@ import {NativePageTransitions} from "@ionic-native/native-page-transitions";
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-    NativePageTransitions
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
 export class AppModule {}

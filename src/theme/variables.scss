@@ -34,12 +34,28 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
+  primary:    #f44336,
+  //primary:    #488aff,
   secondary:  #32db64,
   danger:     #f53d3d,
-  light:      #f4f4f4,
+  success:  #5cb462,
+  //light:      #f4f4f4,
+  light:      #e1e1e1,
   dark:       #222
 );
+
+$toolbar-background: #fff;
+
+
+@import "uikit/variables-theme.scss";
+@import "uikit/mixins-theme.scss";
+
+
+// 4. Import UIkit.
+@import "uikit/uikit-theme.scss";
+
+// custom CSS
+@import "app.scss";
 
 
 // App iOS Variables

@@ -1,0 +1,47 @@
+page-annuaire {
+
+  ul.rating {
+    text-align: right;
+  }
+
+  ion-card-content{
+    padding: 5px !important;
+  }
+
+  .uk-text-success{
+    color: #5cb462 !important;
+  }
+
+
+  .item-compagny{
+    padding: 0 !important;
+  }
+
+  ion-thumbnail{
+    margin: 0 16px 0 0 !important;
+    max-width: 70px !important;
+    min-width: 70px !important;
+    max-height: 70px !important;
+    min-height: 70px !important;
+  }
+
+  ion-thumbnail img{
+    width: 70px !important;
+    height: 70px !important;
+  }
+
+  ion-label{
+    white-space:inherit !important;
+    margin: 0 !important;
+  }
+
+  .icon-m{
+    font-size: 30px;
+    padding-right: 15px;
+  }
+
+  .icon-m:last-child{
+    padding: 0px;
+  }
+
+}
