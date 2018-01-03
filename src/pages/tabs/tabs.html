@@ -1,7 +1,7 @@
 
-<ion-tabs tabsHighlight="true" selectedIndex="0" tabsPlacement="top">
-  <ion-tab [root]="tab1Root" tabTitle="Accueil"></ion-tab>
-  <ion-tab [root]="tab2Root" tabTitle="Annuaire"></ion-tab>
-  <ion-tab [root]="tab3Root" tabTitle="Maps"></ion-tab>
-  <ion-tab [root]="tab3Root" tabTitle="Mon compte"></ion-tab>
+<ion-tabs tabsHighlight="true" selectedIndex="0" tabsPlacement="bottom"  (ionChange)="menuToggle()">
+  <ion-tab [root]="tab1Root" tabIcon="home"></ion-tab>
+  <ion-tab [root]="tab2Root" tabIcon="list"></ion-tab>
+  <ion-tab [root]="tab3Root" tabIcon="locate"></ion-tab>
+  <ion-tab [root]="tab3Root" tabIcon="person"></ion-tab>
 </ion-tabs>

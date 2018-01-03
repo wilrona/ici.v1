@@ -1,12 +1,12 @@
-<ion-header no-border="">
+<ion-header>
   <ion-toolbar padding-horizontal>
     <ion-buttons left>
-      <button ion-button icon-only>
+      <button ion-button icon-only (click)="openMenu('right')">
         <ion-icon name="menu" color="primary"></ion-icon>
       </button>
     </ion-buttons>
     <ion-title>
-      <img alt="logo" height="40"  src="/assets/imgs/logoici.png" ><!--icicm1-->
+      <img alt="logo" height="40"  src="assets/imgs/logoici.png" ><!--icicm1-->
     </ion-title>
 
     <ion-buttons end>
@@ -20,7 +20,7 @@
 
 <ion-content>
 
-  <div class="uk-height-medium uk-background-cover uk-position-relative uk-flex uk-flex-center uk-flex-middle" style="background-image: url('../assets/imgs/back.jpg');">
+  <div class="uk-height-medium uk-background-cover uk-position-relative uk-flex uk-flex-center uk-flex-middle" style="background-image: url('assets/imgs/back.jpg');">
     <div class="uk-position-cover cover"></div>
     <div class="uk-content-cover">
       <div class="uk-h2 uk-margin-large-bottom">Bienvenue sur ICI.CM</div>

@@ -1,22 +1,44 @@
 
 <ion-menu [content]="content" side="left" id="menu">
   <ion-header>
-    <ion-toolbar color="primary">
-      <ion-title><ion-icon name="search"></ion-icon> Menu   </ion-title>
-    </ion-toolbar>
+    <div class="uk-position-relative uk-height-small">
+      <div class="uk-position-center uk-padding-small">
+        <img src="assets/imgs/logoici.png" alt="" width="40" margin>
+      </div>
+      <ion-title class="uk-position-bottom-center uk-padding-small">Connectez-vous</ion-title>
+    </div>
   </ion-header>
 
-  <ion-content>
-
+  <ion-content id="menuLeft">
+    <ion-list no-margin>
+      <button ion-item>
+        Accueil
+      </button>
+      <button ion-item >
+        Annuaire
+      </button>
+      <button ion-item >
+        Maps
+      </button>
+    </ion-list>
+    <ion-item-group>
+      <ion-item-divider color="light">Mon Compte</ion-item-divider>
+      <button ion-item >
+        Connexion
+      </button>
+      <button ion-item >
+        Ajouter une entreprise
+      </button>
+    </ion-item-group>
   </ion-content>
 
 </ion-menu>
 
-<ion-menu [content]="content" side="right" id="filtre">
+<ion-menu [content]="content" side="right" id="filtre" swipeEnabled="false" (ionClose)="closedFiltre()">
   <ion-header>
-    <ion-toolbar color="primary" class="uk-position-relative uk-height-small">
-      <ion-title class="uk-position-bottom-left"><ion-icon name="funnel"></ion-icon> Filtre</ion-title>
-    </ion-toolbar>
+    <div class="uk-position-relative uk-height-small">
+      <ion-title class="uk-position-center"><ion-icon name="funnel" icon-left></ion-icon> Filtre</ion-title>
+    </div>
   </ion-header>
 
   <ion-content>

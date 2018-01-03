@@ -24,30 +24,35 @@
           </ion-select>
         </ion-item>
       </div>
-      <ion-label padding-left="">Par catégorie</ion-label>
-      <ion-item-group>
-        <ion-item-divider color="primary" (click)="toggleGroup(1)">
-          A
+      <ion-label padding-left>Par catégorie</ion-label>
+
+      <ion-list>
+        <ion-list-header color="primary" (click)="toggleGroup(1)">
+          Action
           <ion-icon name="add" color="light" class="uk-position-center-right" padding-right *ngIf="!isGroupShown(1)"></ion-icon>
           <ion-icon name="close" color="light" class="uk-position-center-right" padding-right *ngIf="isGroupShown(1)"></ion-icon>
 
-        </ion-item-divider>
-        <div *ngIf="isGroupShown(1)" class="expand-wrapper">
-          <ion-item>Angola</ion-item>
-          <ion-item>Argentina</ion-item>
-        </div>
-      </ion-item-group>
-      <ion-item-group>
-        <ion-item-divider color="primary" (click)="toggleGroup(2)">
-          B
+        </ion-list-header>
+        <ion-list no-padding no-margin *ngIf="isGroupShown(1)">
+          <ion-item>Terminator II</ion-item>
+          <ion-item>The Empire Strikes Back</ion-item>
+          <ion-item>Blade Runner</ion-item>
+        </ion-list>
+      </ion-list>
+
+      <ion-list>
+        <ion-list-header color="primary" (click)="toggleGroup(2)">
+          Action
           <ion-icon name="add" color="light" class="uk-position-center-right" padding-right *ngIf="!isGroupShown(2)"></ion-icon>
           <ion-icon name="close" color="light" class="uk-position-center-right" padding-right *ngIf="isGroupShown(2)"></ion-icon>
 
-        </ion-item-divider>
-        <div *ngIf="isGroupShown(2)" class="expand-wrapper">
-          <ion-item>Angola 2</ion-item>
-          <ion-item>Argentina 2</ion-item>
-        </div>
-      </ion-item-group>
+        </ion-list-header>
+        <ion-list no-padding no-margin *ngIf="isGroupShown(2)">
+          <ion-item>Terminator II</ion-item>
+          <ion-item>The Empire Strikes Back</ion-item>
+          <ion-item>Blade Runner</ion-item>
+        </ion-list>
+      </ion-list>
+
 
 

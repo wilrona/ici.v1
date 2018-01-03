@@ -3,9 +3,11 @@ import { FiltreComponent } from './filtre/filtre';
 
 @NgModule({
 	declarations: [
-    FiltreComponent],
+    FiltreComponent,
+    ],
 	imports: [],
 	exports: [
-    FiltreComponent]
+    FiltreComponent,
+    ]
 })
 export class ComponentsModule {}

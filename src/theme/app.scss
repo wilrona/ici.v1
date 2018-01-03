@@ -3,6 +3,7 @@
 ul.rating {
   padding: 0px;
   margin: 0;
+  text-align: right;
   &.rating li {
     padding: 5px 0px !important;
     background: none;
@@ -14,7 +15,14 @@ ul.rating {
   }
 }
 
-
 ion-item-divider{
-  //z-index:10 !important;
+   //z-index:10 !important;
+ }
+
+.bgprimary{
+  background-color: #f44336 !important;
+}
+
+.uk-title-color-white .toolbar-title{
+  color: #ffffff !important;
 }

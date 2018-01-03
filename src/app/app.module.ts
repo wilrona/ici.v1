@@ -13,6 +13,7 @@ import {AutoCompleteModule} from "ionic2-auto-complete";
 import {Ionic2RatingModule} from "ionic2-rating";
 import {AnnuairePage} from "../pages/annuaire/annuaire";
 import {FiltreComponent} from "../components/filtre/filtre";
+import {CompanyPage} from "../pages/company/company";
 
 @NgModule({
   declarations: [
@@ -20,13 +21,16 @@ import {FiltreComponent} from "../components/filtre/filtre";
     AnnuairePage,
     ContactPage,
     HomePage,
+    CompanyPage,
     TabsPage,
-    FiltreComponent
+
+    // components
+    FiltreComponent,
 
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {tabsHideOnSubPages: 'true'}),
     AutoCompleteModule,
     Ionic2RatingModule
   ],
@@ -36,6 +40,7 @@ import {FiltreComponent} from "../components/filtre/filtre";
     AnnuairePage,
     ContactPage,
     HomePage,
+    CompanyPage,
     TabsPage
   ],
   providers: [

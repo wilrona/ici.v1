@@ -1,0 +1,185 @@
+<!--
+  Generated template for the CompanyPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header shadow>
+
+  <ion-navbar [class.show-background]="showToolbar">
+    <ion-title [hidden]="!showToolbar" class="uk-text-truncate">Nom de l'entreprise Nom de l'entreprise</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content  class="content"
+              (ionScroll)="onScroll($event)"
+              [class.transition]="transition"
+              [style.background-size]="headerImgSize"
+              [style.backgroundImage]="'url('+ headerImgUrl+ ')'">
+
+  <div class="user-info uk-height-small uk-flex uk-flex-middle uk-flex-center">
+    <h2 class="uk-size" padding-horizontal>Nom de l'entreprise, Nom de l'entreprise, Nom de l'entreprise, </h2>
+  </div>
+
+  <div class="contents">
+
+    <button ion-button block class="uk-block-button">Consultez notre vidéo</button>
+
+    <ion-card no-margin class="card-info">
+      <ion-card-content no-padding>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-9>
+              <ion-item class="item-compagny uk-padding-remove">
+                <ion-thumbnail item-start>
+                  <img src="http://yoomeeonl.webfactional.com/media/pictures/companies/default.jpg" class="uk-responsive-height uk-border-circle">
+                </ion-thumbnail>
+                <div>
+                  <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-muted" style="margin-bottom: 4px !important;">ville et quartier</div>
+                  <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-success uk-text-small"> <ion-icon name="checkmark-circle"></ion-icon> Entreprise validé</div>
+                  <!-- <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-danger uk-text-small"> <ion-icon name="close"></ion-icon> Validation en cours</div> -->
+                  <ion-badge item-end class="uk-margin-remove-top uk-margin-remove-left uk-margin-remove-right">Catégorie</ion-badge>
+                </div>
+
+              </ion-item>
+            </ion-col>
+            <ion-col col-3 class="uk-position-relative">
+              <div class="">
+                <rating  [(ngModel)]="rate"
+                         readOnly="true"
+                         max="5"
+                         emptyStarIconName="star-outline"
+                         halfStarIconName="star-half"
+                         starIconName="star"
+                         nullable="false" ></rating>
+                <div class="uk-text-right uk-h4 uk-margin-remove">3 avis</div>
+                <div class="uk-text-right uk-text-danger uk-text-bold uk-h4 uk-margin-remove">Fermé</div>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card no-margin margin-top class="card-info">
+      <ion-card-header no-padding>
+        <ion-segment [(ngModel)]="segmentation">
+          <ion-segment-button value="desc">
+            Description
+          </ion-segment-button>
+          <ion-segment-button value="locale">
+            Localisation
+          </ion-segment-button>
+          <ion-segment-button value="avis">
+            Avis
+          </ion-segment-button>
+        </ion-segment>
+      </ion-card-header>
+      <ion-card-content [ngSwitch]="segmentation" padding-top padding-bottom>
+        <div *ngSwitchCase="'desc'" class="uk-height-1-1">
+
+          <ion-label ion-text class="uk-text-bold uk-display-block">Image</ion-label>
+
+          <ion-slides centeredSlides="true" loop="true" slidesPerView="4" spaceBetween="5" margin-top>
+
+            <ion-slide>
+              <img src="assets/imgs/default.jpg" alt="">
+            </ion-slide>
+
+            <ion-slide>
+              <img src="assets/imgs/default.jpg" alt="">
+            </ion-slide>
+
+            <ion-slide>
+              <img src="assets/imgs/default.jpg" alt="">
+            </ion-slide>
+
+            <ion-slide>
+              <img src="assets/imgs/default.jpg" alt="">
+            </ion-slide>
+            <ion-slide>
+              <img src="assets/imgs/default.jpg" alt="">
+            </ion-slide>
+            <ion-slide>
+              <img src="assets/imgs/default.jpg" alt="">
+            </ion-slide>
+            <ion-slide>
+              <img src="assets/imgs/default.jpg" alt="">
+            </ion-slide>
+
+
+          </ion-slides>
+          <hr>
+          <div class="uk-text-break uk-position-relative">
+            <div class="uk-height-max-small" style="overflow: hidden">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias atque earum fugiat fugit id maiores quia saepe. Accusamus beatae deserunt dicta dolor facere fugiat maiores nam sequi voluptatibus, voluptatum! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi architecto fuga labore odio odit quis sequi sit suscipit voluptate voluptatibus. Delectus, id quo! Animi beatae delectus quam, quas sit ullam!
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias atque earum fugiat fugit id maiores quia saepe. Accusamus beatae deserunt dicta dolor facere fugiat maiores nam sequi voluptatibus, voluptatum! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi architecto fuga labore odio odit quis sequi sit suscipit voluptate voluptatibus. Delectus, id quo! Animi beatae delectus quam, quas sit ullam!
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias atque earum fugiat fugit id maiores quia saepe. Accusamus beatae deserunt dicta dolor facere fugiat maiores nam sequi voluptatibus, voluptatum! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi architecto fuga labore odio odit quis sequi sit suscipit voluptate voluptatibus. Delectus, id quo! Animi beatae delectus quam, quas sit ullam!
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias atque earum fugiat fugit id maiores quia saepe. Accusamus beatae deserunt dicta dolor facere fugiat maiores nam sequi voluptatibus, voluptatum! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi architecto fuga labore odio odit quis sequi sit suscipit voluptate voluptatibus. Delectus, id quo! Animi beatae delectus quam, quas sit ullam!
+            </div>
+            <div class="show-more-end"></div>
+
+            <div class="uk-text-center">
+              <button ion-button clear small>Lire la suite</button>
+            </div>
+          </div>
+          <hr>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-5>
+                <ion-label class="uk-text-bold">
+                  Autres catégories :
+                </ion-label>
+              </ion-col>
+              <ion-col col-7>
+                <div ion-text class="uk-text-break">
+                    categorie, catégorie, catégorie, catégorie, catégorie, catégorie, catégorie, catégorie
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <hr>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-12 class="uk-position-relative">
+                <div class="uk-position-top-right">
+                  <button ion-button clear small>Voir plus</button>
+                </div>
+                <ion-label class="uk-text-bold">
+                  Autres catégories :
+                </ion-label>
+                <span class="uk-text-success">Ouvert</span> aujourd'hui de 08h à 15h
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+        <div *ngSwitchCase="'locale'" class="uk-height-1-1">
+          <ion-title>localisation</ion-title>
+        </div>
+        <div *ngSwitchCase="'avis'" class="uk-height-1-1">
+          <ion-title>Avis</ion-title>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+</ion-content>
+
+<ion-footer [class.bgFooter]="dark">
+  <ion-grid>
+    <ion-row>
+      <ion-col col-4 padding-horizontal class="uk-flex uk-flex-center">
+        <button ion-button clear color="white"><ion-icon name="call"></ion-icon></button>
+      </ion-col>
+      <ion-col col-4 padding-horizontal class="uk-flex uk-flex-center">
+        <button ion-button clear color="white"><ion-icon name="mail"></ion-icon></button>
+      </ion-col>
+      <ion-col col-4 padding-horizontal class="uk-flex uk-flex-center">
+        <button ion-button clear color="white"><ion-icon name="globe"></ion-icon></button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

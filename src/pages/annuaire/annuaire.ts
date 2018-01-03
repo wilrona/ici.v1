@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
+import {CompanyPage} from "../company/company";
 
 /**
  * Generated class for the AnnuairePage page.
@@ -32,6 +33,10 @@ export class AnnuairePage {
       this.menu.enable(false, 'menu');
     }
     this.menu.toggle();
+  }
+
+  OpenDetail(){
+    this.navCtrl.push(CompanyPage);
   }
 
 
