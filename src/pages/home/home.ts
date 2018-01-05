@@ -1,5 +1,6 @@
 import {Component, } from '@angular/core';
 import {MenuController, NavController} from 'ionic-angular';
+import {CompanyPage} from "../company/company";
 
 @Component({
   selector: 'page-home',
@@ -20,6 +21,10 @@ export class HomePage {
       this.menu.enable(false, 'menu');
     }
     this.menu.toggle();
+  }
+
+  OpenDetail(){
+      this.navCtrl.push(CompanyPage);
   }
 
 }

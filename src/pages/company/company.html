@@ -9,6 +9,11 @@
 
   <ion-navbar [class.show-background]="showToolbar">
     <ion-title [hidden]="!showToolbar" class="uk-text-truncate">Nom de l'entreprise Nom de l'entreprise</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only small (click)="openInfoEdit()">
+        <ion-icon name="create"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -79,35 +84,39 @@
         </ion-segment>
       </ion-card-header>
       <ion-card-content [ngSwitch]="segmentation" padding-top padding-bottom>
-        <div *ngSwitchCase="'desc'" class="uk-height-1-1">
+        <div *ngSwitchCase="'desc'" class="uk-height-1-1 uk-position-relative">
+
+          <div class="uk-position-top-right">
+            <button ion-button clear small class="button-custom-size" (click)="openImageEdit()">Gérer</button>
+          </div>
 
           <ion-label ion-text class="uk-text-bold uk-display-block">Image</ion-label>
 
-          <ion-slides centeredSlides="true" loop="true" slidesPerView="4" spaceBetween="5" margin-top>
+          <ion-slides loop="true" slidesPerView="4" margin-top spaceBetween="3">
 
             <ion-slide>
-              <img src="assets/imgs/default.jpg" alt="">
-            </ion-slide>
-
-            <ion-slide>
-              <img src="assets/imgs/default.jpg" alt="">
+              <img src="assets/imgs/default.jpg" alt="" imageViewer>
             </ion-slide>
 
             <ion-slide>
-              <img src="assets/imgs/default.jpg" alt="">
+              <img src="assets/imgs/default.jpg" alt="" imageViewer>
             </ion-slide>
 
             <ion-slide>
-              <img src="assets/imgs/default.jpg" alt="">
+              <img src="assets/imgs/default.jpg" alt="" imageViewer>
+            </ion-slide>
+
+            <ion-slide>
+              <img src="assets/imgs/default.jpg" alt="" imageViewer>
             </ion-slide>
             <ion-slide>
-              <img src="assets/imgs/default.jpg" alt="">
+              <img src="assets/imgs/default.jpg" alt="" imageViewer>
             </ion-slide>
             <ion-slide>
-              <img src="assets/imgs/default.jpg" alt="">
+              <img src="assets/imgs/default.jpg" alt="" imageViewer>
             </ion-slide>
             <ion-slide>
-              <img src="assets/imgs/default.jpg" alt="">
+              <img src="assets/imgs/default.jpg" alt="" imageViewer>
             </ion-slide>
 
 
@@ -123,11 +132,11 @@
             <div class="show-more-end"></div>
 
             <div class="uk-text-center">
-              <button ion-button clear small>Lire la suite</button>
+              <button ion-button clear small (click)="openDescriptionEdit()">Lire la suite</button>
             </div>
           </div>
           <hr>
-          <ion-grid>
+          <ion-grid no-padding>
             <ion-row>
               <ion-col col-5>
                 <ion-label class="uk-text-bold">
@@ -137,21 +146,24 @@
               <ion-col col-7>
                 <div ion-text class="uk-text-break">
                     categorie, catégorie, catégorie, catégorie, catégorie, catégorie, catégorie, catégorie
+                    <div>
+                      <button ion-button clear small class="button-custom-size">Gérer vos categories</button>
+                    </div>
                 </div>
               </ion-col>
             </ion-row>
           </ion-grid>
           <hr>
-          <ion-grid>
+          <ion-grid no-padding>
             <ion-row>
               <ion-col col-12 class="uk-position-relative">
-                <div class="uk-position-top-right">
-                  <button ion-button clear small>Voir plus</button>
-                </div>
                 <ion-label class="uk-text-bold">
-                  Autres catégories :
+                  Horaire : <button ion-button clear small class="button-custom-size">Modifier</button>
                 </ion-label>
                 <span class="uk-text-success">Ouvert</span> aujourd'hui de 08h à 15h
+                <div class="uk-position-bottom-right">
+                  <button ion-button clear small>Voir plus</button>
+                </div>
               </ion-col>
             </ion-row>
           </ion-grid>

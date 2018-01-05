@@ -1,0 +1,25 @@
+page-company-images {
+  .scroll-content{
+    background-color: #ffffff;
+  }
+  @media (min-width: 0px) {
+    .images{
+      column-count: 3;
+    }
+  }
+
+  @media (min-width: 620px) {
+    .images{
+      column-count: 4;
+    }
+  }
+  @media (min-width: 820px) {
+    .images{
+      column-count: 5;
+    }
+  }
+
+  .one-image{
+    //margin: 0 0 15px 0;
+  }
+}

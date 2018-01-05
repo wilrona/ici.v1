@@ -27,7 +27,7 @@ page-company {
       color: #ffffff;
     }
 
-    &.show-background .back-button{
+    &.show-background .back-button, &.show-background .bar-button{
       color: map_get($colors, primary);
     }
   }
@@ -172,7 +172,21 @@ page-company {
     }
 
     .slide-zoom img{
-      height: 75px;
+      max-height: 150px;
+      width: 150px;
+      //max-width: 150px;
+    }
+
+    ion-slide.swiper-slide {
+      left: 15%;
+    }
+
+    .show-more-end{
+      bottom: 40px;
+      height: 20px;
+      left: 0;
+      position: absolute;
+      width: 100%;
     }
 
     .show-more-end{
@@ -185,16 +199,8 @@ page-company {
       filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#00ffffff',EndColorStr='#ffffff');
     }
 
-    .show-more-end{
-      background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,rgba(245,245,245,0)),color-stop(100%,rgba(245,245,245,1)));
-      background-image: -webkit-linear-gradient(top,rgba(245,245,245,0),rgba(245,245,245,1));
-      background: linear-gradient(to bottom,rgba(245,245,245,0),rgba(245,245,245,1));
-      filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#00f5f5f5',EndColorStr='#f5f5f5');
+    .card-content-ios .show-more-end{
       bottom: 35px;
-      height: 20px;
-      left: 0;
-      position: absolute;
-      width: 100%;
     }
   }
 

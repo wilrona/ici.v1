@@ -1,0 +1,89 @@
+<!--
+  Generated template for the CompanyInfoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button icon-only small (click)="dismiss()">
+        <ion-icon name="close" color="primary"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title class="uk-title-color-red">Information</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+<div class="uk-box-shadow-small uk-padding uk-background-default" margin-vertical>
+  <div class="uk-flex uk-flex-middle uk-flex-center">
+    <div class="uk-text-center">
+      <img src="assets/imgs/default.jpg" alt="" class="logo uk-border-circle uk-margin-auto uk-display-block" margin-bottom>
+      <button ion-button clear small class="button-custom-size">Modifier le logo</button>
+    </div>
+
+  </div>
+</div>
+
+<div class="uk-background-default uk-padding uk-padding-remove-bottom">
+  <ion-list no-margin>
+    <ion-item no-padding>
+      <ion-label floating>Nom de l'entreprise</ion-label>
+      <ion-input type="text" value=""></ion-input>
+    </ion-item>
+    <ion-item no-padding>
+      <ion-label floating>Recherchez votre adresse</ion-label>
+      <ion-input type="text" value=""></ion-input>
+    </ion-item>
+    <ion-item no-padding>
+      <ion-label floating>Ville</ion-label>
+      <ion-input type="text" value=""></ion-input>
+    </ion-item>
+    <ion-item no-padding>
+      <ion-label floating>Quartier</ion-label>
+      <ion-input type="text" value=""></ion-input>
+    </ion-item>
+    <ion-item no-padding>
+      <ion-label floating>Rue</ion-label>
+      <ion-input type="text" value=""></ion-input>
+    </ion-item>
+    <ion-item no-padding>
+      <ion-label floating>Boite Postale</ion-label>
+      <ion-input type="text" value=""></ion-input>
+    </ion-item>
+    <input type="hidden"  value="longitude">
+    <input type="hidden"  value="latitude">
+    <ion-item no-padding>
+      <ion-label floating>Repère de la position de votre entreprise</ion-label>
+      <ion-input type="text" value=""></ion-input>
+    </ion-item>
+    <ion-item no-padding>
+      <ion-label floating>Téléphone</ion-label>
+      <ion-input type="text" value=""></ion-input>
+    </ion-item>
+    <ion-item no-padding>
+      <ion-label floating>Adresse Email</ion-label>
+      <ion-input type="text" value=""></ion-input>
+    </ion-item>
+    <ion-item no-padding>
+      <ion-label floating>Site Web</ion-label>
+      <ion-input type="text" value=""></ion-input>
+    </ion-item>
+
+    <ion-item no-padding no-border>
+    </ion-item>
+  </ion-list>
+</div>
+
+</ion-content>
+<ion-footer>
+  <div class="uk-flex uk-flex-center">
+    <button ion-button color="success" block  no-margin large class="no-border-radius"><ion-icon name="checkmark"></ion-icon></button>
+  </div>
+</ion-footer>

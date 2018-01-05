@@ -20,9 +20,24 @@ ion-item-divider{
  }
 
 .bgprimary{
-  background-color: #f44336 !important;
+  background-color: map-get($colors, primary) !important;
+}
+
+.uk-title-color-red .toolbar-title{
+  color: map-get($colors, primary) !important;
 }
 
 .uk-title-color-white .toolbar-title{
   color: #ffffff !important;
+}
+
+
+.button-custom-size{
+  font-size: 1.1rem !important;
+  text-transform: inherit !important;
+  font-weight: normal !important;
+}
+
+.no-border-radius{
+  border-radius: 0 !important;
 }

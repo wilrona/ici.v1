@@ -14,6 +14,10 @@ import {Ionic2RatingModule} from "ionic2-rating";
 import {AnnuairePage} from "../pages/annuaire/annuaire";
 import {FiltreComponent} from "../components/filtre/filtre";
 import {CompanyPage} from "../pages/company/company";
+import {IonicImageViewerModule} from "ionic-img-viewer";
+import {CompanyDescriptionPage} from "../pages/company-description/company-description";
+import {CompanyImagesPage} from "../pages/company-images/company-images";
+import {CompanyInfoPage} from "../pages/company-info/company-info";
 
 @NgModule({
   declarations: [
@@ -22,6 +26,9 @@ import {CompanyPage} from "../pages/company/company";
     ContactPage,
     HomePage,
     CompanyPage,
+    CompanyDescriptionPage,
+    CompanyImagesPage,
+    CompanyInfoPage,
     TabsPage,
 
     // components
@@ -32,7 +39,8 @@ import {CompanyPage} from "../pages/company/company";
     BrowserModule,
     IonicModule.forRoot(MyApp, {tabsHideOnSubPages: 'true'}),
     AutoCompleteModule,
-    Ionic2RatingModule
+    Ionic2RatingModule,
+    IonicImageViewerModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -41,6 +49,9 @@ import {CompanyPage} from "../pages/company/company";
     ContactPage,
     HomePage,
     CompanyPage,
+    CompanyDescriptionPage,
+    CompanyImagesPage,
+    CompanyInfoPage,
     TabsPage
   ],
   providers: [
