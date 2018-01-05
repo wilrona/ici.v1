@@ -21,17 +21,17 @@
 
 <ion-content>
 
-<div class="uk-box-shadow-small uk-padding uk-background-default" margin-vertical>
-  <div class="uk-flex uk-flex-middle uk-flex-center">
+<ion-card class="uk-background-default card-info no-border-radius" margin-bottom>
+  <ion-card-content class="uk-flex uk-flex-middle uk-flex-center">
     <div class="uk-text-center">
       <img src="assets/imgs/default.jpg" alt="" class="logo uk-border-circle uk-margin-auto uk-display-block" margin-bottom>
-      <button ion-button clear small class="button-custom-size">Modifier le logo</button>
+      <button ion-button clear small class="button-custom-size" (click)="uploadPicture()">Modifier le logo</button>
     </div>
 
-  </div>
-</div>
+  </ion-card-content>
+</ion-card>
 
-<div class="uk-background-default uk-padding uk-padding-remove-bottom">
+<div class="uk-background-default uk-padding uk-padding-remove-bottom uk-padding-remove-top">
   <ion-list no-margin>
     <ion-item no-padding>
       <ion-label floating>Nom de l'entreprise</ion-label>
