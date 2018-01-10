@@ -1,33 +1,46 @@
 <!-- Generated template for the FilterComponent component -->
 
 
-      <div class="uk-padding-small">
+      <div class="uk-padding-small" [hidden]="!ville">
         <ion-item no-margin no-padding>
           <ion-label stacked>Par ville</ion-label>
-          <ion-select [(ngModel)]="cities" interface="action-sheet" multiple="true">
-            <ion-option  *ngFor="let item of cities">{{item.name}}</ion-option>
+          <ion-select [(ngModel)]="notifications" interface="action-sheet" multiple="true">
+            <ion-option value="mute_15">For 15 Minutes</ion-option>
+            <ion-option value="mute_1">For 1 Hour</ion-option>
+            <ion-option value="mute_23">For 24 Hours</ion-option>
+            <ion-option value="mute_inf">Until I turn it back on</ion-option>
           </ion-select>
         </ion-item>
       </div>
-      <ion-label padding-left>Par catégorie </ion-label>
+      <ion-label padding-left [hidden]="!ville">Par catégorie</ion-label>
 
-      <ion-list *ngFor="let item of cat" >
-        <ion-list-header color="primary" (click)="toggleGroup(item.id)" >
-          <div>
-          {{item.name}} 
-          <ion-icon name="add" color="light" class="uk-position-center-right" padding-right *ngIf="!isGroupShown(item.id)"></ion-icon>
-          <ion-icon name="close" color="light" class="uk-position-center-right" padding-right *ngIf="isGroupShown(item.id)"></ion-icon>
-          </div>
+      <ion-list>
+        <ion-list-header color="primary" (click)="toggleGroup(1)">
+          Action
+          <ion-icon name="add" color="light" class="uk-position-center-right" padding-right *ngIf="!isGroupShown(1)"></ion-icon>
+          <ion-icon name="close" color="light" class="uk-position-center-right" padding-right *ngIf="isGroupShown(1)"></ion-icon>
+
         </ion-list-header>
-        <ion-list no-padding no-margin *ngIf="isGroupShown(item.id)">
-          <ion-item *ngFor="let it of item.subcat" >
-            <ion-label>{{it.name}}</ion-label>
-	          <ion-checkbox item-right color="primary" checked="true" [(ngModel)]="categories"></ion-checkbox>
-          </ion-item>
+        <ion-list no-padding no-margin [hidden]="!isGroupShown(1)">
+          <ion-item (click)="itemAdd(0, $event)" >Terminator II</ion-item>
+          <ion-item (click)="itemAdd(1, $event)" >The Empire Strikes Back</ion-item>
+          <ion-item (click)="itemAdd(2, $event)" >Blade Runner</ion-item>
         </ion-list>
       </ion-list>
 
-      
+      <ion-list>
+        <ion-list-header color="primary" (click)="toggleGroup(2)">
+          Action
+          <ion-icon name="add" color="light" class="uk-position-center-right" padding-right *ngIf="!isGroupShown(2)"></ion-icon>
+          <ion-icon name="close" color="light" class="uk-position-center-right" padding-right *ngIf="isGroupShown(2)"></ion-icon>
+
+        </ion-list-header>
+        <ion-list no-padding no-margin [hidden]="!isGroupShown(2)">
+          <ion-item (click)="itemAdd(3, $event)">Terminator II</ion-item>
+          <ion-item (click)="itemAdd(4, $event)">The Empire Strikes Back</ion-item>
+          <ion-item (click)="itemAdd(5, $event)">Blade Runner</ion-item>
+        </ion-list>
+      </ion-list>
 
 
 

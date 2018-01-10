@@ -1,6 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import {IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { ContactPage } from '../pages/contact/contact';
@@ -18,6 +18,10 @@ import {IonicImageViewerModule} from "ionic-img-viewer";
 import {CompanyDescriptionPage} from "../pages/company-description/company-description";
 import {CompanyImagesPage} from "../pages/company-images/company-images";
 import {CompanyInfoPage} from "../pages/company-info/company-info";
+import {CompanyCategoryPage} from "../pages/company-category/company-category";
+import {IonTagsInputModule} from "ionic-tags-input";
+import {MapsPage} from "../pages/maps/maps";
+import {MapsComponent} from "../components/maps/maps";
 
 @NgModule({
   declarations: [
@@ -29,10 +33,13 @@ import {CompanyInfoPage} from "../pages/company-info/company-info";
     CompanyDescriptionPage,
     CompanyImagesPage,
     CompanyInfoPage,
+    CompanyCategoryPage,
+    MapsPage,
     TabsPage,
 
     // components
     FiltreComponent,
+    MapsComponent
 
   ],
   imports: [
@@ -40,7 +47,8 @@ import {CompanyInfoPage} from "../pages/company-info/company-info";
     IonicModule.forRoot(MyApp, {tabsHideOnSubPages: 'true'}),
     AutoCompleteModule,
     Ionic2RatingModule,
-    IonicImageViewerModule
+    IonicImageViewerModule,
+    IonTagsInputModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -52,6 +60,8 @@ import {CompanyInfoPage} from "../pages/company-info/company-info";
     CompanyDescriptionPage,
     CompanyImagesPage,
     CompanyInfoPage,
+    CompanyCategoryPage,
+    MapsPage,
     TabsPage
   ],
   providers: [

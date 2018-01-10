@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { CompaniesProvider } from '../../providers/companies/companies';
+import {Component, Input} from '@angular/core';
 
 /**
  * Generated class for the FilterComponent component.
@@ -14,18 +13,10 @@ import { CompaniesProvider } from '../../providers/companies/companies';
 export class FiltreComponent {
 
   shownGroup = null;
-  cities: [any];
-  categories: [any];    
-  cat: [any]; 
-  
-      
-   
-   
+  @Input('showVille') ville: boolean = true;
+  itenSelect:Array<any> = [];
 
-  constructor(public listingService: CompaniesProvider) { 
-    this.getCities();
-    this.loadCategory();
-  }
+  constructor() { }
 
   toggleGroup(group) {
     if (this.isGroupShown(group)) {
@@ -39,19 +30,15 @@ export class FiltreComponent {
     return this.shownGroup === group;
   };
 
-  getCities(){
-         this.listingService.getCities().subscribe(
-            data => this.cities= data  
-        );
+  itemAdd(i, event){
+    const index = this.itenSelect.indexOf(i);
+    if(index > - 1){
+      this.itenSelect.splice(index, 1);
+    }else {
+      this.itenSelect.push(i);
+    }
+    event.target.parentElement.parentElement.parentElement.classList.toggle('hover');
   }
 
-  loadCategory(){
-          
-         this.listingService.getSubcats().subscribe(
-            data => this.cat= data
-        );
-
-     
-  }
 
 }
