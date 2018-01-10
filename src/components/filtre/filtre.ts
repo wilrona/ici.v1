@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CompaniesProvider } from '../../providers/companies/companies';
 
 /**
  * Generated class for the FilterComponent component.
@@ -13,8 +14,18 @@ import { Component } from '@angular/core';
 export class FiltreComponent {
 
   shownGroup = null;
+  cities: [any];
+  categories: [any];    
+  cat: [any]; 
+  
+      
+   
+   
 
-  constructor() { }
+  constructor(public listingService: CompaniesProvider) { 
+    this.getCities();
+    this.loadCategory();
+  }
 
   toggleGroup(group) {
     if (this.isGroupShown(group)) {
@@ -27,5 +38,20 @@ export class FiltreComponent {
   isGroupShown(group) {
     return this.shownGroup === group;
   };
+
+  getCities(){
+         this.listingService.getCities().subscribe(
+            data => this.cities= data  
+        );
+  }
+
+  loadCategory(){
+          
+         this.listingService.getSubcats().subscribe(
+            data => this.cat= data
+        );
+
+     
+  }
 
 }

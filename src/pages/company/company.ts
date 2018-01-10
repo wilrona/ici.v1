@@ -1,8 +1,12 @@
 import {ChangeDetectorRef, Component, Renderer, ViewChild} from '@angular/core';
-import {Content, IonicPage, ModalController, NavController, NavParams} from 'ionic-angular';
+import {Content, IonicPage, ModalController, NavController, NavParams, Platform} from 'ionic-angular';
 import {CompanyDescriptionPage} from "../company-description/company-description";
 import {CompanyImagesPage} from "../company-images/company-images";
 import {CompanyInfoPage} from "../company-info/company-info";
+import { CompaniesProvider } from '../../providers/companies/companies';
+import { EmailComposer } from '@ionic-native/email-composer';
+import { CallNumber } from '@ionic-native/call-number';
+
 
 /**
  * Generated class for the CompanyPage page.
@@ -14,7 +18,7 @@ import {CompanyInfoPage} from "../company-info/company-info";
 @IonicPage()
 @Component({
   selector: 'page-company',
-  templateUrl: 'company.html',
+  templateUrl: 'company.html'
 })
 export class CompanyPage {
 
@@ -23,8 +27,10 @@ export class CompanyPage {
   headerImgSize:string = '100%';
   headerImgUrl:string = '';
   transition:boolean = false;
+  public business ={};
   // articles:Array<any> = new Array(20).fill('');
   segmentation:string;
+  idcompagnie;
 
   dark:boolean = true;
   constructor(
@@ -32,8 +38,15 @@ export class CompanyPage {
     public navParams: NavParams,
     public ref: ChangeDetectorRef,
     public renderer: Renderer,
-    public modalCtrl: ModalController
-  ) { }
+    public modalCtrl: ModalController,
+    private emailComposer: EmailComposer,
+    public listingService: CompaniesProvider, 
+    private platform: Platform, 
+    private callNumber: CallNumber
+  ) {
+    this.idcompagnie = navParams.get("idcompagnie");
+    this.loadData(this.idcompagnie);
+  }
 
   ionViewWillEnter(){
     this.segmentation ='desc';
@@ -44,6 +57,13 @@ export class CompanyPage {
     this.headerImgUrl = 'assets/imgs/back.jpg';
     // this.content.enableScrollListener();
   }
+
+  loadData(id){
+      this.listingService.getCompanyById(id).subscribe(
+            data => this.business= data
+        );
+  }
+
   onScroll($event: any){
     let scrollTop = $event.scrollTop;
     this.showToolbar = scrollTop >= 15;
@@ -73,6 +93,26 @@ export class CompanyPage {
     infoModal.present();
   }
 
+  callCompany(phonenumber:any){
+    this.callNumber.callNumber(phonenumber, true)
+  .then(() => console.log('Launched dialer!'))
+  .catch(() => console.log('Error launching dialer '+phonenumber));
+}
+
+emailCompany(emailcpy:any){
+  this.emailComposer.isAvailable().then((available: boolean) =>{
+ if(available) {
+ }
+});
+
+let email = {
+  to: emailcpy,
+  subject: '',
+  body: '',
+  isHtml: true
+};
+this.emailComposer.open(email);
+}
 
 
 

@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
+import { HttpModule } from '@angular/http';
+
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -19,13 +21,19 @@ import {CompanyDescriptionPage} from "../pages/company-description/company-descr
 import {CompanyImagesPage} from "../pages/company-images/company-images";
 import {CompanyInfoPage} from "../pages/company-info/company-info";
 
+import { CompaniesProvider } from '../providers/companies/companies';
+
+
+import { EmailComposer } from '@ionic-native/email-composer';
+import { CallNumber } from '@ionic-native/call-number';
+
 @NgModule({
   declarations: [
     MyApp,
     AnnuairePage,
     ContactPage,
     HomePage,
-    CompanyPage,
+   // CompanyPage,
     CompanyDescriptionPage,
     CompanyImagesPage,
     CompanyInfoPage,
@@ -37,6 +45,7 @@ import {CompanyInfoPage} from "../pages/company-info/company-info";
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp, {tabsHideOnSubPages: 'true'}),
     AutoCompleteModule,
     Ionic2RatingModule,
@@ -48,7 +57,7 @@ import {CompanyInfoPage} from "../pages/company-info/company-info";
     AnnuairePage,
     ContactPage,
     HomePage,
-    CompanyPage,
+    //CompanyPage,
     CompanyDescriptionPage,
     CompanyImagesPage,
     CompanyInfoPage,
@@ -56,7 +65,10 @@ import {CompanyInfoPage} from "../pages/company-info/company-info";
   ],
   providers: [
     StatusBar,
+    CompaniesProvider,
     SplashScreen,
+    EmailComposer,
+    CallNumber,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
