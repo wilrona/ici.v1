@@ -30,11 +30,12 @@ export class CompaniesProvider implements AutoCompleteService{
     this.category=null;
   }
  
-  getListing(query=null, city=[] , start:number=0){
+  getListing(category=[], city=[] , start:number=0){
   
     // return this.http.get('http://yoomeeonl.webfactional.com/MobileApp/searchmobile?limit='+this.perpage+'&start='+start)
-    return this.http.get('http://yoomeeonl.webfactional.com/MobileApp/searchmobile?query='+query+'&city='+city+'&limit='+this.perpage+'&start='+start)
-   // return this.http.get('http://yoomeeonl.webfactional.com/MobileApp/searchmobile?filter[limit]='+this.perpage+'&filter[skip]='+start) 
+    return this.http.get('http://yoomeeonl.webfactional.com/MobileApp/searchmobile?category='+category+'&city='+city+'&limit='+this.perpage+'&start='+start)
+    //return this.http.get('http://yoomeeonl.webfactional.com/MobileApp/searchmobile?query='+query+'&city='+city+'&limit='+this.perpage+'&start='+start)
+   
    
       .map(
         result =>

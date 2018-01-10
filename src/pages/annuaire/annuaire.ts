@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, LoadingController, Loading, MenuController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, LoadingController, Loading, MenuController, Events } from 'ionic-angular';
 import { CompaniesProvider } from '../../providers/companies/companies';
 import { CallNumber } from '@ionic-native/call-number';
 import { EmailComposer } from '@ionic-native/email-composer';
@@ -37,28 +37,36 @@ export class AnnuairePage {
    userexist=false;
    loading: Loading;
 
-  constructor(public navCtrl: NavController, private loadingCtrl: LoadingController, private emailComposer: EmailComposer, public navParams: NavParams, public menu: MenuController, public listingService: CompaniesProvider,private callNumber: CallNumber) {
+  constructor(public navCtrl: NavController, 
+  private loadingCtrl: LoadingController, private emailComposer: EmailComposer, public navParams: NavParams, public menu: MenuController, 
+  public listingService: CompaniesProvider,
+  private callNumber: CallNumber,
+  public events: Events) {
     menu.enable(true);
 
-    this.getCities();
+    
     var currentUser = JSON.parse(localStorage.getItem('userId'));
     this.user = currentUser;
     if(localStorage.getItem("userId")) {
     this.userexist = true;
-  }
+    }
     this.loadData();
+    events.subscribe('listing', (listing) => {
+    this.listing=listing;
+   // console.log("test" +listing);
+    });
+
+    this.events.subscribe('citiesfilter', (cities) => {
+    this.cities=cities;
+    });
+    this.events.subscribe('categoriesfilter', (categories) => {
+    this.categories=categories;
+    });
   
 }
 
 
 
- getCities(){
-         this.listingService.getCities().subscribe(
-            data => this.cities= data
-          
-        );
-
-  }
 
  /* ngOnInit(){
     
@@ -124,8 +132,10 @@ getAllAverageReview(id){
 
   doInfinite(infiniteScroll) {
   this.start = this.start+1;
-  let query=this.keyword;
+  /*let query=this.keyword;
   let ville= new Array();
+  let cat= new Array();
+  
   var i =0;
   for(let c of this.cities){
     if (c.checked==true){
@@ -133,16 +143,14 @@ getAllAverageReview(id){
       ville[i]=c.name;
       i++;
     }
-  }
+  }*/
 
   setTimeout(() => {
     
-    this.listingService.getListing(query, ville, this.start*this.perpage)
+    this.listingService.getListing(this.categories, this.cities, this.start*this.perpage)
        .subscribe(
          res => {
            this.companies = res;
-          /* this.perPage = this.data.per_page;
-           this.totalData = this.data.total;*/
          //  this.totalPage = 1745;//this.companies.total_pages;
            for(let i=0; i<this.companies.length; i++) {
              this.listing.push(this.companies[i]);
@@ -170,35 +178,14 @@ getAllAverageReview(id){
     content: 'chargement...',
     });
   
-        let query=this.keyword;
-        this.listingService.getListing(query).subscribe(
+       // let query=this.keyword;
+        this.listingService.getListing().subscribe(
             data => this.listing= data
         );
         //this.loading.dismiss();
   }
 
-  changed(e) {
-  let city="";
-  let ville= new Array();
-  var i =0;
-  for(let c of this.cities){
-    if (c.checked==true){
-      
-      city=city+"city="+c.name+"&";
-      ville[i]=c.name;
-      i++;
-    }
-  }
-  //console.log(ville);
 
-  var query=this.keyword;
-
-
-  this.listingService.getListing(query, ville).subscribe(
-    data =>  this.listing= data
-  );
-    
-}
 
 
   callCompany(phonenumber:any){
@@ -234,23 +221,7 @@ this.emailComposer.open(email);
 }
 
 
-search(){
-  var query=this.keyword;
-  let ville= new Array();
-  var i =0;
-  for(let c of this.cities){
-    if (c.checked==true){
-      ville[i]=c.name;
-      i++;
-    }
-  }
 
-  this.listingService.getListing(query, ville).subscribe(
-            data => this.listing= data
-        );
-
-     
-}
 
 arrayLength(liste: any){
  var  value:[any];
