@@ -8,20 +8,51 @@
 
   <ion-navbar>
     <ion-buttons start>
-      <button ion-button color="primary" icon-only small (click)="dismiss()">
+      <button ion-button color="primary" icon-only small (click)="dismiss()" [hidden]="EditActive">
         <ion-icon name="close"></ion-icon>
       </button>
     </ion-buttons>
 
     <ion-title class="uk-title-color-red">Nom de l'entreprise, Nom de l'entreprise</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only small (click)="removeEdit()" [hidden]="!EditActive">
+        <span ion-text color="primary">Annuler</span>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias atque earum fugiat fugit id maiores quia saepe. Accusamus beatae deserunt dicta dolor facere fugiat maiores nam sequi voluptatibus, voluptatum! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi architecto fuga labore odio odit quis sequi sit suscipit voluptate voluptatibus. Delectus, id quo! Animi beatae delectus quam, quas sit ullam!
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias atque earum fugiat fugit id maiores quia saepe. Accusamus beatae deserunt dicta dolor facere fugiat maiores nam sequi voluptatibus, voluptatum! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi architecto fuga labore odio odit quis sequi sit suscipit voluptate voluptatibus. Delectus, id quo! Animi beatae delectus quam, quas sit ullam!
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias atque earum fugiat fugit id maiores quia saepe. Accusamus beatae deserunt dicta dolor facere fugiat maiores nam sequi voluptatibus, voluptatum! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi architecto fuga labore odio odit quis sequi sit suscipit voluptate voluptatibus. Delectus, id quo! Animi beatae delectus quam, quas sit ullam!
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias atque earum fugiat fugit id maiores quia saepe. Accusamus beatae deserunt dicta dolor facere fugiat maiores nam sequi voluptatibus, voluptatum! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi architecto fuga labore odio odit quis sequi sit suscipit voluptate voluptatibus. Delectus, id quo! Animi beatae delectus quam, quas sit ullam!
+
+  <div [textContent]="description" (input)="description=$event.target.textContent" #editable></div>
+
+  <!-- <ion-item class="commentbox">
+
+    <div
+      contenteditable="true"
+      [textContent]="description"
+      (input)="description=$event.target.textContent"
+    >
+    </div>
+
+    <ion-buttons right item-right>
+      <button ion-button clear (tap)="submitComment()">
+        <ion-icon name="send"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-item> -->
+
+
 </ion-content>
+
+<ion-footer>
+  <ion-fab right bottom>
+    <button ion-fab color="primary" (click)="editDescription()" [hidden]="EditActive" ><ion-icon name="create"></ion-icon></button>
+  </ion-fab>
+  <ion-fab right bottom>
+    <button ion-fab color="success" [hidden]="!EditActive" ><ion-icon name="checkmark"></ion-icon></button>
+  </ion-fab>
+</ion-footer>

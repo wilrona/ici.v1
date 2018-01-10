@@ -23,17 +23,38 @@
 
 <ion-card class="uk-background-default card-info no-border-radius" margin-bottom>
   <ion-card-content class="uk-flex uk-flex-middle uk-flex-center">
-    <div class="uk-text-center">
-      <img src="assets/imgs/default.jpg" alt="" class="logo uk-border-circle uk-margin-auto uk-display-block" margin-bottom>
-      <button ion-button clear small class="button-custom-size" (click)="uploadPicture()">Modifier le logo</button>
+    <div class="uk-width-1-1">
+      <div class="uk-text-center uk-margin-auto">
+        <img src="assets/imgs/default.jpg" alt="" class="logo uk-border-circle uk-margin-auto uk-display-block" margin-bottom>
+        <button ion-button clear small class="button-custom-size" (click)="uploadPicture()">Modifier le logo</button>
+      </div>
+      <div class="uk-grid-collapse uk-grid">
+        <div class="uk-width-expand">
+          <ion-list no-margin>
+            <ion-item no-padding no-border>
+              <ion-select interface="action-sheet" multiple="false" placeholder="Selectionnez une catégorie principale">
+                <ion-option value="">Selectionnez une catégorie principale</ion-option>
+                <ion-option value="mute_15">For 15 Minutes</ion-option>
+                <ion-option value="mute_1">For 1 Hour</ion-option>
+                <ion-option value="mute_23">For 24 Hours</ion-option>
+                <ion-option value="mute_inf">Until I turn it back on</ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+        </div>
+        <div class="uk-width-auto">
+            <button ion-button clear>
+              <ion-icon name="add"></ion-icon>
+            </button>
+        </div>
+      </div>
     </div>
-
   </ion-card-content>
 </ion-card>
 
 <div class="uk-background-default uk-padding uk-padding-remove-bottom uk-padding-remove-top">
   <ion-list no-margin>
-    <ion-item no-padding>
+    <ion-item no-padding no-border>
       <ion-label floating>Nom de l'entreprise</ion-label>
       <ion-input type="text" value=""></ion-input>
     </ion-item>
@@ -43,7 +64,8 @@
     </ion-item>
     <ion-item no-padding>
       <ion-label floating>Ville</ion-label>
-      <ion-input type="text" value=""></ion-input>
+      <ion-input typwilrona
+                 e="text" value=""></ion-input>
     </ion-item>
     <ion-item no-padding>
       <ion-label floating>Quartier</ion-label>
@@ -79,11 +101,15 @@
     <ion-item no-padding no-border>
     </ion-item>
   </ion-list>
+  <ion-label>Mot clés</ion-label>
+  <ion-tags-input [(ngModel)]="tags" [placeholder]="'+ tags'" [once]="'true'" [separatorStr]="','" [type]="text" class="uk-margin-large-bottom"></ion-tags-input>
+
 </div>
+<div class="uk-height-fab"></div>
 
 </ion-content>
 <ion-footer>
-  <div class="uk-flex uk-flex-center">
-    <button ion-button color="success" block  no-margin large class="no-border-radius"><ion-icon name="checkmark"></ion-icon></button>
-  </div>
+  <ion-fab right bottom>
+    <button ion-fab color="success"><ion-icon name="checkmark"></ion-icon></button>
+  </ion-fab>
 </ion-footer>

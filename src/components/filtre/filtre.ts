@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 /**
  * Generated class for the FilterComponent component.
@@ -13,6 +13,8 @@ import { Component } from '@angular/core';
 export class FiltreComponent {
 
   shownGroup = null;
+  @Input('showVille') ville: boolean = true;
+  itenSelect:Array<any> = [];
 
   constructor() { }
 
@@ -27,5 +29,16 @@ export class FiltreComponent {
   isGroupShown(group) {
     return this.shownGroup === group;
   };
+
+  itemAdd(i, event){
+    const index = this.itenSelect.indexOf(i);
+    if(index > - 1){
+      this.itenSelect.splice(index, 1);
+    }else {
+      this.itenSelect.push(i);
+    }
+    event.target.parentElement.parentElement.parentElement.classList.toggle('hover');
+  }
+
 
 }

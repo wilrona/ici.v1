@@ -72,19 +72,19 @@
     <ion-card no-margin margin-top class="card-info">
       <ion-card-header no-padding>
         <ion-segment [(ngModel)]="segmentation">
-          <ion-segment-button value="desc">
+          <ion-segment-button value="desc" (ionSelect)="activeLocation()">
             Description
           </ion-segment-button>
-          <ion-segment-button value="locale">
+          <ion-segment-button value="locale" (ionSelect)="activeMap()">
             Localisation
           </ion-segment-button>
-          <ion-segment-button value="avis">
+          <ion-segment-button value="avis" (ionSelect)="activeAvis()">
             Avis
           </ion-segment-button>
         </ion-segment>
       </ion-card-header>
-      <ion-card-content [ngSwitch]="segmentation" padding-top padding-bottom>
-        <div *ngSwitchCase="'desc'" class="uk-height-1-1 uk-position-relative">
+      <ion-card-content [ngSwitch]="segmentation" no-padding>
+        <div *ngSwitchCase="'desc'" class="uk-height-1-1 uk-position-relative uk-padding-small">
 
           <div class="uk-position-top-right">
             <button ion-button clear small class="button-custom-size" (click)="openImageEdit()">Gérer</button>
@@ -147,7 +147,7 @@
                 <div ion-text class="uk-text-break">
                     categorie, catégorie, catégorie, catégorie, catégorie, catégorie, catégorie, catégorie
                     <div>
-                      <button ion-button clear small class="button-custom-size">Gérer vos categories</button>
+                      <button ion-button clear small class="button-custom-size" (click)="openCategoryEdit()">Gérer vos categories</button>
                     </div>
                 </div>
               </ion-col>
@@ -158,18 +158,15 @@
             <ion-row>
               <ion-col col-12 class="uk-position-relative">
                 <ion-label class="uk-text-bold">
-                  Horaire : <button ion-button clear small class="button-custom-size">Modifier</button>
+                  Horaire :
                 </ion-label>
                 <span class="uk-text-success">Ouvert</span> aujourd'hui de 08h à 15h
-                <div class="uk-position-bottom-right">
-                  <button ion-button clear small>Voir plus</button>
-                </div>
               </ion-col>
             </ion-row>
           </ion-grid>
         </div>
         <div *ngSwitchCase="'locale'" class="uk-height-1-1">
-          <ion-title>localisation</ion-title>
+          <maps></maps>
         </div>
         <div *ngSwitchCase="'avis'" class="uk-height-1-1">
           <ion-title>Avis</ion-title>

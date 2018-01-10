@@ -21,4 +21,59 @@ page-company-info {
     margin-left: 0;
     margin-top: 0
   }
+
+  .selectbox{
+
+    bottom: 0;
+    min-height: 40px;
+    width: 100%;
+    color: grey;
+
+  }
+  .selectbox ion-item{
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+  }
+
+  ion-select{
+    width: 100%;
+    max-width: 100%;
+  }
+
+  ion-tags-input .ion-tags-input {
+    border-bottom: 1px solid #e5e5e5;
+    transition: border-bottom-color .15s ease;
+    padding: 5px;
+  }
+
+  //ion-tags-input .ion-tags-input {
+  //  margin: 5px;
+  //}
+
+  //.ion-tags-input.purple .iti-tag-color {
+  //  background-color: #7e60ff;
+  //  color: #fff;
+  //}
+  .ion-tags-input .iti-tag-color {
+    background-color: map_get($colors, primary);
+    color: #fff;
+  }
+  .ion-tags-input.active.tit-border-color{
+    border-bottom: 2px solid map_get($colors, primary)
+  }
+
+  .ion-tags-input .iti-tag {
+    display: block;
+    float: left;
+    font-family: sans-serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    padding: 4px 10px;
+    max-height: 30px;
+    border-radius: 0;
+  }
+
 }

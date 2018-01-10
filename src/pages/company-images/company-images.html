@@ -36,11 +36,14 @@
     </ion-row>
   </ion-grid>
 
+<div class="uk-height-fab"></div>
 </ion-content>
 
 <ion-footer>
-    <div class="uk-flex uk-flex-center">
-      <button ion-button clear color="primary" (click)="uploadPicture()" block [hidden]="deletedActive" no-margin large class="no-border-radius"><ion-icon icon-left name="image" margin-right></ion-icon>  Ajouter des images</button>
-      <button ion-button color="success" [hidden]="!deletedActive" block  no-margin large class="no-border-radius"><ion-icon name="trash"></ion-icon></button>
-    </div>
+  <ion-fab right bottom>
+    <button ion-fab color="primary" (click)="uploadPicture()" block [hidden]="deletedActive" ><ion-icon name="image"></ion-icon></button>
+  </ion-fab>
+  <ion-fab right bottom>
+    <button ion-fab color="success" [hidden]="!deletedActive"><ion-icon name="trash"></ion-icon></button>
+  </ion-fab>
 </ion-footer>

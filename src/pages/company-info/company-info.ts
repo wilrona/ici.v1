@@ -18,7 +18,10 @@ declare var VideoPicturePreviewPickerV2: any;
 })
 export class CompanyInfoPage {
 
+  tags = [];
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public platform: Platform) {
+
   }
 
   ionViewDidLoad() {

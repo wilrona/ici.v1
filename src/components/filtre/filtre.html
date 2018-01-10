@@ -1,7 +1,7 @@
 <!-- Generated template for the FilterComponent component -->
 
 
-      <div class="uk-padding-small">
+      <div class="uk-padding-small" [hidden]="!ville">
         <ion-item no-margin no-padding>
           <ion-label stacked>Par ville</ion-label>
           <ion-select [(ngModel)]="notifications" interface="action-sheet" multiple="true">
@@ -9,22 +9,10 @@
             <ion-option value="mute_1">For 1 Hour</ion-option>
             <ion-option value="mute_23">For 24 Hours</ion-option>
             <ion-option value="mute_inf">Until I turn it back on</ion-option>
-            <ion-option value="mute_inf">Until I turn it back on</ion-option>
-            <ion-option value="mute_inf">Until I turn it back on</ion-option>
-            <ion-option value="mute_inf">Until I turn it back on</ion-option>
-            <ion-option value="mute_inf">Until I turn it back on</ion-option>
-            <ion-option value="mute_inf">Until I turn it back on</ion-option>
-            <ion-option value="mute_inf">Until I turn it back on</ion-option>
-            <ion-option value="mute_inf">Until I turn it back on</ion-option>
-            <ion-option value="mute_inf">Until I turn it back on</ion-option>
-            <ion-option value="mute_inf">Until I turn it back on</ion-option>
-            <ion-option value="mute_inf">Until I turn it back on</ion-option>
-            <ion-option value="mute_inf">Until I turn it back on</ion-option>
-            <ion-option value="mute_inf">Until I turn it back on</ion-option>
           </ion-select>
         </ion-item>
       </div>
-      <ion-label padding-left>Par catégorie</ion-label>
+      <ion-label padding-left [hidden]="!ville">Par catégorie</ion-label>
 
       <ion-list>
         <ion-list-header color="primary" (click)="toggleGroup(1)">
@@ -33,10 +21,10 @@
           <ion-icon name="close" color="light" class="uk-position-center-right" padding-right *ngIf="isGroupShown(1)"></ion-icon>
 
         </ion-list-header>
-        <ion-list no-padding no-margin *ngIf="isGroupShown(1)">
-          <ion-item>Terminator II</ion-item>
-          <ion-item>The Empire Strikes Back</ion-item>
-          <ion-item>Blade Runner</ion-item>
+        <ion-list no-padding no-margin [hidden]="!isGroupShown(1)">
+          <ion-item (click)="itemAdd(0, $event)" >Terminator II</ion-item>
+          <ion-item (click)="itemAdd(1, $event)" >The Empire Strikes Back</ion-item>
+          <ion-item (click)="itemAdd(2, $event)" >Blade Runner</ion-item>
         </ion-list>
       </ion-list>
 
@@ -47,10 +35,10 @@
           <ion-icon name="close" color="light" class="uk-position-center-right" padding-right *ngIf="isGroupShown(2)"></ion-icon>
 
         </ion-list-header>
-        <ion-list no-padding no-margin *ngIf="isGroupShown(2)">
-          <ion-item>Terminator II</ion-item>
-          <ion-item>The Empire Strikes Back</ion-item>
-          <ion-item>Blade Runner</ion-item>
+        <ion-list no-padding no-margin [hidden]="!isGroupShown(2)">
+          <ion-item (click)="itemAdd(3, $event)">Terminator II</ion-item>
+          <ion-item (click)="itemAdd(4, $event)">The Empire Strikes Back</ion-item>
+          <ion-item (click)="itemAdd(5, $event)">Blade Runner</ion-item>
         </ion-list>
       </ion-list>
 
