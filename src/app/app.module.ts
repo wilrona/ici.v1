@@ -22,6 +22,11 @@ import {CompanyCategoryPage} from "../pages/company-category/company-category";
 import {IonTagsInputModule} from "ionic-tags-input";
 import {MapsPage} from "../pages/maps/maps";
 import {MapsComponent} from "../components/maps/maps";
+import { HttpModule } from '@angular/http';
+
+import { EmailComposer } from '@ionic-native/email-composer';
+import { CallNumber } from '@ionic-native/call-number';
+import { CompaniesProvider } from '../providers/companies/companies';
 
 @NgModule({
   declarations: [
@@ -29,7 +34,7 @@ import {MapsComponent} from "../components/maps/maps";
     AnnuairePage,
     ContactPage,
     HomePage,
-    CompanyPage,
+   // CompanyPage,
     CompanyDescriptionPage,
     CompanyImagesPage,
     CompanyInfoPage,
@@ -39,7 +44,7 @@ import {MapsComponent} from "../components/maps/maps";
 
     // components
     FiltreComponent,
-    MapsComponent
+    //MapsComponent
 
   ],
   imports: [
@@ -48,7 +53,8 @@ import {MapsComponent} from "../components/maps/maps";
     AutoCompleteModule,
     Ionic2RatingModule,
     IonicImageViewerModule,
-    IonTagsInputModule
+    IonTagsInputModule,
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -56,7 +62,7 @@ import {MapsComponent} from "../components/maps/maps";
     AnnuairePage,
     ContactPage,
     HomePage,
-    CompanyPage,
+    //CompanyPage,
     CompanyDescriptionPage,
     CompanyImagesPage,
     CompanyInfoPage,
@@ -67,6 +73,9 @@ import {MapsComponent} from "../components/maps/maps";
   providers: [
     StatusBar,
     SplashScreen,
+    CallNumber,
+    EmailComposer,
+    CompaniesProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
