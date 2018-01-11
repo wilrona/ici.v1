@@ -42446,7 +42446,7 @@ filtre ion-item.hover .item-inner {
 
 maps #map {
   width: 100%;
-  height: 500px;
+  height: 300px;
 }
 
 page-annuaire ul.rating {
@@ -42690,6 +42690,23 @@ page-company .articles .article-item .placeholders .placeholder {
 
 page-company .articles .article-item .placeholders .p20 {
   width: 20%;
+}
+
+page-company .rating-block ul.rating {
+  text-align: center !important;
+}
+
+page-company .rating-block ul.rating.rating li ion-icon {
+  font-size: 50px;
+}
+
+page-company .uk-comments ul.rating {
+  text-align: left !important;
+  display: inline-block;
+}
+
+page-company .uk-comments ul.rating.rating li ion-icon {
+  font-size: 13px;
 }
 
 page-company-category .scroll-content {

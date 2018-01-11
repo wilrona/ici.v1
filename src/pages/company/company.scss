@@ -249,5 +249,32 @@ page-company {
     }
   }
 
+  .rating-block {
+
+    ul.rating{
+      text-align: center !important;
+
+      &.rating li {
+
+        ion-icon {
+          font-size: 50px;
+        }
+      }
+    }
+  }
+
+  .uk-comments{
+    ul.rating{
+      text-align: left !important;
+      display: inline-block;
+
+      &.rating li {
+
+        ion-icon {
+          font-size: 13px;
+        }
+      }
+    }
+  }
 
 }

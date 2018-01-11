@@ -20,11 +20,11 @@ import {CompanyPage} from "../company/company";
 export class AnnuairePage {
 
    public listing: [any];
-   cities: [any];   
+   cities: [any];
    categories:[any];
-   reviews:[any]; 
-   rate:[any];        
-   imageune:[any];   
+   reviews:[any];
+   rate:[any];
+   imageune:[any];
    count: 0;
    pushPage: any;
    listlength = 20;
@@ -37,14 +37,14 @@ export class AnnuairePage {
    userexist=false;
    loading: Loading;
 
-  constructor(public navCtrl: NavController, 
-  private loadingCtrl: LoadingController, private emailComposer: EmailComposer, public navParams: NavParams, public menu: MenuController, 
+  constructor(public navCtrl: NavController,
+  private loadingCtrl: LoadingController, private emailComposer: EmailComposer, public navParams: NavParams, public menu: MenuController,
   public listingService: CompaniesProvider,
   private callNumber: CallNumber,
   public events: Events) {
     menu.enable(true);
 
-    
+
     var currentUser = JSON.parse(localStorage.getItem('userId'));
     this.user = currentUser;
     if(localStorage.getItem("userId")) {
@@ -62,22 +62,22 @@ export class AnnuairePage {
     this.events.subscribe('categoriesfilter', (categories) => {
     this.categories=categories;
     });
-  
+
 }
 
 
 
 
  /* ngOnInit(){
-    
+
    this.loadData();
 
   }*/
 
-  
+
 
  /*onModelChange(val, companyId){
-   
+
    if(this.userexist==true){
       //alert(val);
       let myModal = this.modalCtrl.create(AddreviewPage, {vote: val, companyId: companyId});
@@ -111,7 +111,7 @@ getAllAverageReview(id){
   }
 
 
-  
+
   openMenu(evt) {
     if(evt === "right"){
       this.menu.enable(true, 'menu');
@@ -127,7 +127,7 @@ getAllAverageReview(id){
      this.navCtrl.push('CompanyPage', {
       idcompagnie: id
     });
-    
+
   }
 
   doInfinite(infiniteScroll) {
@@ -135,18 +135,18 @@ getAllAverageReview(id){
   /*let query=this.keyword;
   let ville= new Array();
   let cat= new Array();
-  
+
   var i =0;
   for(let c of this.cities){
     if (c.checked==true){
-      
+
       ville[i]=c.name;
       i++;
     }
   }*/
 
   setTimeout(() => {
-    
+
     this.listingService.getListing(this.categories, this.cities, this.start*this.perpage)
        .subscribe(
          res => {
@@ -177,12 +177,17 @@ getAllAverageReview(id){
     this.loading = this.loadingCtrl.create({
     content: 'chargement...',
     });
-  
-       // let query=this.keyword;
-        this.listingService.getListing().subscribe(
-            data => this.listing= data
-        );
-        //this.loading.dismiss();
+    this.loading.present();
+
+    this.listingService.getListing().subscribe(
+        data => {
+          if(data){
+
+            this.listing= data;
+            this.loading.dismiss()
+          }
+        }
+    );
   }
 
 
@@ -196,44 +201,32 @@ getAllAverageReview(id){
 
 emailCompany(emailcpy:any){
   this.emailComposer.isAvailable().then((available: boolean) =>{
- if(available) {
-   //Now we know we can send
- }
-});
+       if(available) {
+         //Now we know we can send
+       }
+    });
 
-let email = {
-  to: emailcpy,
-  //cc: 'erika@mustermann.de',
-//  bcc: ['john@doe.com', 'jane@doe.com'],
- /* attachments: [
-    'file://img/logo.png',
-    'res://icon.png',
-    'base64:icon.png//iVBORw0KGgoAAAANSUhEUg...',
-    'file://README.pdf'
-  ],*/
-  subject: '',
-  body: '',
-  isHtml: true
-};
+    let email = {
+      to: emailcpy,
+      //cc: 'erika@mustermann.de',
+    //  bcc: ['john@doe.com', 'jane@doe.com'],
+     /* attachments: [
+        'file://img/logo.png',
+        'res://icon.png',
+        'base64:icon.png//iVBORw0KGgoAAAANSUhEUg...',
+        'file://README.pdf'
+      ],*/
+      subject: '',
+      body: '',
+      isHtml: true
+    };
 
-// Send a text message using default options
-this.emailComposer.open(email);
+    // Send a text message using default options
+    this.emailComposer.open(email);
 }
 
 
 
-
-arrayLength(liste: any){
- var  value:[any];
- value=liste;
-
- var taille=0;
- if(liste!=null){
-  taille=value.length;
- }
- 
-  return taille;
-}
 
 
 

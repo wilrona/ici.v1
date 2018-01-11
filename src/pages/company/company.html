@@ -86,11 +86,14 @@
       <ion-card-content [ngSwitch]="segmentation" no-padding>
         <div *ngSwitchCase="'desc'" class="uk-height-1-1 uk-position-relative uk-padding-small">
 
-          <div class="uk-position-top-right">
-            <button ion-button clear small class="button-custom-size" (click)="openImageEdit()">Gérer</button>
+          <div class="uk-position-relative">
+            <ion-label ion-text class="uk-text-bold uk-display-block">Image</ion-label>
+            <div class="uk-position-center-right">
+              <button ion-button clear small class="button-custom-size" (click)="openImageEdit()">Gérer</button>
+            </div>
           </div>
 
-          <ion-label ion-text class="uk-text-bold uk-display-block">Image</ion-label>
+
 
           <ion-slides loop="true" slidesPerView="4" margin-top spaceBetween="3">
 
@@ -169,7 +172,72 @@
           <maps></maps>
         </div>
         <div *ngSwitchCase="'avis'" class="uk-height-1-1">
-          <ion-title>Avis</ion-title>
+          <div class="uk-padding-small rating-block uk-text-center">
+
+            <div ion-text class="uk-h1 uk-text-center uk-margin-remove-bottom" color="dark">Noté ce professionnel</div>
+            <div ion-text class="uk-h3 uk-text-center uk-margin-small-top">Cliquez sur les etoiles pour noter ce professionnel</div>
+            <rating  [(ngModel)]="valiRate"
+                     readOnly="false"
+                     max="5"
+                     emptyStarIconName="star-outline"
+                     halfStarIconName="star-half"
+                     starIconName="star"
+                     nullable="false" ></rating>
+
+            <button ion-button clear class="uk-text-center">Ecrire un avis</button>
+
+          </div>
+
+          <hr>
+
+          <ion-list>
+            <ion-item>
+              <ion-avatar item-start>
+                <img src="assets/imgs/default.jpg">
+              </ion-avatar>
+              <div class="uk-position-relative uk-comments">
+                <h2>Wilrona</h2>
+                <rating  [(ngModel)]="rate"
+                                          readOnly="true"
+                                          max="5"
+                                          emptyStarIconName="star-outline"
+                                          halfStarIconName="star-half"
+                                          starIconName="star"
+                                          nullable="false" ></rating>
+                <ion-note class="uk-position-center-right">3:43 pm</ion-note>
+              </div>
+              <p>This town ain't big enough for the two of us! This town ain't big enough for the two of us! This town ain't big enough for the two of us!, This town ain't big enough for the two of us!
+                This town ain't big enough for the two of us! This town ain't big enough for the two of us! This town ain't big enough for the two of us!, This town ain't big enough for the two of us!
+                This town ain't big enough for the two of us! This town ain't big enough for the two of us! This town ain't big enough for the two of us!, This town ain't big enough for the two of us!
+              </p>
+              <hr>
+            </ion-item>
+
+            <ion-item>
+              <ion-avatar item-start>
+                <img src="assets/imgs/default.jpg">
+              </ion-avatar>
+              <div class="uk-position-relative uk-comments">
+                <h2>Wilrona</h2>
+                <rating  [(ngModel)]="rate"
+                         readOnly="true"
+                         max="5"
+                         emptyStarIconName="star-outline"
+                         halfStarIconName="star-half"
+                         starIconName="star"
+                         nullable="false" ></rating>
+                <ion-note class="uk-position-center-right">3:43 pm</ion-note>
+              </div>
+              <p>This town ain't big enough for the two of us! This town ain't big enough for the two of us! This town ain't big enough for the two of us!, This town ain't big enough for the two of us!
+                This town ain't big enough for the two of us! This town ain't big enough for the two of us! This town ain't big enough for the two of us!, This town ain't big enough for the two of us!
+                This town ain't big enough for the two of us! This town ain't big enough for the two of us! This town ain't big enough for the two of us!, This town ain't big enough for the two of us!
+              </p>
+              <hr>
+            </ion-item>
+
+          </ion-list>
+
+
         </div>
       </ion-card-content>
     </ion-card>
@@ -179,15 +247,20 @@
 
 <ion-footer [class.bgFooter]="dark">
   <ion-grid>
-    <ion-row>
-      <ion-col col-4 padding-horizontal class="uk-flex uk-flex-center">
+    <ion-row [hidden]="!dark">
+      <ion-col col-4 padding-horizontal class="uk-flex uk-flex-center" style="height: 56px">
         <button ion-button clear color="white"><ion-icon name="call"></ion-icon></button>
       </ion-col>
-      <ion-col col-4 padding-horizontal class="uk-flex uk-flex-center">
+      <ion-col col-4 padding-horizontal class="uk-flex uk-flex-center" style="height: 56px">
         <button ion-button clear color="white"><ion-icon name="mail"></ion-icon></button>
       </ion-col>
-      <ion-col col-4 padding-horizontal class="uk-flex uk-flex-center">
+      <ion-col col-4 padding-horizontal class="uk-flex uk-flex-center" style="height: 56px">
         <button ion-button clear color="white"><ion-icon name="globe"></ion-icon></button>
+      </ion-col>
+    </ion-row>
+    <ion-row [hidden]="dark">
+      <ion-col col-12 padding-horizontal class="uk-text-center uk-flex uk-flex-middle uk-flex-center" style="height: 56px">
+        <span ion-text color="primary">Adresse de l'entreprise ici</span>
       </ion-col>
     </ion-row>
   </ion-grid>
