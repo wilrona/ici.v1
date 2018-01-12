@@ -4,6 +4,8 @@ import { CompaniesProvider } from '../../providers/companies/companies';
 
 declare var google: any;
 declare var MarkerClusterer: any;
+declare var RichMarker: any;
+
 /**
  * Generated class for the MapsPage page.
  *
@@ -16,11 +18,13 @@ declare var MarkerClusterer: any;
   selector: 'page-maps',
   templateUrl: 'maps.html',
 })
+
 export class MapsPage {
 
   @ViewChild('map') mapElement: ElementRef;
   map: any;
-  public listMarker=new Array();
+  public listMarker = new Array();
+  public newMarkers: Array<any> = [];
 
   constructor(public navCtrl: NavController,
    public navParams: NavParams, public menu: MenuController,
@@ -30,7 +34,7 @@ export class MapsPage {
   }
 
   ionViewDidLoad() {
-    console.log(this.mapElement.nativeElement);
+
   }
 
   openMenu(evt) {
@@ -48,21 +52,6 @@ export class MapsPage {
     this.loadMaps();
   }
 
-  loadMap(){
-
-    let latLng = new google.maps.LatLng(-34.9290, 138.6010);
-
-    let mapOptions = {
-      center: latLng,
-      zoom: 15,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-
-    let MapEl = this.mapElement.nativeElement;
-    this.map = new google.maps.Map(MapEl, mapOptions);
-
-  }
-
   loadMaps() {
       this.initializeMap();
       this.getMarkers();
@@ -71,11 +60,11 @@ export class MapsPage {
    initializeMap() {
       var mapEle = this.mapElement.nativeElement;
       this.map = new google.maps.Map(mapEle, {
-        zoom: 7,
-        center: new google.maps.LatLng(6.6820251,10.1803522),
+        zoom: 6,
+        center: new google.maps.LatLng(7.4452674,12.4346327),
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         scrollwheel: false,
-        styles: [{ "featureType": "water", "elementType": "geometry", "stylers": [{ "color": "#e9e9e9" }, { "lightness": 17 }] }, { "featureType": "landscape", "elementType": "geometry", "stylers": [{ "color": "#f5f5f5" }, { "lightness": 20 }] }, { "featureType": "road.highway", "elementType": "geometry.fill", "stylers": [{ "color": "#ffffff" }, { "lightness": 17 }] }, { "featureType": "road.highway", "elementType": "geometry.stroke", "stylers": [{ "color": "#ffffff" }, { "lightness": 29 }, { "weight": 0.2 }] }, { "featureType": "road.arterial", "elementType": "geometry", "stylers": [{ "color": "#ffffff" }, { "lightness": 18 }] }, { "featureType": "road.local", "elementType": "geometry", "stylers": [{ "color": "#ffffff" }, { "lightness": 16 }] }, { "featureType": "poi", "elementType": "geometry", "stylers": [{ "color": "#f5f5f5" }, { "lightness": 21 }] }, { "featureType": "poi.park", "elementType": "geometry", "stylers": [{ "color": "#dedede" }, { "lightness": 21 }] }, { "elementType": "labels.text.stroke", "stylers": [{ "visibility": "on" }, { "color": "#ffffff" }, { "lightness": 16 }] }, { "elementType": "labels.text.fill", "stylers": [{ "saturation": 36 }, { "color": "#333333" }, { "lightness": 40 }] }, { "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] }, { "featureType": "transit", "elementType": "geometry", "stylers": [{ "color": "#f2f2f2" }, { "lightness": 19 }] }, { "featureType": "administrative", "elementType": "geometry.fill", "stylers": [{ "color": "#fefefe" }, { "lightness": 20 }] }, { "featureType": "administrative", "elementType": "geometry.stroke", "stylers": [{ "color": "#fefefe" }, { "lightness": 17 }, { "weight": 1.2 }] }],
+        styles: [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#c6c6c6"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#dde6e8"},{"visibility":"on"}]}],
         disableDoubleClickZoom: false,
         disableDefaultUI: true,
         zoomControl: true,
@@ -83,10 +72,101 @@ export class MapsPage {
       });
   }
 
+
+  placeMarkers(markers) {
+
+    for (let point of markers) {
+
+      let marker;
+      let markerContent = document.createElement('div');
+      let thumbnailImage;
+
+      thumbnailImage = "http://yoomeeonl.webfactional.com/media/pictures/categories/bar.jpg";
+
+      // if ((point["logo"] != undefined) || (point["logo"] != '')) {
+      //   thumbnailImage = point["logo"];
+      // }
+      // else {
+      //   // thumbnailImage = base_url+"/assets/img/items/default.png";
+      //   thumbnailImage = "http://yoomeeonl.webfactional.com/media/pictures/categories/bar.jpg";
+      // }
+
+      // if (point["featured"] == 1) {
+      //   markerContent.innerHTML =
+      //     '<div class="marker" data-id="' + point["_id"]['$id'] + '">' +
+      //     '<div class="title">' + point["name"] + '</div>' +
+      //     '<div class="marker-wrapper">' +
+      //     '<div class="tag"><i class="fa fa-check"></i></div>' +
+      //     '<div class="pin">' +
+      //     '<div class="image" style="background-image: url(' + thumbnailImage + ');"></div>' +
+      //     '</div>' +
+      //     '</div>' +
+      //     '</div>';
+      // }
+      // else {
+        markerContent.innerHTML =
+          // '<div class="marker" data-id="'+ point["_id"]+'">' +
+          '<div class="marker" data-id="' + point["_id"]['$id'] + '">' +
+          '<div class="title">' + point["name"] + '</div>' +
+          '<div class="marker-wrapper">' +
+          '<div class="pin">' +
+          '<div class="image" style="background-image: url(' + thumbnailImage + ');"></div>' +
+          '</div>' +
+          '</div>';
+        // console.log(markers[i]["_id"]);
+        // console.log(markers[i]["_id"].$id);
+      // }
+
+      // Latitude, Longitude and Address
+
+      if (point["latitude"] && point["longitude"]) {
+        this.renderRichMarker(point, markerContent);
+      }
+      else {
+        console.log("No location coordinates" + point["name"]);
+      }
+
+    }
+  }
+
+  renderRichMarker(i, markerContent){
+
+      //console.log( map.getBounds().contains( new google.maps.LatLng( markers[i]["latitude"], markers[i]["longitude"] ) ) );
+      let marker = new RichMarker({
+        position: new google.maps.LatLng( i["latitude"], i["longitude"] ),
+        map: this.map,
+        draggable: false,
+        content: markerContent,
+        flat: true
+      });
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          console.log("marker "+ marker);
+          console.log('index '+ i)
+
+        }
+      })(marker, i));
+      this.newMarkers.push(marker);
+
+  }
+
+  placeCluster(){
+
+    let clusterStyles = [
+      {
+        url: 'http://yoomeeonl.webfactional.com/assets/img/cluster.png',
+        height: 36,
+        width: 36,
+      }
+    ];
+
+    new MarkerClusterer(this.map, this.newMarkers, {styles: clusterStyles, maxZoom: 14});
+  }
+
   getMarkers() {
     this.listingService.getMarkers().subscribe(data => {
-      this.addMarkersToMap(data);
-      this.setMapOnAll(this.map);
+      this.placeMarkers(data);
+      this.placeCluster();
     });
 
   }
@@ -126,6 +206,7 @@ export class MapsPage {
   }
 
   presentToast(content, id) {
+
     let toast = this.toastCtrl.create({
       message: content,
       /*duration: 3000,*/

@@ -13,11 +13,11 @@ import { CompaniesProvider } from '../providers/companies/companies';
 })
 export class MyApp {
   rootPage:any = TabsPage;
-  citiesfilter:[any];
-  categoriesfilter:[any];
-  listing:[any];
-  
-  
+  citiesfilter:Array<[any]>;
+  categoriesfilter:Array<[any]>;
+  listing:Array<[any]>;
+
+
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public menu: MenuController, public events: Events,  public listingService: CompaniesProvider) {
     platform.ready().then(() => {
@@ -28,12 +28,12 @@ export class MyApp {
     });
 
     this.events.subscribe('citiesfilter', (cities) => {
-    this.citiesfilter=cities;
+      this.citiesfilter=cities;
     });
     this.events.subscribe('categoriesfilter', (categories) => {
-    this.categoriesfilter=categories;
+      this.categoriesfilter=categories;
     });
-    
+
   }
 
   closedFiltre(){
@@ -42,16 +42,25 @@ export class MyApp {
 
   filtre(){
     this.listingService.getListing(this.categoriesfilter, this.citiesfilter).subscribe(
-            data => {this.listing= data,
-            this.events.publish('listing', data)}
-        
+            data => {
+              this.events.publish('listing', data)
+            }
     );
-    
+
     this.menu.toggle();
     this.closedFiltre();
+    this.events.publish('clearFilter', false)
   }
 
-  
+
+  clearfilter(){
+    this.citiesfilter = [];
+    this.categoriesfilter = [];
+    this.filtre();
+    this.events.publish('clearFilter', true)
+  }
+
+
 
 
 }

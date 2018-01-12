@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, LoadingController, Loading, MenuController, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, Loading, MenuController, Events } from 'ionic-angular';
 import { CompaniesProvider } from '../../providers/companies/companies';
 import { CallNumber } from '@ionic-native/call-number';
 import { EmailComposer } from '@ionic-native/email-composer';
@@ -37,33 +37,43 @@ export class AnnuairePage {
    userexist=false;
    loading: Loading;
 
+   showNoItem:boolean = false;
+
   constructor(public navCtrl: NavController,
-  private loadingCtrl: LoadingController, private emailComposer: EmailComposer, public navParams: NavParams, public menu: MenuController,
-  public listingService: CompaniesProvider,
-  private callNumber: CallNumber,
-  public events: Events) {
-    menu.enable(true);
+    private loadingCtrl: LoadingController, private emailComposer: EmailComposer, public navParams: NavParams, public menu: MenuController,
+    public listingService: CompaniesProvider,
+    private callNumber: CallNumber,
+    public events: Events) {
 
+      menu.enable(true);
 
-    var currentUser = JSON.parse(localStorage.getItem('userId'));
-    this.user = currentUser;
-    if(localStorage.getItem("userId")) {
-    this.userexist = true;
-    }
-    this.loadData();
-    events.subscribe('listing', (listing) => {
-    this.listing=listing;
-   // console.log("test" +listing);
-    });
+      var currentUser = JSON.parse(localStorage.getItem('userId'));
+      this.user = currentUser;
+      if(localStorage.getItem("userId")) {
+        this.userexist = true;
+      }
+      this.loadData();
 
-    this.events.subscribe('citiesfilter', (cities) => {
-    this.cities=cities;
-    });
-    this.events.subscribe('categoriesfilter', (categories) => {
-    this.categories=categories;
-    });
+      events.subscribe('listing', (listing) => {
 
-}
+        if(listing.length !== 0){
+          this.listing=listing;
+          this.showNoItem = false;
+        }else{
+          this.showNoItem = true;
+        }
+
+          // console.log("test" +listing);
+      });
+
+      this.events.subscribe('citiesfilter', (cities) => {
+          this.cities=cities;
+      });
+      this.events.subscribe('categoriesfilter', (categories) => {
+          this.categories=categories;
+      });
+
+  }
 
 
 
@@ -131,99 +141,81 @@ getAllAverageReview(id){
   }
 
   doInfinite(infiniteScroll) {
-  this.start = this.start+1;
-  /*let query=this.keyword;
-  let ville= new Array();
-  let cat= new Array();
+    this.start = this.start+1;
 
-  var i =0;
-  for(let c of this.cities){
-    if (c.checked==true){
+    setTimeout(() => {
 
-      ville[i]=c.name;
-      i++;
-    }
-  }*/
+      this.listingService.getListing(this.categories, this.cities, this.start*this.perpage)
+         .subscribe(
+           res => {
+             this.companies = res;
+           //  this.totalPage = 1745;//this.companies.total_pages;
+             for(let i=0; i<this.companies.length; i++) {
+               this.listing.push(this.companies[i]);
+             }
+           }//,
+         //  error =>  this.errorMessage = <any>error
+         );
 
-  setTimeout(() => {
-
-    this.listingService.getListing(this.categories, this.cities, this.start*this.perpage)
-       .subscribe(
-         res => {
-           this.companies = res;
-         //  this.totalPage = 1745;//this.companies.total_pages;
-           for(let i=0; i<this.companies.length; i++) {
-             this.listing.push(this.companies[i]);
-           }
-         }//,
-       //  error =>  this.errorMessage = <any>error
-       );
-
-    //console.log('Async operation has ended');
-    infiniteScroll.complete();
-  }, 1000);
-}
-
-
-
-  loadCategory(){
-         this.listingService.getAllCategories().subscribe(
-            data => this.categories= data
-        );
+      //console.log('Async operation has ended');
+      infiniteScroll.complete();
+    }, 1000);
   }
+
 
   loadData(){
 
     this.loading = this.loadingCtrl.create({
-    content: 'chargement...',
+      content: 'chargement...',
     });
     this.loading.present();
 
     this.listingService.getListing().subscribe(
         data => {
-          if(data){
+          if(data.length !== 0){
 
-            this.listing= data;
-            this.loading.dismiss()
+            this.listing = data;
+            this.loading.dismiss();
+
+            this.showNoItem = false;
+          }else{
+            this.showNoItem = true;
           }
         }
     );
   }
 
-
-
-
   callCompany(phonenumber:any){
-    this.callNumber.callNumber(phonenumber, true)
-  .then(() => console.log('Launched dialer!'))
-  .catch(() => console.log('Error launching dialer '+phonenumber));
-}
+      this.callNumber.callNumber(phonenumber, true)
+    .then(() => console.log('Launched dialer!'))
+    .catch(() => console.log('Error launching dialer '+phonenumber));
+  }
 
-emailCompany(emailcpy:any){
-  this.emailComposer.isAvailable().then((available: boolean) =>{
-       if(available) {
-         //Now we know we can send
-       }
-    });
+  emailCompany(emailcpy:any){
+    this.emailComposer.isAvailable().then((available: boolean) =>{
+         if(available) {
+           //Now we know we can send
+         }
+      });
 
-    let email = {
-      to: emailcpy,
-      //cc: 'erika@mustermann.de',
-    //  bcc: ['john@doe.com', 'jane@doe.com'],
-     /* attachments: [
-        'file://img/logo.png',
-        'res://icon.png',
-        'base64:icon.png//iVBORw0KGgoAAAANSUhEUg...',
-        'file://README.pdf'
-      ],*/
-      subject: '',
-      body: '',
-      isHtml: true
-    };
+      let email = {
+        to: emailcpy,
+        //cc: 'erika@mustermann.de',
+      //  bcc: ['john@doe.com', 'jane@doe.com'],
+       /* attachments: [
+          'file://img/logo.png',
+          'res://icon.png',
+          'base64:icon.png//iVBORw0KGgoAAAANSUhEUg...',
+          'file://README.pdf'
+        ],*/
+        subject: '',
+        body: '',
+        isHtml: true
+      };
 
-    // Send a text message using default options
-    this.emailComposer.open(email);
-}
+      // Send a text message using default options
+      this.emailComposer.open(email);
+  }
 
 
 

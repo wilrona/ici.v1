@@ -1,6 +1,6 @@
 
 <ion-menu [content]="content" side="left" id="menu">
-  <ion-header>
+  <ion-header class="uk-box-shadow-medium">
     <div class="uk-position-relative uk-height-small">
       <div class="uk-position-center uk-padding-small">
         <img src="assets/imgs/logoici.png" alt="" width="40" margin>
@@ -35,7 +35,7 @@
 </ion-menu>
 
 <ion-menu [content]="content" side="right" id="filtre" swipeEnabled="false" (ionClose)="closedFiltre()">
-  <ion-header>
+  <ion-header class="uk-box-shadow-medium">
     <div class="uk-position-relative uk-height-small">
       <ion-title class="uk-position-center"><ion-icon name="funnel" icon-left></ion-icon> Filtre</ion-title>
     </div>
@@ -48,7 +48,7 @@
   <ion-footer>
     <div padding>
       <button ion-button color="success" small (click)="filtre()"> Valider </button>
-      <button ion-button color="light" small> Effacer </button>
+      <button ion-button color="light" small (click)="clearfilter()"> Effacer </button>
     </div>
   </ion-footer>
 
