@@ -14,6 +14,7 @@ import { CompaniesProvider } from '../providers/companies/companies';
 export class MyApp {
   rootPage:any = TabsPage;
 <<<<<<< HEAD
+<<<<<<< HEAD
   citiesfilter:[any];
   categoriesfilter:[any];
   listing:[any];
@@ -22,11 +23,16 @@ export class MyApp {
   
   
 =======
+=======
+>>>>>>> de0a7af0a5d75ddf4b25982de5a343be10e590cf
   citiesfilter:Array<[any]>;
   categoriesfilter:Array<[any]>;
   listing:Array<[any]>;
 
 
+<<<<<<< HEAD
+>>>>>>> de0a7af0a5d75ddf4b25982de5a343be10e590cf
+=======
 >>>>>>> de0a7af0a5d75ddf4b25982de5a343be10e590cf
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public menu: MenuController, public events: Events,  public listingService: CompaniesProvider) {
@@ -55,6 +61,7 @@ export class MyApp {
 
     this.listingService.getListing(this.categoriesfilter, this.citiesfilter).subscribe(
 <<<<<<< HEAD
+<<<<<<< HEAD
             data => {this.listing= data
             console.log("nn2 "+data)
             this.events.publish('listing', data)}
@@ -73,6 +80,12 @@ export class MyApp {
     
 
     /*this.events.publish('citiesfilter:categoriesfilter', this.citiesfilter,  this.categoriesfilter);*/
+=======
+            data => {
+              this.events.publish('listing', data)
+            }
+    );
+>>>>>>> de0a7af0a5d75ddf4b25982de5a343be10e590cf
 =======
             data => {
               this.events.publish('listing', data)

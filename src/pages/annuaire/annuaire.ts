@@ -38,6 +38,7 @@ export class AnnuairePage {
    loading: Loading;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   constructor(public navCtrl: NavController, 
   private loadingCtrl: LoadingController, private emailComposer: EmailComposer, public navParams: NavParams, public menu: MenuController, 
   public listingService: CompaniesProvider,
@@ -71,6 +72,10 @@ export class AnnuairePage {
 =======
    showNoItem:boolean = false;
 
+=======
+   showNoItem:boolean = false;
+
+>>>>>>> de0a7af0a5d75ddf4b25982de5a343be10e590cf
   constructor(public navCtrl: NavController,
     private loadingCtrl: LoadingController, private emailComposer: EmailComposer, public navParams: NavParams, public menu: MenuController,
     public listingService: CompaniesProvider,
@@ -106,6 +111,9 @@ export class AnnuairePage {
       });
 
   }
+<<<<<<< HEAD
+>>>>>>> de0a7af0a5d75ddf4b25982de5a343be10e590cf
+=======
 >>>>>>> de0a7af0a5d75ddf4b25982de5a343be10e590cf
 
 
@@ -171,7 +179,12 @@ getAllAverageReview(id){
       idcompagnie: id
     });
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+
+  }
+>>>>>>> de0a7af0a5d75ddf4b25982de5a343be10e590cf
 
 >>>>>>> de0a7af0a5d75ddf4b25982de5a343be10e590cf
   }

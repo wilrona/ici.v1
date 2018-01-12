@@ -24,11 +24,16 @@ export class MapsPage {
   @ViewChild('map') mapElement: ElementRef;
   map: any;
 <<<<<<< HEAD
+<<<<<<< HEAD
   public listMarker=new Array();
   cities: [any];   
   categories:[any];
   listing:[any];
   val: number;
+=======
+  public listMarker = new Array();
+  public newMarkers: Array<any> = [];
+>>>>>>> de0a7af0a5d75ddf4b25982de5a343be10e590cf
 =======
   public listMarker = new Array();
   public newMarkers: Array<any> = [];
@@ -89,7 +94,11 @@ export class MapsPage {
 
   /*ngAfterViewInit(){
     this.loadMaps();
+<<<<<<< HEAD
   }*/
+=======
+  }
+>>>>>>> de0a7af0a5d75ddf4b25982de5a343be10e590cf
 
   loadMaps() {
       this.initializeMap();
@@ -204,6 +213,7 @@ export class MapsPage {
 
   getMarkers() {
 <<<<<<< HEAD
+<<<<<<< HEAD
     this.listingService.getMarkers(this.categories, this.cities).subscribe(data => {
       console.log(this.val);
       if(this.val==0){
@@ -227,6 +237,16 @@ export class MapsPage {
     this.listMarker=new Array();
 
 =======
+  }
+
+  addMarkersToMap(markers) {
+>>>>>>> de0a7af0a5d75ddf4b25982de5a343be10e590cf
+=======
+    this.listingService.getMarkers().subscribe(data => {
+      this.placeMarkers(data);
+      this.placeCluster();
+    });
+
   }
 
   addMarkersToMap(markers) {
