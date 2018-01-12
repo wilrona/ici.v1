@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import {IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 
@@ -27,12 +26,13 @@ import { HttpModule } from '@angular/http';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { CallNumber } from '@ionic-native/call-number';
 import { CompaniesProvider } from '../providers/companies/companies';
+import {ComptePage} from "../pages/compte/compte";
 
 @NgModule({
   declarations: [
     MyApp,
     AnnuairePage,
-    ContactPage,
+    ComptePage,
     HomePage,
     CompanyDescriptionPage,
     CompanyImagesPage,
@@ -58,7 +58,7 @@ import { CompaniesProvider } from '../providers/companies/companies';
   entryComponents: [
     MyApp,
     AnnuairePage,
-    ContactPage,
+    ComptePage,
     HomePage,
     CompanyDescriptionPage,
     CompanyImagesPage,

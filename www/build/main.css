@@ -42870,7 +42870,11 @@ page-home .slide-zoom {
 
 page-maps #map {
   width: 100%;
-  height: calc(100% - 16%);
+  height: calc(100% - 0%);
+}
+
+page-maps #map.height-show {
+  height: calc(100% - 16%) !important;
 }
 
 page-maps #map .map, page-maps #map .map-wrapper {

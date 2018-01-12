@@ -2,8 +2,12 @@ page-maps {
 
   #map {
     width: 100%;
-    height: calc(100% - 16%);
 
+    height: calc(100% - 0%);
+
+    &.height-show{
+      height: calc(100% - 16%) !important;
+    }
 
     .map, .map-wrapper {
       height: 100%;
@@ -13,6 +17,7 @@ page-maps {
       filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
       opacity: 1;
     }
+
     .cluster:hover > div {
       -moz-transform: rotateY(180deg);
       -ms-transform: rotateY(180deg);

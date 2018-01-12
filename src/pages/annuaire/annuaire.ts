@@ -35,7 +35,7 @@ export class AnnuairePage {
    companies:any;
    user;
    userexist=false;
-   loading: Loading;
+   loading: boolean = true;
 
    showNoItem:boolean = false;
 
@@ -101,23 +101,23 @@ export class AnnuairePage {
  }*/
 
  getImagesUneByCompany(id){
- return this.imageune.find(x => x.idcompagnie.$id === id);
-  }
+    return this.imageune.find(x => x.idcompagnie.$id === id);
+ }
 
  getAllAverageRate(id){
-  var countrate=0;
-   if (this.rate.find(x => x._id.$id === id)!=null){
-     countrate=this.rate.find(x => x._id.$id === id).count;
-   }
- return countrate;
+    let countrate = 0;
+    if (this.rate.find(x => x._id.$id === id)!=null){
+       countrate=this.rate.find(x => x._id.$id === id).count;
+    }
+    return countrate;
   }
 
-getAllAverageReview(id){
-  var countreview=0;
- if (this.reviews.find(x => x._id.$id === id)!=null){
-     countreview=this.reviews.find(x => x._id.$id === id).count;
- }
- return countreview;
+  getAllAverageReview(id){
+     let countreview=0;
+     if (this.reviews.find(x => x._id.$id === id)!=null){
+         countreview=this.reviews.find(x => x._id.$id === id).count;
+     }
+     return countreview;
   }
 
 
@@ -165,22 +165,18 @@ getAllAverageReview(id){
 
   loadData(){
 
-    this.loading = this.loadingCtrl.create({
-      content: 'chargement...',
-    });
-    this.loading.present();
-
     this.listingService.getListing().subscribe(
         data => {
           if(data.length !== 0){
 
             this.listing = data;
-            this.loading.dismiss();
+
 
             this.showNoItem = false;
           }else{
             this.showNoItem = true;
           }
+          this.loading = false;
         }
     );
   }
@@ -216,10 +212,4 @@ getAllAverageReview(id){
       // Send a text message using default options
       this.emailComposer.open(email);
   }
-
-
-
-
-
-
 }

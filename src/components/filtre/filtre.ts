@@ -21,6 +21,7 @@ export class FiltreComponent {
   cities: Array<[any]>;
   categories: Array<[any]>;
   cat: Array<[any]>;
+  city: Array<any>;
 
   constructor(public listingService: CompaniesProvider, public events: Events) {
     this.loadCategory();
@@ -29,6 +30,7 @@ export class FiltreComponent {
     this.events.subscribe('clearFilter', (clear) => {
       if(clear === true){
         this.itenSelect = [];
+        this.city = [];
         let elems = document.getElementsByClassName('item-block');
 
         [].forEach.call(elems, function(el) {
@@ -63,17 +65,15 @@ export class FiltreComponent {
   }
 
   getCities(){
-         this.listingService.getCities().subscribe(
-            data => this.cities= data
-        );
+     this.listingService.getCities().subscribe(
+        data => this.cities= data
+     );
   }
 
   loadCategory(){
-
-         this.listingService.getSubcats().subscribe(
-            data => this.cat= data
-        );
-
+     this.listingService.getSubcats().subscribe(
+        data => this.cat= data
+     );
   }
 
   onTypeSelected(value){

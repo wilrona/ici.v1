@@ -24,6 +24,12 @@
 </ion-header>
 
 <ion-content>
+  <div class="uk-height-small uk-flex uk-flex-middle uk-flex-center uk-margin-large-top" *ngIf="loading">
+    <div class="uk-text-center">
+      <span class="uk-display-block uk-margin-medium-bottom">Chargement ....</span>
+      <div uk-spinner></div>
+    </div>
+  </div>
   <div *ngIf="!showNoItem">
       <ion-list>
           <ion-card *ngFor="let liste of listing ">
