@@ -29,6 +29,19 @@ export class CompaniesProvider implements AutoCompleteService{
     this.count=0;
     this.category=null;
   }
+
+   getMarkers(category=[], city=[]) {
+   
+   return this.http.get('http://yoomeeonl.webfactional.com/mobileApp/allCompaniesForMap?category='+category+'&city='+city)
+    .map(
+      res =>
+      { 
+        return res.json()
+      });
+    //.map((res) => res.json());
+    
+   
+  }
  
   getListing(category=[], city=[] , start:number=0){
   
@@ -40,7 +53,7 @@ export class CompaniesProvider implements AutoCompleteService{
       .map(
         result =>
         {
-          console.log(result.json())
+        //  console.log(result.json())
           return result.json()
           //  .filter(item => item.name.toLowerCase().startsWith(keyword.toLowerCase()) )
         });
@@ -99,12 +112,7 @@ export class CompaniesProvider implements AutoCompleteService{
    
   }
   
-  getMarkers(keyword='', city=[]) {
-   
-   return this.http.get('http://yoomeeonl.webfactional.com/mobileApp/allCompaniesForMap?keyword='+keyword+'&city='+city)
-    .map((res) => res.json());
-   
-  }
+ 
 
   getCompanyById(id){
 
@@ -181,7 +189,7 @@ getListingCount(){
       .map(
         result =>
         {
-          console.log(result.json())
+         // console.log(result.json())
           return result.json()
           //  .filter(item => item.name.toLowerCase().startsWith(keyword.toLowerCase()) )
         });

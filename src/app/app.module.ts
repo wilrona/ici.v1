@@ -13,7 +13,7 @@ import {AutoCompleteModule} from "ionic2-auto-complete";
 import {Ionic2RatingModule} from "ionic2-rating";
 import {AnnuairePage} from "../pages/annuaire/annuaire";
 import {FiltreComponent} from "../components/filtre/filtre";
-import {CompanyPage} from "../pages/company/company";
+
 import {IonicImageViewerModule} from "ionic-img-viewer";
 import {CompanyDescriptionPage} from "../pages/company-description/company-description";
 import {CompanyImagesPage} from "../pages/company-images/company-images";
@@ -21,12 +21,14 @@ import {CompanyInfoPage} from "../pages/company-info/company-info";
 import {CompanyCategoryPage} from "../pages/company-category/company-category";
 import {IonTagsInputModule} from "ionic-tags-input";
 import {MapsPage} from "../pages/maps/maps";
-import {MapsComponent} from "../components/maps/maps";
+
 import { HttpModule } from '@angular/http';
 
 import { EmailComposer } from '@ionic-native/email-composer';
 import { CallNumber } from '@ionic-native/call-number';
 import { CompaniesProvider } from '../providers/companies/companies';
+
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,6 @@ import { CompaniesProvider } from '../providers/companies/companies';
     AnnuairePage,
     ContactPage,
     HomePage,
-   // CompanyPage,
     CompanyDescriptionPage,
     CompanyImagesPage,
     CompanyInfoPage,
@@ -44,7 +45,6 @@ import { CompaniesProvider } from '../providers/companies/companies';
 
     // components
     FiltreComponent,
-    //MapsComponent
 
   ],
   imports: [
@@ -62,7 +62,6 @@ import { CompaniesProvider } from '../providers/companies/companies';
     AnnuairePage,
     ContactPage,
     HomePage,
-    //CompanyPage,
     CompanyDescriptionPage,
     CompanyImagesPage,
     CompanyInfoPage,
@@ -76,6 +75,7 @@ import { CompaniesProvider } from '../providers/companies/companies';
     CallNumber,
     EmailComposer,
     CompaniesProvider,
+    InAppBrowser,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

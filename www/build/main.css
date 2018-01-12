@@ -42436,17 +42436,29 @@ filtre .expand-wrapper {
   transition: 0.2s linear;
 }
 
-filtre ion-item.hover {
-  background-color: rgba(255, 80, 73, 0.64) !important;
+filtre .item-inner {
+  border: none !important;
 }
 
-filtre ion-item.hover .item-inner {
+filtre .item-inner .icon-check {
+  display: none;
+}
+
+filtre .hover ion-label {
+  color: #f44336 !important;
+}
+
+filtre .hover .icon-check {
+  display: block;
+}
+
+filtre .item-ios {
   border: none !important;
 }
 
 maps #map {
   width: 100%;
-  height: 500px;
+  height: 300px;
 }
 
 page-annuaire ul.rating {
@@ -42481,6 +42493,8 @@ page-annuaire ion-thumbnail img {
 page-annuaire ion-label {
   white-space: inherit !important;
   margin: 0 !important;
+  position: absolute;
+  top: 0px;
 }
 
 page-annuaire .icon-m {
@@ -42490,6 +42504,11 @@ page-annuaire .icon-m {
 
 page-annuaire .icon-m:last-child {
   padding: 0px;
+}
+
+page-annuaire .uk-NoItem ion-icon {
+  font-size: 30px;
+  display: block;
 }
 
 page-company .scroll-content {
@@ -42692,6 +42711,23 @@ page-company .articles .article-item .placeholders .p20 {
   width: 20%;
 }
 
+page-company .rating-block ul.rating {
+  text-align: center !important;
+}
+
+page-company .rating-block ul.rating.rating li ion-icon {
+  font-size: 50px;
+}
+
+page-company .uk-comments ul.rating {
+  text-align: left !important;
+  display: inline-block;
+}
+
+page-company .uk-comments ul.rating.rating li ion-icon {
+  font-size: 13px;
+}
+
 page-company-category .scroll-content {
   background-color: #ffffff;
 }
@@ -42834,7 +42870,425 @@ page-home .slide-zoom {
 
 page-maps #map {
   width: 100%;
+  height: calc(100% - 16%);
+}
+
+page-maps #map .map, page-maps #map .map-wrapper {
   height: 100%;
+}
+
+page-maps #map.show-marker-labels .marker .title {
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+}
+
+page-maps #map .cluster:hover > div {
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+page-maps #map .cluster > div {
+  border-radius: 100%;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition: 0.5s cubic-bezier(0, 0.28, 0.45, 1.01);
+  transition: 0.5s cubic-bezier(0, 0.28, 0.45, 1.01);
+  -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2), inset 0px 0px 0px 2px rgba(255, 255, 255, 0.3);
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2), inset 0px 0px 0px 2px rgba(255, 255, 255, 0.3);
+  border: 2px solid #f44336;
+  width: 36px;
+  height: 36px;
+  color: #fff !important;
+  line-height: 32px !important;
+}
+
+page-maps #map .cluster > div:after {
+  border-radius: 100%;
+  -webkit-transform: translateZ(-2px);
+  transform: translateZ(-2px);
+  -webkit-box-shadow: inset 0px 0px 0px 2px rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0px 0px 0px 2px rgba(255, 255, 255, 0.3);
+  background-color: #f44336;
+  width: 36px;
+  height: 36px;
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  content: "";
+}
+
+page-maps #map .cluster > div:before {
+  text-shadow: none;
+  -webkit-font-smoothing: antialiased;
+  font-family: 'fontawesome';
+  speak: none;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-transform: none;
+  -webkit-transform: translateZ(-4px);
+  transform: translateZ(-4px);
+  content: "\f002";
+  color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 33px;
+  height: 36px;
+  line-height: 30px;
+  font-size: 14px;
+  text-align: center;
+}
+
+page-maps #map a[href^="http://maps.google.com/maps"] {
+  display: none !important;
+}
+
+page-maps #map a[href^="https://maps.google.com/maps"] {
+  display: none !important;
+}
+
+page-maps #map .gmnoprint a, page-maps #map .gmnoprint span, page-maps #map .gm-style-cc {
+  display: none;
+}
+
+page-maps #map .marker {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+}
+
+page-maps #map .marker:after {
+  border-radius: 50%;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+  -webkit-transform: scale(0.7, 0.7);
+  transform: scale(0.7, 0.7);
+  width: 14px;
+  height: 4px;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 0;
+}
+
+page-maps #map .marker:hover:after, page-maps #map .marker.hover-state:after, page-maps #map .marker.active:after {
+  -webkit-transform: scale(1, 1);
+  transform: scale(1, 1);
+}
+
+page-maps #map .marker:hover .marker-wrapper, page-maps #map .marker.hover-state .marker-wrapper, page-maps #map .marker.active .marker-wrapper {
+  -webkit-transform: rotateY(180deg) translateY(-4px);
+  transform: rotateY(180deg) translateY(-4px);
+}
+
+page-maps #map .marker:hover .marker-wrapper .pin:after, page-maps #map .marker.hover-state .marker-wrapper .pin:after, page-maps #map .marker.active .marker-wrapper .pin:after {
+  -webkit-transform: translateX(-1px);
+  transform: translateX(-1px);
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+page-maps #map .marker:hover .title, page-maps #map .marker.hover-state .ti.map .marker.active .title {
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+  -webkit-transform: translateX(0px);
+  transform: translateX(0px);
+}
+
+page-maps #map .marker.active .marker-wrapper:before {
+  -webkit-animation-delay: 0s;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-name: pulse;
+  -webkit-animation-fill-mode: forwards;
+  /* this prevents the animation from restarting! */
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-delay: 0s;
+  -moz-animation-duration: 2s;
+  -moz-animation-name: pulse;
+  -moz-animation-fill-mode: forwards;
+  /* this prevents the animation from restarting! */
+  -moz-animation-iteration-count: infinite;
+  -o-animation-delay: 0s;
+  -o-animation-duration: 2s;
+  -o-animation-name: pulse;
+  -o-animation-fill-mode: forwards;
+  /* this prevents the animation from restarting! */
+  -o-animation-iteration-count: infinite;
+  animation-delay: 0s;
+  animation-duration: 2s;
+  animation-name: pulse;
+  animation-fill-mode: forwards;
+  /* this prevents the animation from restarting! */
+  animation-iteration-count: infinite;
+}
+
+page-maps #map .marker .marker-wrapper {
+  -webkit-transition: 0.5s cubic-bezier(0, 0.28, 0.45, 1.01);
+  transition: 0.5s cubic-bezier(0, 0.28, 0.45, 1.01);
+  position: relative;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  width: 37px;
+  height: 49px;
+}
+
+page-maps #map .marker .marker-wrapper:before {
+  border-radius: 100%;
+  background-color: #f44336;
+  width: 37px;
+  height: 37px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  z-index: -1;
+}
+
+page-maps #map .marker .marker-wrapper:after {
+  text-shadow: none;
+  -webkit-font-smoothing: antialiased;
+  font-family: 'fontawesome';
+  speak: none;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-transform: none;
+  -webkit-transform: translateZ(-4px);
+  transform: translateZ(-4px);
+  content: "\f002";
+  color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 37px;
+  height: 37px;
+  line-height: 34px;
+  font-size: 14px;
+  text-align: center;
+}
+
+page-maps #map .marker .marker-wrapper .pin {
+  border-radius: 100%;
+  -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2), inset 0px 0px 0px 2px white;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2), inset 0px 0px 0px 2px white;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  border: 2px solid #f44336;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 37px;
+  height: 37px;
+  background-size: cover;
+}
+
+page-maps #map .marker .marker-wrapper .pin:before {
+  -webkit-transform: translateZ(-2px);
+  transform: translateZ(-2px);
+  -webkit-box-shadow: inset 0px 0px 0px 2px rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0px 0px 0px 2px rgba(255, 255, 255, 0.3);
+  border-radius: 100%;
+  content: "";
+  z-index: -2px;
+  background-color: #f44336;
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 37px;
+  height: 37px;
+  z-index: 1;
+}
+
+page-maps #map .marker .marker-wrapper .pin .image {
+  border-radius: 100%;
+  -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2), inset 0px 0px 0px 2px white;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2), inset 0px 0px 0px 2px white;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+page-maps #map .marker .marker-wrapper .pin .image:after {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 8px 4px 0 4px;
+  border-color: #f44336 transparent transparent transparent;
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+page-maps #map .marker .tag {
+  -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 100%;
+  -webkit-transform: translateZ(3px);
+  transform: translateZ(3px);
+  position: absolute;
+  top: -3px;
+  right: -1px;
+  z-index: -1;
+  background-color: #f44336;
+  width: 19px;
+  font-size: 9px;
+  height: 19px;
+  color: #fff;
+  text-align: center;
+  line-height: 18px;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+page-maps #map .marker .tag i {
+  -webkit-transform: translateZ(2px);
+  transform: translateZ(2px);
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+page-maps #map .marker .title {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  -webkit-transform: translateX(10px);
+  transform: translateX(10px);
+  border-radius: 1px;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+  -webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+  position: absolute;
+  left: 50px;
+  top: 5px;
+  white-space: nowrap;
+  background-color: #fff;
+  padding: 2px 4px;
+}
+
+page-maps #map .marker .title:after {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 4px 6px 4px 0;
+  border-color: transparent #fff transparent transparent;
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+page-maps #map .marker .title:before {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 4px 6px 4px 0;
+  border-color: transparent rgba(0, 0, 0, 0.2) transparent transparent;
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 2px;
+  bottom: 0;
+  margin: auto;
+}
+
+page-maps #map .tooltip .tooltip-inner {
+  -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+  -webkit-transform: translateY(-5px);
+  transform: translateY(-5px);
+  background-color: #fff;
+  color: #1f1f1f;
+}
+
+page-maps #map .tooltip .tooltip-arrow {
+  -webkit-transform: translateY(-5px);
+  transform: translateY(-5px);
+  border-top-color: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+  bottom: -1px;
+}
+
+page-maps #map .tooltip .tooltip-arrow:after {
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 5px 0;
+  border-top-color: #fff;
+  position: absolute;
+  top: -6px;
+  left: -5px;
+  content: "";
+}
+
+page-maps ion-list {
+  margin: 0 !important;
+}
+
+page-maps ion-card {
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+page-maps ul.rating {
+  text-align: right;
+}
+
+page-maps ion-card-content {
+  padding: 5px !important;
+}
+
+page-maps .uk-text-success {
+  color: #5cb462 !important;
+}
+
+page-maps .item-compagny {
+  padding: 0 !important;
+}
+
+page-maps ion-thumbnail {
+  margin: 0 16px 0 0 !important;
+  max-width: 70px !important;
+  min-width: 70px !important;
+  max-height: 70px !important;
+  min-height: 70px !important;
+}
+
+page-maps ion-thumbnail img {
+  width: 70px !important;
+  height: 70px !important;
+}
+
+page-maps ion-label {
+  white-space: inherit !important;
+  margin: 0 !important;
+  position: absolute;
+  top: 0px;
+}
+
+page-maps .icon-m {
+  font-size: 30px;
+  padding-right: 15px;
+}
+
+page-maps .icon-m:last-child {
+  padding: 0px;
 }
 
 .title img {

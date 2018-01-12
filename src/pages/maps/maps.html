@@ -23,6 +23,68 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="uk-position-relative">
+
   <div #map id="map"></div>
+  <div class="uk-background-default uk-box-shadow-medium">
+    <ion-list>
+      <ion-card>
+        <ion-card-content>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-9>
+                <h2 class="uk-text-truncate uk-margin-remove">Nom de l'entreprise</h2>
+                <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-muted" style="margin-bottom: 4px !important;">ville et quartier</div>
+                <!-- div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-success uk-text-small"> <ion-icon name="checkmark-circle"></ion-icon> Entreprise validé</div -->
+                <!-- <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-danger uk-text-small"> <ion-icon name="close"></ion-icon> Validation en cours</div> -->
+              </ion-col>
+              <ion-col col-3>
+                <rating  [(ngModel)]="rate"
+                         readOnly="true"
+                         max="5"
+                         emptyStarIconName="star-outline"
+                         halfStarIconName="star-half"
+                         starIconName="star"
+                         nullable="false" ></rating>
+                <div class="uk-text-right uk-h4 uk-margin-remove">3 avis</div>
+                <!-- div class="uk-text-right uk-text-success uk-h4 uk-margin-remove">8h à 18h30</div -->
+              </ion-col>
+              <ion-col col class="uk-padding-remove-vertical">
+                <hr no-margin="">
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col col-9>
+                <ion-item class="item-compagny">
+                  <ion-thumbnail item-start>
+                    <img src="http://yoomeeonl.webfactional.com/media/pictures/companies/default.jpg" class="uk-responsive-height">
+                  </ion-thumbnail>
+                  <div>
+                    <ion-badge item-end class="uk-margin-remove-top uk-margin-remove-left uk-margin-remove-right">Catégorie</ion-badge>
+                  </div>
+
+                  <div class="uk-h4 uk-margin-remove">
+                    <ul class="uk-text-small uk-padding-small uk-padding-remove-vertical uk-padding-remove-right" no-margin>
+                      <li>Adresse</li>
+                      <li>Localisation Localisation Localisation Localisation</li>
+                    </ul>
+                  </div>
+
+                </ion-item>
+              </ion-col>
+              <ion-col col-3 class="uk-position-relative">
+                <div class="uk-position-bottom-right">
+                  <ion-icon name="call" class="icon-m"></ion-icon>
+                  <ion-icon name="mail" class="icon-m"></ion-icon>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </div>
+
+
+
 </ion-content>

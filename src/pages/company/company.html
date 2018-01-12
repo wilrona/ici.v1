@@ -8,7 +8,7 @@
 <ion-header shadow>
 
   <ion-navbar [class.show-background]="showToolbar">
-    <ion-title [hidden]="!showToolbar" class="uk-text-truncate">Nom de l'entreprise Nom de l'entreprise</ion-title>
+    <ion-title [hidden]="!showToolbar" class="uk-text-truncate">{{business.name}}</ion-title>
     <ion-buttons end>
       <button ion-button icon-only small (click)="openInfoEdit()">
         <ion-icon name="create"></ion-icon>
@@ -23,10 +23,10 @@
               (ionScroll)="onScroll($event)"
               [class.transition]="transition"
               [style.background-size]="headerImgSize"
-              [style.backgroundImage]="'url('+ headerImgUrl+ ')'">
+              [style.backgroundImage]="'url(http://yoomeeonl.webfactional.com/media/pictures/companies/'+ business.imageune +')'"><!--headerImgUrl-->
 
   <div class="user-info uk-height-small uk-flex uk-flex-middle uk-flex-center">
-    <h2 class="uk-size" padding-horizontal>Nom de l'entreprise, Nom de l'entreprise, Nom de l'entreprise, </h2>
+    <h2 class="uk-size" padding-horizontal>{{business.name}}</h2>
   </div>
 
   <div class="contents">
@@ -40,27 +40,29 @@
             <ion-col col-9>
               <ion-item class="item-compagny uk-padding-remove">
                 <ion-thumbnail item-start>
-                  <img src="http://yoomeeonl.webfactional.com/media/pictures/companies/default.jpg" class="uk-responsive-height uk-border-circle">
+                 
+                  <img  *ngIf="business.logo==''" src="assets/imgs/default.jpg" class="uk-responsive-height uk-border-circle">
+                  <img  *ngIf="business.logo!=''" src="{{business.logo}}" class="uk-responsive-height uk-border-circle">
                 </ion-thumbnail>
                 <div>
-                  <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-muted" style="margin-bottom: 4px !important;">ville et quartier</div>
+                  <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-muted" style="margin-bottom: 4px !important;">{{business.ville}} {{business.quartier}}</div>
                   <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-success uk-text-small"> <ion-icon name="checkmark-circle"></ion-icon> Entreprise validé</div>
                   <!-- <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-danger uk-text-small"> <ion-icon name="close"></ion-icon> Validation en cours</div> -->
-                  <ion-badge item-end class="uk-margin-remove-top uk-margin-remove-left uk-margin-remove-right">Catégorie</ion-badge>
+                  <ion-badge item-end class="uk-margin-remove-top uk-margin-remove-left uk-margin-remove-right">{{business.categorie}}</ion-badge>
                 </div>
 
               </ion-item>
             </ion-col>
             <ion-col col-3 class="uk-position-relative">
               <div class="">
-                <rating  [(ngModel)]="rate"
+                <rating  [(ngModel)]="business.ratecount"
                          readOnly="true"
                          max="5"
                          emptyStarIconName="star-outline"
                          halfStarIconName="star-half"
                          starIconName="star"
                          nullable="false" ></rating>
-                <div class="uk-text-right uk-h4 uk-margin-remove">3 avis</div>
+                <div class="uk-text-right uk-h4 uk-margin-remove">{{business.reviewcount}} avis</div>
                 <div class="uk-text-right uk-text-danger uk-text-bold uk-h4 uk-margin-remove">Fermé</div>
               </div>
             </ion-col>
@@ -75,7 +77,7 @@
           <ion-segment-button value="desc" (ionSelect)="activeLocation()">
             Description
           </ion-segment-button>
-          <ion-segment-button value="locale" (ionSelect)="activeMap()">
+          <ion-segment-button value="locale" (ionSelect)="activeMap()"  *ngIf="business.latitude!=''">
             Localisation
           </ion-segment-button>
           <ion-segment-button value="avis" (ionSelect)="activeAvis()">
@@ -86,11 +88,14 @@
       <ion-card-content [ngSwitch]="segmentation" no-padding>
         <div *ngSwitchCase="'desc'" class="uk-height-1-1 uk-position-relative uk-padding-small">
 
-          <div class="uk-position-top-right">
-            <button ion-button clear small class="button-custom-size" (click)="openImageEdit()">Gérer</button>
+          <div class="uk-position-relative">
+            <ion-label ion-text class="uk-text-bold uk-display-block">Image</ion-label>
+            <div class="uk-position-center-right">
+              <button ion-button clear small class="button-custom-size" (click)="openImageEdit()">Gérer</button>
+            </div>
           </div>
 
-          <ion-label ion-text class="uk-text-bold uk-display-block">Image</ion-label>
+
 
           <ion-slides loop="true" slidesPerView="4" margin-top spaceBetween="3">
 
@@ -98,41 +103,21 @@
               <img src="assets/imgs/default.jpg" alt="" imageViewer>
             </ion-slide>
 
-            <ion-slide>
-              <img src="assets/imgs/default.jpg" alt="" imageViewer>
-            </ion-slide>
-
-            <ion-slide>
-              <img src="assets/imgs/default.jpg" alt="" imageViewer>
-            </ion-slide>
-
-            <ion-slide>
-              <img src="assets/imgs/default.jpg" alt="" imageViewer>
-            </ion-slide>
-            <ion-slide>
-              <img src="assets/imgs/default.jpg" alt="" imageViewer>
-            </ion-slide>
-            <ion-slide>
-              <img src="assets/imgs/default.jpg" alt="" imageViewer>
-            </ion-slide>
-            <ion-slide>
-              <img src="assets/imgs/default.jpg" alt="" imageViewer>
-            </ion-slide>
+              <ion-slide *ngFor="let item of business.gallery">
+                <img alt="city"  src="http://yoomeeonl.webfactional.com/media/pictures/companies/{{item.url}}"  imageViewer >
+              </ion-slide>
 
 
           </ion-slides>
           <hr>
           <div class="uk-text-break uk-position-relative">
             <div class="uk-height-max-small" style="overflow: hidden">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias atque earum fugiat fugit id maiores quia saepe. Accusamus beatae deserunt dicta dolor facere fugiat maiores nam sequi voluptatibus, voluptatum! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi architecto fuga labore odio odit quis sequi sit suscipit voluptate voluptatibus. Delectus, id quo! Animi beatae delectus quam, quas sit ullam!
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias atque earum fugiat fugit id maiores quia saepe. Accusamus beatae deserunt dicta dolor facere fugiat maiores nam sequi voluptatibus, voluptatum! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi architecto fuga labore odio odit quis sequi sit suscipit voluptate voluptatibus. Delectus, id quo! Animi beatae delectus quam, quas sit ullam!
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias atque earum fugiat fugit id maiores quia saepe. Accusamus beatae deserunt dicta dolor facere fugiat maiores nam sequi voluptatibus, voluptatum! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi architecto fuga labore odio odit quis sequi sit suscipit voluptate voluptatibus. Delectus, id quo! Animi beatae delectus quam, quas sit ullam!
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias atque earum fugiat fugit id maiores quia saepe. Accusamus beatae deserunt dicta dolor facere fugiat maiores nam sequi voluptatibus, voluptatum! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi architecto fuga labore odio odit quis sequi sit suscipit voluptate voluptatibus. Delectus, id quo! Animi beatae delectus quam, quas sit ullam!
-            </div>
+               {{business.description}}
+             </div>
             <div class="show-more-end"></div>
 
-            <div class="uk-text-center">
-              <button ion-button clear small (click)="openDescriptionEdit()">Lire la suite</button>
+            <div class="uk-text-center" *ngIf="business.description!=''">
+              <button ion-button clear small (click)="openDescriptionEdit(business.description, business.name, business._id.$id)">Lire la suite</button>
             </div>
           </div>
           <hr>
@@ -145,7 +130,9 @@
               </ion-col>
               <ion-col col-7>
                 <div ion-text class="uk-text-break">
-                    categorie, catégorie, catégorie, catégorie, catégorie, catégorie, catégorie, catégorie
+                    <p *ngFor="let item of business.tags">
+                      <span *ngIf="item.cat==1">{{item.key}} </span>
+                    </p>
                     <div>
                       <button ion-button clear small class="button-custom-size" (click)="openCategoryEdit()">Gérer vos categories</button>
                     </div>
@@ -165,29 +152,109 @@
             </ion-row>
           </ion-grid>
         </div>
-        <div *ngSwitchCase="'locale'" class="uk-height-1-1">
-          <maps></maps>
+        <div *ngSwitchCase="'locale'" class="uk-height-1-1"  >
+          <maps [business]="business"></maps>
         </div>
         <div *ngSwitchCase="'avis'" class="uk-height-1-1">
-          <ion-title>Avis</ion-title>
+          <div class="uk-padding-small rating-block uk-text-center">
+
+            <div ion-text class="uk-h1 uk-text-center uk-margin-remove-bottom" color="dark">Noté ce professionnel</div>
+            <div ion-text class="uk-h3 uk-text-center uk-margin-small-top">Cliquez sur les etoiles pour noter ce professionnel</div>
+            <rating  [(ngModel)]="valiRate"
+                     readOnly="false"
+                     max="5"
+                     emptyStarIconName="star-outline"
+                     halfStarIconName="star-half"
+                     starIconName="star"
+                     nullable="false" ></rating>
+
+            <button ion-button clear class="uk-text-center">Ecrire un avis</button>
+
+          </div>
+
+          <hr>
+
+          <ion-list>
+            <ion-item>
+              <ion-avatar item-start>
+                <img src="assets/imgs/default.jpg">
+              </ion-avatar>
+              <div class="uk-position-relative uk-comments">
+                <h2>Wilrona</h2>
+                <rating  [(ngModel)]="rate"
+                                          readOnly="true"
+                                          max="5"
+                                          emptyStarIconName="star-outline"
+                                          halfStarIconName="star-half"
+                                          starIconName="star"
+                                          nullable="false" ></rating>
+                <ion-note class="uk-position-center-right">3:43 pm</ion-note>
+              </div>
+              <p>This town ain't big enough for the two of us! This town ain't big enough for the two of us! This town ain't big enough for the two of us!, This town ain't big enough for the two of us!
+                This town ain't big enough for the two of us! This town ain't big enough for the two of us! This town ain't big enough for the two of us!, This town ain't big enough for the two of us!
+                This town ain't big enough for the two of us! This town ain't big enough for the two of us! This town ain't big enough for the two of us!, This town ain't big enough for the two of us!
+              </p>
+              <hr>
+            </ion-item>
+
+            <ion-item>
+              <ion-avatar item-start>
+                <img src="assets/imgs/default.jpg">
+              </ion-avatar>
+              <div class="uk-position-relative uk-comments">
+                <h2>Wilrona</h2>
+                <rating  [(ngModel)]="rate"
+                         readOnly="true"
+                         max="5"
+                         emptyStarIconName="star-outline"
+                         halfStarIconName="star-half"
+                         starIconName="star"
+                         nullable="false" ></rating>
+                <ion-note class="uk-position-center-right">3:43 pm</ion-note>
+              </div>
+              <p>This town ain't big enough for the two of us! This town ain't big enough for the two of us! This town ain't big enough for the two of us!, This town ain't big enough for the two of us!
+                This town ain't big enough for the two of us! This town ain't big enough for the two of us! This town ain't big enough for the two of us!, This town ain't big enough for the two of us!
+                This town ain't big enough for the two of us! This town ain't big enough for the two of us! This town ain't big enough for the two of us!, This town ain't big enough for the two of us!
+              </p>
+              <hr>
+            </ion-item>
+
+          </ion-list>
+
+
         </div>
       </ion-card-content>
     </ion-card>
 
   </div>
+  
 </ion-content>
 
 <ion-footer [class.bgFooter]="dark">
   <ion-grid>
+<<<<<<< HEAD
     <ion-row>
       <ion-col col-4 padding-horizontal class="uk-flex uk-flex-center">
+        <button ion-button clear color="white" (click)="callCompany(item.phone)"><ion-icon name="call"></ion-icon></button>
+      </ion-col>
+      <ion-col col-4 padding-horizontal class="uk-flex uk-flex-center">
+        <button ion-button clear color="white" (click)="emailCompany(item.email)"><ion-icon name="mail"></ion-icon></button>
+=======
+    <ion-row [hidden]="!dark">
+      <ion-col col-4 padding-horizontal class="uk-flex uk-flex-center" style="height: 56px">
         <button ion-button clear color="white"><ion-icon name="call"></ion-icon></button>
       </ion-col>
-      <ion-col col-4 padding-horizontal class="uk-flex uk-flex-center">
+      <ion-col col-4 padding-horizontal class="uk-flex uk-flex-center" style="height: 56px">
         <button ion-button clear color="white"><ion-icon name="mail"></ion-icon></button>
+>>>>>>> de0a7af0a5d75ddf4b25982de5a343be10e590cf
       </ion-col>
-      <ion-col col-4 padding-horizontal class="uk-flex uk-flex-center">
+      <ion-col col-4 padding-horizontal class="uk-flex uk-flex-center" style="height: 56px">
         <button ion-button clear color="white"><ion-icon name="globe"></ion-icon></button>
+      </ion-col>
+    </ion-row>
+    <ion-row [hidden]="dark">
+      <ion-col col-12 padding-horizontal class="uk-text-center uk-flex uk-flex-middle uk-flex-center" style="height: 56px">
+        <span ion-text color="primary">Adresse de l'entreprise ici</span>
       </ion-col>
     </ion-row>
   </ion-grid>

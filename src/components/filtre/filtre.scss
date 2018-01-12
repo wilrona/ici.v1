@@ -7,13 +7,27 @@ filtre {
     transition: 0.2s linear;
   }
 
-  ion-item.hover{
-    background-color: rgba(255, 80, 73, 0.64) !important;
+  .item-inner{
+    border: none !important;
 
-    .item-inner{
-      border: none !important;
+    .icon-check{
+      display: none;
     }
-
   }
+
+  .hover {
+    ion-label{
+      color: map_get($colors, primary) !important;
+    }
+    .icon-check{
+      display: block;
+    }
+  }
+
+  .item-ios{
+    border: none !important;
+  }
+
+
 
 }

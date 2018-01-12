@@ -15,15 +15,27 @@ export class FiltreComponent {
 
   shownGroup = null;
   @Input('showVille') ville: boolean = true;
+  @Input('clear') clear: boolean = false;
   itenSelect:Array<any> = [];
 
-  cities: [any];
-  categories: [any];    
-  cat: [any]; 
+  cities: Array<[any]>;
+  categories: Array<[any]>;
+  cat: Array<[any]>;
 
-  constructor(public listingService: CompaniesProvider, public events: Events) { 
+  constructor(public listingService: CompaniesProvider, public events: Events) {
     this.loadCategory();
     this.getCities();
+
+    this.events.subscribe('clearFilter', (clear) => {
+      if(clear === true){
+        this.itenSelect = [];
+        let elems = document.getElementsByClassName('item-block');
+
+        [].forEach.call(elems, function(el) {
+          el.classList.remove("hover");
+        });
+      }
+    });
   }
 
   toggleGroup(group) {
@@ -47,20 +59,21 @@ export class FiltreComponent {
     }
     this.events.publish('categoriesfilter', this.itenSelect);
     event.target.parentElement.parentElement.parentElement.classList.toggle('hover');
+    // event.target.parentElement.parentElement.classList.toggle('hover');
   }
 
   getCities(){
          this.listingService.getCities().subscribe(
-            data => this.cities= data  
+            data => this.cities= data
         );
   }
 
   loadCategory(){
-          
+
          this.listingService.getSubcats().subscribe(
             data => this.cat= data
         );
-     
+
   }
 
   onTypeSelected(value){

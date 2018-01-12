@@ -13,11 +13,21 @@ import { CompaniesProvider } from '../providers/companies/companies';
 })
 export class MyApp {
   rootPage:any = TabsPage;
+<<<<<<< HEAD
   citiesfilter:[any];
   categoriesfilter:[any];
   listing:[any];
+  listingMap:[any];
   
   
+  
+=======
+  citiesfilter:Array<[any]>;
+  categoriesfilter:Array<[any]>;
+  listing:Array<[any]>;
+
+
+>>>>>>> de0a7af0a5d75ddf4b25982de5a343be10e590cf
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public menu: MenuController, public events: Events,  public listingService: CompaniesProvider) {
     platform.ready().then(() => {
@@ -28,12 +38,12 @@ export class MyApp {
     });
 
     this.events.subscribe('citiesfilter', (cities) => {
-    this.citiesfilter=cities;
+      this.citiesfilter=cities;
     });
     this.events.subscribe('categoriesfilter', (categories) => {
-    this.categoriesfilter=categories;
+      this.categoriesfilter=categories;
     });
-    
+
   }
 
   closedFiltre(){
@@ -41,17 +51,49 @@ export class MyApp {
   }
 
   filtre(){
+ //   console.log("nn0 ");
+
     this.listingService.getListing(this.categoriesfilter, this.citiesfilter).subscribe(
-            data => {this.listing= data,
+<<<<<<< HEAD
+            data => {this.listing= data
+            console.log("nn2 "+data)
             this.events.publish('listing', data)}
+    );
+    
+   this.listingService.getMarkers(this.categoriesfilter, this.citiesfilter).subscribe(
+            data => {this.listingMap= data
+            console.log("nn1 "+data)
+            this.events.publish('listingMap', data)}
         
     );
     
+    this.events.publish('citiesfilter', this.citiesfilter);
+    this.events.publish('categoriesfilter', this.categoriesfilter);
+ 
+    
+
+    /*this.events.publish('citiesfilter:categoriesfilter', this.citiesfilter,  this.categoriesfilter);*/
+=======
+            data => {
+              this.events.publish('listing', data)
+            }
+    );
+>>>>>>> de0a7af0a5d75ddf4b25982de5a343be10e590cf
+
     this.menu.toggle();
     this.closedFiltre();
+    this.events.publish('clearFilter', false)
   }
 
-  
+
+  clearfilter(){
+    this.citiesfilter = [];
+    this.categoriesfilter = [];
+    this.filtre();
+    this.events.publish('clearFilter', true)
+  }
+
+
 
 
 }
