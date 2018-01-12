@@ -13,11 +13,10 @@ import { CompaniesProvider } from '../providers/companies/companies';
 })
 export class MyApp {
   rootPage:any = TabsPage;
-  citiesfilter:Array<[any]>;
-  categoriesfilter:Array<[any]>;
-  listing:Array<[any]>;
-
-
+  citiesfilter:Array<any>;
+  categoriesfilter:Array<any>;
+  listing:Array<any>;
+  listingMap:Array<any>;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public menu: MenuController, public events: Events,  public listingService: CompaniesProvider) {
     platform.ready().then(() => {
@@ -41,11 +40,25 @@ export class MyApp {
   }
 
   filtre(){
+ //   console.log("nn0 ");
+
     this.listingService.getListing(this.categoriesfilter, this.citiesfilter).subscribe(
-            data => {
-              this.events.publish('listing', data)
-            }
+            data => {this.listing= data
+            console.log("nn2 "+data)
+            this.events.publish('listing', data)}
     );
+
+   this.listingService.getMarkers(this.categoriesfilter, this.citiesfilter).subscribe(
+            data => {this.listingMap= data
+            console.log("nn1 "+data)
+            this.events.publish('listingMap', data)}
+
+    );
+
+    this.events.publish('citiesfilter', this.citiesfilter);
+    this.events.publish('categoriesfilter', this.categoriesfilter);
+
+
 
     this.menu.toggle();
     this.closedFiltre();

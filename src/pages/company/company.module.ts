@@ -15,5 +15,7 @@ import {IonicImageViewerModule} from "ionic-img-viewer";
     Ionic2RatingModule,
     IonicImageViewerModule
   ],
+  exports: [CompanyPage] ,
+  bootstrap: [CompanyPage]
 })
 export class CompanyPageModule {}

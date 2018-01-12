@@ -28,6 +28,8 @@ import { CallNumber } from '@ionic-native/call-number';
 import { CompaniesProvider } from '../providers/companies/companies';
 import {ComptePage} from "../pages/compte/compte";
 
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -73,6 +75,7 @@ import {ComptePage} from "../pages/compte/compte";
     CallNumber,
     EmailComposer,
     CompaniesProvider,
+    InAppBrowser,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

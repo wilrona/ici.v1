@@ -4,6 +4,10 @@ import {CompanyDescriptionPage} from "../company-description/company-description
 import {CompanyImagesPage} from "../company-images/company-images";
 import {CompanyInfoPage} from "../company-info/company-info";
 import {CompanyCategoryPage} from "../company-category/company-category";
+import { CompaniesProvider } from '../../providers/companies/companies';
+import { EmailComposer } from '@ionic-native/email-composer';
+import { CallNumber } from '@ionic-native/call-number';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 
 declare var google;
@@ -30,6 +34,14 @@ export class CompanyPage {
   segmentation:string;
   dark:boolean = true;
 
+  /*public ;*/
+  business={};
+  idcompagnie;
+  desc;
+  latitude;
+  longitude;
+  name;
+
   @ViewChild('map') mapElement: ElementRef;
   map: any;
 
@@ -38,9 +50,32 @@ export class CompanyPage {
     public navParams: NavParams,
     public ref: ChangeDetectorRef,
     public renderer: Renderer,
-    public modalCtrl: ModalController
+    public modalCtrl: ModalController,
+    public listingService: CompaniesProvider,
+    private emailComposer: EmailComposer,
+    private callNumber: CallNumber,
+    private iab: InAppBrowser
 
-  ) { }
+  ) { 
+
+
+
+     this.idcompagnie = navParams
+     .get("idcompagnie");
+     this.loadData(this.idcompagnie);
+     //this.desc=this.business.description;
+}
+
+  loadData(id){
+      this.listingService.getCompanyById(id).subscribe(
+            data => {this.business= data
+              this.latitude=data.latitude;
+              this.name=data.name;
+              this.longitude=data.longitude;
+              
+            }
+        );
+  }
 
   ionViewWillEnter(){
     this.segmentation ='desc';
@@ -71,8 +106,8 @@ export class CompanyPage {
     this.ref.detectChanges();
   }
 
-  openDescriptionEdit() {
-    let descriptionModal = this.modalCtrl.create(CompanyDescriptionPage);
+  openDescriptionEdit(descr, name, id) {
+    let descriptionModal = this.modalCtrl.create(CompanyDescriptionPage,{"description": descr, "name": name, "id": id} );
     descriptionModal.present();
   }
 
@@ -98,11 +133,15 @@ export class CompanyPage {
     let mapOptions = {
       center: latLng,
       zoom: 15,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      styles: [{ "featureType": "water", "elementType": "geometry", "stylers": [{ "color": "#e9e9e9" }, { "lightness": 17 }] }, { "featureType": "landscape", "elementType": "geometry", "stylers": [{ "color": "#f5f5f5" }, { "lightness": 20 }] }, { "featureType": "road.highway", "elementType": "geometry.fill", "stylers": [{ "color": "#ffffff" }, { "lightness": 17 }] }, { "featureType": "road.highway", "elementType": "geometry.stroke", "stylers": [{ "color": "#ffffff" }, { "lightness": 29 }, { "weight": 0.2 }] }, { "featureType": "road.arterial", "elementType": "geometry", "stylers": [{ "color": "#ffffff" }, { "lightness": 18 }] }, { "featureType": "road.local", "elementType": "geometry", "stylers": [{ "color": "#ffffff" }, { "lightness": 16 }] }, { "featureType": "poi", "elementType": "geometry", "stylers": [{ "color": "#f5f5f5" }, { "lightness": 21 }] }, { "featureType": "poi.park", "elementType": "geometry", "stylers": [{ "color": "#dedede" }, { "lightness": 21 }] }, { "elementType": "labels.text.stroke", "stylers": [{ "visibility": "on" }, { "color": "#ffffff" }, { "lightness": 16 }] }, { "elementType": "labels.text.fill", "stylers": [{ "saturation": 36 }, { "color": "#333333" }, { "lightness": 40 }] }, { "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] }, { "featureType": "transit", "elementType": "geometry", "stylers": [{ "color": "#f2f2f2" }, { "lightness": 19 }] }, { "featureType": "administrative", "elementType": "geometry.fill", "stylers": [{ "color": "#fefefe" }, { "lightness": 20 }] }, { "featureType": "administrative", "elementType": "geometry.stroke", "stylers": [{ "color": "#fefefe" }, { "lightness": 17 }, { "weight": 1.2 }] }]
     };
 
     let MapEl = this.mapElement.nativeElement;
     this.map = new google.maps.Map(MapEl, mapOptions);
+
+   
+
 
   }
 
@@ -117,5 +156,32 @@ export class CompanyPage {
   activeAvis(){
     this.dark = true;
   }
+
+  callCompany(phonenumber:any){
+    this.callNumber.callNumber(phonenumber, true)
+  .then(() => console.log('Launched dialer!'))
+  .catch(() => console.log('Error launching dialer '+phonenumber));
+  }
+
+  emailCompany(emailcpy:any){
+   this.emailComposer.isAvailable().then((available: boolean) =>{
+  if(available) {
+  }
+  });
+
+  let email = {
+    to: emailcpy,
+    subject: '',
+    body: '',
+    isHtml: true
+  };
+  this.emailComposer.open(email);
+}
+
+websiteCompany(siteweb){
+  const browser = this.iab.create(siteweb);
+  
+}
+
 
 }

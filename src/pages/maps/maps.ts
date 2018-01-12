@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import {IonicPage, MenuController, NavController, NavParams, ToastController} from 'ionic-angular';
+import {IonicPage, MenuController, NavController, NavParams, ToastController, Events, Platform} from 'ionic-angular';
 import { CompaniesProvider } from '../../providers/companies/companies';
 
 declare var google: any;
@@ -23,13 +23,48 @@ export class MapsPage {
 
   @ViewChild('map') mapElement: ElementRef;
   map: any;
-  public listMarker = new Array();
-  public newMarkers: Array<any> = [];
-  public currentMarker: Array<any> = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController,
-   public listingService: CompaniesProvider, public toastCtrl: ToastController) {
+  public listMarker = new Array();
+  cities: [any];
+  categories: [any];
+  listing: [any];
+  val: number;
+  // public listMarker = new Array();
+  public newMarkers: Array<any> = [];
+  public currentMaker: Array<any> = [];
+
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams, public menu: MenuController,
+              public listingService: CompaniesProvider,
+              public toastCtrl: ToastController,
+              public platform: Platform,
+              public events: Events) {
+
     menu.enable(true);
+
+    this.val = 0;
+
+    this.events.subscribe('citiesfilter', (cities) => {
+      this.cities = cities;
+    });
+    this.events.subscribe('categoriesfilter', (categories) => {
+      this.categories = categories;
+    });
+
+
+    events.subscribe('listingMap', (listing) => {
+
+      this.listing = listing;
+      this.newMarkers = [];
+      this.val = 1;
+      this.platform.ready().then(() => this.loadMaps());
+    });
+
+    if (this.val == 0) {
+      this.platform.ready().then(() => this.loadMaps());
+    }
+
+
   }
 
   ionViewDidLoad() {
@@ -37,24 +72,22 @@ export class MapsPage {
   }
 
   openMenu(evt) {
-    if(evt === "right"){
+    if (evt === "right") {
       this.menu.enable(true, 'menu');
       this.menu.enable(false, 'filtre');
-    }else{
+    } else {
       this.menu.enable(true, 'filtre');
       this.menu.enable(false, 'menu');
     }
     this.menu.toggle();
     document.getElementById('map').style.height = '100%';
-  }
 
-  ngAfterViewInit(){
-    this.loadMaps();
+
   }
 
   loadMaps() {
-      this.initializeMap();
-      this.getMarkers();
+    this.initializeMap();
+    this.getMarkers();
   }
 
   initializeMap() {
@@ -104,17 +137,17 @@ export class MapsPage {
       //     '</div>';
       // }
       // else {
-        markerContent.innerHTML =
-          // '<div class="marker" data-id="'+ point["_id"]+'">' +
-          '<div class="marker" data-id="' + point["_id"]['$id'] + '">' +
-          '<div class="title">' + point["name"] + '</div>' +
-          '<div class="marker-wrapper">' +
-          '<div class="pin">' +
-          '<div class="image" style="background-image: url(' + thumbnailImage + ');"></div>' +
-          '</div>' +
-          '</div>';
-        // console.log(markers[i]["_id"]);
-        // console.log(markers[i]["_id"].$id);
+      markerContent.innerHTML =
+        // '<div class="marker" data-id="'+ point["_id"]+'">' +
+        '<div class="marker" data-id="' + point["_id"]['$id'] + '">' +
+        '<div class="title">' + point["name"] + '</div>' +
+        '<div class="marker-wrapper">' +
+        '<div class="pin">' +
+        '<div class="image" style="background-image: url(' + thumbnailImage + ');"></div>' +
+        '</div>' +
+        '</div>';
+      // console.log(markers[i]["_id"]);
+      // console.log(markers[i]["_id"].$id);
       // }
 
       // Latitude, Longitude and Address
@@ -129,31 +162,28 @@ export class MapsPage {
     }
   }
 
-  renderRichMarker(i, markerContent){
+  renderRichMarker(i, markerContent) {
 
-      //console.log( map.getBounds().contains( new google.maps.LatLng( markers[i]["latitude"], markers[i]["longitude"] ) ) );
-      let marker = new RichMarker({
-        position: new google.maps.LatLng( i["latitude"], i["longitude"] ),
-        map: this.map,
-        draggable: false,
-        content: markerContent,
-        flat: true
-      });
+    //console.log( map.getBounds().contains( new google.maps.LatLng( markers[i]["latitude"], markers[i]["longitude"] ) ) );
+    let marker = new RichMarker({
+      position: new google.maps.LatLng(i["latitude"], i["longitude"]),
+      map: this.map,
+      draggable: false,
+      content: markerContent,
+      flat: true
+    });
+    google.maps.event.addListener(marker, 'click', (function (marker, i) {
+      return function () {
+        console.log("marker " + marker);
+        console.log('index ' + i)
 
-
-      google.maps.event.addListener(marker, 'click', (function(marker, i) {
-        return function() {
-          let heightDetail = document.getElementById('details').offsetHeight;
-          document.getElementById('map').style.height = 'calc(100% - '+heightDetail+'px)';
-        }
-      })(marker, i));
-
-      this.currentMarker = i;
-      this.newMarkers.push(marker);
+      }
+    })(marker, i));
+    this.newMarkers.push(marker);
 
   }
 
-  placeCluster(){
+  placeCluster() {
 
     let clusterStyles = [
       {
@@ -167,9 +197,17 @@ export class MapsPage {
   }
 
   getMarkers() {
-    this.listingService.getMarkers().subscribe(data => {
-      this.placeMarkers(data);
+    this.listingService.getMarkers(this.categories, this.cities).subscribe(data => {
+      console.log(this.val);
+      if (this.val == 0) {
+        this.listing = data;
+        console.log("ici");
+      }
+      console.log("non " + this.listing);
+      this.placeMarkers(this.listing);
       this.placeCluster();
+      // this.addMarkersToMap(this.listing);
+      // this.setMapOnAll(this.map);
     });
 
   }
@@ -178,57 +216,5 @@ export class MapsPage {
     document.getElementById('map').style.height = '100%';
   }
 
-  addMarkersToMap(markers) {
-    for(let marker of markers) {
-      var position = new google.maps.LatLng(marker.latitude, marker.longitude);
-      var dMarker = new google.maps.Marker({position: position, title: marker.name, id:marker._id});//icon: { url : 'http://yoomeeonl.webfactional.com/media/pictures/categories/bar.jpg' },
-      this.listMarker.push(dMarker);
-    }
-  }
-
-  setMapOnAll(map) {
-        for (var i = 0; i < this.listMarker.length; i++) {
-          this.listMarker[i].setMap(map);
-           //Attach click event handler to the marker.
-
-          var content= 'Latitude: <br />Longitude: ' + this.listMarker[i].title;
-          var item={"id": this.listMarker[i].id.$id, "title": this.listMarker[i].title, "ville": this.listMarker[i].ville, "repere": this.listMarker[i].repere};
-          this.addInfoWindow(this.listMarker[i], content, this.listMarker[i].id.$id, item);
-
-
-        }
-        new MarkerClusterer(this.map, this.listMarker, {
-        cssClass: 'custom-pin',
-        imagePath: 'https://googlemaps.github.io/js-marker-clusterer/images/m'
-      });
-  }
-
-  addInfoWindow(marker, content, id, item) {
-    let infoWindow = new google.maps.InfoWindow({
-      content: content
-    });
-    google.maps.event.addListener(marker, 'click', () => {
-      this.presentToast(content,id);
-    })
-  }
-
-  presentToast(content, id) {
-
-    let toast = this.toastCtrl.create({
-      message: content,
-      /*duration: 3000,*/
-      position: 'bottom',
-      showCloseButton: true,
-      closeButtonText: "Voir Plus"
-    });
-
-    toast.onDidDismiss(() => {
-     // this.openDetails(id);
-    });
-
-    toast.present();
-  }
-
-
-
 }
+

@@ -137,7 +137,6 @@ export class AnnuairePage {
      this.navCtrl.push('CompanyPage', {
       idcompagnie: id
     });
-
   }
 
   doInfinite(infiniteScroll) {

@@ -24,6 +24,7 @@
     "@ionic-native/core": "4.4.0",
     "@ionic-native/email-composer": "^4.5.2",
     "@ionic-native/geolocation": "^4.5.2",
+    "@ionic-native/in-app-browser": "^4.5.2",
     "@ionic-native/native-page-transitions": "^4.5.2",
     "@ionic-native/splash-screen": "4.4.0",
     "@ionic-native/status-bar": "4.4.0",
@@ -35,6 +36,7 @@
     "cordova-plugin-device": "^1.1.7",
     "cordova-plugin-email-composer": "^0.8.12",
     "cordova-plugin-geolocation": "^4.0.1",
+    "cordova-plugin-inappbrowser": "^2.0.1",
     "cordova-plugin-ionic-webview": "^1.1.16",
     "cordova-plugin-splashscreen": "^4.1.0",
     "cordova-plugin-video-picture-preview-picker-V2": "https://github.com/newsof1111/cordova-plugin-video-picture-preview-picker-V2.git",
@@ -77,7 +79,8 @@
         "GEOLOCATION_USAGE_DESCRIPTION": "Location"
       },
       "mx.ferreyra.callnumber": {},
-      "cordova-plugin-email-composer": {}
+      "cordova-plugin-email-composer": {},
+      "cordova-plugin-inappbrowser": {}
     },
     "platforms": [
       "android"
