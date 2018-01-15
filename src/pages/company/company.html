@@ -96,7 +96,7 @@
           </div>
 
 
-          <ion-slides loop="true" slidesPerView="4" margin-top spaceBetween="3">
+          <ion-slides loop="true" slidesPerView="4" margin-top spaceBetween="3" >
 
 
               <ion-slide *ngFor="let item of business.gallery">
@@ -162,58 +162,36 @@
                      emptyStarIconName="star-outline"
                      halfStarIconName="star-half"
                      starIconName="star"
-                     nullable="false" ></rating>
+                     nullable="false" (ngModelChange)="onModelChange($event, business._id.$id)"></rating>
 
-            <button ion-button clear class="uk-text-center">Ecrire un avis</button>
+            <button ion-button clear class="uk-text-center" (click)="onModelChange(valiRate,business._id.$id)">Ecrire un avis</button>
 
           </div>
 
           <hr>
 
           <ion-list>
-            <ion-item>
+            <ion-item *ngFor="let item of business.reviews">
               <ion-avatar item-start>
-                <img src="assets/imgs/default.jpg">
+                <img src="http://yoomeeonl.webfactional.com/{{item.picture}}">
+             
               </ion-avatar>
               <div class="uk-position-relative uk-comments">
-                <h2>Wilrona</h2>
-                <rating  [(ngModel)]="rate"
+                <h2>{{item.username}}</h2>
+                <rating  [(ngModel)]="item.rate"
                                           readOnly="true"
                                           max="5"
                                           emptyStarIconName="star-outline"
                                           halfStarIconName="star-half"
                                           starIconName="star"
                                           nullable="false" ></rating>
-                <ion-note class="uk-position-center-right">3:43 pm</ion-note>
+                <ion-note class="uk-position-center-right">{{item.date}}</ion-note>
               </div>
-              <p>This town ain't big enough for the two of us! This town ain't big enough for the two of us! This town ain't big enough for the two of us!, This town ain't big enough for the two of us!
-                This town ain't big enough for the two of us! This town ain't big enough for the two of us! This town ain't big enough for the two of us!, This town ain't big enough for the two of us!
-                This town ain't big enough for the two of us! This town ain't big enough for the two of us! This town ain't big enough for the two of us!, This town ain't big enough for the two of us!
-              </p>
+              <p>{{item.review}}</p>
               <hr>
             </ion-item>
 
-            <ion-item>
-              <ion-avatar item-start>
-                <img src="assets/imgs/default.jpg">
-              </ion-avatar>
-              <div class="uk-position-relative uk-comments">
-                <h2>Wilrona</h2>
-                <rating  [(ngModel)]="rate"
-                         readOnly="true"
-                         max="5"
-                         emptyStarIconName="star-outline"
-                         halfStarIconName="star-half"
-                         starIconName="star"
-                         nullable="false" ></rating>
-                <ion-note class="uk-position-center-right">3:43 pm</ion-note>
-              </div>
-              <p>This town ain't big enough for the two of us! This town ain't big enough for the two of us! This town ain't big enough for the two of us!, This town ain't big enough for the two of us!
-                This town ain't big enough for the two of us! This town ain't big enough for the two of us! This town ain't big enough for the two of us!, This town ain't big enough for the two of us!
-                This town ain't big enough for the two of us! This town ain't big enough for the two of us! This town ain't big enough for the two of us!, This town ain't big enough for the two of us!
-              </p>
-              <hr>
-            </ion-item>
+        
 
           </ion-list>
 
@@ -229,6 +207,8 @@
 <ion-footer [class.bgFooter]="dark">
   <ion-grid>
 
+
+    
     <ion-row [hidden]="!dark">
       <ion-col col-4 padding-horizontal class="uk-flex uk-flex-center" style="height: 56px">
         <button ion-button clear color="white" (click)="callCompany(item.phone)"><ion-icon name="call"></ion-icon></button>
@@ -244,7 +224,7 @@
     </ion-row>
     <ion-row [hidden]="dark">
       <ion-col col-12 padding-horizontal class="uk-text-center uk-flex uk-flex-middle uk-flex-center" style="height: 56px">
-        <span ion-text color="primary">Adresse de l'entreprise ici</span>
+        <span ion-text color="primary">{{business.adresse}} {{business.repere}}</span>
       </ion-col>
     </ion-row>
   </ion-grid>

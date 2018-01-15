@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, Loading, MenuController, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, Loading, MenuController, ModalController, Events } from 'ionic-angular';
 import { CompaniesProvider } from '../../providers/companies/companies';
 import { CallNumber } from '@ionic-native/call-number';
 import { EmailComposer } from '@ionic-native/email-composer';
 import {CompanyPage} from "../company/company";
+
+import { ReviewFormPage } from '../../pages/review-form/review-form';
 
 /**
  * Generated class for the AnnuairePage page.
@@ -35,14 +37,17 @@ export class AnnuairePage {
    companies:any;
    user;
    userexist=false;
-   loading: boolean = true;
 
+   loading: boolean;
+   //Loading;
    showNoItem:boolean = false;
+
 
   constructor(public navCtrl: NavController,
     private loadingCtrl: LoadingController, private emailComposer: EmailComposer, public navParams: NavParams, public menu: MenuController,
     public listingService: CompaniesProvider,
     private callNumber: CallNumber,
+    private modalCtrl: ModalController,
     public events: Events) {
 
       menu.enable(true);
@@ -74,6 +79,7 @@ export class AnnuairePage {
       });
 
   }
+
 
 
 
@@ -137,7 +143,26 @@ export class AnnuairePage {
      this.navCtrl.push('CompanyPage', {
       idcompagnie: id
     });
+
   }
+
+   onModelChange(val, companyId){
+   
+   //if(this.userexist==true){
+      let myModal = this.modalCtrl.create(ReviewFormPage, {vote: val, companyId: companyId});
+      myModal.present();
+
+  /* } else{
+      let myModal = this.modalCtrl.create(LoginPage);
+      myModal.present();
+   }*/
+
+ }
+
+  
+
+  
+
 
   doInfinite(infiniteScroll) {
     this.start = this.start+1;

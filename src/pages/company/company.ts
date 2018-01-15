@@ -9,6 +9,8 @@ import { EmailComposer } from '@ionic-native/email-composer';
 import { CallNumber } from '@ionic-native/call-number';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 
+import { ReviewFormPage } from '../../pages/review-form/review-form';
+
 
 declare var google;
 /**
@@ -41,6 +43,7 @@ export class CompanyPage {
   latitude;
   longitude;
   name;
+  valiRate;
 
   @ViewChild('map') mapElement: ElementRef;
   map: any;
@@ -125,6 +128,19 @@ export class CompanyPage {
     let categoryModal = this.modalCtrl.create(CompanyCategoryPage);
     categoryModal.present();
   }
+
+  onModelChange(val, companyId){
+   
+   //if(this.userexist==true){
+      let myModal = this.modalCtrl.create(ReviewFormPage, {vote: val, companyId: companyId});
+      myModal.present();
+
+  /* } else{
+      let myModal = this.modalCtrl.create(LoginPage);
+      myModal.present();
+   }*/
+
+ }
 
   loadMap(){
 

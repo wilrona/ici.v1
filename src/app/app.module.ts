@@ -18,6 +18,10 @@ import {CompanyDescriptionPage} from "../pages/company-description/company-descr
 import {CompanyImagesPage} from "../pages/company-images/company-images";
 import {CompanyInfoPage} from "../pages/company-info/company-info";
 import {CompanyCategoryPage} from "../pages/company-category/company-category";
+import {ReviewFormPage} from "../pages/review-form/review-form";
+import {LoginPage} from "../pages/login/login";
+
+
 import {IonTagsInputModule} from "ionic-tags-input";
 import {MapsPage} from "../pages/maps/maps";
 
@@ -42,7 +46,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     CompanyCategoryPage,
     MapsPage,
     TabsPage,
-
+    ReviewFormPage,
+    LoginPage,
     // components
     FiltreComponent,
 
@@ -67,6 +72,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     CompanyInfoPage,
     CompanyCategoryPage,
     MapsPage,
+    ReviewFormPage,
+    LoginPage,
     TabsPage
   ],
   providers: [
