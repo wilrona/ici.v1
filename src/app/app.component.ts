@@ -43,15 +43,17 @@ export class MyApp {
  //   console.log("nn0 ");
 
     this.listingService.getListing(this.categoriesfilter, this.citiesfilter).subscribe(
-            data => {this.listing= data
-            console.log("nn2 "+data)
-            this.events.publish('listing', data)}
+            data => {
+              this.listing= data;
+              this.events.publish('listing', data)
+            }
     );
 
    this.listingService.getMarkers(this.categoriesfilter, this.citiesfilter).subscribe(
-            data => {this.listingMap= data
-            console.log("nn1 "+data)
-            this.events.publish('listingMap', data)}
+            data => {
+              this.listingMap= data
+              this.events.publish('listingMap', data)
+            }
 
     );
 

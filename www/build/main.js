@@ -1,311 +1,6 @@
-webpackJsonp([9],{
-
-/***/ 156:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CompanyCategoryPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-/**
- * Generated class for the CompanyCategoryPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var CompanyCategoryPage = /** @class */ (function () {
-    function CompanyCategoryPage(navCtrl, navParams, viewCtrl) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.viewCtrl = viewCtrl;
-    }
-    CompanyCategoryPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad CompanyCategoryPage');
-    };
-    CompanyCategoryPage.prototype.dismiss = function () {
-        this.viewCtrl.dismiss();
-    };
-    CompanyCategoryPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-company-category',template:/*ion-inline-start:"D:\lab\icicmapp\ici.v1\src\pages\company-category\company-category.html"*/'<!--\n\n  Generated template for the CompanyCategoryPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-buttons start>\n\n      <button ion-button icon-only small (click)="dismiss()">\n\n        <ion-icon name="close" color="primary"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n    <ion-title>Gérer vos categories</ion-title>\n\n\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding-vertical>\n\n  <filtre [showVille]="false"></filtre>\n\n\n\n  <div class="uk-height-fab"></div>\n\n</ion-content>\n\n\n\n<ion-footer>\n\n  <ion-fab right bottom>\n\n    <button ion-fab color="success"><ion-icon name="checkmark"></ion-icon></button>\n\n  </ion-fab>\n\n</ion-footer>\n\n'/*ion-inline-end:"D:\lab\icicmapp\ici.v1\src\pages\company-category\company-category.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["y" /* ViewController */]])
-    ], CompanyCategoryPage);
-    return CompanyCategoryPage;
-}());
-
-//# sourceMappingURL=company-category.js.map
-
-/***/ }),
+webpackJsonp([10],{
 
 /***/ 157:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CompanyDescriptionPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-/**
- * Generated class for the CompanyDescriptionPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var CompanyDescriptionPage = /** @class */ (function () {
-    function CompanyDescriptionPage(navCtrl, navParams, viewCtrl) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.viewCtrl = viewCtrl;
-        this.EditActive = false;
-        this.description = this.navParams.get("description");
-        this.name = this.navParams.get("name");
-        this.id = this.navParams.get("id");
-    }
-    CompanyDescriptionPage.prototype.ionViewDidLoad = function () {
-        /*  this.description = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias atque earum fugiat fugit id maiores quia saepe. Accusamus beatae deserunt dicta dolor facere fugiat maiores nam sequi voluptatibus, voluptatum! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi architecto fuga labore odio odit quis sequi sit suscipit voluptate voluptatibus. Delectus, id quo! Animi beatae delectus quam, quas sit ullam!\n' +
-            '     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias atque earum fugiat fugit id maiores quia saepe. Accusamus beatae deserunt dicta dolor facere fugiat maiores nam sequi voluptatibus, voluptatum! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi architecto fuga labore odio odit quis sequi sit suscipit voluptate voluptatibus. Delectus, id quo! Animi beatae delectus quam, quas sit ullam!'
-        */
-    };
-    CompanyDescriptionPage.prototype.dismiss = function () {
-        this.viewCtrl.dismiss();
-    };
-    CompanyDescriptionPage.prototype.editDescription = function () {
-        this.contenu.nativeElement.contentEditable = true;
-        this.EditActive = true;
-    };
-    CompanyDescriptionPage.prototype.removeEdit = function () {
-        this.contenu.nativeElement.contentEditable = false;
-        this.EditActive = false;
-    };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* ViewChild */])('editable'),
-        __metadata("design:type", Object)
-    ], CompanyDescriptionPage.prototype, "contenu", void 0);
-    CompanyDescriptionPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-company-description',template:/*ion-inline-start:"D:\lab\icicmapp\ici.v1\src\pages\company-description\company-description.html"*/'<!--\n\n  Generated template for the CompanyDescriptionPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-buttons start>\n\n      <button ion-button color="primary" icon-only small (click)="dismiss()" [hidden]="EditActive">\n\n        <ion-icon name="close"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n    <ion-title class="uk-title-color-red">{{name}}</ion-title>\n\n\n\n    <ion-buttons end>\n\n      <button ion-button icon-only small (click)="removeEdit()" [hidden]="!EditActive">\n\n        <span ion-text color="primary">Annuler</span>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <div [textContent]="description" (input)="description=$event.target.textContent" #editable></div>\n\n\n\n  <!-- <ion-item class="commentbox">\n\n\n\n    <div\n\n      contenteditable="true"\n\n      [textContent]="description"\n\n      (input)="description=$event.target.textContent"\n\n    >\n\n    </div>\n\n\n\n    <ion-buttons right item-right>\n\n      <button ion-button clear (tap)="submitComment()">\n\n        <ion-icon name="send"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-item> -->\n\n\n\n\n\n</ion-content>\n\n\n\n<ion-footer>\n\n  <ion-fab right bottom>\n\n    <button ion-fab color="primary" (click)="editDescription()" [hidden]="EditActive" ><ion-icon name="create"></ion-icon></button>\n\n  </ion-fab>\n\n  <ion-fab right bottom>\n\n    <button ion-fab color="success" [hidden]="!EditActive" ><ion-icon name="checkmark"></ion-icon></button>\n\n  </ion-fab>\n\n</ion-footer>\n\n'/*ion-inline-end:"D:\lab\icicmapp\ici.v1\src\pages\company-description\company-description.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["y" /* ViewController */]])
-    ], CompanyDescriptionPage);
-    return CompanyDescriptionPage;
-}());
-
-//# sourceMappingURL=company-description.js.map
-
-/***/ }),
-
-/***/ 158:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CompanyImagesPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_img_viewer__ = __webpack_require__(159);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-/**
- * Generated class for the CompanyImagesPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var CompanyImagesPage = /** @class */ (function () {
-    function CompanyImagesPage(navCtrl, navParams, platform, viewCtrl, imageViewerCtrl, renderer) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.platform = platform;
-        this.viewCtrl = viewCtrl;
-        this.renderer = renderer;
-        this.images = [];
-        this.deletedActive = false;
-        this.itemToDelete = [];
-        this.images = [
-            { id: 1, image: 'assets/imgs/default.jpg' },
-            { id: 2, image: 'assets/imgs/default.jpg' },
-            { id: 3, image: 'assets/imgs/default.jpg' },
-            { id: 4, image: 'assets/imgs/default.jpg' },
-            { id: 5, image: 'assets/imgs/default.jpg' },
-            { id: 6, image: 'assets/imgs/default.jpg' },
-            { id: 7, image: 'assets/imgs/default.jpg' },
-            { id: 8, image: 'assets/imgs/default.jpg' },
-            { id: 9, image: 'assets/imgs/default.jpg' },
-        ];
-        this._imageViewerCtrl = imageViewerCtrl;
-    }
-    CompanyImagesPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad CompanyImagesPage');
-    };
-    CompanyImagesPage.prototype.uploadPicture = function () {
-        this.platform.ready().then(function () {
-            VideoPicturePreviewPickerV2.openPicker(function (results) {
-                console.log(results);
-            }, function (error) {
-                console.log(error);
-            }, {
-                limit_Select: 10,
-                Is_multiSelect: true,
-                picture_selector: true,
-                video_selector: false,
-                display_video_time: false,
-                display_preview: true
-            });
-        });
-    };
-    CompanyImagesPage.prototype.zoomeImage = function (myImage, e, image) {
-        if (!this.deletedActive) {
-            // Affiche le detail de la page
-            var imageViewer = this._imageViewerCtrl.create(myImage);
-            imageViewer.present();
-        }
-        else {
-            if (this.itemToDelete.indexOf(image) > -1) {
-                var index = this.itemToDelete.indexOf(image);
-                this.itemToDelete.splice(index, 1);
-                this.renderer.setElementStyle(e.target.parentElement, 'border', 'none');
-                if (this.itemToDelete.length === 0) {
-                    this.deletedActive = false;
-                }
-            }
-            else {
-                this.itemToDelete.push(image);
-                this.renderer.setElementStyle(e.target.parentElement, 'border', '4px solid red');
-            }
-        }
-    };
-    CompanyImagesPage.prototype.dismiss = function () {
-        this.viewCtrl.dismiss();
-    };
-    CompanyImagesPage.prototype.deleteItem = function (e, image) {
-        this.deletedActive = true;
-        this.renderer.setElementStyle(e.target.parentElement, 'border', '4px solid red');
-        this.itemToDelete.push(image);
-    };
-    CompanyImagesPage.prototype.removeDeteletedItem = function () {
-        this.itemToDelete.map(function (x) {
-            document.getElementById(x).parentElement.style.border = 'none';
-        });
-        this.itemToDelete.splice(0, this.itemToDelete.length);
-        this.deletedActive = false;
-    };
-    CompanyImagesPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-company-images',template:/*ion-inline-start:"D:\lab\icicmapp\ici.v1\src\pages\company-images\company-images.html"*/'<!--\n\n  Generated template for the CompanyImagesPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-buttons start>\n\n      <button ion-button icon-only small (click)="dismiss()" [hidden]="deletedActive">\n\n        <ion-icon name="close" color="primary"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n    <ion-title class="uk-title-color-red">Image de Compagny</ion-title>\n\n\n\n    <ion-buttons end>\n\n      <button ion-button icon-only small (click)="removeDeteletedItem()" [hidden]="!deletedActive">\n\n        <span ion-text color="primary">Annuler</span>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <ion-grid>\n\n    <ion-row>\n\n      <ion-col col-4 *ngFor="let image of images">\n\n          <div class="one-image uk-background-cover"   tappable>\n\n            <img cover src="{{ image.image }}" #myImage (tap)="zoomeImage(myImage, $event, image.id)" (press)="deleteItem($event, image.id)" id="{{ image.id }}">\n\n          </div>\n\n      </ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n\n\n<div class="uk-height-fab"></div>\n\n</ion-content>\n\n\n\n<ion-footer>\n\n  <ion-fab right bottom>\n\n    <button ion-fab color="primary" (click)="uploadPicture()" block [hidden]="deletedActive" ><ion-icon name="image"></ion-icon></button>\n\n  </ion-fab>\n\n  <ion-fab right bottom>\n\n    <button ion-fab color="success" [hidden]="!deletedActive"><ion-icon name="trash"></ion-icon></button>\n\n  </ion-fab>\n\n</ion-footer>\n\n'/*ion-inline-end:"D:\lab\icicmapp\ici.v1\src\pages\company-images\company-images.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* Platform */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["y" /* ViewController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_img_viewer__["a" /* ImageViewerController */],
-            __WEBPACK_IMPORTED_MODULE_0__angular_core__["X" /* Renderer */]])
-    ], CompanyImagesPage);
-    return CompanyImagesPage;
-}());
-
-//# sourceMappingURL=company-images.js.map
-
-/***/ }),
-
-/***/ 160:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CompanyInfoPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-/**
- * Generated class for the CompanyInfoPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var CompanyInfoPage = /** @class */ (function () {
-    function CompanyInfoPage(navCtrl, navParams, viewCtrl, platform) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.viewCtrl = viewCtrl;
-        this.platform = platform;
-        this.tags = [];
-    }
-    CompanyInfoPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad CompanyInfoPage');
-    };
-    CompanyInfoPage.prototype.dismiss = function () {
-        this.viewCtrl.dismiss();
-    };
-    CompanyInfoPage.prototype.uploadPicture = function () {
-        this.platform.ready().then(function () {
-            VideoPicturePreviewPickerV2.openPicker(function (results) {
-                console.log(results);
-            }, function (error) {
-                console.log(error);
-            }, {
-                limit_Select: 1,
-                Is_multiSelect: false,
-                picture_selector: false,
-                video_selector: false,
-                display_video_time: false,
-                display_preview: true
-            });
-        });
-    };
-    CompanyInfoPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-company-info',template:/*ion-inline-start:"D:\lab\icicmapp\ici.v1\src\pages\company-info\company-info.html"*/'<!--\n\n  Generated template for the CompanyInfoPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-buttons start>\n\n      <button ion-button icon-only small (click)="dismiss()">\n\n        <ion-icon name="close" color="primary"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n    <ion-title class="uk-title-color-red">Information</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n\n\n<ion-card class="uk-background-default card-info no-border-radius" margin-bottom>\n\n  <ion-card-content class="uk-flex uk-flex-middle uk-flex-center">\n\n    <div class="uk-width-1-1">\n\n      <div class="uk-text-center uk-margin-auto">\n\n        <img src="assets/imgs/default.jpg" alt="" class="logo uk-border-circle uk-margin-auto uk-display-block" margin-bottom>\n\n        <button ion-button clear small class="button-custom-size" (click)="uploadPicture()">Modifier le logo</button>\n\n      </div>\n\n      <div class="uk-grid-collapse uk-grid">\n\n        <div class="uk-width-expand">\n\n          <ion-list no-margin>\n\n            <ion-item no-padding no-border>\n\n              <ion-select interface="action-sheet" multiple="false" placeholder="Selectionnez une catégorie principale">\n\n                <ion-option value="">Selectionnez une catégorie principale</ion-option>\n\n                <ion-option value="mute_15">For 15 Minutes</ion-option>\n\n                <ion-option value="mute_1">For 1 Hour</ion-option>\n\n                <ion-option value="mute_23">For 24 Hours</ion-option>\n\n                <ion-option value="mute_inf">Until I turn it back on</ion-option>\n\n              </ion-select>\n\n            </ion-item>\n\n          </ion-list>\n\n        </div>\n\n        <div class="uk-width-auto">\n\n            <button ion-button clear>\n\n              <ion-icon name="add"></ion-icon>\n\n            </button>\n\n        </div>\n\n      </div>\n\n    </div>\n\n  </ion-card-content>\n\n</ion-card>\n\n\n\n<div class="uk-background-default uk-padding uk-padding-remove-bottom uk-padding-remove-top">\n\n  <ion-list no-margin>\n\n    <ion-item no-padding no-border>\n\n      <ion-label floating>Nom de l\'entreprise</ion-label>\n\n      <ion-input type="text" value=""></ion-input>\n\n    </ion-item>\n\n    <ion-item no-padding>\n\n      <ion-label floating>Recherchez votre adresse</ion-label>\n\n      <ion-input type="text" value=""></ion-input>\n\n    </ion-item>\n\n    <ion-item no-padding>\n\n      <ion-label floating>Ville</ion-label>\n\n      <ion-input typwilrona\n\n                 e="text" value=""></ion-input>\n\n    </ion-item>\n\n    <ion-item no-padding>\n\n      <ion-label floating>Quartier</ion-label>\n\n      <ion-input type="text" value=""></ion-input>\n\n    </ion-item>\n\n    <ion-item no-padding>\n\n      <ion-label floating>Rue</ion-label>\n\n      <ion-input type="text" value=""></ion-input>\n\n    </ion-item>\n\n    <ion-item no-padding>\n\n      <ion-label floating>Boite Postale</ion-label>\n\n      <ion-input type="text" value=""></ion-input>\n\n    </ion-item>\n\n    <input type="hidden"  value="longitude">\n\n    <input type="hidden"  value="latitude">\n\n    <ion-item no-padding>\n\n      <ion-label floating>Repère de la position de votre entreprise</ion-label>\n\n      <ion-input type="text" value=""></ion-input>\n\n    </ion-item>\n\n    <ion-item no-padding>\n\n      <ion-label floating>Téléphone</ion-label>\n\n      <ion-input type="text" value=""></ion-input>\n\n    </ion-item>\n\n    <ion-item no-padding>\n\n      <ion-label floating>Adresse Email</ion-label>\n\n      <ion-input type="text" value=""></ion-input>\n\n    </ion-item>\n\n    <ion-item no-padding>\n\n      <ion-label floating>Site Web</ion-label>\n\n      <ion-input type="text" value=""></ion-input>\n\n    </ion-item>\n\n\n\n    <ion-item no-padding no-border>\n\n    </ion-item>\n\n  </ion-list>\n\n  <ion-label>Mot clés</ion-label>\n\n  <ion-tags-input [(ngModel)]="tags" [placeholder]="\'+ tags\'" [once]="\'true\'" [separatorStr]="\',\'" [type]="text" class="uk-margin-large-bottom"></ion-tags-input>\n\n\n\n</div>\n\n<div class="uk-height-fab"></div>\n\n\n\n</ion-content>\n\n<ion-footer>\n\n  <ion-fab right bottom>\n\n    <button ion-fab color="success"><ion-icon name="checkmark"></ion-icon></button>\n\n  </ion-fab>\n\n</ion-footer>\n\n'/*ion-inline-end:"D:\lab\icicmapp\ici.v1\src\pages\company-info\company-info.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["y" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* Platform */]])
-    ], CompanyInfoPage);
-    return CompanyInfoPage;
-}());
-
-//# sourceMappingURL=company-info.js.map
-
-/***/ }),
-
-/***/ 161:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -313,9 +8,9 @@ var CompanyInfoPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_companies_companies__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_call_number__ = __webpack_require__(134);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_email_composer__ = __webpack_require__(132);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_review_form_review_form__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_call_number__ = __webpack_require__(117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_email_composer__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_review_form_review_form__ = __webpack_require__(87);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -504,11 +199,11 @@ var AnnuairePage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'page-annuaire',template:/*ion-inline-start:"D:\lab\icicmapp\ici.v1\src\pages\annuaire\annuaire.html"*/'<!--\n\n  Generated template for the AnnuairePage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-toolbar padding-horizontal>\n\n    <ion-buttons left>\n\n      <button ion-button icon-only (click)="openMenu(\'right\')">\n\n        <ion-icon name="menu" color="primary"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n    <ion-title>\n\n      <img alt="logo" height="40"  src="assets/imgs/logoici.png" ><!--icicm1-->\n\n    </ion-title>\n\n\n\n    <ion-buttons end>\n\n      <button ion-button icon-only (click)="openMenu(\'left\')">\n\n        <ion-icon name="funnel" color="primary"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-toolbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <div class="uk-height-small uk-flex uk-flex-middle uk-flex-center uk-margin-large-top" *ngIf="loading">\n\n    <div class="uk-text-center">\n\n      <span class="uk-display-block uk-margin-medium-bottom">Chargement ....</span>\n\n      <div uk-spinner></div>\n\n    </div>\n\n  </div>\n\n  <div *ngIf="!showNoItem">\n\n      <ion-list>\n\n          <ion-card *ngFor="let liste of listing ">\n\n            <ion-card-content>\n\n              <ion-grid>\n\n                <ion-row>\n\n                  <ion-col col-9>\n\n                    <h2 class="uk-text-truncate uk-margin-remove" (click)="openDetail(liste._id.$id)">{{liste.name}}</h2>\n\n                    <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-muted" style="margin-bottom: 4px !important;">{{liste.ville}} {{liste.quartier}}</div>\n\n                    <!--  <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-success uk-text-small"> <ion-icon name="checkmark-circle"></ion-icon> Entreprise validé</div>\n\n                    <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-danger uk-text-small"> <ion-icon name="close"></ion-icon> Validation en cours</div> -->\n\n                  </ion-col>\n\n                  <ion-col col-3>\n\n                    <rating  [(ngModel)]="liste.ratecount"\n\n                             readOnly="true"\n\n                             max="5"\n\n                             emptyStarIconName="star-outline"\n\n                             halfStarIconName="star-half"\n\n                             starIconName="star"\n\n                             nullable="false"\n\n                             (ngModelChange)="onModelChange($event, liste._id.$id)"></rating>\n\n                    <div class="uk-text-right uk-h4 uk-margin-remove" >{{liste.reviewcount}} avis</div>\n\n                    <!-- <div class="uk-text-right uk-text-success uk-h4 uk-margin-remove uk-text-bold">8h à 18h30</div> -->\n\n                  </ion-col>\n\n                  <ion-col col class="uk-padding-remove-vertical">\n\n                    <hr no-margin="">\n\n                  </ion-col>\n\n                </ion-row>\n\n                <ion-row>\n\n                  <ion-col col-9>\n\n                    <ion-item class="item-compagny">\n\n                      <ion-thumbnail item-start>\n\n                        <img  *ngIf="liste.imageune==null"  src="http://yoomeeonl.webfactional.com/media/pictures/companies/default.jpg" class="uk-responsive-height">\n\n                        <img  *ngIf="liste.imageune!=null"  src="http://yoomeeonl.webfactional.com/media/pictures/companies/{{liste.imageune}}" class="uk-responsive-height">\n\n                      </ion-thumbnail>\n\n                      <div>\n\n                        <ion-badge item-end class="uk-margin-remove-top uk-margin-remove-left uk-margin-remove-right">{{liste.maincategorie}}</ion-badge>\n\n                      </div>\n\n\n\n                      <div class="uk-h4 uk-margin-remove">\n\n                        <ul class="uk-text-small uk-padding-small uk-padding-remove-vertical uk-padding-remove-right" no-margin>\n\n                          <li *ngIf="liste.adresse!=\'\'">{{liste.adresse}}</li>\n\n                          <li *ngIf="liste.repere!=\'\'">{{liste.repere}}</li>\n\n                          <!--li>Localisation</li-->\n\n                        </ul>\n\n                      </div>\n\n\n\n                    </ion-item>\n\n                  </ion-col>\n\n                  <ion-col col-3 class="uk-position-relative">\n\n                    <div class="uk-position-bottom-right">\n\n                      <ion-icon name="call" class="icon-m" (click)="callCompany(liste.phone)"></ion-icon>\n\n                      <ion-icon name="mail" class="icon-m" (click)="emailCompany(liste.email)"></ion-icon>\n\n                    </div>\n\n                  </ion-col>\n\n                </ion-row>\n\n              </ion-grid>\n\n            </ion-card-content>\n\n          </ion-card>\n\n          <ion-infinite-scroll (ionInfinite)="doInfinite($event)" > <!--*ngIf="page < totalPage"-->\n\n            <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..."></ion-infinite-scroll-content>\n\n          </ion-infinite-scroll>\n\n      </ion-list>\n\n  </div>\n\n  <div *ngIf="showNoItem">\n\n      <div class="uk-height-small uk-flex uk-flex-middle uk-flex-center uk-NoItem uk-margin-large-top">\n\n        <div class="uk-text-center uk-padding-large">\n\n          <ion-icon name="funnel" class="uk-margin-auto"></ion-icon>\n\n          <div ion-text color="dark" class="uk-margin-medium-top uk-h2">\n\n            Changer les paramètres de votre filtre pour obtenir plus d\'entreprise\n\n          </div>\n\n        </div>\n\n      </div>\n\n  </div>\n\n\n\n\n\n\n\n</ion-content>\n\n\n\n\n\n\n\n'/*ion-inline-end:"D:\lab\icicmapp\ici.v1\src\pages\annuaire\annuaire.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_email_composer__["a" /* EmailComposer */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* MenuController */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_email_composer__["a" /* EmailComposer */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* MenuController */],
             __WEBPACK_IMPORTED_MODULE_2__providers_companies_companies__["a" /* CompaniesProvider */],
             __WEBPACK_IMPORTED_MODULE_3__ionic_native_call_number__["a" /* CallNumber */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ModalController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Events */]])
     ], AnnuairePage);
     return AnnuairePage;
@@ -518,7 +213,312 @@ var AnnuairePage = /** @class */ (function () {
 
 /***/ }),
 
+/***/ 158:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CompanyCategoryPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+/**
+ * Generated class for the CompanyCategoryPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var CompanyCategoryPage = /** @class */ (function () {
+    function CompanyCategoryPage(navCtrl, navParams, viewCtrl) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.viewCtrl = viewCtrl;
+    }
+    CompanyCategoryPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad CompanyCategoryPage');
+    };
+    CompanyCategoryPage.prototype.dismiss = function () {
+        this.viewCtrl.dismiss();
+    };
+    CompanyCategoryPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'page-company-category',template:/*ion-inline-start:"D:\lab\icicmapp\ici.v1\src\pages\company-category\company-category.html"*/'<!--\n\n  Generated template for the CompanyCategoryPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-buttons start>\n\n      <button ion-button icon-only small (click)="dismiss()">\n\n        <ion-icon name="close" color="primary"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n    <ion-title>Gérer vos categories</ion-title>\n\n\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding-vertical>\n\n  <filtre [showVille]="false"></filtre>\n\n\n\n  <div class="uk-height-fab"></div>\n\n</ion-content>\n\n\n\n<ion-footer>\n\n  <ion-fab right bottom>\n\n    <button ion-fab color="success"><ion-icon name="checkmark"></ion-icon></button>\n\n  </ion-fab>\n\n</ion-footer>\n\n'/*ion-inline-end:"D:\lab\icicmapp\ici.v1\src\pages\company-category\company-category.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["x" /* ViewController */]])
+    ], CompanyCategoryPage);
+    return CompanyCategoryPage;
+}());
+
+//# sourceMappingURL=company-category.js.map
+
+/***/ }),
+
+/***/ 159:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CompanyDescriptionPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+/**
+ * Generated class for the CompanyDescriptionPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var CompanyDescriptionPage = /** @class */ (function () {
+    function CompanyDescriptionPage(navCtrl, navParams, viewCtrl) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.viewCtrl = viewCtrl;
+        this.EditActive = false;
+        this.description = this.navParams.get("description");
+        this.name = this.navParams.get("name");
+        this.id = this.navParams.get("id");
+    }
+    CompanyDescriptionPage.prototype.ionViewDidLoad = function () {
+        /*  this.description = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias atque earum fugiat fugit id maiores quia saepe. Accusamus beatae deserunt dicta dolor facere fugiat maiores nam sequi voluptatibus, voluptatum! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi architecto fuga labore odio odit quis sequi sit suscipit voluptate voluptatibus. Delectus, id quo! Animi beatae delectus quam, quas sit ullam!\n' +
+            '     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias atque earum fugiat fugit id maiores quia saepe. Accusamus beatae deserunt dicta dolor facere fugiat maiores nam sequi voluptatibus, voluptatum! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi architecto fuga labore odio odit quis sequi sit suscipit voluptate voluptatibus. Delectus, id quo! Animi beatae delectus quam, quas sit ullam!'
+        */
+    };
+    CompanyDescriptionPage.prototype.dismiss = function () {
+        this.viewCtrl.dismiss();
+    };
+    CompanyDescriptionPage.prototype.editDescription = function () {
+        this.contenu.nativeElement.contentEditable = true;
+        this.EditActive = true;
+    };
+    CompanyDescriptionPage.prototype.removeEdit = function () {
+        this.contenu.nativeElement.contentEditable = false;
+        this.EditActive = false;
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* ViewChild */])('editable'),
+        __metadata("design:type", Object)
+    ], CompanyDescriptionPage.prototype, "contenu", void 0);
+    CompanyDescriptionPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'page-company-description',template:/*ion-inline-start:"D:\lab\icicmapp\ici.v1\src\pages\company-description\company-description.html"*/'<!--\n\n  Generated template for the CompanyDescriptionPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-buttons start>\n\n      <button ion-button color="primary" icon-only small (click)="dismiss()" [hidden]="EditActive">\n\n        <ion-icon name="close"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n    <ion-title class="uk-title-color-red">{{name}}</ion-title>\n\n\n\n    <ion-buttons end>\n\n      <button ion-button icon-only small (click)="removeEdit()" [hidden]="!EditActive">\n\n        <span ion-text color="primary">Annuler</span>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <div [textContent]="description" (input)="description=$event.target.textContent" #editable></div>\n\n\n\n  <!-- <ion-item class="commentbox">\n\n\n\n    <div\n\n      contenteditable="true"\n\n      [textContent]="description"\n\n      (input)="description=$event.target.textContent"\n\n    >\n\n    </div>\n\n\n\n    <ion-buttons right item-right>\n\n      <button ion-button clear (tap)="submitComment()">\n\n        <ion-icon name="send"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-item> -->\n\n\n\n\n\n</ion-content>\n\n\n\n<ion-footer>\n\n  <ion-fab right bottom>\n\n    <button ion-fab color="primary" (click)="editDescription()" [hidden]="EditActive" ><ion-icon name="create"></ion-icon></button>\n\n  </ion-fab>\n\n  <ion-fab right bottom>\n\n    <button ion-fab color="success" [hidden]="!EditActive" ><ion-icon name="checkmark"></ion-icon></button>\n\n  </ion-fab>\n\n</ion-footer>\n\n'/*ion-inline-end:"D:\lab\icicmapp\ici.v1\src\pages\company-description\company-description.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["x" /* ViewController */]])
+    ], CompanyDescriptionPage);
+    return CompanyDescriptionPage;
+}());
+
+//# sourceMappingURL=company-description.js.map
+
+/***/ }),
+
+/***/ 160:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CompanyImagesPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_img_viewer__ = __webpack_require__(161);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+/**
+ * Generated class for the CompanyImagesPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var CompanyImagesPage = /** @class */ (function () {
+    function CompanyImagesPage(navCtrl, navParams, platform, viewCtrl, imageViewerCtrl, renderer) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.platform = platform;
+        this.viewCtrl = viewCtrl;
+        this.renderer = renderer;
+        this.images = [];
+        this.deletedActive = false;
+        this.itemToDelete = [];
+        this.images = [
+            { id: 1, image: 'assets/imgs/default.jpg' },
+            { id: 2, image: 'assets/imgs/default.jpg' },
+            { id: 3, image: 'assets/imgs/default.jpg' },
+            { id: 4, image: 'assets/imgs/default.jpg' },
+            { id: 5, image: 'assets/imgs/default.jpg' },
+            { id: 6, image: 'assets/imgs/default.jpg' },
+            { id: 7, image: 'assets/imgs/default.jpg' },
+            { id: 8, image: 'assets/imgs/default.jpg' },
+            { id: 9, image: 'assets/imgs/default.jpg' },
+        ];
+        this._imageViewerCtrl = imageViewerCtrl;
+    }
+    CompanyImagesPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad CompanyImagesPage');
+    };
+    CompanyImagesPage.prototype.uploadPicture = function () {
+        this.platform.ready().then(function () {
+            VideoPicturePreviewPickerV2.openPicker(function (results) {
+                console.log(results);
+            }, function (error) {
+                console.log(error);
+            }, {
+                limit_Select: 10,
+                Is_multiSelect: true,
+                picture_selector: true,
+                video_selector: false,
+                display_video_time: false,
+                display_preview: true
+            });
+        });
+    };
+    CompanyImagesPage.prototype.zoomeImage = function (myImage, e, image) {
+        if (!this.deletedActive) {
+            // Affiche le detail de la page
+            var imageViewer = this._imageViewerCtrl.create(myImage);
+            imageViewer.present();
+        }
+        else {
+            if (this.itemToDelete.indexOf(image) > -1) {
+                var index = this.itemToDelete.indexOf(image);
+                this.itemToDelete.splice(index, 1);
+                this.renderer.setElementStyle(e.target.parentElement, 'border', 'none');
+                if (this.itemToDelete.length === 0) {
+                    this.deletedActive = false;
+                }
+            }
+            else {
+                this.itemToDelete.push(image);
+                this.renderer.setElementStyle(e.target.parentElement, 'border', '4px solid red');
+            }
+        }
+    };
+    CompanyImagesPage.prototype.dismiss = function () {
+        this.viewCtrl.dismiss();
+    };
+    CompanyImagesPage.prototype.deleteItem = function (e, image) {
+        this.deletedActive = true;
+        this.renderer.setElementStyle(e.target.parentElement, 'border', '4px solid red');
+        this.itemToDelete.push(image);
+    };
+    CompanyImagesPage.prototype.removeDeteletedItem = function () {
+        this.itemToDelete.map(function (x) {
+            document.getElementById(x).parentElement.style.border = 'none';
+        });
+        this.itemToDelete.splice(0, this.itemToDelete.length);
+        this.deletedActive = false;
+    };
+    CompanyImagesPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'page-company-images',template:/*ion-inline-start:"D:\lab\icicmapp\ici.v1\src\pages\company-images\company-images.html"*/'<!--\n\n  Generated template for the CompanyImagesPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-buttons start>\n\n      <button ion-button icon-only small (click)="dismiss()" [hidden]="deletedActive">\n\n        <ion-icon name="close" color="primary"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n    <ion-title class="uk-title-color-red">Image de Compagny</ion-title>\n\n\n\n    <ion-buttons end>\n\n      <button ion-button icon-only small (click)="removeDeteletedItem()" [hidden]="!deletedActive">\n\n        <span ion-text color="primary">Annuler</span>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <ion-grid>\n\n    <ion-row>\n\n      <ion-col col-4 *ngFor="let image of images">\n\n          <div class="one-image uk-background-cover"   tappable>\n\n            <img cover src="{{ image.image }}" #myImage (tap)="zoomeImage(myImage, $event, image.id)" (press)="deleteItem($event, image.id)" id="{{ image.id }}">\n\n          </div>\n\n      </ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n\n\n<div class="uk-height-fab"></div>\n\n</ion-content>\n\n\n\n<ion-footer>\n\n  <ion-fab right bottom>\n\n    <button ion-fab color="primary" (click)="uploadPicture()" block [hidden]="deletedActive" ><ion-icon name="image"></ion-icon></button>\n\n  </ion-fab>\n\n  <ion-fab right bottom>\n\n    <button ion-fab color="success" [hidden]="!deletedActive"><ion-icon name="trash"></ion-icon></button>\n\n  </ion-fab>\n\n</ion-footer>\n\n'/*ion-inline-end:"D:\lab\icicmapp\ici.v1\src\pages\company-images\company-images.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* Platform */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["x" /* ViewController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_img_viewer__["a" /* ImageViewerController */],
+            __WEBPACK_IMPORTED_MODULE_0__angular_core__["X" /* Renderer */]])
+    ], CompanyImagesPage);
+    return CompanyImagesPage;
+}());
+
+//# sourceMappingURL=company-images.js.map
+
+/***/ }),
+
 /***/ 162:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CompanyInfoPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+/**
+ * Generated class for the CompanyInfoPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var CompanyInfoPage = /** @class */ (function () {
+    function CompanyInfoPage(navCtrl, navParams, viewCtrl, platform) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.viewCtrl = viewCtrl;
+        this.platform = platform;
+        this.tags = [];
+    }
+    CompanyInfoPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad CompanyInfoPage');
+    };
+    CompanyInfoPage.prototype.dismiss = function () {
+        this.viewCtrl.dismiss();
+    };
+    CompanyInfoPage.prototype.uploadPicture = function () {
+        this.platform.ready().then(function () {
+            VideoPicturePreviewPickerV2.openPicker(function (results) {
+                console.log(results);
+            }, function (error) {
+                console.log(error);
+            }, {
+                limit_Select: 1,
+                Is_multiSelect: false,
+                picture_selector: false,
+                video_selector: false,
+                display_video_time: false,
+                display_preview: true
+            });
+        });
+    };
+    CompanyInfoPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'page-company-info',template:/*ion-inline-start:"D:\lab\icicmapp\ici.v1\src\pages\company-info\company-info.html"*/'<!--\n\n  Generated template for the CompanyInfoPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-buttons start>\n\n      <button ion-button icon-only small (click)="dismiss()">\n\n        <ion-icon name="close" color="primary"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n    <ion-title class="uk-title-color-red">Information</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n\n\n<ion-card class="uk-background-default card-info no-border-radius" margin-bottom>\n\n  <ion-card-content class="uk-flex uk-flex-middle uk-flex-center">\n\n    <div class="uk-width-1-1">\n\n      <div class="uk-text-center uk-margin-auto">\n\n        <img src="assets/imgs/default.jpg" alt="" class="logo uk-border-circle uk-margin-auto uk-display-block" margin-bottom>\n\n        <button ion-button clear small class="button-custom-size" (click)="uploadPicture()">Modifier le logo</button>\n\n      </div>\n\n      <div class="uk-grid-collapse uk-grid">\n\n        <div class="uk-width-expand">\n\n          <ion-list no-margin>\n\n            <ion-item no-padding no-border>\n\n              <ion-select interface="action-sheet" multiple="false" placeholder="Selectionnez une catégorie principale">\n\n                <ion-option value="">Selectionnez une catégorie principale</ion-option>\n\n                <ion-option value="mute_15">For 15 Minutes</ion-option>\n\n                <ion-option value="mute_1">For 1 Hour</ion-option>\n\n                <ion-option value="mute_23">For 24 Hours</ion-option>\n\n                <ion-option value="mute_inf">Until I turn it back on</ion-option>\n\n              </ion-select>\n\n            </ion-item>\n\n          </ion-list>\n\n        </div>\n\n        <div class="uk-width-auto">\n\n            <button ion-button clear>\n\n              <ion-icon name="add"></ion-icon>\n\n            </button>\n\n        </div>\n\n      </div>\n\n    </div>\n\n  </ion-card-content>\n\n</ion-card>\n\n\n\n<div class="uk-background-default uk-padding uk-padding-remove-bottom uk-padding-remove-top">\n\n  <ion-list no-margin>\n\n    <ion-item no-padding no-border>\n\n      <ion-label floating>Nom de l\'entreprise</ion-label>\n\n      <ion-input type="text" value=""></ion-input>\n\n    </ion-item>\n\n    <ion-item no-padding>\n\n      <ion-label floating>Recherchez votre adresse</ion-label>\n\n      <ion-input type="text" value=""></ion-input>\n\n    </ion-item>\n\n    <ion-item no-padding>\n\n      <ion-label floating>Ville</ion-label>\n\n      <ion-input typwilrona\n\n                 e="text" value=""></ion-input>\n\n    </ion-item>\n\n    <ion-item no-padding>\n\n      <ion-label floating>Quartier</ion-label>\n\n      <ion-input type="text" value=""></ion-input>\n\n    </ion-item>\n\n    <ion-item no-padding>\n\n      <ion-label floating>Rue</ion-label>\n\n      <ion-input type="text" value=""></ion-input>\n\n    </ion-item>\n\n    <ion-item no-padding>\n\n      <ion-label floating>Boite Postale</ion-label>\n\n      <ion-input type="text" value=""></ion-input>\n\n    </ion-item>\n\n    <input type="hidden"  value="longitude">\n\n    <input type="hidden"  value="latitude">\n\n    <ion-item no-padding>\n\n      <ion-label floating>Repère de la position de votre entreprise</ion-label>\n\n      <ion-input type="text" value=""></ion-input>\n\n    </ion-item>\n\n    <ion-item no-padding>\n\n      <ion-label floating>Téléphone</ion-label>\n\n      <ion-input type="text" value=""></ion-input>\n\n    </ion-item>\n\n    <ion-item no-padding>\n\n      <ion-label floating>Adresse Email</ion-label>\n\n      <ion-input type="text" value=""></ion-input>\n\n    </ion-item>\n\n    <ion-item no-padding>\n\n      <ion-label floating>Site Web</ion-label>\n\n      <ion-input type="text" value=""></ion-input>\n\n    </ion-item>\n\n\n\n    <ion-item no-padding no-border>\n\n    </ion-item>\n\n  </ion-list>\n\n  <ion-label>Mot clés</ion-label>\n\n  <ion-tags-input [(ngModel)]="tags" [placeholder]="\'+ tags\'" [once]="\'true\'" [separatorStr]="\',\'" [type]="text" class="uk-margin-large-bottom"></ion-tags-input>\n\n\n\n</div>\n\n<div class="uk-height-fab"></div>\n\n\n\n</ion-content>\n\n<ion-footer>\n\n  <ion-fab right bottom>\n\n    <button ion-fab color="success"><ion-icon name="checkmark"></ion-icon></button>\n\n  </ion-fab>\n\n</ion-footer>\n\n'/*ion-inline-end:"D:\lab\icicmapp\ici.v1\src\pages\company-info\company-info.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["x" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* Platform */]])
+    ], CompanyInfoPage);
+    return CompanyInfoPage;
+}());
+
+//# sourceMappingURL=company-info.js.map
+
+/***/ }),
+
+/***/ 163:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -567,7 +567,7 @@ var ComptePage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'page-compte',template:/*ion-inline-start:"D:\lab\icicmapp\ici.v1\src\pages\compte\compte.html"*/'<!--\n\n  Generated template for the ComptePage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-toolbar padding-horizontal>\n\n    <ion-buttons left>\n\n      <button ion-button icon-only (click)="openMenu(\'right\')">\n\n        <ion-icon name="menu" color="primary"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n    <ion-title>\n\n      <img alt="logo" height="40"  src="assets/imgs/logoici.png" ><!--icicm1-->\n\n    </ion-title>\n\n\n\n    <!-- ion-buttons end>\n\n      <button ion-button icon-only>\n\n        <ion-icon name="pin" color="primary"></ion-icon>\n\n      </button>\n\n    </ion-buttons -->\n\n  </ion-toolbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"D:\lab\icicmapp\ici.v1\src\pages\compte\compte.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* MenuController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* MenuController */]])
     ], ComptePage);
     return ComptePage;
 }());
@@ -576,7 +576,7 @@ var ComptePage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 163:
+/***/ 164:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -615,9 +615,7 @@ var MapsPage = /** @class */ (function () {
         this.listMarker = new Array();
         // public listMarker = new Array();
         this.newMarkers = [];
-        this.currentMaker = [];
         menu.enable(true);
-        this.val = 0;
         this.events.subscribe('citiesfilter', function (cities) {
             _this.cities = cities;
         });
@@ -625,14 +623,10 @@ var MapsPage = /** @class */ (function () {
             _this.categories = categories;
         });
         events.subscribe('listingMap', function (listing) {
-            _this.listing = listing;
             _this.newMarkers = [];
-            _this.val = 1;
             _this.platform.ready().then(function () { return _this.loadMaps(); });
         });
-        if (this.val == 0) {
-            this.platform.ready().then(function () { return _this.loadMaps(); });
-        }
+        this.platform.ready().then(function () { return _this.loadMaps(); });
     }
     MapsPage.prototype.ionViewDidLoad = function () {
     };
@@ -725,10 +719,11 @@ var MapsPage = /** @class */ (function () {
         });
         google.maps.event.addListener(marker, 'click', (function (marker, i) {
             return function () {
-                console.log("marker " + marker);
-                console.log('index ' + i);
+                var heightDetail = document.getElementById('details').offsetHeight;
+                document.getElementById('map').style.height = 'calc(100% - ' + heightDetail + 'px)';
             };
         })(marker, i));
+        this.currentMaker = i;
         this.newMarkers.push(marker);
     };
     MapsPage.prototype.placeCluster = function () {
@@ -744,16 +739,8 @@ var MapsPage = /** @class */ (function () {
     MapsPage.prototype.getMarkers = function () {
         var _this = this;
         this.listingService.getMarkers(this.categories, this.cities).subscribe(function (data) {
-            console.log(_this.val);
-            if (_this.val == 0) {
-                _this.listing = data;
-                console.log("ici");
-            }
-            console.log("non " + _this.listing);
-            _this.placeMarkers(_this.listing);
+            _this.placeMarkers(data);
             _this.placeCluster();
-            // this.addMarkersToMap(this.listing);
-            // this.setMapOnAll(this.map);
         });
     };
     MapsPage.prototype.closedModal = function () {
@@ -767,11 +754,11 @@ var MapsPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'page-maps',template:/*ion-inline-start:"D:\lab\icicmapp\ici.v1\src\pages\maps\maps.html"*/'<!--\n\n  Generated template for the MapsPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-toolbar padding-horizontal>\n\n    <ion-buttons left>\n\n      <button ion-button icon-only (click)="openMenu(\'right\')">\n\n        <ion-icon name="menu" color="primary"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n    <ion-title>\n\n      <img alt="logo" height="40"  src="assets/imgs/logoici.png" ><!--icicm1-->\n\n    </ion-title>\n\n\n\n    <ion-buttons end>\n\n      <button ion-button icon-only (click)="openMenu(\'left\')">\n\n        <ion-icon name="funnel" color="primary"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-toolbar>\n\n</ion-header>\n\n\n\n<ion-content class="uk-position-relative">\n\n\n\n  <div #map id="map"></div>\n\n  <div class="uk-background-default uk-box-shadow-medium" id="details">\n\n    <ion-list>\n\n      <ion-card>\n\n        <ion-card-content>\n\n          <ion-grid>\n\n\n\n            <ion-row>\n\n              <ion-col col-9>\n\n                <h2 class="uk-text-truncate uk-margin-remove">Nom de l\'entreprise</h2>\n\n                <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-muted" style="margin-bottom: 4px !important;">ville et quartier</div>\n\n                <!-- div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-success uk-text-small"> <ion-icon name="checkmark-circle"></ion-icon> Entreprise validé</div -->\n\n                <!-- <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-danger uk-text-small"> <ion-icon name="close"></ion-icon> Validation en cours</div> -->\n\n              </ion-col>\n\n              <ion-col col-3>\n\n                <rating  [(ngModel)]="rate"\n\n                         readOnly="true"\n\n                         max="5"\n\n                         emptyStarIconName="star-outline"\n\n                         halfStarIconName="star-half"\n\n                         starIconName="star"\n\n                         nullable="false" ></rating>\n\n                <div class="uk-text-right uk-h4 uk-margin-remove">3 avis</div>\n\n                <!-- div class="uk-text-right uk-text-success uk-h4 uk-margin-remove">8h à 18h30</div -->\n\n              </ion-col>\n\n              <ion-col col class="uk-padding-remove-vertical">\n\n                <hr no-margin="">\n\n              </ion-col>\n\n            </ion-row>\n\n            <ion-row>\n\n              <ion-col col-9>\n\n                <ion-item class="item-compagny">\n\n                  <ion-thumbnail item-start>\n\n                    <img src="http://yoomeeonl.webfactional.com/media/pictures/companies/default.jpg" class="uk-responsive-height">\n\n                  </ion-thumbnail>\n\n                  <div>\n\n                    <ion-badge item-end class="uk-margin-remove-top uk-margin-remove-left uk-margin-remove-right">Catégorie</ion-badge>\n\n                  </div>\n\n\n\n                  <div class="uk-h4 uk-margin-remove">\n\n                    <ul class="uk-text-small uk-padding-small uk-padding-remove-vertical uk-padding-remove-right" no-margin>\n\n                      <li>Adresse</li>\n\n                      <li>Localisation Localisation Localisation Localisation</li>\n\n                    </ul>\n\n                  </div>\n\n\n\n                </ion-item>\n\n              </ion-col>\n\n              <ion-col col-3 class="uk-position-relative">\n\n                <div class="uk-position-bottom-right">\n\n                  <ion-icon name="call" class="icon-m"></ion-icon>\n\n                  <ion-icon name="mail" class="icon-m"></ion-icon>\n\n                </div>\n\n              </ion-col>\n\n            </ion-row>\n\n            <ion-row no-padding no-margin>\n\n              <ion-col col-12 class="uk-position-relative" no-padding>\n\n                <div class="uk-text-center">\n\n                  <button ion-button clear small icon-only block (tap)="closedModal()">Fermé</button>\n\n                </div>\n\n              </ion-col>\n\n            </ion-row>\n\n          </ion-grid>\n\n        </ion-card-content>\n\n      </ion-card>\n\n    </ion-list>\n\n  </div>\n\n\n\n\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"D:\lab\icicmapp\ici.v1\src\pages\maps\maps.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* MenuController */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* MenuController */],
             __WEBPACK_IMPORTED_MODULE_2__providers_companies_companies__["a" /* CompaniesProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["w" /* ToastController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* Platform */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* Platform */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Events */]])
     ], MapsPage);
     return MapsPage;
@@ -781,7 +768,7 @@ var MapsPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 176:
+/***/ 177:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -794,53 +781,53 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 176;
+webpackEmptyAsyncContext.id = 177;
 
 /***/ }),
 
-/***/ 220:
+/***/ 221:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
 	"../pages/annuaire/annuaire.module": [
-		710,
-		20
+		711,
+		9
 	],
 	"../pages/company-category/company-category.module": [
-		705,
-		19
+		712,
+		8
 	],
 	"../pages/company-description/company-description.module": [
-		706,
-		18
+		713,
+		7
 	],
 	"../pages/company-images/company-images.module": [
-		707,
-		17
+		714,
+		6
 	],
 	"../pages/company-info/company-info.module": [
-		708,
-		16
+		715,
+		5
 	],
 	"../pages/company/company.module": [
-		709,
-		11
+		716,
+		0
 	],
 	"../pages/compte/compte.module": [
-		712,
-		15
+		717,
+		4
 	],
 	"../pages/login/login.module": [
-		721,
-		14
+		718,
+		3
 	],
 	"../pages/maps/maps.module": [
-		713,
-		13
+		719,
+		2
 	],
 	"../pages/review-form/review-form.module": [
-		711,
-		12
+		720,
+		1
 	]
 };
 function webpackAsyncContext(req) {
@@ -854,22 +841,22 @@ function webpackAsyncContext(req) {
 webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
-webpackAsyncContext.id = 220;
+webpackAsyncContext.id = 221;
 module.exports = webpackAsyncContext;
 
 /***/ }),
 
-/***/ 354:
+/***/ 363:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__home_home__ = __webpack_require__(355);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__home_home__ = __webpack_require__(364);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__annuaire_annuaire__ = __webpack_require__(161);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__maps_maps__ = __webpack_require__(163);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__compte_compte__ = __webpack_require__(162);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__annuaire_annuaire__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__maps_maps__ = __webpack_require__(164);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__compte_compte__ = __webpack_require__(163);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -886,13 +873,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var TabsPage = /** @class */ (function () {
-    function TabsPage(navCtrl, menu) {
+    function TabsPage(navCtrl, menu, events) {
+        var _this = this;
         this.navCtrl = navCtrl;
         this.menu = menu;
+        this.events = events;
         this.tab1Root = __WEBPACK_IMPORTED_MODULE_1__home_home__["a" /* HomePage */];
         this.tab2Root = __WEBPACK_IMPORTED_MODULE_3__annuaire_annuaire__["a" /* AnnuairePage */];
         this.tab3Root = __WEBPACK_IMPORTED_MODULE_4__maps_maps__["a" /* MapsPage */];
         this.tab4Root = __WEBPACK_IMPORTED_MODULE_5__compte_compte__["a" /* ComptePage */];
+        this.MapsParams = {};
+        events.subscribe('listingMap', function (listing) {
+            _this.MapsParams['data'] = listing;
+            _this.MapsParams['tab'] = true;
+        });
     }
     TabsPage.prototype.menuToggle = function () {
         this.menu.enable(true, 'menu');
@@ -900,7 +894,7 @@ var TabsPage = /** @class */ (function () {
     TabsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"D:\lab\icicmapp\ici.v1\src\pages\tabs\tabs.html"*/'\n\n<ion-tabs tabsHighlight="true" selectedIndex="0" tabsPlacement="bottom"  (ionChange)="menuToggle()">\n\n  <ion-tab [root]="tab1Root" tabIcon="home"></ion-tab>\n\n  <ion-tab [root]="tab2Root" tabIcon="list"></ion-tab>\n\n  <ion-tab [root]="tab3Root" tabIcon="locate"></ion-tab>\n\n  <ion-tab [root]="tab4Root" tabIcon="person"></ion-tab>\n\n</ion-tabs>\n\n'/*ion-inline-end:"D:\lab\icicmapp\ici.v1\src\pages\tabs\tabs.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["s" /* NavController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["q" /* MenuController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["r" /* NavController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["p" /* MenuController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* Events */]])
     ], TabsPage);
     return TabsPage;
 }());
@@ -909,14 +903,14 @@ var TabsPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 355:
+/***/ 364:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__company_company__ = __webpack_require__(365);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__company_company__ = __webpack_require__(366);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -953,7 +947,7 @@ var HomePage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'page-home',template:/*ion-inline-start:"D:\lab\icicmapp\ici.v1\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-toolbar padding-horizontal>\n\n    <ion-buttons left>\n\n      <button ion-button icon-only (click)="openMenu(\'right\')">\n\n        <ion-icon name="menu" color="primary"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n    <ion-title>\n\n      <img alt="logo" height="40"  src="assets/imgs/logoici.png" ><!--icicm1-->\n\n    </ion-title>\n\n\n\n    <ion-buttons end>\n\n      <button ion-button icon-only>\n\n        <ion-icon name="pin" color="primary"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-toolbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n\n\n  <div class="uk-height-medium uk-background-cover uk-position-relative uk-flex uk-flex-center uk-flex-middle" style="background-image: url(\'assets/imgs/back.jpg\');">\n\n    <div class="uk-position-cover cover"></div>\n\n    <div class="uk-content-cover">\n\n      <div class="uk-h2 uk-margin-large-bottom">Bienvenue sur ICI.CM</div>\n\n      <ion-auto-complete [options]="{ placeholder : \'Rechercher un lieu\' }" [(ngModel)]="keyword"></ion-auto-complete>\n\n    </div>\n\n  </div>\n\n\n\n  <div class="uk-card uk-card-default">\n\n    <div class="uk-card-header uk-text-left uk-padding-small uk-position-relative">\n\n      <h6 class="uk-margin-remove">Nouveaux lieux</h6>\n\n\n\n    </div>\n\n    <div class="uk-card-body uk-padding-remove">\n\n      <ion-slides slidesPerView=1.5 autoplay="5000" loop="false" speed="1000" >\n\n        <ion-slide>\n\n          <ion-card>\n\n            <img src="http://yoomeeonl.webfactional.com/media/pictures/companies/default.jpg"/>\n\n            <ion-card-content class="uk-position-relative">\n\n              <ion-badge item-end class="uk-margin-small">Catégorie Catégorie Catégorie</ion-badge>\n\n              <h2 class="uk-text-truncate uk-margin-remove" (click)="OpenDetail()">Nom de l\'entreprise</h2>\n\n              <small>Ville</small>\n\n              <div class="uk-position-bottom-right uk-padding-small">\n\n                <rating  [(ngModel)]="rate"\n\n                         readOnly="true"\n\n                         max="5"\n\n                         emptyStarIconName="star-outline"\n\n                         halfStarIconName="star-half"\n\n                         starIconName="star"\n\n                         nullable="false" ></rating>\n\n\n\n              </div>\n\n            </ion-card-content>\n\n          </ion-card>\n\n        </ion-slide>\n\n        <ion-slide>\n\n          <ion-card>\n\n            <img src="http://yoomeeonl.webfactional.com/media/pictures/companies/default.jpg"/>\n\n            <ion-card-content class="uk-position-relative">\n\n              <ion-badge item-end class="uk-margin-small">Catégorie Catégorie Catégorie</ion-badge>\n\n              <h2 class="uk-text-truncate uk-margin-remove">Nom de l\'entreprise</h2>\n\n              <small>Ville</small>\n\n              <div class="uk-position-bottom-right uk-padding-small">\n\n                <rating  [(ngModel)]="rate"\n\n                         readOnly="true"\n\n                         max="5"\n\n                         emptyStarIconName="star-outline"\n\n                         halfStarIconName="star-half"\n\n                         starIconName="star"\n\n                         nullable="false" ></rating>\n\n\n\n              </div>\n\n            </ion-card-content>\n\n          </ion-card>\n\n        </ion-slide>\n\n      </ion-slides>\n\n    </div>\n\n  </div>\n\n\n\n</ion-content>\n\n\n\n'/*ion-inline-end:"D:\lab\icicmapp\ici.v1\src\pages\home\home.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* MenuController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* MenuController */]])
     ], HomePage);
     return HomePage;
 }());
@@ -962,22 +956,23 @@ var HomePage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 365:
+/***/ 366:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CompanyPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__company_description_company_description__ = __webpack_require__(157);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__company_images_company_images__ = __webpack_require__(158);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__company_info_company_info__ = __webpack_require__(160);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__company_category_company_category__ = __webpack_require__(156);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__company_description_company_description__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__company_images_company_images__ = __webpack_require__(160);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__company_info_company_info__ = __webpack_require__(162);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__company_category_company_category__ = __webpack_require__(158);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_companies_companies__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_email_composer__ = __webpack_require__(132);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_call_number__ = __webpack_require__(134);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_email_composer__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_call_number__ = __webpack_require__(117);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_native_in_app_browser__ = __webpack_require__(311);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_review_form_review_form__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_login_login__ = __webpack_require__(368);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_review_form_review_form__ = __webpack_require__(87);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -987,6 +982,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -1022,10 +1018,16 @@ var CompanyPage = /** @class */ (function () {
         this.dark = true;
         /*public ;*/
         this.business = {};
+        this.userexist = false;
         this.idcompagnie = navParams
             .get("idcompagnie");
         this.loadData(this.idcompagnie);
         //this.desc=this.business.description;
+        var currentUser = JSON.parse(localStorage.getItem('userId'));
+        this.user = currentUser;
+        if (localStorage.getItem("userId")) {
+            this.userexist = true;
+        }
     }
     CompanyPage.prototype.loadData = function (id) {
         var _this = this;
@@ -1076,13 +1078,15 @@ var CompanyPage = /** @class */ (function () {
         categoryModal.present();
     };
     CompanyPage.prototype.onModelChange = function (val, companyId) {
-        //if(this.userexist==true){
-        var myModal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_10__pages_review_form_review_form__["a" /* ReviewFormPage */], { vote: val, companyId: companyId });
-        myModal.present();
-        /* } else{
-            let myModal = this.modalCtrl.create(LoginPage);
+        alert(this.user);
+        if (this.userexist == true) {
+            var myModal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_11__pages_review_form_review_form__["a" /* ReviewFormPage */], { vote: val, companyId: companyId });
             myModal.present();
-         }*/
+        }
+        else {
+            var myModal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_10__pages_login_login__["a" /* LoginPage */]);
+            myModal.present();
+        }
     };
     CompanyPage.prototype.loadMap = function () {
         var latLng = new google.maps.LatLng(-34.9290, 138.6010);
@@ -1127,40 +1131,154 @@ var CompanyPage = /** @class */ (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Content */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Content */])
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Content */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Content */]) === "function" && _a || Object)
     ], CompanyPage.prototype, "content", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* ViewChild */])('map'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ElementRef */])
+        __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ElementRef */]) === "function" && _b || Object)
     ], CompanyPage.prototype, "mapElement", void 0);
     CompanyPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'page-company',template:/*ion-inline-start:"D:\lab\icicmapp\ici.v1\src\pages\company\company.html"*/'<!--\n\n  Generated template for the CompanyPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n\n\n<ion-header shadow>\n\n\n\n  <ion-navbar [class.show-background]="showToolbar">\n\n    <ion-title [hidden]="!showToolbar" class="uk-text-truncate">{{business.name}}</ion-title>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only small (click)="openInfoEdit()">\n\n        <ion-icon name="create"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content  class="content"\n\n              (ionScroll)="onScroll($event)"\n\n              [class.transition]="transition"\n\n              [style.background-size]="headerImgSize"\n\n              [style.backgroundImage]="\'url(http://yoomeeonl.webfactional.com/media/pictures/companies/\'+ business.imageune +\')\'"><!--headerImgUrl-->\n\n\n\n  <div class="user-info uk-height-small uk-flex uk-flex-middle uk-flex-center">\n\n    <h2 class="uk-size" padding-horizontal>{{business.name}}</h2>\n\n  </div>\n\n\n\n  <div class="contents">\n\n\n\n    <button ion-button block class="uk-block-button">Consultez notre vidéo</button>\n\n\n\n    <ion-card no-margin class="card-info">\n\n      <ion-card-content no-padding>\n\n        <ion-grid>\n\n          <ion-row>\n\n            <ion-col col-9>\n\n              <ion-item class="item-compagny uk-padding-remove">\n\n                <ion-thumbnail item-start>\n\n\n\n                  <img  *ngIf="business.logo==\'\'" src="assets/imgs/default.jpg" class="uk-responsive-height uk-border-circle">\n\n                  <img  *ngIf="business.logo!=\'\'" src="{{business.logo}}" class="uk-responsive-height uk-border-circle">\n\n                </ion-thumbnail>\n\n                <div>\n\n                  <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-muted" style="margin-bottom: 4px !important;">{{business.ville}} {{business.quartier}}</div>\n\n                  <!--  <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-success uk-text-small"> <ion-icon name="checkmark-circle"></ion-icon> Entreprise validé</div>\n\n                  <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-danger uk-text-small"> <ion-icon name="close"></ion-icon> Validation en cours</div> -->\n\n                  <ion-badge item-end class="uk-margin-remove-top uk-margin-remove-left uk-margin-remove-right">{{business.categorie}}</ion-badge>\n\n                </div>\n\n\n\n              </ion-item>\n\n            </ion-col>\n\n            <ion-col col-3 class="uk-position-relative">\n\n              <div class="">\n\n                <rating  [(ngModel)]="business.ratecount"\n\n                         readOnly="true"\n\n                         max="5"\n\n                         emptyStarIconName="star-outline"\n\n                         halfStarIconName="star-half"\n\n                         starIconName="star"\n\n                         nullable="false" ></rating>\n\n                <div class="uk-text-right uk-h4 uk-margin-remove">{{business.reviewcount}} avis</div>\n\n                <div class="uk-text-right uk-text-danger uk-text-bold uk-h4 uk-margin-remove">Fermé</div>\n\n              </div>\n\n            </ion-col>\n\n          </ion-row>\n\n        </ion-grid>\n\n      </ion-card-content>\n\n    </ion-card>\n\n\n\n    <ion-card no-margin margin-top class="card-info">\n\n      <ion-card-header no-padding>\n\n        <ion-segment [(ngModel)]="segmentation">\n\n          <ion-segment-button value="desc" (ionSelect)="activeLocation()">\n\n            Description\n\n          </ion-segment-button>\n\n          <ion-segment-button value="locale" (ionSelect)="activeMap()"  *ngIf="business.latitude!=\'\'">\n\n            Localisation\n\n          </ion-segment-button>\n\n          <ion-segment-button value="avis" (ionSelect)="activeAvis()">\n\n            Avis\n\n          </ion-segment-button>\n\n        </ion-segment>\n\n      </ion-card-header>\n\n      <ion-card-content [ngSwitch]="segmentation" no-padding>\n\n        <div *ngSwitchCase="\'desc\'" class="uk-height-1-1 uk-position-relative uk-padding-small">\n\n\n\n          <div class="uk-position-relative">\n\n            <ion-label ion-text class="uk-text-bold uk-display-block">Image</ion-label>\n\n            <div class="uk-position-center-right">\n\n              <button ion-button clear small class="button-custom-size" (click)="openImageEdit()">Gérer</button>\n\n            </div>\n\n          </div>\n\n\n\n\n\n          <ion-slides loop="true" slidesPerView="4" margin-top spaceBetween="3" >\n\n\n\n\n\n              <ion-slide *ngFor="let item of business.gallery">\n\n                <img alt="city"  src="http://yoomeeonl.webfactional.com/media/pictures/companies/{{item.url}}"  imageViewer>\n\n              </ion-slide>\n\n\n\n\n\n          </ion-slides>\n\n          <hr>\n\n          <div class="uk-text-break uk-position-relative">\n\n            <div class="uk-height-max-small" style="overflow: hidden">\n\n               {{business.description}}\n\n             </div>\n\n            <div class="show-more-end"></div>\n\n\n\n            <div class="uk-text-center" *ngIf="business.description!=\'\'">\n\n              <button ion-button clear small (click)="openDescriptionEdit(business.description, business.name, business._id.$id)">Lire la suite</button>\n\n            </div>\n\n          </div>\n\n          <hr>\n\n          <ion-grid no-padding>\n\n            <ion-row>\n\n              <ion-col col-5>\n\n                <ion-label class="uk-text-bold">\n\n                  Autres catégories :\n\n                </ion-label>\n\n              </ion-col>\n\n              <ion-col col-7>\n\n                <div ion-text class="uk-text-break">\n\n                    <p *ngFor="let item of business.tags">\n\n                      <span *ngIf="item.cat==1">{{item.key}} </span>\n\n                    </p>\n\n                    <div>\n\n                      <button ion-button clear small class="button-custom-size" (click)="openCategoryEdit()">Gérer vos categories</button>\n\n                    </div>\n\n                </div>\n\n              </ion-col>\n\n            </ion-row>\n\n          </ion-grid>\n\n          <hr>\n\n          <ion-grid no-padding>\n\n            <ion-row>\n\n              <ion-col col-12 class="uk-position-relative">\n\n                <ion-label class="uk-text-bold">\n\n                  Horaire :\n\n                </ion-label>\n\n                <span class="uk-text-success">Ouvert</span> aujourd\'hui de 08h à 15h\n\n              </ion-col>\n\n            </ion-row>\n\n          </ion-grid>\n\n        </div>\n\n        <div *ngSwitchCase="\'locale\'" class="uk-height-1-1"  >\n\n          <maps [business]="business"></maps>\n\n        </div>\n\n        <div *ngSwitchCase="\'avis\'" class="uk-height-1-1">\n\n          <div class="uk-padding-small rating-block uk-text-center">\n\n\n\n            <div ion-text class="uk-h1 uk-text-center uk-margin-remove-bottom" color="dark">Noté ce professionnel</div>\n\n            <div ion-text class="uk-h3 uk-text-center uk-margin-small-top">Cliquez sur les etoiles pour noter ce professionnel</div>\n\n            <rating  [(ngModel)]="valiRate"\n\n                     readOnly="false"\n\n                     max="5"\n\n                     emptyStarIconName="star-outline"\n\n                     halfStarIconName="star-half"\n\n                     starIconName="star"\n\n                     nullable="false" (ngModelChange)="onModelChange($event, business._id.$id)"></rating>\n\n\n\n            <button ion-button clear class="uk-text-center" (click)="onModelChange(valiRate,business._id.$id)">Ecrire un avis</button>\n\n\n\n          </div>\n\n\n\n          <hr>\n\n\n\n          <ion-list>\n\n            <ion-item *ngFor="let item of business.reviews">\n\n              <ion-avatar item-start>\n\n                <img src="http://yoomeeonl.webfactional.com/{{item.picture}}">\n\n             \n\n              </ion-avatar>\n\n              <div class="uk-position-relative uk-comments">\n\n                <h2>{{item.username}}</h2>\n\n                <rating  [(ngModel)]="item.rate"\n\n                                          readOnly="true"\n\n                                          max="5"\n\n                                          emptyStarIconName="star-outline"\n\n                                          halfStarIconName="star-half"\n\n                                          starIconName="star"\n\n                                          nullable="false" ></rating>\n\n                <ion-note class="uk-position-center-right">{{item.date}}</ion-note>\n\n              </div>\n\n              <p>{{item.review}}</p>\n\n              <hr>\n\n            </ion-item>\n\n\n\n        \n\n\n\n          </ion-list>\n\n\n\n\n\n        </div>\n\n      </ion-card-content>\n\n    </ion-card>\n\n\n\n  </div>\n\n\n\n</ion-content>\n\n\n\n<ion-footer [class.bgFooter]="dark">\n\n  <ion-grid>\n\n\n\n\n\n    \n\n    <ion-row [hidden]="!dark">\n\n      <ion-col col-4 padding-horizontal class="uk-flex uk-flex-center" style="height: 56px">\n\n        <button ion-button clear color="white" (click)="callCompany(item.phone)"><ion-icon name="call"></ion-icon></button>\n\n      </ion-col>\n\n\n\n      <ion-col col-4 padding-horizontal class="uk-flex uk-flex-center" style="height: 56px">\n\n        <button ion-button clear color="white" (click)="emailCompany(item.email)"><ion-icon name="mail"></ion-icon></button>\n\n\n\n      </ion-col>\n\n      <ion-col col-4 padding-horizontal class="uk-flex uk-flex-center" style="height: 56px">\n\n        <button ion-button clear color="white"><ion-icon name="globe"></ion-icon></button>\n\n      </ion-col>\n\n    </ion-row>\n\n    <ion-row [hidden]="dark">\n\n      <ion-col col-12 padding-horizontal class="uk-text-center uk-flex uk-flex-middle uk-flex-center" style="height: 56px">\n\n        <span ion-text color="primary">{{business.adresse}} {{business.repere}}</span>\n\n      </ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n</ion-footer>\n\n'/*ion-inline-end:"D:\lab\icicmapp\ici.v1\src\pages\company\company.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_0__angular_core__["k" /* ChangeDetectorRef */],
-            __WEBPACK_IMPORTED_MODULE_0__angular_core__["X" /* Renderer */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_6__providers_companies_companies__["a" /* CompaniesProvider */],
-            __WEBPACK_IMPORTED_MODULE_7__ionic_native_email_composer__["a" /* EmailComposer */],
-            __WEBPACK_IMPORTED_MODULE_8__ionic_native_call_number__["a" /* CallNumber */],
-            __WEBPACK_IMPORTED_MODULE_9__ionic_native_in_app_browser__["a" /* InAppBrowser */]])
+        __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavParams */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["k" /* ChangeDetectorRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["k" /* ChangeDetectorRef */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["X" /* Renderer */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["X" /* Renderer */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ModalController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_6__providers_companies_companies__["a" /* CompaniesProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__providers_companies_companies__["a" /* CompaniesProvider */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_7__ionic_native_email_composer__["a" /* EmailComposer */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__ionic_native_email_composer__["a" /* EmailComposer */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_8__ionic_native_call_number__["a" /* CallNumber */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8__ionic_native_call_number__["a" /* CallNumber */]) === "function" && _k || Object, typeof (_l = typeof __WEBPACK_IMPORTED_MODULE_9__ionic_native_in_app_browser__["a" /* InAppBrowser */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_9__ionic_native_in_app_browser__["a" /* InAppBrowser */]) === "function" && _l || Object])
     ], CompanyPage);
     return CompanyPage;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;
 }());
 
 //# sourceMappingURL=company.js.map
 
 /***/ }),
 
-/***/ 367:
+/***/ 368:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__ = __webpack_require__(419);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_storage__ = __webpack_require__(686);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+/*import { ModalPage } from '../../pages/modal-page/modal-page';
+import { AddGpsPage } from '../../pages/add-gps/add-gps';*/
+
+
+//import {JwtHelper} from "angular2-jwt";
+
+/**
+ * Generated class for the LoginPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var LoginPage = /** @class */ (function () {
+    function LoginPage(events, app, storage, navCtrl, http, toastCtrl, navParams, formBuilder, modalCtrl, users) {
+        this.events = events;
+        this.app = app;
+        this.storage = storage;
+        this.navCtrl = navCtrl;
+        this.http = http;
+        this.toastCtrl = toastCtrl;
+        this.navParams = navParams;
+        this.formBuilder = formBuilder;
+        this.modalCtrl = modalCtrl;
+        this.users = users;
+        // When the page loads, we want the Login segment to be selected
+        this.authType = "login";
+        // We need to set the content type for the server
+        this.contentHeader = new __WEBPACK_IMPORTED_MODULE_4__angular_http__["a" /* Headers */]({ "Content-Type": "application/json" });
+        this.validations_form = this.formBuilder.group({
+            login: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
+            password: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required]
+        });
+        this.validation_messages = {
+            'login': [
+                { type: 'required', message: 'Login is required.' }
+            ],
+            'password': [
+                { type: 'required', message: 'password is required.' }
+            ]
+        };
+    }
+    LoginPage.prototype.openModal = function () {
+        /*  let myModal = this.modalCtrl.create(ModalPage); //ModalPage
+          myModal.present();*/
+    };
+    LoginPage.prototype.connexion = function (val) {
+        var _this = this;
+        var myData = JSON.stringify({ email: val.login, password: val.password });
+        this.http.post("http://yoomeeonl.webfactional.com/MobileApp/login", myData)
+            .map(function (result) {
+            return result.json();
+        })
+            .subscribe(function (data) {
+            console.log(data["id"]);
+            if (data["id"] == 0) {
+                _this.presentToast("Votre login nexiste pas, veuillez pour inscrire.");
+            }
+            else {
+                //console.log(data["_body"]); 
+                localStorage.setItem('userId', JSON.stringify({ id: data["id"], lastName: data["last_name"], firstName: data["first_name"], email: data["email"] }));
+                //this.navCtrl.push('CpanelPage');
+                //  let nav = this.app.getRootNav();
+                // nav.setRoot('CpanelPage');
+                _this.events.publish('userexist', true);
+                _this.navCtrl.popToRoot();
+                //this.navCtrl.setRoot ('CpanelPage');
+            }
+        }, function (error) {
+            console.log("Oooops!");
+        });
+    };
+    LoginPage.prototype.authSuccess = function (token) {
+        this.error = null;
+        this.storage.set('token', token);
+        //   this.user = this.jwtHelper.decodeToken(token).username;
+        this.storage.set('profile', this.user);
+    };
+    LoginPage.prototype.presentToast = function (text) {
+        var toast = this.toastCtrl.create({
+            message: text,
+            duration: 5000,
+            position: 'top'
+        });
+        toast.present();
+    };
+    LoginPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'page-login',template:/*ion-inline-start:"D:\lab\icicmapp\ici.v1\src\pages\login\login.html"*/'<!--\n  Generated template for the LoginPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>login</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding class="form-content">\n  <form class="form" [formGroup]="validations_form"  (ngSubmit)="connexion(validations_form.value)">\n   \n    <ion-item>\n      <ion-label floating color="primary">Login</ion-label>\n      <ion-input type="text" formControlName="login"></ion-input>\n    </ion-item>\n    <div class="validation-errors">\n      <ng-container *ngFor="let validation of validation_messages.login">\n        <div class="error-message" *ngIf="validations_form.get(\'login\').hasError(validation.type) && (validations_form.get(\'login\').dirty || validations_form.get(\'login\').touched)">\n          {{ validation.message }}\n        </div>\n      </ng-container>\n    </div>\n\n    <ion-item>\n      <ion-label floating color="primary">Mot de passe</ion-label>\n      <ion-input type="password" formControlName="password"></ion-input>\n    </ion-item>\n    <div class="validation-errors">\n      <ng-container *ngFor="let validation of validation_messages.password">\n        <div class="error-message" *ngIf="validations_form.get(\'password\').hasError(validation.type) && (validations_form.get(\'password\').dirty || validations_form.get(\'password\').touched)">\n          {{ validation.message }}\n        </div>\n      </ng-container>\n    </div>\n\n    \n\n\n  \n    <button ion-button full type="submit" [disabled]="!validations_form.valid">log</button>\n  </form>\n  <button ion-button block (click)="openModal()">Mot de passe oublié?</button>\n</ion-content>\n'/*ion-inline-end:"D:\lab\icicmapp\ici.v1\src\pages\login\login.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Events */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* App */], __WEBPACK_IMPORTED_MODULE_5__ionic_storage__["a" /* Storage */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavController */], __WEBPACK_IMPORTED_MODULE_4__angular_http__["b" /* Http */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ModalController */], __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */]])
+    ], LoginPage);
+    return LoginPage;
+}());
+
+//# sourceMappingURL=login.js.map
+
+/***/ }),
+
+/***/ 369:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(368);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(372);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(370);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(374);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -1168,7 +1286,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 372:
+/***/ 374:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1176,29 +1294,29 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(433);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(355);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_tabs_tabs__ = __webpack_require__(354);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_status_bar__ = __webpack_require__(352);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_splash_screen__ = __webpack_require__(353);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ionic2_auto_complete__ = __webpack_require__(434);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_ionic2_rating__ = __webpack_require__(366);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_annuaire_annuaire__ = __webpack_require__(161);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_filtre_filtre__ = __webpack_require__(702);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_ionic_img_viewer__ = __webpack_require__(159);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_company_description_company_description__ = __webpack_require__(157);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_company_images_company_images__ = __webpack_require__(158);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_company_info_company_info__ = __webpack_require__(160);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_company_category_company_category__ = __webpack_require__(156);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_review_form_review_form__ = __webpack_require__(85);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_login_login__ = __webpack_require__(715);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_ionic_tags_input__ = __webpack_require__(703);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_maps_maps__ = __webpack_require__(163);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__angular_http__ = __webpack_require__(131);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__ionic_native_email_composer__ = __webpack_require__(132);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__ionic_native_call_number__ = __webpack_require__(134);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(706);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(364);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_tabs_tabs__ = __webpack_require__(363);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_status_bar__ = __webpack_require__(361);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_splash_screen__ = __webpack_require__(362);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ionic2_auto_complete__ = __webpack_require__(707);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_ionic2_rating__ = __webpack_require__(367);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_annuaire_annuaire__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_filtre_filtre__ = __webpack_require__(708);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_ionic_img_viewer__ = __webpack_require__(161);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_company_description_company_description__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_company_images_company_images__ = __webpack_require__(160);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_company_info_company_info__ = __webpack_require__(162);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_company_category_company_category__ = __webpack_require__(158);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_review_form_review_form__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_login_login__ = __webpack_require__(368);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_ionic_tags_input__ = __webpack_require__(709);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_maps_maps__ = __webpack_require__(164);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__angular_http__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__ionic_native_email_composer__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__ionic_native_call_number__ = __webpack_require__(117);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__providers_companies_companies__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_compte_compte__ = __webpack_require__(162);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_compte_compte__ = __webpack_require__(163);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__ionic_native_in_app_browser__ = __webpack_require__(311);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1258,16 +1376,16 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */], { tabsHideOnSubPages: 'true' }, {
                     links: [
+                        { loadChildren: '../pages/annuaire/annuaire.module#AnnuairePageModule', name: 'AnnuairePage', segment: 'annuaire', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/company-category/company-category.module#CompanyCategoryPageModule', name: 'CompanyCategoryPage', segment: 'company-category', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/company-description/company-description.module#CompanyDescriptionPageModule', name: 'CompanyDescriptionPage', segment: 'company-description', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/company-images/company-images.module#CompanyImagesPageModule', name: 'CompanyImagesPage', segment: 'company-images', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/company-info/company-info.module#CompanyInfoPageModule', name: 'CompanyInfoPage', segment: 'company-info', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/company/company.module#CompanyPageModule', name: 'CompanyPage', segment: 'company', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/annuaire/annuaire.module#AnnuairePageModule', name: 'AnnuairePage', segment: 'annuaire', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/review-form/review-form.module#ReviewFormPageModule', name: 'ReviewFormPage', segment: 'review-form', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/compte/compte.module#ComptePageModule', name: 'ComptePage', segment: 'compte', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/maps/maps.module#MapsPageModule', name: 'MapsPage', segment: 'maps', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/review-form/review-form.module#ReviewFormPageModule', name: 'ReviewFormPage', segment: 'review-form', priority: 'low', defaultHistory: [] }
                     ]
                 }),
                 __WEBPACK_IMPORTED_MODULE_8_ionic2_auto_complete__["a" /* AutoCompleteModule */],
@@ -1309,17 +1427,19 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 433:
+/***/ 419:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(352);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(353);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_tabs_tabs__ = __webpack_require__(354);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_companies_companies__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__ = __webpack_require__(116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__ = __webpack_require__(313);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1333,66 +1453,69 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+//import {AuthHttp} from 'angular2-jwt';
 
+/*
+  Generated class for the AuthProvider provider.
 
-
-var MyApp = /** @class */ (function () {
-    function MyApp(platform, statusBar, splashScreen, menu, events, listingService) {
-        var _this = this;
-        this.menu = menu;
-        this.events = events;
-        this.listingService = listingService;
-        this.rootPage = __WEBPACK_IMPORTED_MODULE_4__pages_tabs_tabs__["a" /* TabsPage */];
-        platform.ready().then(function () {
-            // Okay, so the platform is ready and our plugins are available.
-            // Here you can do any higher level native things you might need.
-            statusBar.styleDefault();
-            splashScreen.hide();
-        });
-        this.events.subscribe('citiesfilter', function (cities) {
-            _this.citiesfilter = cities;
-        });
-        this.events.subscribe('categoriesfilter', function (categories) {
-            _this.categoriesfilter = categories;
-        });
+  See https://angular.io/guide/dependency-injection for more info on providers
+  and Angular DI.
+*/
+var AuthProvider = /** @class */ (function () {
+    function AuthProvider(http) {
+        this.http = http;
+        console.log('Hello AuthProvider Provider');
     }
-    MyApp.prototype.closedFiltre = function () {
-        this.menu.enable(true, 'menu');
+    AuthProvider.prototype.getUser = function (user_login, user_password) {
+        var body = "email=" + user_login + "&password=" + user_password;
+        var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]();
+        headers.append('Content-Type', 'application/x-www-form-urlencoded');
+        var options = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["d" /* RequestOptions */]({ headers: headers });
+        return this.http.post('http://yoomeeonl.webfactional.com/MobileApp/login', body, options)
+            .map(this.extractData)
+            .catch(this.handleError);
     };
-    MyApp.prototype.filtre = function () {
-        //   console.log("nn0 ");
-        var _this = this;
-        this.listingService.getListing(this.categoriesfilter, this.citiesfilter).subscribe(function (data) {
-            _this.listing = data;
-            console.log("nn2 " + data);
-            _this.events.publish('listing', data);
-        });
-        this.listingService.getMarkers(this.categoriesfilter, this.citiesfilter).subscribe(function (data) {
-            _this.listingMap = data;
-            console.log("nn1 " + data);
-            _this.events.publish('listingMap', data);
-        });
-        this.events.publish('citiesfilter', this.citiesfilter);
-        this.events.publish('categoriesfilter', this.categoriesfilter);
-        this.menu.toggle();
-        this.closedFiltre();
-        this.events.publish('clearFilter', false);
+    AuthProvider.prototype.getSecuredData = function () {
+        var jwt = localStorage.getItem('id_token');
+        var authHeader = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]();
+        if (jwt) {
+            authHeader.append('Authorization', jwt);
+        }
+        var options = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["d" /* RequestOptions */]({ headers: authHeader });
+        return this.http.get('', options)
+            .map(this.extractData)
+            .catch(this.handleError);
     };
-    MyApp.prototype.clearfilter = function () {
-        this.citiesfilter = [];
-        this.categoriesfilter = [];
-        this.filtre();
-        this.events.publish('clearFilter', true);
+    /**
+     * Extracting data.
+     *
+     * @param res
+     * @returns {any|{}}
+     */
+    AuthProvider.prototype.extractData = function (res) {
+        var body = res.json();
+        return body || {};
     };
-    MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"D:\lab\icicmapp\ici.v1\src\app\app.html"*/'\n\n<ion-menu [content]="content" side="left" id="menu">\n\n  <ion-header class="uk-box-shadow-medium">\n\n    <div class="uk-position-relative uk-height-small">\n\n      <div class="uk-position-center uk-padding-small">\n\n        <img src="assets/imgs/logoici.png" alt="" width="40" margin>\n\n      </div>\n\n      <ion-title class="uk-position-bottom-center uk-padding-small">Connectez-vous</ion-title>\n\n    </div>\n\n  </ion-header>\n\n\n\n  <ion-content id="menuLeft">\n\n    <ion-list no-margin>\n\n      <button ion-item>\n\n        Accueil\n\n      </button>\n\n      <button ion-item >\n\n        Annuaire\n\n      </button>\n\n      <button ion-item >\n\n        Maps\n\n      </button>\n\n    </ion-list>\n\n    <ion-item-group>\n\n      <ion-item-divider color="light">Mon Compte</ion-item-divider>\n\n      <button ion-item >\n\n        Connexion\n\n      </button>\n\n      <button ion-item >\n\n        Ajouter une entreprise\n\n      </button>\n\n    </ion-item-group>\n\n  </ion-content>\n\n\n\n</ion-menu>\n\n\n\n<ion-menu [content]="content" side="right" id="filtre" swipeEnabled="false" (ionClose)="closedFiltre()">\n\n  <ion-header class="uk-box-shadow-medium">\n\n    <div class="uk-position-relative uk-height-small">\n\n      <ion-title class="uk-position-center"><ion-icon name="funnel" icon-left></ion-icon> Filtre</ion-title>\n\n    </div>\n\n  </ion-header>\n\n\n\n  <ion-content>\n\n    <filtre></filtre>\n\n  </ion-content>\n\n\n\n  <ion-footer>\n\n    <div padding>\n\n      <button ion-button color="success" small (click)="filtre()"> Valider </button>\n\n      <button ion-button color="light" small (click)="clearfilter()"> Effacer </button>\n\n    </div>\n\n  </ion-footer>\n\n\n\n</ion-menu>\n\n\n\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>\n\n'/*ion-inline-end:"D:\lab\icicmapp\ici.v1\src\app\app.html"*/
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* MenuController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Events */], __WEBPACK_IMPORTED_MODULE_5__providers_companies_companies__["a" /* CompaniesProvider */]])
-    ], MyApp);
-    return MyApp;
+    /**
+     * Handling errors.
+     *
+     * @param error
+     * @returns {ErrorObservable}
+     */
+    AuthProvider.prototype.handleError = function (error) {
+        var errMsg = (error.message) ? error.message :
+            error.status ? error.status + " - " + error.statusText : 'Server error';
+        console.error(errMsg); // log to console instead
+        return __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__["Observable"].throw(errMsg);
+    };
+    AuthProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]])
+    ], AuthProvider);
+    return AuthProvider;
 }());
 
-//# sourceMappingURL=app.component.js.map
+//# sourceMappingURL=auth.js.map
 
 /***/ }),
 
@@ -1402,8 +1525,8 @@ var MyApp = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CompaniesProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(131);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(307);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(116);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1560,7 +1683,92 @@ var CompaniesProvider = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 702:
+/***/ 706:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(361);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(362);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_tabs_tabs__ = __webpack_require__(363);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_companies_companies__ = __webpack_require__(45);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+var MyApp = /** @class */ (function () {
+    function MyApp(platform, statusBar, splashScreen, menu, events, listingService) {
+        var _this = this;
+        this.menu = menu;
+        this.events = events;
+        this.listingService = listingService;
+        this.rootPage = __WEBPACK_IMPORTED_MODULE_4__pages_tabs_tabs__["a" /* TabsPage */];
+        platform.ready().then(function () {
+            // Okay, so the platform is ready and our plugins are available.
+            // Here you can do any higher level native things you might need.
+            statusBar.styleDefault();
+            splashScreen.hide();
+        });
+        this.events.subscribe('citiesfilter', function (cities) {
+            _this.citiesfilter = cities;
+        });
+        this.events.subscribe('categoriesfilter', function (categories) {
+            _this.categoriesfilter = categories;
+        });
+    }
+    MyApp.prototype.closedFiltre = function () {
+        this.menu.enable(true, 'menu');
+    };
+    MyApp.prototype.filtre = function () {
+        //   console.log("nn0 ");
+        var _this = this;
+        this.listingService.getListing(this.categoriesfilter, this.citiesfilter).subscribe(function (data) {
+            _this.listing = data;
+            _this.events.publish('listing', data);
+        });
+        this.listingService.getMarkers(this.categoriesfilter, this.citiesfilter).subscribe(function (data) {
+            _this.listingMap = data;
+            _this.events.publish('listingMap', data);
+        });
+        this.events.publish('citiesfilter', this.citiesfilter);
+        this.events.publish('categoriesfilter', this.categoriesfilter);
+        this.menu.toggle();
+        this.closedFiltre();
+        this.events.publish('clearFilter', false);
+    };
+    MyApp.prototype.clearfilter = function () {
+        this.citiesfilter = [];
+        this.categoriesfilter = [];
+        this.filtre();
+        this.events.publish('clearFilter', true);
+    };
+    MyApp = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"D:\lab\icicmapp\ici.v1\src\app\app.html"*/'\n\n<ion-menu [content]="content" side="left" id="menu">\n\n  <ion-header class="uk-box-shadow-medium">\n\n    <div class="uk-position-relative uk-height-small">\n\n      <div class="uk-position-center uk-padding-small">\n\n        <img src="assets/imgs/logoici.png" alt="" width="40" margin>\n\n      </div>\n\n      <ion-title class="uk-position-bottom-center uk-padding-small">Connectez-vous</ion-title>\n\n    </div>\n\n  </ion-header>\n\n\n\n  <ion-content id="menuLeft">\n\n    <ion-list no-margin>\n\n      <button ion-item>\n\n        Accueil\n\n      </button>\n\n      <button ion-item >\n\n        Annuaire\n\n      </button>\n\n      <button ion-item >\n\n        Maps\n\n      </button>\n\n    </ion-list>\n\n    <ion-item-group>\n\n      <ion-item-divider color="light">Mon Compte</ion-item-divider>\n\n      <button ion-item >\n\n        Connexion\n\n      </button>\n\n      <button ion-item >\n\n        Ajouter une entreprise\n\n      </button>\n\n    </ion-item-group>\n\n  </ion-content>\n\n\n\n</ion-menu>\n\n\n\n<ion-menu [content]="content" side="right" id="filtre" swipeEnabled="false" (ionClose)="closedFiltre()">\n\n  <ion-header class="uk-box-shadow-medium">\n\n    <div class="uk-position-relative uk-height-small">\n\n      <ion-title class="uk-position-center"><ion-icon name="funnel" icon-left></ion-icon> Filtre</ion-title>\n\n    </div>\n\n  </ion-header>\n\n\n\n  <ion-content>\n\n    <filtre></filtre>\n\n  </ion-content>\n\n\n\n  <ion-footer>\n\n    <div padding>\n\n      <button ion-button color="success" small (click)="filtre()"> Valider </button>\n\n      <button ion-button color="light" small (click)="clearfilter()"> Effacer </button>\n\n    </div>\n\n  </ion-footer>\n\n\n\n</ion-menu>\n\n\n\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>\n\n'/*ion-inline-end:"D:\lab\icicmapp\ici.v1\src\app\app.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* MenuController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Events */], __WEBPACK_IMPORTED_MODULE_5__providers_companies_companies__["a" /* CompaniesProvider */]])
+    ], MyApp);
+    return MyApp;
+}());
+
+//# sourceMappingURL=app.component.js.map
+
+/***/ }),
+
+/***/ 708:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1655,7 +1863,7 @@ var FiltreComponent = /** @class */ (function () {
     ], FiltreComponent.prototype, "clear", void 0);
     FiltreComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'filtre',template:/*ion-inline-start:"D:\lab\icicmapp\ici.v1\src\components\filtre\filtre.html"*/'<!-- Generated template for the FilterComponent component -->\n\n\n\n\n\n      <div class="uk-padding-small" [hidden]="!ville">\n\n\n\n        <ion-item no-margin no-padding>\n\n          <ion-label stacked>Par ville</ion-label>\n\n          <ion-select [(ngModel)]="city" interface="action-sheet" multiple="true" (ionChange)="onTypeSelected($event)">\n\n            <ion-option  *ngFor="let item of cities">{{item.name}}</ion-option>\n\n          </ion-select>\n\n        </ion-item>\n\n      </div>\n\n      <ion-label padding-left [hidden]="!ville">Par catégorie</ion-label>\n\n\n\n      <ion-list *ngFor="let item of cat">\n\n        <ion-list-header color="primary" (click)="toggleGroup(item.id)">\n\n          {{item.name}}\n\n          <ion-icon name="add" color="light" class="uk-position-center-right" padding-right *ngIf="!isGroupShown(item.id)"></ion-icon>\n\n          <ion-icon name="close" color="light" class="uk-position-center-right" padding-right *ngIf="isGroupShown(item.id)"></ion-icon>\n\n\n\n        </ion-list-header>\n\n        <ion-list no-padding no-margin [hidden]="!isGroupShown(item.id)" *ngFor="let it of item.subcat">\n\n          <ion-item (click)="itemAdd(it._id.$id, $event)" >{{it.name}}</ion-item>\n\n\n\n        </ion-list>\n\n      </ion-list>\n\n\n\n\n\n<div class="uk-padding-small" [hidden]="!ville">\n\n  <ion-item no-margin no-padding>\n\n    <ion-label stacked>Par ville</ion-label>\n\n    <ion-select [(ngModel)]="city" interface="action-sheet" multiple="true" (ionChange)="onTypeSelected($event)">\n\n      <ion-option  *ngFor="let item of cities">{{item.name}}</ion-option>\n\n    </ion-select>\n\n  </ion-item>\n\n</div>\n\n<ion-label padding-left [hidden]="!ville">Par catégorie</ion-label>\n\n\n\n<ion-list *ngFor="let item of cat">\n\n  <ion-list-header color="primary" (click)="toggleGroup(item.id)">\n\n    {{item.name}}\n\n    <ion-icon name="add" color="light" class="uk-position-center-right" padding-right *ngIf="!isGroupShown(item.id)"></ion-icon>\n\n    <ion-icon name="close" color="light" class="uk-position-center-right" padding-right *ngIf="isGroupShown(item.id)"></ion-icon>\n\n\n\n  </ion-list-header>\n\n  <ion-list no-padding no-margin [hidden]="!isGroupShown(item.id)" *ngFor="let it of item.subcat">\n\n    <ion-item (click)="itemAdd(it._id.$id, $event)">{{it.name}}  <ion-icon item-end name="checkmark" small class="icon-check" color="primary"></ion-icon></ion-item>\n\n\n\n  </ion-list>\n\n</ion-list>\n\n\n\n\n\n\n\n\n\n'/*ion-inline-end:"D:\lab\icicmapp\ici.v1\src\components\filtre\filtre.html"*/
+            selector: 'filtre',template:/*ion-inline-start:"D:\lab\icicmapp\ici.v1\src\components\filtre\filtre.html"*/'<!-- Generated template for the FilterComponent component -->\n\n\n\n\n\n      <div class="uk-padding-small" [hidden]="!ville">\n\n\n\n        <ion-item no-margin no-padding>\n\n          <ion-label stacked>Par ville</ion-label>\n\n          <ion-select [(ngModel)]="city" interface="action-sheet" multiple="true" (ionChange)="onTypeSelected($event)">\n\n            <ion-option  *ngFor="let item of cities">{{item.name}}</ion-option>\n\n          </ion-select>\n\n        </ion-item>\n\n      </div>\n\n      <ion-label padding-left [hidden]="!ville">Par catégorie</ion-label>\n\n\n\n      <ion-list *ngFor="let item of cat">\n\n        <ion-list-header color="primary" (click)="toggleGroup(item.id)">\n\n          {{item.name}}\n\n          <ion-icon name="add" color="light" class="uk-position-center-right" padding-right *ngIf="!isGroupShown(item.id)"></ion-icon>\n\n          <ion-icon name="close" color="light" class="uk-position-center-right" padding-right *ngIf="isGroupShown(item.id)"></ion-icon>\n\n\n\n        </ion-list-header>\n\n        <ion-list no-padding no-margin [hidden]="!isGroupShown(item.id)" *ngFor="let it of item.subcat">\n\n          <ion-item (click)="itemAdd(it._id.$id, $event)" >{{it.name}}</ion-item>\n\n\n\n        </ion-list>\n\n      </ion-list>\n\n\n\n\n\n<div class="uk-padding-small" [hidden]="!ville">\n\n  <ion-item no-margin no-padding>\n\n    <ion-label stacked>Par ville</ion-label>\n\n    <ion-select [(ngModel)]="city" interface="action-sheet" multiple="true" (ionChange)="onTypeSelected($event)">\n\n      <ion-option  *ngFor="let item of cities">{{item.name}}</ion-option>\n\n    </ion-select>\n\n  </ion-item>\n\n</div>\n\n<ion-label padding-left [hidden]="!ville">Par catégorie</ion-label>\n\n\n\n<ion-list *ngFor="let item of cat">\n\n  <ion-list-header color="primary" (click)="toggleGroup(item.id)">\n\n    {{item.name}}\n\n    <ion-icon name="add" color="light" class="uk-position-center-right" padding-right *ngIf="!isGroupShown(item.id)"></ion-icon>\n\n    <ion-icon name="close" color="light" class="uk-position-center-right" padding-right *ngIf="isGroupShown(item.id)"></ion-icon>\n\n\n\n  </ion-list-header>\n\n  <ion-list no-padding no-margin [hidden]="!isGroupShown(item.id)" *ngFor="let it of item.subcat">\n\n    <ion-item (tap)="itemAdd(it._id.$id, $event)"> {{it.name}}\n\n      <ion-icon item-end name="checkmark" small class="icon-check" color="primary"></ion-icon>\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-list>\n\n\n\n\n\n\n\n\n\n'/*ion-inline-end:"D:\lab\icicmapp\ici.v1\src\components\filtre\filtre.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__providers_companies_companies__["a" /* CompaniesProvider */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* Events */]])
     ], FiltreComponent);
@@ -1666,231 +1874,15 @@ var FiltreComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 715:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(21);
-throw new Error("Cannot find module \"../../pages/modal-page/modal-page\"");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__ = __webpack_require__(716);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_http__ = __webpack_require__(131);
-throw new Error("Cannot find module \"angular2-jwt\"");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_storage__ = __webpack_require__(717);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-
-
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var LoginPage = /** @class */ (function () {
-    function LoginPage(events, app, storage, navCtrl, http, toastCtrl, navParams, formBuilder, modalCtrl, users) {
-        this.events = events;
-        this.app = app;
-        this.storage = storage;
-        this.navCtrl = navCtrl;
-        this.http = http;
-        this.toastCtrl = toastCtrl;
-        this.navParams = navParams;
-        this.formBuilder = formBuilder;
-        this.modalCtrl = modalCtrl;
-        this.users = users;
-        // When the page loads, we want the Login segment to be selected
-        this.authType = "login";
-        // We need to set the content type for the server
-        this.contentHeader = new __WEBPACK_IMPORTED_MODULE_5__angular_http__["a" /* Headers */]({ "Content-Type": "application/json" });
-        this.jwtHelper = new __WEBPACK_IMPORTED_MODULE_6_angular2_jwt__["JwtHelper"]();
-        this.validations_form = this.formBuilder.group({
-            login: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
-            password: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required]
-        });
-        this.validation_messages = {
-            'login': [
-                { type: 'required', message: 'Login is required.' }
-            ],
-            'password': [
-                { type: 'required', message: 'password is required.' }
-            ]
-        };
-    }
-    LoginPage.prototype.openModal = function () {
-        var myModal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_3__pages_modal_page_modal_page__["ModalPage"]); //ModalPage
-        myModal.present();
-    };
-    LoginPage.prototype.connexion = function (val) {
-        var _this = this;
-        var myData = JSON.stringify({ email: val.login, password: val.password });
-        this.http.post("http://yoomeeonl.webfactional.com/MobileApp/login", myData)
-            .map(function (result) {
-            return result.json();
-        })
-            .subscribe(function (data) {
-            console.log(data["id"]);
-            if (data["id"] == 0) {
-                _this.presentToast("Votre login nexiste pas, veuillez pour inscrire.");
-            }
-            else {
-                //console.log(data["_body"]); 
-                localStorage.setItem('userId', JSON.stringify({ id: data["id"], lastName: data["last_name"], firstName: data["first_name"], email: data["email"] }));
-                //this.navCtrl.push('CpanelPage');
-                //  let nav = this.app.getRootNav();
-                // nav.setRoot('CpanelPage');
-                _this.events.publish('userexist', true);
-                _this.navCtrl.popToRoot();
-                //this.navCtrl.setRoot ('CpanelPage');
-            }
-        }, function (error) {
-            console.log("Oooops!");
-        });
-    };
-    LoginPage.prototype.authSuccess = function (token) {
-        this.error = null;
-        this.storage.set('token', token);
-        this.user = this.jwtHelper.decodeToken(token).username;
-        this.storage.set('profile', this.user);
-    };
-    LoginPage.prototype.presentToast = function (text) {
-        var toast = this.toastCtrl.create({
-            message: text,
-            duration: 5000,
-            position: 'top'
-        });
-        toast.present();
-    };
-    LoginPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* IonicPage */])(),
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-login',template:/*ion-inline-start:"D:\lab\icicmapp\ici.v1\src\pages\login\login.html"*/'<!--\n  Generated template for the LoginPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>login</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding class="form-content">\n  <form class="form" [formGroup]="validations_form"  (ngSubmit)="connexion(validations_form.value)">\n   \n    <ion-item>\n      <ion-label floating color="primary">Login</ion-label>\n      <ion-input type="text" formControlName="login"></ion-input>\n    </ion-item>\n    <div class="validation-errors">\n      <ng-container *ngFor="let validation of validation_messages.login">\n        <div class="error-message" *ngIf="validations_form.get(\'login\').hasError(validation.type) && (validations_form.get(\'login\').dirty || validations_form.get(\'login\').touched)">\n          {{ validation.message }}\n        </div>\n      </ng-container>\n    </div>\n\n    <ion-item>\n      <ion-label floating color="primary">Mot de passe</ion-label>\n      <ion-input type="password" formControlName="password"></ion-input>\n    </ion-item>\n    <div class="validation-errors">\n      <ng-container *ngFor="let validation of validation_messages.password">\n        <div class="error-message" *ngIf="validations_form.get(\'password\').hasError(validation.type) && (validations_form.get(\'password\').dirty || validations_form.get(\'password\').touched)">\n          {{ validation.message }}\n        </div>\n      </ng-container>\n    </div>\n\n    \n\n\n  \n    <button ion-button full type="submit" [disabled]="!validations_form.valid">log</button>\n  </form>\n  <button ion-button block (click)="openModal()">Mot de passe oublié?</button>\n</ion-content>\n'/*ion-inline-end:"D:\lab\icicmapp\ici.v1\src\pages\login\login.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Events */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* App */], __WEBPACK_IMPORTED_MODULE_7__ionic_storage__["a" /* Storage */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavController */], __WEBPACK_IMPORTED_MODULE_5__angular_http__["b" /* Http */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["w" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ModalController */], __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__["a" /* AuthProvider */]])
-    ], LoginPage);
-    return LoginPage;
-}());
-
-//# sourceMappingURL=login.js.map
-
-/***/ }),
-
-/***/ 716:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__ = __webpack_require__(307);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(131);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__ = __webpack_require__(435);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-//import {AuthHttp} from 'angular2-jwt';
-
-/*
-  Generated class for the AuthProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
-var AuthProvider = /** @class */ (function () {
-    function AuthProvider(http) {
-        this.http = http;
-        console.log('Hello AuthProvider Provider');
-    }
-    AuthProvider.prototype.getUser = function (user_login, user_password) {
-        var body = "email=" + user_login + "&password=" + user_password;
-        var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]();
-        headers.append('Content-Type', 'application/x-www-form-urlencoded');
-        var options = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["d" /* RequestOptions */]({ headers: headers });
-        return this.http.post('http://yoomeeonl.webfactional.com/MobileApp/login', body, options)
-            .map(this.extractData)
-            .catch(this.handleError);
-    };
-    AuthProvider.prototype.getSecuredData = function () {
-        var jwt = localStorage.getItem('id_token');
-        var authHeader = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]();
-        if (jwt) {
-            authHeader.append('Authorization', jwt);
-        }
-        var options = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["d" /* RequestOptions */]({ headers: authHeader });
-        return this.http.get('', options)
-            .map(this.extractData)
-            .catch(this.handleError);
-    };
-    /**
-     * Extracting data.
-     *
-     * @param res
-     * @returns {any|{}}
-     */
-    AuthProvider.prototype.extractData = function (res) {
-        var body = res.json();
-        return body || {};
-    };
-    /**
-     * Handling errors.
-     *
-     * @param error
-     * @returns {ErrorObservable}
-     */
-    AuthProvider.prototype.handleError = function (error) {
-        var errMsg = (error.message) ? error.message :
-            error.status ? error.status + " - " + error.statusText : 'Server error';
-        console.error(errMsg); // log to console instead
-        return __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__["Observable"].throw(errMsg);
-    };
-    AuthProvider = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]])
-    ], AuthProvider);
-    return AuthProvider;
-}());
-
-//# sourceMappingURL=auth.js.map
-
-/***/ }),
-
-/***/ 85:
+/***/ 87:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReviewFormPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(131);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(55);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1957,14 +1949,15 @@ var ReviewFormPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'page-review-form',template:/*ion-inline-start:"D:\lab\icicmapp\ici.v1\src\pages\review-form\review-form.html"*/'<!--\n  Generated template for the ReviewFormPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>review-formPage</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <rating  [(ngModel)]="note"\n                     readOnly="false"\n                     max="5"\n                     emptyStarIconName="star-outline"\n                     halfStarIconName="star-half"\n                     starIconName="star"\n                     nullable="false" ></rating>\n  <form class="form" [formGroup]="validations_form"  >\n   \n    \n\n    <ion-item>\n      <ion-label floating color="primary">Titre</ion-label>\n      <ion-input type="text" formControlName="titre"></ion-input>\n    </ion-item>\n    <div class="validation-errors">\n      <ng-container *ngFor="let validation of validation_messages.titre">\n        <div class="error-message" *ngIf="validations_form.get(\'titre\').hasError(validation.type) && (validations_form.get(\'titre\').dirty || validations_form.get(\'titre\').touched)">\n          {{ validation.message }}\n        </div>\n      </ng-container>\n    </div>\n\n    <ion-item>\n      <ion-label floating color="primary">Message</ion-label>\n      <ion-textarea type="message" formControlName="message"></ion-textarea>\n    </ion-item>\n    <div class="validation-errors">\n      <ng-container *ngFor="let validation of validation_messages.message">\n        <div class="error-message" *ngIf="validations_form.get(\'message\').hasError(validation.type) && (validations_form.get(\'message\').dirty || validations_form.get(\'message\').touched)">\n          {{ validation.message }}\n        </div>\n      </ng-container>\n    </div>\n\n    <button ion-button full type="submit" [disabled]="!validations_form.valid" (click)="addreview(validations_form.value)">Save</button>\n    <button ion-button full type="submit" [disabled]="!validations_form.valid">Annuler</button>\n    \n  </form>\n</ion-content>\n'/*ion-inline-end:"D:\lab\icicmapp\ici.v1\src\pages\review-form\review-form.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_3__angular_http__["b" /* Http */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["w" /* ToastController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_http__["b" /* Http */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* ToastController */]) === "function" && _e || Object])
     ], ReviewFormPage);
     return ReviewFormPage;
+    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=review-form.js.map
 
 /***/ })
 
-},[367]);
+},[369]);
 //# sourceMappingURL=main.js.map

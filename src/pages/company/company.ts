@@ -8,7 +8,7 @@ import { CompaniesProvider } from '../../providers/companies/companies';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { CallNumber } from '@ionic-native/call-number';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-
+import {LoginPage} from "../../pages/login/login";
 import { ReviewFormPage } from '../../pages/review-form/review-form';
 
 
@@ -44,6 +44,8 @@ export class CompanyPage {
   longitude;
   name;
   valiRate;
+  userexist=false;
+  user;
 
   @ViewChild('map') mapElement: ElementRef;
   map: any;
@@ -67,6 +69,13 @@ export class CompanyPage {
      .get("idcompagnie");
      this.loadData(this.idcompagnie);
      //this.desc=this.business.description;
+     var currentUser = JSON.parse(localStorage.getItem('userId'));
+     this.user = currentUser;
+
+     if(localStorage.getItem("userId")) {
+      this.userexist = true;
+     }
+
 }
 
   loadData(id){
@@ -130,15 +139,15 @@ export class CompanyPage {
   }
 
   onModelChange(val, companyId){
-   
-   //if(this.userexist==true){
+   //alert(this.user);
+   if(this.userexist==true){
       let myModal = this.modalCtrl.create(ReviewFormPage, {vote: val, companyId: companyId});
       myModal.present();
 
-  /* } else{
+   } else{
       let myModal = this.modalCtrl.create(LoginPage);
       myModal.present();
-   }*/
+   }
 
  }
 
