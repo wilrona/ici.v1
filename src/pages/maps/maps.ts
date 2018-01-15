@@ -31,7 +31,7 @@ export class MapsPage {
   val: number;
   // public listMarker = new Array();
   public newMarkers: Array<any> = [];
-  public currentMaker: Array<any> = [];
+  public currentMaker:any;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams, public menu: MenuController,
@@ -42,7 +42,7 @@ export class MapsPage {
 
     menu.enable(true);
 
-    this.val = 0;
+
 
     this.events.subscribe('citiesfilter', (cities) => {
       this.cities = cities;
@@ -53,18 +53,12 @@ export class MapsPage {
 
 
     events.subscribe('listingMap', (listing) => {
-
-      this.listing = listing;
       this.newMarkers = [];
-      this.val = 1;
       this.platform.ready().then(() => this.loadMaps());
+
     });
 
-    if (this.val == 0) {
-      this.platform.ready().then(() => this.loadMaps());
-    }
-
-
+    this.platform.ready().then(() => this.loadMaps());
   }
 
   ionViewDidLoad() {
@@ -172,13 +166,14 @@ export class MapsPage {
       content: markerContent,
       flat: true
     });
-    google.maps.event.addListener(marker, 'click', (function (marker, i) {
-      return function () {
-        console.log("marker " + marker);
-        console.log('index ' + i)
-
+    google.maps.event.addListener(marker, 'click', (function(marker, i) {
+      return function() {
+        let heightDetail = document.getElementById('details').offsetHeight;
+        document.getElementById('map').style.height = 'calc(100% - '+heightDetail+'px)';
       }
     })(marker, i));
+
+    this.currentMaker = i;
     this.newMarkers.push(marker);
 
   }
@@ -198,16 +193,8 @@ export class MapsPage {
 
   getMarkers() {
     this.listingService.getMarkers(this.categories, this.cities).subscribe(data => {
-      console.log(this.val);
-      if (this.val == 0) {
-        this.listing = data;
-        console.log("ici");
-      }
-      console.log("non " + this.listing);
-      this.placeMarkers(this.listing);
+      this.placeMarkers(data);
       this.placeCluster();
-      // this.addMarkersToMap(this.listing);
-      // this.setMapOnAll(this.map);
     });
 
   }

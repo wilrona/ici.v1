@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { HomePage } from '../home/home';
-import {MenuController, NavController} from "ionic-angular";
+import {Events, MenuController, NavController} from "ionic-angular";
 import {AnnuairePage} from "../annuaire/annuaire";
 import {MapsPage} from "../maps/maps";
 import {ComptePage} from "../compte/compte";
@@ -16,8 +16,14 @@ export class TabsPage {
   tab3Root = MapsPage;
   tab4Root = ComptePage;
 
-  constructor(public navCtrl: NavController, public menu: MenuController) {
+  MapsParams = {};
 
+  constructor(public navCtrl: NavController, public menu: MenuController, public events: Events) {
+
+    events.subscribe('listingMap', (listing) => {
+      this.MapsParams['data'] = listing;
+      this.MapsParams['tab'] = true;
+    });
   }
 
   menuToggle(){
