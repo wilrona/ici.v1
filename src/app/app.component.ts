@@ -7,6 +7,7 @@ import { Events } from 'ionic-angular';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { CompaniesProvider } from '../providers/companies/companies';
+import {VariableProvider} from "../providers/variable/variable";
 
 @Component({
   templateUrl: 'app.html'
@@ -20,7 +21,11 @@ export class MyApp {
   @Input() userconnect:boolean=false;
   @Output() disconnect: EventEmitter<boolean>;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public menu: MenuController, public events: Events,  public listingService: CompaniesProvider) {
+  constructor(platform: Platform, statusBar: StatusBar,
+              splashScreen: SplashScreen, public menu: MenuController,
+              public events: Events,  public listingService: CompaniesProvider,
+              public variable: VariableProvider
+  ) {
     platform.ready().then(() => {
       statusBar.styleDefault();
       splashScreen.hide();
@@ -33,7 +38,7 @@ export class MyApp {
       this.categoriesfilter=categories;
     });
 
-   
+
 
     if(localStorage.getItem("userId")) {
       this.userconnect = true;
@@ -57,14 +62,14 @@ export class MyApp {
 
     this.listingService.getListing(this.categoriesfilter, this.citiesfilter).subscribe(
             data => {
-              this.listing= data;
+              // this.listing= data;
               this.events.publish('listing', data)
             }
     );
 
    this.listingService.getMarkers(this.categoriesfilter, this.citiesfilter).subscribe(
             data => {
-              this.listingMap= data
+              // this.listingMap= data
               this.events.publish('listingMap', data)
             }
 
@@ -73,6 +78,17 @@ export class MyApp {
     this.events.publish('citiesfilter', this.citiesfilter);
     this.events.publish('categoriesfilter', this.categoriesfilter);
 
+    if(this.citiesfilter || this.categoriesfilter){
+      this.variable.setInitTabMaps(false);
+    }else{
+      this.variable.setInitTabMaps(true);
+    }
+
+    if(this.citiesfilter || this.categoriesfilter){
+      this.variable.setInitTabAnnuaire(false);
+    }else{
+      this.variable.setInitTabAnnuaire(true);
+    }
 
 
     this.menu.toggle();
@@ -91,7 +107,7 @@ export class MyApp {
 
   logout(){
    localStorage.clear();
-   this.userconnect=false; 
+   this.userconnect=false;
    this.disconnect.emit(this.userconnect);
    this.events.publish('userconnect', false);
   }

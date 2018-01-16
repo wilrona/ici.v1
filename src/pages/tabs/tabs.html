@@ -1,6 +1,6 @@
 
-<ion-tabs tabsHighlight="true" selectedIndex="0" tabsPlacement="bottom"  (ionChange)="menuToggle()">
-  <ion-tab [root]="tab1Root" tabIcon="home"></ion-tab>
+<ion-tabs tabsHighlight="true" selectedIndex="0" tabsPlacement="bottom"  (ionChange)="menuToggle($event)">
+  <ion-tab [root]="tab1Root" tabIcon="home" ></ion-tab>
   <ion-tab [root]="tab2Root" tabIcon="list"></ion-tab>
   <ion-tab [root]="tab3Root" tabIcon="locate"></ion-tab>
   <ion-tab [root]="tab4Root" tabIcon="person"></ion-tab>

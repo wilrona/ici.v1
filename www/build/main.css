@@ -42498,7 +42498,7 @@ page-annuaire ion-label {
 }
 
 page-annuaire .icon-m {
-  font-size: 30px;
+  font-size: 20px;
   padding-right: 15px;
 }
 
@@ -42866,6 +42866,10 @@ page-home .uk-h2 {
 
 page-home .slide-zoom {
   text-align: left;
+}
+
+page-login .scroll-content {
+  background-color: transparent;
 }
 
 page-maps #map {

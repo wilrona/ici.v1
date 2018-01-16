@@ -4,6 +4,7 @@ import { CompaniesProvider } from '../../providers/companies/companies';
 import { CallNumber } from '@ionic-native/call-number';
 import { EmailComposer } from '@ionic-native/email-composer';
 import {CompanyPage} from "../company/company";
+import {VariableProvider} from "../../providers/variable/variable";
 
 
 
@@ -21,9 +22,9 @@ import {CompanyPage} from "../company/company";
 })
 export class AnnuairePage {
 
-   public listing: [any];
-   cities: [any];
-   categories:[any];
+   public listing: Array<any> = [];
+   cities: Array<any> = [];
+   categories: Array<any> = [];
    reviews:[any];
    rate:[any];
    imageune:[any];
@@ -47,30 +48,77 @@ export class AnnuairePage {
     private loadingCtrl: LoadingController, private emailComposer: EmailComposer, public navParams: NavParams, public menu: MenuController,
     public listingService: CompaniesProvider,
     private callNumber: CallNumber,
-    private modalCtrl: ModalController,
+    private modalCtrl: ModalController, public variable: VariableProvider,
     public events: Events) {
 
       menu.enable(true);
 
       var currentUser = JSON.parse(localStorage.getItem('userId'));
       this.user = currentUser;
-      
+
       if(localStorage.getItem("userId")) {
         this.userconnect = true;
       }
-      this.loadData();
 
-      events.subscribe('listing', (listing) => {
+      events.subscribe('reloadAnnuaire', (cities, categories) => {
 
-        if(listing.length !== 0){
-          this.listing=listing;
-          this.showNoItem = false;
-        }else{
-          this.showNoItem = true;
+        this.cities = cities;
+        this.categories = categories;
+
+        if(this.variable.getInitTabAnnuaire() === false){
+
+          this.loading = true;
+
+          this.listingService.getListing(this.categories, this.cities).subscribe(
+            data => {
+              if(data.length !== 0){
+
+                this.listing = data;
+
+                this.showNoItem = false;
+              }else{
+                this.showNoItem = true;
+              }
+              this.loading = false;
+            }
+          );
         }
 
-          // console.log("test" +listing);
       });
+
+    events.subscribe('listing', () => {
+
+      this.loading = true;
+
+      this.listingService.getListing(this.categories, this.cities).subscribe(
+        data => {
+          if(data.length !== 0){
+
+            this.listing = data;
+
+            this.showNoItem = false;
+          }else{
+            this.showNoItem = true;
+          }
+          this.loading = false;
+        }
+
+      );
+      // this.loading = true;
+      // if(listing.length !== 0){
+      //   this.listing=listing;
+      //   this.showNoItem = false;
+      // }else{
+      //   this.showNoItem = true;
+      // }
+      // this.loading = false;
+    });
+
+    if(this.variable.getInitTabAnnuaire() === true){
+
+      this.loadData();
+
+    }
 
       this.events.subscribe('citiesfilter', (cities) => {
           this.cities=cities;
@@ -147,11 +195,11 @@ export class AnnuairePage {
 
   }
 
-   
 
-  
 
-  
+
+
+
 
 
   doInfinite(infiniteScroll) {

@@ -37,6 +37,11 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { Geolocation } from '@ionic-native/geolocation';
 import { MapProvider } from '../providers/map/map';
 
+import {IonicStorageModule} from "@ionic/storage";
+import {AuthProvider} from "../providers/auth/auth";
+import { VariableProvider } from '../providers/variable/variable';
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -62,6 +67,7 @@ import { MapProvider } from '../providers/map/map';
     Ionic2RatingModule,
     IonicImageViewerModule,
     IonTagsInputModule,
+    IonicStorageModule.forRoot(),
     HttpModule
   ],
   bootstrap: [IonicApp],
@@ -88,6 +94,8 @@ import { MapProvider } from '../providers/map/map';
     InAppBrowser,
     Geolocation,
     MapProvider,
+    VariableProvider,
+    AuthProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

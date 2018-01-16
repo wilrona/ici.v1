@@ -4,6 +4,7 @@ import { CompaniesProvider } from '../../providers/companies/companies';
 
 import { EmailComposer } from '@ionic-native/email-composer';
 import { CallNumber } from '@ionic-native/call-number';
+import {VariableProvider} from "../../providers/variable/variable";
 
 declare var google: any;
 declare var MarkerClusterer: any;
@@ -27,10 +28,10 @@ export class MapsPage {
   @ViewChild('map') mapElement: ElementRef;
   map: any;
 
-  public listMarker = new Array();
-  cities: [any];
-  categories: [any];
-  listing: [any];
+  public listMarker: Array<any>;
+  cities: Array<any> = [];
+  categories: Array<any> = [];
+  listing: Array<any> = [];
   val: number;
   // public listMarker = new Array();
   public newMarkers: Array<any> = [];
@@ -45,6 +46,7 @@ export class MapsPage {
               public platform: Platform,
               private emailComposer: EmailComposer,
               private callNumber: CallNumber,
+              public variable: VariableProvider,
               public events: Events) {
 
     menu.enable(true);
@@ -65,8 +67,23 @@ export class MapsPage {
 
     });
 
-    this.platform.ready().then(() => this.loadMaps());
-    
+    events.subscribe('reloadMaps', (cities, categories) => {
+
+      this.categories = categories;
+      this.cities = cities;
+
+      if(this.variable.getInitTabMaps() === false){
+        this.newMarkers = [];
+        this.platform.ready().then(() => this.loadMaps());
+      }
+
+    });
+
+    if(this.variable.getInitTabMaps() === true){
+      this.newMarkers = [];
+      this.platform.ready().then(() => this.loadMaps());
+    }
+
   }
 
   ionViewDidLoad() {
@@ -163,7 +180,7 @@ export class MapsPage {
 
     }
   }
-  
+
 
   renderRichMarker(i, markerContent) {
 
@@ -176,7 +193,7 @@ export class MapsPage {
       flat: true
     });
    /* google.maps.event.addListener(marker, 'click', (function(marker, i) {
-       
+
       return function(i) {
         this.element={"name": "ari"};
         this.refresh.emit(this.element);
@@ -188,10 +205,11 @@ export class MapsPage {
     google.maps.event.addListener(marker, 'click', () => {
       this.element=i;
       this.refresh.emit(this.element);
-     
+
+      document.getElementById('details').classList.toggle('uk-hidden');
       let heightDetail = document.getElementById('details').offsetHeight;
       document.getElementById('map').style.height = 'calc(100% - '+heightDetail+'px)';
-      
+
     });
 
     this.currentMaker = i;
@@ -222,6 +240,7 @@ export class MapsPage {
 
   closedModal(){
     document.getElementById('map').style.height = '100%';
+    document.getElementById('details').classList.add('uk-hidden');
   }
 
   callCompany(phonenumber:any){

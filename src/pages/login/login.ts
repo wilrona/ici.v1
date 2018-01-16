@@ -1,11 +1,16 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, ToastController, App, Events  } from 'ionic-angular';
+import {
+  IonicPage, NavController, NavParams, ModalController, ToastController, App, Events,
+  ViewController
+} from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 /*import { ModalPage } from '../../pages/modal-page/modal-page';
 import { AddGpsPage } from '../../pages/add-gps/add-gps';*/
 
 //import {AuthProvider} from '../../providers/auth/auth';
 import { Http, Headers, RequestOptions } from '@angular/http';
+import {AuthProvider} from "../../providers/auth/auth";
+import {VariableProvider} from "../../providers/variable/variable";
 //import {JwtHelper} from "angular2-jwt";
 //import {Storage} from "@ionic/storage";
 /**
@@ -26,7 +31,7 @@ export class LoginPage {
   username;
   password;
 
-  
+
 
   // When the page loads, we want the Login segment to be selected
   authType: string = "login";
@@ -37,36 +42,54 @@ export class LoginPage {
   //jwtHelper = new JwtHelper();
   user: string;
 
-  constructor(public events: Events, public app: App,  public navCtrl: NavController, public http: Http, public toastCtrl: ToastController, public navParams: NavParams, public formBuilder: FormBuilder, public modalCtrl: ModalController) {
+  constructor(public events: Events, public app: App,
+              public navCtrl: NavController,
+              public http: Http, public toastCtrl: ToastController,
+              public navParams: NavParams, public formBuilder: FormBuilder,
+              public viewCtrl: ViewController, public users:AuthProvider,
+              public variable: VariableProvider
+  ) {
 
-      this.validations_form = this.formBuilder.group({
-        login: ['',Validators.required],
-        password: ['',Validators.required]
-        
-     });
+    this.validations_form = this.formBuilder.group({
+      login: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+      ])),
+      password: new FormControl('', Validators.compose([
+        Validators.minLength(5),
+        Validators.required,
+        Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')
+      ]))
 
-     this.validation_messages = {
-        
-        'login': [
-          { type: 'required', message: 'Login is required.' }
-        ],
-        'password': [
-          { type: 'required', message: 'password is required.' }
-        ]
-     }
-     
-    
+    });
+
+    this.validation_messages = {
+
+      'login': [
+        { type: 'required', message: 'Adresse Email obligatoire.' },
+        { type: 'pattern', message: 'Format adresse email invalid'}
+      ],
+      'password': [
+        { type: 'required', message: 'Mot de passe obligatoire.' },
+        { type: 'minLength', message: 'Le mot de passe doit etre superieur ou egale à 6 caracteres' },
+      ]
+    }
+
+  }
+
+  dismiss() {
+    this.viewCtrl.dismiss();
   }
 
    openModal() {
   /*  let myModal = this.modalCtrl.create(ModalPage); //ModalPage
     myModal.present();*/
   }
-  
+
 
   connexion(val){
     var myData = JSON.stringify({email: val.login, password: val.password});
-    this.http.post("http://yoomeeonl.webfactional.com/MobileApp/login",myData)    
+    this.http.post("http://yoomeeonl.webfactional.com/MobileApp/login",myData)
     .map(
         result =>
         {
@@ -78,7 +101,7 @@ export class LoginPage {
         this.presentToast("Votre login nexiste pas, veuillez pour inscrire.");
         }
       else{
-        //console.log(data["_body"]); 
+        //console.log(data["_body"]);
         localStorage.setItem('userId', JSON.stringify({ id: data["id"], lastName: data["last_name"], firstName: data["first_name"],  email: data["email"] }));
         //this.navCtrl.push('CpanelPage');
         //  let nav = this.app.getRootNav();
@@ -88,13 +111,13 @@ export class LoginPage {
         //this.navCtrl.setRoot ('CpanelPage');
 
       }
-    
+
     }, error => {
        console.log("Oooops!");
     });
   }
 
- 
+
 
   private presentToast(text) {
   let toast = this.toastCtrl.create({
@@ -106,6 +129,6 @@ export class LoginPage {
  }
 
 
-  
+
 
 }
