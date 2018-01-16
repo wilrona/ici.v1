@@ -4,10 +4,10 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 /*import { ModalPage } from '../../pages/modal-page/modal-page';
 import { AddGpsPage } from '../../pages/add-gps/add-gps';*/
 
-import {AuthProvider} from '../../providers/auth/auth';
+//import {AuthProvider} from '../../providers/auth/auth';
 import { Http, Headers, RequestOptions } from '@angular/http';
 //import {JwtHelper} from "angular2-jwt";
-import {Storage} from "@ionic/storage";
+//import {Storage} from "@ionic/storage";
 /**
  * Generated class for the LoginPage page.
  *
@@ -37,7 +37,7 @@ export class LoginPage {
   //jwtHelper = new JwtHelper();
   user: string;
 
-  constructor(public events: Events, public app: App, private storage: Storage, public navCtrl: NavController, public http: Http, public toastCtrl: ToastController, public navParams: NavParams, public formBuilder: FormBuilder, public modalCtrl: ModalController, public users:AuthProvider) {
+  constructor(public events: Events, public app: App,  public navCtrl: NavController, public http: Http, public toastCtrl: ToastController, public navParams: NavParams, public formBuilder: FormBuilder, public modalCtrl: ModalController) {
 
       this.validations_form = this.formBuilder.group({
         login: ['',Validators.required],
@@ -54,6 +54,7 @@ export class LoginPage {
           { type: 'required', message: 'password is required.' }
         ]
      }
+     
     
   }
 
@@ -72,7 +73,7 @@ export class LoginPage {
           return result.json()
         })
       .subscribe(data => {
-      console.log(data["id"]);
+     // console.log(data["id"]);
       if(data["id"]==0){
         this.presentToast("Votre login nexiste pas, veuillez pour inscrire.");
         }
@@ -80,25 +81,20 @@ export class LoginPage {
         //console.log(data["_body"]); 
         localStorage.setItem('userId', JSON.stringify({ id: data["id"], lastName: data["last_name"], firstName: data["first_name"],  email: data["email"] }));
         //this.navCtrl.push('CpanelPage');
-      //  let nav = this.app.getRootNav();
+        //  let nav = this.app.getRootNav();
        // nav.setRoot('CpanelPage');
-       this.events.publish('userexist', true);
-       this.navCtrl.popToRoot ();
+       this.events.publish('userconnect', true);
+       this.navCtrl.popToRoot();
         //this.navCtrl.setRoot ('CpanelPage');
 
       }
     
     }, error => {
-    console.log("Oooops!");
+       console.log("Oooops!");
     });
   }
 
-  authSuccess(token) {
-    this.error = null;
-    this.storage.set('token', token);
- //   this.user = this.jwtHelper.decodeToken(token).username;
-    this.storage.set('profile', this.user);
-  }
+ 
 
   private presentToast(text) {
   let toast = this.toastCtrl.create({

@@ -1,5 +1,5 @@
 import {ChangeDetectorRef, Component, ElementRef, Renderer, ViewChild} from '@angular/core';
-import {Content, IonicPage, ModalController, NavController, NavParams} from 'ionic-angular';
+import {Content, IonicPage, ModalController, NavController, NavParams, Events} from 'ionic-angular';
 import {CompanyDescriptionPage} from "../company-description/company-description";
 import {CompanyImagesPage} from "../company-images/company-images";
 import {CompanyInfoPage} from "../company-info/company-info";
@@ -44,7 +44,7 @@ export class CompanyPage {
   longitude;
   name;
   valiRate;
-  userexist=false;
+  userconnect=false;
   user;
 
   @ViewChild('map') mapElement: ElementRef;
@@ -59,22 +59,28 @@ export class CompanyPage {
     public listingService: CompaniesProvider,
     private emailComposer: EmailComposer,
     private callNumber: CallNumber,
-    private iab: InAppBrowser
+    private iab: InAppBrowser,
+    private events: Events
 
   ) { 
 
 
 
-     this.idcompagnie = navParams
-     .get("idcompagnie");
+     this.idcompagnie = navParams.get("idcompagnie");
      this.loadData(this.idcompagnie);
      //this.desc=this.business.description;
      var currentUser = JSON.parse(localStorage.getItem('userId'));
      this.user = currentUser;
 
      if(localStorage.getItem("userId")) {
-      this.userexist = true;
+      // console.log("true1");
+      this.userconnect = true;
      }
+
+     events.subscribe('userconnect', (user) => {
+      // console.log("true2");
+      this.userconnect =true;
+     });
 
 }
 
@@ -129,7 +135,8 @@ export class CompanyPage {
   }
 
   openInfoEdit(){
-    let infoModal = this.modalCtrl.create(CompanyInfoPage);
+    console.log(this.business);
+    let infoModal = this.modalCtrl.create(CompanyInfoPage,{"company": this.business});
     infoModal.present();
   }
 
@@ -140,7 +147,7 @@ export class CompanyPage {
 
   onModelChange(val, companyId){
    //alert(this.user);
-   if(this.userexist==true){
+   if(this.userconnect==true){
       let myModal = this.modalCtrl.create(ReviewFormPage, {vote: val, companyId: companyId});
       myModal.present();
 

@@ -13,14 +13,14 @@
       </button>
     </ion-buttons>
 
-    <ion-title class="uk-title-color-red">Information</ion-title>
+    <ion-title class="uk-title-color-red">Information </ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
-
+<form class="form"  [formGroup]="validations_form"  >
 <ion-card class="uk-background-default card-info no-border-radius" margin-bottom>
   <ion-card-content class="uk-flex uk-flex-middle uk-flex-center">
     <div class="uk-width-1-1">
@@ -43,7 +43,7 @@
           </ion-list>
         </div>
         <div class="uk-width-auto">
-            <button ion-button clear>
+            <button ion-button clear  (click)="openCategoryEdit()">
               <ion-icon name="add"></ion-icon>
             </button>
         </div>
@@ -53,60 +53,79 @@
 </ion-card>
 
 <div class="uk-background-default uk-padding uk-padding-remove-bottom uk-padding-remove-top">
+  
   <ion-list no-margin>
     <ion-item no-padding no-border>
       <ion-label floating>Nom de l'entreprise</ion-label>
-      <ion-input type="text" value=""></ion-input>
+      <ion-input type="text" formControlName="name"></ion-input>
     </ion-item>
-    <ion-item no-padding>
-      <ion-label floating>Recherchez votre adresse</ion-label>
-      <ion-input type="text" value=""></ion-input>
-    </ion-item>
-    <ion-item no-padding>
-      <ion-label floating>Ville</ion-label>
-      <ion-input typwilrona
-                 e="text" value=""></ion-input>
-    </ion-item>
-    <ion-item no-padding>
-      <ion-label floating>Quartier</ion-label>
-      <ion-input type="text" value=""></ion-input>
-    </ion-item>
-    <ion-item no-padding>
-      <ion-label floating>Rue</ion-label>
-      <ion-input type="text" value=""></ion-input>
-    </ion-item>
-    <ion-item no-padding>
-      <ion-label floating>Boite Postale</ion-label>
-      <ion-input type="text" value=""></ion-input>
-    </ion-item>
-    <input type="hidden"  value="longitude">
-    <input type="hidden"  value="latitude">
-    <ion-item no-padding>
-      <ion-label floating>Repère de la position de votre entreprise</ion-label>
-      <ion-input type="text" value=""></ion-input>
+    <ion-item no-padding no-border>
+      <ion-label floating>Description de l'entreprise</ion-label>
+      <ion-textarea  formControlName="description"></ion-textarea>
     </ion-item>
     <ion-item no-padding>
       <ion-label floating>Téléphone</ion-label>
-      <ion-input type="text" value=""></ion-input>
+      <ion-input type="text" formControlName="phone"></ion-input>
     </ion-item>
     <ion-item no-padding>
       <ion-label floating>Adresse Email</ion-label>
-      <ion-input type="text" value=""></ion-input>
+      <ion-input type="text" formControlName="email"></ion-input>
     </ion-item>
     <ion-item no-padding>
       <ion-label floating>Site Web</ion-label>
-      <ion-input type="text" value=""></ion-input>
+      <ion-input type="text" formControlName="siteweb"></ion-input>
     </ion-item>
+    <ion-item no-padding>
+      <ion-label floating>Repère de la position de votre entreprise</ion-label>
+      <ion-input type="text" formControlName="repere"></ion-input>
+    </ion-item>
+    <ion-item no-padding>
+    <!--ion-label>Mot clés</ion-label-->
+    <ion-tags-input formControlName="tags" [placeholder]="'+ tags'" [once]="'true'" [separatorStr]="','" [type]="text" class="uk-margin-large-bottom"></ion-tags-input>
+    </ion-item>
+  </ion-list>
+  <ion-searchbar autocorrect="off" autocapitalize="off" spellcheck="off" #searchbar placeholder="Search..." class="search"  id="search" ></ion-searchbar>
+  <div #map id="map" class="map" style="height:200px;"></div>
+
+  <ion-list no-margin>
+      <ion-item no-padding no-border>
+    </ion-item>
+    <ion-item no-padding>
+      <ion-label floating>Ville</ion-label>
+      <ion-input type="text" formControlName="ville"></ion-input>
+    </ion-item>
+    <ion-item no-padding>
+      <ion-label floating>adresse</ion-label>
+      <ion-input type="text" formControlName="adresse"></ion-input>
+    </ion-item>
+    <ion-item no-padding>
+      <ion-label floating>latitude</ion-label>
+      <ion-input type="text" formControlName="latitude"></ion-input>
+    </ion-item>
+    <ion-item no-padding>
+      <ion-label floating>longitude</ion-label>
+      <ion-input type="text" formControlName="longitude"></ion-input>
+    </ion-item><ion-item no-padding>
+      <ion-label floating>Quartier</ion-label>
+      <ion-input type="text" formControlName="quartier"></ion-input>
+    </ion-item>
+    <ion-item no-padding>
+      <ion-label floating>Region</ion-label>
+      <ion-input type="text" formControlName="region"></ion-input>
+    </ion-item>
+    <ion-item no-padding>
+      <ion-label floating>Boite Postale</ion-label>
+      <ion-input type="text" formControlName="bp"></ion-input>
+    </ion-item>
+    
 
     <ion-item no-padding no-border>
     </ion-item>
   </ion-list>
-  <ion-label>Mot clés</ion-label>
-  <ion-tags-input [(ngModel)]="tags" [placeholder]="'+ tags'" [once]="'true'" [separatorStr]="','" [type]="text" class="uk-margin-large-bottom"></ion-tags-input>
-
+  
 </div>
 <div class="uk-height-fab"></div>
-
+</form>
 </ion-content>
 <ion-footer>
   <ion-fab right bottom>

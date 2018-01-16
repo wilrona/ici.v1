@@ -1,6 +1,9 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import {IonicPage, MenuController, NavController, NavParams, ToastController, Events, Platform} from 'ionic-angular';
 import { CompaniesProvider } from '../../providers/companies/companies';
+
+import { EmailComposer } from '@ionic-native/email-composer';
+import { CallNumber } from '@ionic-native/call-number';
 
 declare var google: any;
 declare var MarkerClusterer: any;
@@ -32,17 +35,21 @@ export class MapsPage {
   // public listMarker = new Array();
   public newMarkers: Array<any> = [];
   public currentMaker:any;
+  @Input() element:object;
+  @Output() refresh: EventEmitter<object>;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams, public menu: MenuController,
               public listingService: CompaniesProvider,
               public toastCtrl: ToastController,
               public platform: Platform,
+              private emailComposer: EmailComposer,
+              private callNumber: CallNumber,
               public events: Events) {
 
     menu.enable(true);
 
-
+   this.refresh = new EventEmitter<object>();
 
     this.events.subscribe('citiesfilter', (cities) => {
       this.cities = cities;
@@ -59,6 +66,7 @@ export class MapsPage {
     });
 
     this.platform.ready().then(() => this.loadMaps());
+    
   }
 
   ionViewDidLoad() {
@@ -155,6 +163,7 @@ export class MapsPage {
 
     }
   }
+  
 
   renderRichMarker(i, markerContent) {
 
@@ -166,12 +175,24 @@ export class MapsPage {
       content: markerContent,
       flat: true
     });
-    google.maps.event.addListener(marker, 'click', (function(marker, i) {
-      return function() {
+   /* google.maps.event.addListener(marker, 'click', (function(marker, i) {
+       
+      return function(i) {
+        this.element={"name": "ari"};
+        this.refresh.emit(this.element);
+        alert(i["name"]);
         let heightDetail = document.getElementById('details').offsetHeight;
         document.getElementById('map').style.height = 'calc(100% - '+heightDetail+'px)';
       }
-    })(marker, i));
+    })(marker, i));*/
+    google.maps.event.addListener(marker, 'click', () => {
+      this.element=i;
+      this.refresh.emit(this.element);
+     
+      let heightDetail = document.getElementById('details').offsetHeight;
+      document.getElementById('map').style.height = 'calc(100% - '+heightDetail+'px)';
+      
+    });
 
     this.currentMaker = i;
     this.newMarkers.push(marker);
@@ -202,6 +223,35 @@ export class MapsPage {
   closedModal(){
     document.getElementById('map').style.height = '100%';
   }
+
+  callCompany(phonenumber:any){
+    this.callNumber.callNumber(phonenumber, true)
+  .then(() => console.log('Launched dialer!'))
+  .catch(() => console.log('Error launching dialer '+phonenumber));
+  }
+
+  emailCompany(emailcpy:any){
+   this.emailComposer.isAvailable().then((available: boolean) =>{
+  if(available) {
+  }
+  });
+
+  let email = {
+    to: emailcpy,
+    subject: '',
+    body: '',
+    isHtml: true
+  };
+  this.emailComposer.open(email);
+ }
+
+  isEmpty(arg:object) {
+  for (var item in arg) {
+    return false;
+  }
+  return true;
+  }
+
 
 }
 

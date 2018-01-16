@@ -34,6 +34,9 @@ import {ComptePage} from "../pages/compte/compte";
 
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 
+import { Geolocation } from '@ionic-native/geolocation';
+import { MapProvider } from '../providers/map/map';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -83,6 +86,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     EmailComposer,
     CompaniesProvider,
     InAppBrowser,
+    Geolocation,
+    MapProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

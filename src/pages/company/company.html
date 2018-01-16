@@ -9,8 +9,8 @@
 
   <ion-navbar [class.show-background]="showToolbar">
     <ion-title [hidden]="!showToolbar" class="uk-text-truncate">{{business.name}}</ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only small (click)="openInfoEdit()">
+    <ion-buttons end *ngIf="userconnect==true">
+      <button ion-button icon-only small (click)="openInfoEdit(business._id.$id)">
         <ion-icon name="create"></ion-icon>
       </button>
     </ion-buttons>
@@ -26,7 +26,7 @@
               [style.backgroundImage]="'url(http://yoomeeonl.webfactional.com/media/pictures/companies/'+ business.imageune +')'"><!--headerImgUrl-->
 
   <div class="user-info uk-height-small uk-flex uk-flex-middle uk-flex-center">
-    <h2 class="uk-size" padding-horizontal>{{business.name}}</h2>
+    <h2 class="uk-size" padding-horizontal>{{business.name}} {{userconnect}}</h2>
   </div>
 
   <div class="contents">
@@ -48,7 +48,7 @@
                   <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-muted" style="margin-bottom: 4px !important;">{{business.ville}} {{business.quartier}}</div>
                   <!--  <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-success uk-text-small"> <ion-icon name="checkmark-circle"></ion-icon> Entreprise validé</div>
                   <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-danger uk-text-small"> <ion-icon name="close"></ion-icon> Validation en cours</div> -->
-                  <ion-badge item-end class="uk-margin-remove-top uk-margin-remove-left uk-margin-remove-right">{{business.categorie}}</ion-badge>
+                  <ion-badge item-end class="uk-margin-remove-top uk-margin-remove-left uk-margin-remove-right">{{business.maincategorie}}</ion-badge>
                 </div>
 
               </ion-item>

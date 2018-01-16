@@ -5,7 +5,7 @@ import { CallNumber } from '@ionic-native/call-number';
 import { EmailComposer } from '@ionic-native/email-composer';
 import {CompanyPage} from "../company/company";
 
-import { ReviewFormPage } from '../../pages/review-form/review-form';
+
 
 /**
  * Generated class for the AnnuairePage page.
@@ -36,7 +36,7 @@ export class AnnuairePage {
    totalPage = 0;
    companies:any;
    user;
-   userexist=false;
+   userconnect:boolean=false;
 
    loading: boolean;
    //Loading;
@@ -54,8 +54,9 @@ export class AnnuairePage {
 
       var currentUser = JSON.parse(localStorage.getItem('userId'));
       this.user = currentUser;
+      
       if(localStorage.getItem("userId")) {
-        this.userexist = true;
+        this.userconnect = true;
       }
       this.loadData();
 
@@ -146,18 +147,7 @@ export class AnnuairePage {
 
   }
 
-   onModelChange(val, companyId){
    
-   //if(this.userexist==true){
-      let myModal = this.modalCtrl.create(ReviewFormPage, {vote: val, companyId: companyId});
-      myModal.present();
-
-  /* } else{
-      let myModal = this.modalCtrl.create(LoginPage);
-      myModal.present();
-   }*/
-
- }
 
   
 
