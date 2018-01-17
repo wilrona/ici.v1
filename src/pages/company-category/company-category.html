@@ -21,13 +21,13 @@
 
 
 <ion-content padding-vertical>
-  <filtre [showVille]="false"></filtre>
+  <filtre [showVille]="false" [categoriesselect]="categories"></filtre>
 
   <div class="uk-height-fab"></div>
 </ion-content>
 
 <ion-footer>
-  <ion-fab right bottom>
+  <ion-fab right bottom (click)="changeCategorie()">
     <button ion-fab color="success"><ion-icon name="checkmark"></ion-icon></button>
   </ion-fab>
 </ion-footer>

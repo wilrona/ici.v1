@@ -21,6 +21,10 @@ import {CompanyCategoryPage} from "../pages/company-category/company-category";
 import {ReviewFormPage} from "../pages/review-form/review-form";
 import {LoginPage} from "../pages/login/login";
 
+import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
+import { FilePath } from '@ionic-native/file-path';
+import { File } from '@ionic-native/file';
+import { Camera } from '@ionic-native/camera';
 
 import {IonTagsInputModule} from "ionic-tags-input";
 import {MapsPage} from "../pages/maps/maps";
@@ -107,6 +111,10 @@ import {InscriptionPage} from "../pages/inscription/inscription";
     CompaniesProvider,
     InAppBrowser,
     Geolocation,
+    FilePath,
+    File,
+    Camera,
+    FileTransfer,
     MapProvider,
     VariableProvider,
     AuthProvider,
