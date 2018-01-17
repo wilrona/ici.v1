@@ -107,7 +107,8 @@ export class LoginPage {
         //  let nav = this.app.getRootNav();
        // nav.setRoot('CpanelPage');
        this.events.publish('userconnect', true);
-       this.navCtrl.popToRoot();
+       this.dismiss();
+      // this.navCtrl.popToRoot();
         //this.navCtrl.setRoot ('CpanelPage');
 
       }

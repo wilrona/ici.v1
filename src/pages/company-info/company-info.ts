@@ -1,10 +1,15 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
-import {IonicPage, NavController, NavParams, Platform, ViewController, ModalController} from 'ionic-angular';
+import { Component, ViewChild, ElementRef, Input, Output, EventEmitter } from '@angular/core';
+import {IonicPage, NavController, NavParams, Platform, ViewController, ModalController, Events, LoadingController, Loading, ActionSheetController, ToastController} from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { MapProvider } from '../../providers/map/map';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Observable } from 'rxjs/Observable';
 import {CompanyCategoryPage} from "../company-category/company-category";
+import { File } from '@ionic-native/file';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { FilePath } from '@ionic-native/file-path';
+import { Camera } from '@ionic-native/camera';
+import { Http, Headers, RequestOptions } from '@angular/http';
 
 // DONT FORGET THIS DECLARATION TO AVOID TYPESCRIPT ERROR
 declare var VideoPicturePreviewPickerV2: any;
@@ -17,6 +22,7 @@ declare var VideoPicturePreviewPickerV2: any;
  */
 
 declare var google: any;
+declare var cordova: any;
 
 @IonicPage()
 @Component({
@@ -43,6 +49,21 @@ export class CompanyInfoPage {
   validations_form;
   map: any; 
   addressElement: HTMLInputElement = null;
+  @Input() categorie:Array<any> = [];
+  @Output() refresh: EventEmitter<Array<object>>;
+  maincategorie:{};
+  maincat;
+  id;
+  cat;
+
+  lastImage: string = null;
+  loading: Loading;
+  storageDirectory: string = '';
+  @Input() logoLocation: string = '';
+  @Output() refreshlogo: EventEmitter<string>;
+  imagedir: string = '';
+  logoexist=false;
+  user;
 
   @ViewChild('map') mapElement: ElementRef;
   @ViewChild('searchbar', { read: ElementRef }) searchbar: ElementRef;
@@ -55,6 +76,15 @@ export class CompanyInfoPage {
   public navParams: NavParams, 
   public viewCtrl: ViewController,
   public modalCtrl: ModalController,
+  public http: Http,
+  public events: Events,
+  public loadingCtrl: LoadingController,
+  public toastCtrl: ToastController,
+  private transfer: FileTransfer, 
+  private file: File, 
+  private filePath: FilePath, 
+  public actionSheetCtrl: ActionSheetController,
+  private camera: Camera,
   public platform: Platform) {
     var company = navParams.get("company");
     var i=0;
@@ -64,6 +94,37 @@ export class CompanyInfoPage {
       i++;
       }
     }
+
+    var currentUser = JSON.parse(localStorage.getItem('userId'));
+      this.user = currentUser;
+
+    
+
+    this.maincategorie={"name": company.maincategorie, "id": company.maincategorieId};
+
+    this.cat= company.maincategorieId;
+
+    this.refresh = new EventEmitter<Array<object>>();
+
+    this.categorie=company.categorie;
+    this.imagedir=company.imagedir;
+    this.logoLocation=company.logo;
+
+    events.subscribe('selectcategoriesid', (cat, name) => {
+          console.log("c " +cat);
+          console.log("name "+name);
+          
+         // alert("ar");
+          i=0;
+          for(let c of cat){
+            var b={ "id": c, "name": name[i]};
+            this.categorie[i]=b;
+            i++;
+          }
+          this.refresh.emit(this.categorie);
+          
+      });
+
       this.validations_form = this.formBuilder.group({
         ville: [company.ville,Validators.required],
         name: [company.name,Validators.required],
@@ -78,7 +139,8 @@ export class CompanyInfoPage {
         siteweb: [company.siteweb, ''],
         bp: [company.bp,''],
         repere: [company.repere,''],
-        tags: [this.tags,'']
+        tags: [this.tags,''],
+        id:[company._id.$id,'']
     });
 
 
@@ -89,13 +151,15 @@ export class CompanyInfoPage {
     console.log('ionViewDidLoad CompanyInfoPage');
   }
 
+  
+
   ngAfterViewInit(){
       this.loadMaps();
     
   }
   
-  openCategoryEdit(){
-    let categoryModal = this.modalCtrl.create(CompanyCategoryPage);
+  openCategoryEdit(categories){
+    let categoryModal = this.modalCtrl.create(CompanyCategoryPage, {"categories": categories} );
     categoryModal.present();
   }
 
@@ -231,6 +295,7 @@ export class CompanyInfoPage {
     return components;
   }
 
+
   initAutocomplete(): void {
    this.createAutocomplete(this.addressElement).subscribe((location) => {
       //console.log('Searchdata', location);
@@ -244,25 +309,179 @@ export class CompanyInfoPage {
     });
   }
 
-  uploadPicture()
-  {
-
-    this.platform.ready().then(() =>
-    {
-      VideoPicturePreviewPickerV2.openPicker(
-        function(results) {
-          console.log(results);
-        }, function (error) {
-          console.log(error);
-        }, {
-          limit_Select: 1,
-          Is_multiSelect: false,
-          picture_selector:  false,
-          video_selector:  false,
-          display_video_time: false,
-          display_preview: true
-        });
-    });
+public pathForImage(img) {
+  if (img === null) {
+    return '';
+  } else {
+    return  cordova.file.dataDirectory + img; // this.storageDirectory + img;
   }
+}
+
+
+private copyFileToLocalDir(namePath, currentName, newFileName) {
+  this.file.copyFile(namePath, currentName, cordova.file.dataDirectory, newFileName).then(success => {
+    this.lastImage = newFileName;
+    this.logoLocation=this.pathForImage(this.lastImage);
+      }, error => {
+    this.presentToast('Error while storing file.');
+  });
+}
+
+private createFileName() {
+  var d = new Date(),
+  n = d.getTime(),
+  newFileName =  n + ".jpg";
+  return newFileName;
+}
+
+public takePicture(sourceType) {
+  // Create options for the Camera Dialog
+  var options = {
+    quality: 100,
+    sourceType: sourceType,
+    saveToPhotoAlbum: false,
+    correctOrientation: true
+  };
+ 
+  // Get the data of an image
+  this.camera.getPicture(options).then((imagePath) => {
+    // Special handling for Android library
+    if (this.platform.is('android') && sourceType === this.camera.PictureSourceType.PHOTOLIBRARY) {
+      this.filePath.resolveNativePath(imagePath)
+        .then(filePath => {
+          let correctPath = filePath.substr(0, filePath.lastIndexOf('/') + 1);
+          let currentName = imagePath.substring(imagePath.lastIndexOf('/') + 1, imagePath.lastIndexOf('?'));
+          this.copyFileToLocalDir(correctPath, currentName, this.createFileName());
+        });
+    } else {
+      var currentName = imagePath.substr(imagePath.lastIndexOf('/') + 1);
+      var correctPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1);
+      this.copyFileToLocalDir(correctPath, currentName, this.createFileName());
+    }
+  }, (err) => {
+    this.presentToast('Error while selecting image.');
+  });
+}
+
+
+public presentActionSheet() {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Select Image Source',
+      buttons: [
+        {
+          text: 'Load from Library',
+          handler: () => {
+            this.takePicture(this.camera.PictureSourceType.PHOTOLIBRARY);
+          }
+        },
+        {
+          text: 'Use Camera',
+          handler: () => {
+            this.takePicture(this.camera.PictureSourceType.CAMERA);
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel'
+        }
+      ]
+    });
+    actionSheet.present();
+  }
+
+
+uploadImage() {
+ 
+  var url = "http://yoomeeonl.webfactional.com/assets/external/upload.php";
+ 
+  // File for Upload
+  var filename = this.lastImage; // this.lastImage;
+  var targetPath =this.pathForImage(this.lastImage); //this.pathForImage(this.lastImage);
+  if((this.imagedir=="")|| (this.imagedir==null)){
+     this.imagedir = btoa((new Date()).getTime()+"");
+  }
+
+  this.logoLocation=this.imagedir+"/"+filename;
+  // File name only
+  
+  let options: FileUploadOptions = {
+     fileKey: 'files',
+     fileName: filename,
+     chunkedMode: false,
+     mimeType: "multipart/form-data",   //"image/jpeg", 
+     params : {'files': filename, 'imagedir': this.imagedir}
+  }
+  var trustHosts = true;
+  const fileTransfer: FileTransferObject = this.transfer.create();
+  var ft = new FileTransfer();
+
+  this.loading = this.loadingCtrl.create({
+    content: 'Uploading...',
+  });
+
+  this.loading.present();
+  fileTransfer.upload(targetPath, encodeURI(url), options)
+   .then((data) => {
+     // success
+     this.loading.dismissAll();
+     this.presentToast('Image succesful uploaded.');
+     this.logoexist=true;
+
+   }, (err) => {
+     // error
+     this.loading.dismissAll();
+    this.presentToast('Error while uploading file.');
+   });
+  
+}
+
+private presentToast(text) {
+  let toast = this.toastCtrl.create({
+    message: text,
+    duration: 3000,
+    position: 'top'
+  });
+  toast.present();
+}
+
+saveInfo(value){ 
+
+    if(!(this.lastImage === null)){
+      this.uploadImage();
+      this.logoexist=true;
+    }
+
+    //this.maincat= this.maincategorie.id;
+
+    if(this.maincat==undefined){
+      this.maincat= this.cat;
+    }
+    
+    var myData = JSON.stringify({  quartier:value.quartier, userid: this.user.id.$id, tags: value.tags, adresse:value.adresse,
+      region: value.region,website: value.siteweb,longitude: value.longitude,
+      latitude: value.latitude, description: value.description, name: value.name,repere: value.repere,ville: value.ville,
+      email: value.email,phone: value.phone,idcategorie: this.categorie
+      ,maincategorie: this.maincat.$id, id:value.id, bp:value.bp,
+      imagedir:this.imagedir, logoLocation:this.logoLocation, logoexist: this.logoexist});      
+    
+
+   // console.log(this.maincat); 
+    console.log(myData); 
+
+    /*this.http.post("http://yoomeeonl.webfactional.com/MobileApp/updatecompanyInfo",myData)    
+    .subscribe(data => {
+      this.events.publish('companyInfoupdate', data["_body"]);
+      //this.presentToast(data["_body"]);
+      // console.log( data["_body"]);
+      this.dismiss();
+      console.log( data["_body"]);
+    }, error => {
+    console.log("Oooops!");
+  });*/
+
+}
+
+
+
 
 }

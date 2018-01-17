@@ -20,30 +20,33 @@
 
 
 <ion-content>
-<form class="form"  [formGroup]="validations_form"  >
+
 <ion-card class="uk-background-default card-info no-border-radius" margin-bottom>
   <ion-card-content class="uk-flex uk-flex-middle uk-flex-center">
     <div class="uk-width-1-1">
       <div class="uk-text-center uk-margin-auto">
-        <img src="assets/imgs/default.jpg" alt="" class="logo uk-border-circle uk-margin-auto uk-display-block" margin-bottom>
-        <button ion-button clear small class="button-custom-size" (click)="uploadPicture()">Modifier le logo</button>
+        <img src="{{logoLocation}}" alt="" class="logo uk-border-circle uk-margin-auto uk-display-block" margin-bottom>
+        <!--button ion-button clear small class="button-custom-size" (click)="uploadPicture()">Modifier le logo</button-->
+        <!--img src="{{pathForImage(lastImage)}}" style="width: 20px; height:20px;" [hidden]="lastImage === null"-->
+        <!--button ion-button icon-left (click)="uploadImage()" [disabled]="lastImage === null" >
+          <ion-icon name="cloud-upload"></ion-icon>Upload
+        </button-->
+        <button ion-button clear small class="button-custom-size" (click)="presentActionSheet()">
+          Modifier le logo
+        </button>
       </div>
       <div class="uk-grid-collapse uk-grid">
         <div class="uk-width-expand">
           <ion-list no-margin>
-            <ion-item no-padding no-border>
-              <ion-select interface="action-sheet" multiple="false" placeholder="Selectionnez une catégorie principale">
-                <ion-option value="">Selectionnez une catégorie principale</ion-option>
-                <ion-option value="mute_15">For 15 Minutes</ion-option>
-                <ion-option value="mute_1">For 1 Hour</ion-option>
-                <ion-option value="mute_23">For 24 Hours</ion-option>
-                <ion-option value="mute_inf">Until I turn it back on</ion-option>
+            <ion-item no-padding no-border><!--interface="action-sheet"-->
+              <ion-select  multiple="false" placeholder="Selectionnez une catégorie principale" [(ngModel)]="maincat">
+                <ion-option *ngFor="let cat of categorie" value="{{cat.id.$id}}"  selected="{{cat.id.$id == maincategorie.id.$id ? 'true' : 'false'}}"  >{{cat.name}}</ion-option>
               </ion-select>
             </ion-item>
           </ion-list>
         </div>
         <div class="uk-width-auto">
-            <button ion-button clear  (click)="openCategoryEdit()">
+            <button ion-button clear  (click)="openCategoryEdit(categorie)">
               <ion-icon name="add"></ion-icon>
             </button>
         </div>
@@ -52,6 +55,7 @@
   </ion-card-content>
 </ion-card>
 
+<form class="form"  [formGroup]="validations_form"  >
 <div class="uk-background-default uk-padding uk-padding-remove-bottom uk-padding-remove-top">
   
   <ion-list no-margin>
@@ -66,6 +70,8 @@
     <ion-item no-padding>
       <ion-label floating>Téléphone</ion-label>
       <ion-input type="text" formControlName="phone"></ion-input>
+      <ion-input type="hidden" formControlName="id"></ion-input>
+      
     </ion-item>
     <ion-item no-padding>
       <ion-label floating>Adresse Email</ion-label>
@@ -128,7 +134,7 @@
 </form>
 </ion-content>
 <ion-footer>
-  <ion-fab right bottom>
+  <ion-fab right bottom (click)="saveInfo(validations_form.value)">
     <button ion-fab color="success"><ion-icon name="checkmark"></ion-icon></button>
   </ion-fab>
 </ion-footer>

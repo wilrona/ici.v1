@@ -1,6 +1,6 @@
 webpackJsonp([2],{
 
-/***/ 723:
+/***/ 727:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18,7 +18,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var MapsPageModule = (function () {
+var MapsPageModule = /** @class */ (function () {
     function MapsPageModule() {
     }
     MapsPageModule = __decorate([
@@ -27,7 +27,7 @@ var MapsPageModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_2__maps__["a" /* MapsPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__maps__["a" /* MapsPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__maps__["a" /* MapsPage */]),
             ],
         })
     ], MapsPageModule);

@@ -14,8 +14,10 @@ import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular
   templateUrl: 'company-category.html',
 })
 export class CompanyCategoryPage {
+  public categories;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
+    this.categories = navParams.get("categories");
   }
 
   ionViewDidLoad() {
@@ -24,6 +26,10 @@ export class CompanyCategoryPage {
 
   dismiss() {
     this.viewCtrl.dismiss();
+  }
+
+  changeCategorie(){
+
   }
 
 }

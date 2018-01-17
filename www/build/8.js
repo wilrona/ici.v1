@@ -1,6 +1,6 @@
 webpackJsonp([8],{
 
-/***/ 716:
+/***/ 718:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18,7 +18,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var CompanyCategoryPageModule = (function () {
+var CompanyCategoryPageModule = /** @class */ (function () {
     function CompanyCategoryPageModule() {
     }
     CompanyCategoryPageModule = __decorate([
@@ -27,7 +27,7 @@ var CompanyCategoryPageModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_2__company_category__["a" /* CompanyCategoryPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__company_category__["a" /* CompanyCategoryPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__company_category__["a" /* CompanyCategoryPage */]),
             ],
         })
     ], CompanyCategoryPageModule);

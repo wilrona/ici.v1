@@ -46,6 +46,13 @@ export class CompanyPage {
   valiRate;
   userconnect=false;
   user;
+  ville;
+  quartier;
+  description;
+  repere;
+  adresse;
+  
+  
 
   @ViewChild('map') mapElement: ElementRef;
   map: any;
@@ -70,6 +77,8 @@ export class CompanyPage {
      this.loadData(this.idcompagnie);
      //this.desc=this.business.description;
      var currentUser = JSON.parse(localStorage.getItem('userId'));
+     
+     
      this.user = currentUser;
 
      if(localStorage.getItem("userId")) {
@@ -82,6 +91,20 @@ export class CompanyPage {
       this.userconnect =true;
      });
 
+     events.subscribe('companyInfoupdate', (data) => {
+       //alert("ss la");
+      var data = JSON.parse(data);
+      this.business=data;
+      /*this.name=data.name;
+      this.ville=data.ville;
+      this.quartier=data.quartier;
+      this.description=data.description;
+      this.latitude=data.latitude;
+      this.longitude=data.longitude;
+      this.repere=data.repere;
+      this.adresse=data.adresse;*/  
+     });
+
 }
 
   loadData(id){
@@ -90,6 +113,15 @@ export class CompanyPage {
               this.latitude=data.latitude;
               this.name=data.name;
               this.longitude=data.longitude;
+              this.ville=data.ville;
+              this.quartier=data.quartier;
+              this.description=data.description;
+              this.repere=data.repere;
+              this.adresse=data.adresse;
+              
+              
+              
+
               
             }
         );
@@ -135,7 +167,7 @@ export class CompanyPage {
   }
 
   openInfoEdit(){
-    console.log(this.business);
+    //console.log(this.business);
     let infoModal = this.modalCtrl.create(CompanyInfoPage,{"company": this.business});
     infoModal.present();
   }

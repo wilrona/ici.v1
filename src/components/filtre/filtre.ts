@@ -15,8 +15,12 @@ export class FiltreComponent {
 
   shownGroup = null;
   @Input('showVille') ville: boolean = true;
+  @Input() categoriesselect :Array<any> = [];
+  
   @Input('clear') clear: boolean = false;
   itenSelect:Array<any> = [];
+  itenSelect2:Array<any> = [];
+  
 
   cities: Array<[any]>;
   categories: Array<[any]>;
@@ -52,14 +56,31 @@ export class FiltreComponent {
     return this.shownGroup === group;
   };
 
-  itemAdd(i, event){
+  itemAdd(i, event, nam){
     const index = this.itenSelect.indexOf(i);
+    const index2 = this.itenSelect2.indexOf(nam);
+    console.log("nam "+nam);
+    console.log("j "+i);
+    
+    //console.log("nam "+event);
+    
+    //var el={"name":name, "id":i};
     if(index > - 1){
       this.itenSelect.splice(index, 1);
+      this.itenSelect2.splice(index2, 1);
+      
     }else {
       this.itenSelect.push(i);
+      this.itenSelect2.push(nam);
+      
     }
+    
+
     this.events.publish('categoriesfilter', this.itenSelect);
+    this.events.publish('selectcategoriesid', this.itenSelect, this.itenSelect2);
+    
+    //alert("h");
+    
     event.target.parentElement.parentElement.parentElement.classList.toggle('hover');
     // event.target.parentElement.parentElement.classList.toggle('hover');
   }
@@ -79,6 +100,8 @@ export class FiltreComponent {
   onTypeSelected(value){
     //console.log(value);
     this.events.publish('citiesfilter', value);
+    
+    
   }
 
 

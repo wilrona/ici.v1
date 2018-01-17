@@ -182,7 +182,7 @@
                      emptyStarIconName="star-outline"
                      halfStarIconName="star-half"
                      starIconName="star"
-                     nullable="false" (ngModelChange)="onModelChange($event, business.name)"></rating>
+                     nullable="false" (ngModelChange)="onModelChange($event, business._id.$id)"></rating>
 
             <button ion-button clear class="uk-text-center" (click)="onModelChange(valiRate,business._id.$id)">Ecrire un avis</button>
 
