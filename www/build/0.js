@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 728:
+/***/ 732:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -27,7 +27,7 @@ var ReviewFormPageModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_2__review_form__["a" /* ReviewFormPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__review_form__["a" /* ReviewFormPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__review_form__["a" /* ReviewFormPage */]),
             ],
         })
     ], ReviewFormPageModule);

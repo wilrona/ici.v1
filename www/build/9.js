@@ -1,6 +1,6 @@
 webpackJsonp([9],{
 
-/***/ 718:
+/***/ 723:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -27,7 +27,7 @@ var CompanyDescriptionPageModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_2__company_description__["a" /* CompanyDescriptionPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__company_description__["a" /* CompanyDescriptionPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__company_description__["a" /* CompanyDescriptionPage */]),
             ],
         })
     ], CompanyDescriptionPageModule);

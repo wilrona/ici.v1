@@ -26,7 +26,7 @@
               [style.backgroundImage]="'url(http://yoomeeonl.webfactional.com/media/pictures/companies/'+ business.imageune +')'"><!--headerImgUrl-->
 
   <div class="user-info uk-height-small uk-flex uk-flex-middle uk-flex-center">
-    <h2 class="uk-size" padding-horizontal>{{business.name}} {{userconnect}}</h2>
+    <h2 class="uk-size" padding-horizontal>{{business.name}}</h2>
   </div>
 
   <div class="contents">
@@ -157,7 +157,7 @@
           </ion-grid>
           <hr *ngIf="business.tags?.length > 0">
 
-          <ion-grid no-padding>
+          <!-- ion-grid no-padding>
             <ion-row>
               <ion-col col-12 class="uk-position-relative">
                 <ion-label class="uk-text-bold">
@@ -166,7 +166,7 @@
                 <span class="uk-text-success">Ouvert</span> aujourd'hui de 08h à 15h
               </ion-col>
             </ion-row>
-          </ion-grid>
+          </ion-grid -->
         </div>
         <div *ngSwitchCase="'locale'" class="uk-height-1-1"  >
           <maps [business]="business"></maps>
@@ -231,11 +231,11 @@
 
     <ion-row [hidden]="!dark">
       <ion-col col-4 padding-horizontal class="uk-flex uk-flex-center" style="height: 56px">
-        <button ion-button clear color="white" (click)="callCompany(item.phone)"><ion-icon name="call"></ion-icon></button>
+        <button ion-button clear color="white" (click)="callCompany(business.phone)"><ion-icon name="call"></ion-icon></button>
       </ion-col>
 
       <ion-col col-4 padding-horizontal class="uk-flex uk-flex-center" style="height: 56px">
-        <button ion-button clear color="white" (click)="emailCompany(item.email)"><ion-icon name="mail"></ion-icon></button>
+        <button ion-button clear color="white" (click)="emailCompany(business.email)"><ion-icon name="mail"></ion-icon></button>
 
       </ion-col>
       <ion-col col-4 padding-horizontal class="uk-flex uk-flex-center" style="height: 56px">

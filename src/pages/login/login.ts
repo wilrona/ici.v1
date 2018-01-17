@@ -1,16 +1,18 @@
 import { Component } from '@angular/core';
 import {
-  IonicPage, NavController, NavParams, ModalController, ToastController, App, Events,
-  ViewController
+  IonicPage, NavController, NavParams, ToastController, App, Events,
+  ViewController, AlertController
 } from 'ionic-angular';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, Validators, FormControl } from '@angular/forms';
 /*import { ModalPage } from '../../pages/modal-page/modal-page';
 import { AddGpsPage } from '../../pages/add-gps/add-gps';*/
 
 //import {AuthProvider} from '../../providers/auth/auth';
-import { Http, Headers, RequestOptions } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import {AuthProvider} from "../../providers/auth/auth";
 import {VariableProvider} from "../../providers/variable/variable";
+import {LoginForgetPage} from "../login-forget/login-forget";
+import {InscriptionPage} from "../inscription/inscription";
 //import {JwtHelper} from "angular2-jwt";
 //import {Storage} from "@ionic/storage";
 /**
@@ -47,7 +49,7 @@ export class LoginPage {
               public http: Http, public toastCtrl: ToastController,
               public navParams: NavParams, public formBuilder: FormBuilder,
               public viewCtrl: ViewController, public users:AuthProvider,
-              public variable: VariableProvider
+              public variable: VariableProvider, public alertCtrl: AlertController
   ) {
 
     this.validations_form = this.formBuilder.group({
@@ -57,8 +59,7 @@ export class LoginPage {
       ])),
       password: new FormControl('', Validators.compose([
         Validators.minLength(5),
-        Validators.required,
-        Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')
+        Validators.required
       ]))
 
     });
@@ -66,12 +67,12 @@ export class LoginPage {
     this.validation_messages = {
 
       'login': [
-        { type: 'required', message: 'Adresse Email obligatoire.' },
-        { type: 'pattern', message: 'Format adresse email invalid'}
+        { type: 'required', message: 'Email obligatoire' },
+        { type: 'pattern', message: 'Email invalid'}
       ],
       'password': [
-        { type: 'required', message: 'Mot de passe obligatoire.' },
-        { type: 'minLength', message: 'Le mot de passe doit etre superieur ou egale à 6 caracteres' },
+        { type: 'required', message: 'Mot de passe obligatoire' },
+        { type: 'minLength', message: 'Le mot de passe doit etre superieur ou egale à 6 caracteres' }
       ]
     }
 
@@ -81,14 +82,14 @@ export class LoginPage {
     this.viewCtrl.dismiss();
   }
 
-   openModal() {
+   // openModal() {
   /*  let myModal = this.modalCtrl.create(ModalPage); //ModalPage
     myModal.present();*/
-  }
+  // }
 
 
   connexion(val){
-    var myData = JSON.stringify({email: val.login, password: val.password});
+    let myData = JSON.stringify({email: val.login, password: val.password});
     this.http.post("http://yoomeeonl.webfactional.com/MobileApp/login",myData)
     .map(
         result =>
@@ -97,37 +98,50 @@ export class LoginPage {
         })
       .subscribe(data => {
      // console.log(data["id"]);
-      if(data["id"]==0){
-        this.presentToast("Votre login nexiste pas, veuillez pour inscrire.");
-        }
+      if(data["id"] == 0){
+          let alert = this.alertCtrl.create({
+            title: 'Information Incorrecte',
+            subTitle: 'Votre mot de passe ou login est incorrect',
+            buttons: ['OK']
+          });
+          alert.present();
+      }
       else{
-        //console.log(data["_body"]);
-        localStorage.setItem('userId', JSON.stringify({ id: data["id"], lastName: data["last_name"], firstName: data["first_name"],  email: data["email"] }));
-        //this.navCtrl.push('CpanelPage');
-        //  let nav = this.app.getRootNav();
-       // nav.setRoot('CpanelPage');
-       this.events.publish('userconnect', true);
-       this.dismiss();
-      // this.navCtrl.popToRoot();
-        //this.navCtrl.setRoot ('CpanelPage');
+
+        if(data["id"] == 1){
+            let alert = this.alertCtrl.create({
+              title: 'Compte inexistant',
+              subTitle: 'Aucun compte enregistré avec cet email.',
+              buttons: ['OK']
+            });
+            alert.present();
+        }else{
+          // console.log(data["_body"]);
+          localStorage.setItem('userId', JSON.stringify({ id: data["id"], lastName: data["last_name"], firstName: data["first_name"],  email: data["email"] }));
+          // this.navCtrl.push('CpanelPage');
+          // let nav = this.app.getRootNav();
+          // nav.setRoot('CpanelPage');
+          this.events.publish('userconnect', true);
+          this.navCtrl.popToRoot();
+          // this.navCtrl.setRoot ('CpanelPage');
+        }
 
       }
 
-    }, error => {
-       console.log("Oooops!");
     });
   }
 
 
+  loginForget(){
+      this.navCtrl.push(LoginForgetPage);
+  }
 
-  private presentToast(text) {
-  let toast = this.toastCtrl.create({
-    message: text,
-    duration: 5000,
-    position: 'top'
-  });
-  toast.present();
- }
+  inscription(){
+    this.navCtrl.push(InscriptionPage);
+  }
+
+
+
 
 
 

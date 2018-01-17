@@ -56,7 +56,7 @@ import {InscriptionPage} from "../pages/inscription/inscription";
     AnnuairePage,
     ComptePage,
     HomePage,
-    CompanyPage,
+    // CompanyPage,
     CompanyDescriptionPage,
     CompanyImagesPage,
     CompanyInfoPage,
@@ -70,7 +70,7 @@ import {InscriptionPage} from "../pages/inscription/inscription";
 
 
     // components
-    MapsComponent,
+    // MapsComponent,
     FiltreComponent,
 
 
@@ -91,7 +91,7 @@ import {InscriptionPage} from "../pages/inscription/inscription";
     AnnuairePage,
     ComptePage,
     HomePage,
-    CompanyPage,
+    // CompanyPage,
     CompanyDescriptionPage,
     CompanyImagesPage,
     CompanyInfoPage,

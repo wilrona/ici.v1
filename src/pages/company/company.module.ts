@@ -17,7 +17,7 @@ import {IonicStorageModule} from "@ionic/storage";
     IonicImageViewerModule,
     IonicStorageModule
   ],
-  exports: [CompanyPage] ,
-  bootstrap: [CompanyPage]
+  // exports: [CompanyPage] ,
+  // bootstrap: [CompanyPage]
 })
 export class CompanyPageModule {}
