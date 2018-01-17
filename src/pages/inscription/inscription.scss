@@ -1,0 +1,15 @@
+page-inscription {
+  .scroll-content{
+    background-color: transparent;
+  }
+
+  ion-navbar{
+    .back-button, .bar-button{
+      color: map_get($colors, primary);
+    }
+  }
+
+  .toolbar-title{
+    color: map_get($colors, primary);
+  }
+}

@@ -60,6 +60,7 @@ export class FiltreComponent {
       this.itenSelect.push(i);
     }
     this.events.publish('categoriesfilter', this.itenSelect);
+
     event.target.parentElement.parentElement.parentElement.classList.toggle('hover');
     // event.target.parentElement.parentElement.classList.toggle('hover');
   }

@@ -40,6 +40,10 @@ import { MapProvider } from '../providers/map/map';
 import {IonicStorageModule} from "@ionic/storage";
 import {AuthProvider} from "../providers/auth/auth";
 import { VariableProvider } from '../providers/variable/variable';
+import {CompanyPage} from "../pages/company/company";
+import {MapsComponent} from "../components/maps/maps";
+import {LoginForgetPage} from "../pages/login-forget/login-forget";
+import {InscriptionPage} from "../pages/inscription/inscription";
 
 
 @NgModule({
@@ -48,6 +52,7 @@ import { VariableProvider } from '../providers/variable/variable';
     AnnuairePage,
     ComptePage,
     HomePage,
+    CompanyPage,
     CompanyDescriptionPage,
     CompanyImagesPage,
     CompanyInfoPage,
@@ -56,8 +61,14 @@ import { VariableProvider } from '../providers/variable/variable';
     TabsPage,
     ReviewFormPage,
     LoginPage,
+    InscriptionPage,
+    LoginForgetPage,
+
+
     // components
+    MapsComponent,
     FiltreComponent,
+
 
   ],
   imports: [
@@ -76,6 +87,7 @@ import { VariableProvider } from '../providers/variable/variable';
     AnnuairePage,
     ComptePage,
     HomePage,
+    CompanyPage,
     CompanyDescriptionPage,
     CompanyImagesPage,
     CompanyInfoPage,
@@ -83,7 +95,9 @@ import { VariableProvider } from '../providers/variable/variable';
     MapsPage,
     ReviewFormPage,
     LoginPage,
-    TabsPage
+    TabsPage,
+    InscriptionPage,
+    LoginForgetPage
   ],
   providers: [
     StatusBar,

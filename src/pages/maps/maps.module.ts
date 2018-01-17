@@ -6,10 +6,10 @@ import { MapsPage } from './maps';
 
 @NgModule({
   declarations: [
-    MapsPage,
+    MapsPage
   ],
   imports: [
     IonicPageModule.forChild(MapsPage),
-  ],
+  ]
 })
 export class MapsPageModule {}

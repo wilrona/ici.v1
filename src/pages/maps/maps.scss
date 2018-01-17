@@ -2,12 +2,7 @@ page-maps {
 
   #map {
     width: 100%;
-
-    height: calc(100% - 0%);
-
-    &.height-show{
-      height: calc(100% - 16%) !important;
-    }
+    height:100%;
 
     .map, .map-wrapper {
       height: 100%;
@@ -454,9 +449,17 @@ page-maps {
     top: 0px;
   }
 
+  .anbutton button{
+    padding: 5px;
+  }
+  .anbutton button:first-child{
+    margin-right: 5px;
+  }
+
   .icon-m{
-    font-size: 30px;
-    padding-right: 15px;
+    font-size: 20px;
+    color: #000000 !important;
+    //padding-right: 15px;
   }
 
   .icon-m:last-child{

@@ -5,6 +5,7 @@ import { CompaniesProvider } from '../../providers/companies/companies';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { CallNumber } from '@ionic-native/call-number';
 import {VariableProvider} from "../../providers/variable/variable";
+import {CompanyPage} from "../company/company";
 
 declare var google: any;
 declare var MarkerClusterer: any;
@@ -35,9 +36,10 @@ export class MapsPage {
   val: number;
   // public listMarker = new Array();
   public newMarkers: Array<any> = [];
-  public currentMaker:any;
-  @Input() element:object;
-  @Output() refresh: EventEmitter<object>;
+  public currentMaker: any;
+  public element: object;
+
+  // @Output() refresh: EventEmitter<object>;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams, public menu: MenuController,
@@ -51,7 +53,7 @@ export class MapsPage {
 
     menu.enable(true);
 
-   this.refresh = new EventEmitter<object>();
+    // this.refresh = new EventEmitter<object>();
 
     this.events.subscribe('citiesfilter', (cities) => {
       this.cities = cities;
@@ -72,14 +74,14 @@ export class MapsPage {
       this.categories = categories;
       this.cities = cities;
 
-      if(this.variable.getInitTabMaps() === false){
+      if (this.variable.getInitTabMaps() === false) {
         this.newMarkers = [];
         this.platform.ready().then(() => this.loadMaps());
       }
 
     });
 
-    if(this.variable.getInitTabMaps() === true){
+    if (this.variable.getInitTabMaps() === true) {
       this.newMarkers = [];
       this.platform.ready().then(() => this.loadMaps());
     }
@@ -87,6 +89,13 @@ export class MapsPage {
   }
 
   ionViewDidLoad() {
+
+  }
+
+  openDetail(id) {
+    this.navCtrl.push(CompanyPage, {
+      idcompagnie: id
+    });
 
   }
 
@@ -113,10 +122,38 @@ export class MapsPage {
     let mapEle = this.mapElement.nativeElement;
     this.map = new google.maps.Map(mapEle, {
       zoom: 6,
-      center: new google.maps.LatLng(7.4452674,12.4346327),
+      center: new google.maps.LatLng(7.4452674, 12.4346327),
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       scrollwheel: false,
-      styles: [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#c6c6c6"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#dde6e8"},{"visibility":"on"}]}],
+      styles: [{
+        "featureType": "administrative",
+        "elementType": "labels.text.fill",
+        "stylers": [{"color": "#c6c6c6"}]
+      }, {"featureType": "landscape", "elementType": "all", "stylers": [{"color": "#f2f2f2"}]}, {
+        "featureType": "poi",
+        "elementType": "all",
+        "stylers": [{"visibility": "off"}]
+      }, {
+        "featureType": "road",
+        "elementType": "all",
+        "stylers": [{"saturation": -100}, {"lightness": 45}]
+      }, {
+        "featureType": "road.highway",
+        "elementType": "all",
+        "stylers": [{"visibility": "simplified"}]
+      }, {
+        "featureType": "road.highway",
+        "elementType": "geometry.fill",
+        "stylers": [{"color": "#ffffff"}]
+      }, {
+        "featureType": "road.arterial",
+        "elementType": "labels.icon",
+        "stylers": [{"visibility": "off"}]
+      }, {"featureType": "transit", "elementType": "all", "stylers": [{"visibility": "off"}]}, {
+        "featureType": "water",
+        "elementType": "all",
+        "stylers": [{"color": "#dde6e8"}, {"visibility": "on"}]
+      }],
       disableDoubleClickZoom: false,
       disableDefaultUI: true,
       zoomControl: true,
@@ -129,7 +166,6 @@ export class MapsPage {
 
     for (let point of markers) {
 
-      let marker;
       let markerContent = document.createElement('div');
       let thumbnailImage;
 
@@ -192,23 +228,44 @@ export class MapsPage {
       content: markerContent,
       flat: true
     });
-   /* google.maps.event.addListener(marker, 'click', (function(marker, i) {
+    /* google.maps.event.addListener(marker, 'click', (function(marker, i) {
 
-      return function(i) {
-        this.element={"name": "ari"};
-        this.refresh.emit(this.element);
-        alert(i["name"]);
-        let heightDetail = document.getElementById('details').offsetHeight;
-        document.getElementById('map').style.height = 'calc(100% - '+heightDetail+'px)';
-      }
-    })(marker, i));*/
+       return function(i) {
+         this.element={"name": "ari"};
+         this.refresh.emit(this.element);
+         alert(i["name"]);
+         let heightDetail = document.getElementById('details').offsetHeight;
+         document.getElementById('map').style.height = 'calc(100% - '+heightDetail+'px)';
+       }
+     })(marker, i));*/
+    // google.maps.event.addListener(marker, 'click', (function(marker, i) {
+    //   // this.element = i;
+    //
+    //   document.getElementById('details').classList.toggle('uk-hidden');
+    //   let heightDetail = document.getElementById('details').offsetHeight;
+    //   document.getElementById('map').style.height = 'calc(100% - '+heightDetail+'px)';
+    //
+    // })(marker, i));
+
     google.maps.event.addListener(marker, 'click', () => {
-      this.element=i;
-      this.refresh.emit(this.element);
 
-      document.getElementById('details').classList.toggle('uk-hidden');
-      let heightDetail = document.getElementById('details').offsetHeight;
-      document.getElementById('map').style.height = 'calc(100% - '+heightDetail+'px)';
+        let DetailElement = document.getElementById('details');
+        if(this.isEmpty(this.element)){
+          this.element = i;
+          DetailElement.classList.remove('uk-hidden');
+          document.getElementById('map').style.height = 'calc(100% - 187px)';
+
+        }else{
+
+          if(this.element != i){
+            this.element = i;
+          }else{
+            DetailElement.classList.add('uk-hidden');
+            document.getElementById('map').style.height = '100%';
+            this.element = {};
+          }
+        }
+
 
     });
 
@@ -238,39 +295,39 @@ export class MapsPage {
 
   }
 
-  closedModal(){
+  closedModal() {
     document.getElementById('map').style.height = '100%';
     document.getElementById('details').classList.add('uk-hidden');
+    this.element = {};
   }
 
-  callCompany(phonenumber:any){
+  callCompany(phonenumber: any) {
     this.callNumber.callNumber(phonenumber, true)
-  .then(() => console.log('Launched dialer!'))
-  .catch(() => console.log('Error launching dialer '+phonenumber));
+      .then(() => console.log('Launched dialer!'))
+      .catch(() => console.log('Error launching dialer ' + phonenumber));
   }
 
-  emailCompany(emailcpy:any){
-   this.emailComposer.isAvailable().then((available: boolean) =>{
-  if(available) {
-  }
-  });
+  emailCompany(emailcpy: any) {
+    this.emailComposer.isAvailable().then((available: boolean) => {
+      if (available) {
+      }
+    });
 
-  let email = {
-    to: emailcpy,
-    subject: '',
-    body: '',
-    isHtml: true
-  };
-  this.emailComposer.open(email);
- }
-
-  isEmpty(arg:object) {
-  for (var item in arg) {
-    return false;
-  }
-  return true;
+    let email = {
+      to: emailcpy,
+      subject: '',
+      body: '',
+      isHtml: true
+    };
+    this.emailComposer.open(email);
   }
 
+  isEmpty(arg: object) {
+    for (var item in arg) {
+      return false;
+    }
+    return true;
+  }
 
 }
 

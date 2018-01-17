@@ -1,5 +1,5 @@
-import { Component, Output, Input, EventEmitter } from '@angular/core';
-import {MenuController, Platform} from 'ionic-angular';
+import {Component, Output, Input, EventEmitter, ViewChild} from '@angular/core';
+import {MenuController, ModalController, Nav, Platform} from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -8,6 +8,10 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { CompaniesProvider } from '../providers/companies/companies';
 import {VariableProvider} from "../providers/variable/variable";
+import {LoginPage} from "../pages/login/login";
+import {HomePage} from "../pages/home/home";
+import {AnnuairePage} from "../pages/annuaire/annuaire";
+import {MapsPage} from "../pages/maps/maps";
 
 @Component({
   templateUrl: 'app.html'
@@ -20,16 +24,25 @@ export class MyApp {
   listingMap:Array<any>;
   @Input() userconnect:boolean=false;
   @Output() disconnect: EventEmitter<boolean>;
+  @ViewChild(Nav) nav: Nav;
+  pages: Array<{title: string, component: any}>;
 
   constructor(platform: Platform, statusBar: StatusBar,
               splashScreen: SplashScreen, public menu: MenuController,
               public events: Events,  public listingService: CompaniesProvider,
-              public variable: VariableProvider
+              public variable: VariableProvider, public modalCtrl: ModalController
   ) {
+
     platform.ready().then(() => {
       statusBar.styleDefault();
       splashScreen.hide();
     });
+
+    this.pages = [
+      { title: 'Accueil', component: HomePage },
+      { title: 'Annuaires', component: AnnuairePage },
+      { title: 'Maps', component: MapsPage }
+    ];
 
     this.events.subscribe('citiesfilter', (cities) => {
       this.citiesfilter=cities;
@@ -37,8 +50,6 @@ export class MyApp {
     this.events.subscribe('categoriesfilter', (categories) => {
       this.categoriesfilter=categories;
     });
-
-
 
     if(localStorage.getItem("userId")) {
       this.userconnect = true;
@@ -110,6 +121,17 @@ export class MyApp {
    this.userconnect=false;
    this.disconnect.emit(this.userconnect);
    this.events.publish('userconnect', false);
+  }
+
+  login(){
+    let modal = this.modalCtrl.create(LoginPage);
+    modal.present();
+    this.menu.toggle();
+  }
+
+
+  openTab(page){
+    this.nav.setRoot(page.component);
   }
 
 

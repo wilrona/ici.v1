@@ -11,28 +11,22 @@
 
   <ion-content id="menuLeft">
     <ion-list no-margin>
-      <button ion-item>
-        Accueil
-      </button>
-      <button ion-item >
-        Annuaire
-      </button>
-      <button ion-item >
-        Maps
+      <button ion-item *ngFor="let p of pages" (click)="openTab(p)" menuClose>
+        {{ p.title }}
       </button>
     </ion-list>
     <ion-item-group>
       <ion-item-divider color="light">Mon Compte</ion-item-divider>
-      <button ion-item *ngIf="userconnect==false">
+      <button ion-item *ngIf="userconnect==false" (tap)="login()">
         Connexion
-      </button>   
+      </button>
        <button ion-item *ngIf="userconnect==true">
         Mes Entreprises
       </button>
       <button ion-item >
         Ajouter une entreprise
       </button>
-       <button ion-item *ngIf="userconnect==true" (click)="logout()">
+       <button ion-item *ngIf="userconnect==true" (tab)="logout()">
         Déconnexion
       </button>
     </ion-item-group>

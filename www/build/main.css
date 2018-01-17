@@ -42868,17 +42868,37 @@ page-home .slide-zoom {
   text-align: left;
 }
 
+page-inscription .scroll-content {
+  background-color: transparent;
+}
+
+page-inscription ion-navbar .back-button, page-inscription ion-navbar .bar-button {
+  color: #f44336;
+}
+
+page-inscription .toolbar-title {
+  color: #f44336;
+}
+
 page-login .scroll-content {
   background-color: transparent;
 }
 
-page-maps #map {
-  width: 100%;
-  height: calc(100% - 0%);
+page-login-forget .scroll-content {
+  background-color: transparent;
 }
 
-page-maps #map.height-show {
-  height: calc(100% - 16%) !important;
+page-login-forget ion-navbar .back-button, page-login-forget ion-navbar .bar-button {
+  color: #f44336;
+}
+
+page-login-forget .toolbar-title {
+  color: #f44336;
+}
+
+page-maps #map {
+  width: 100%;
+  height: 100%;
 }
 
 page-maps #map .map, page-maps #map .map-wrapper {
@@ -43290,9 +43310,17 @@ page-maps ion-label {
   top: 0px;
 }
 
+page-maps .anbutton button {
+  padding: 5px;
+}
+
+page-maps .anbutton button:first-child {
+  margin-right: 5px;
+}
+
 page-maps .icon-m {
-  font-size: 30px;
-  padding-right: 15px;
+  font-size: 20px;
+  color: #000000 !important;
 }
 
 page-maps .icon-m:last-child {
