@@ -34,7 +34,7 @@
 
             <ion-row>
               <ion-col col-9>
-                <h2 class="uk-text-truncate uk-margin-remove" *ngIf="!isEmpty(element)" (click)="openDetail(element._id.$id)">{{element.name}}</h2>
+                <h2 class="uk-text-truncate uk-margin-remove" *ngIf="!isEmpty(element)" (click)="openDetail(element._id.$id)">{{element.name}} </h2>
                 <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-muted" style="margin-bottom: 4px !important;" *ngIf="!isEmpty(element)">{{element.ville}} {{element.quartier}}</div>
                 <!-- div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-success uk-text-small"> <ion-icon name="checkmark-circle"></ion-icon> Entreprise validé</div -->
                 <!-- <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-danger uk-text-small"> <ion-icon name="close"></ion-icon> Validation en cours</div> -->
@@ -66,8 +66,8 @@
 
                   <div class="uk-h4 uk-margin-remove">
                     <ul class="uk-text-small uk-padding-small uk-padding-remove-vertical uk-padding-remove-right" no-margin>
-                      <li *ngIf="!isEmpty(element)">{{element.adresse}}</li>
-                      <li *ngIf="!isEmpty(element)">{{element.repere}}</li>
+                      <li *ngIf="!isEmpty(element)" [ngClass]="{'uk-hidden' : (!element.addresse)}">{{element.adresse}}</li>
+                      <li *ngIf="!isEmpty(element)" [ngClass]="{'uk-hidden' : (!element.repere)}">{{element.repere}}</li>
                     </ul>
                   </div>
 
@@ -75,8 +75,8 @@
               </ion-col>
               <ion-col col-3 class="uk-position-relative">
                 <div class="uk-position-bottom-right uk-flex uk-flex-right anbutton">
-                  <button *ngIf="!isEmpty(element)" ion-button (click)="callCompany(element.phone)" clear no-margin><ion-icon name="call" class="icon-m"></ion-icon></button>
-                  <button *ngIf="!isEmpty(element)" ion-button  (click)="emailCompany(element.email)" clear no-margin><ion-icon name="mail" class="icon-m"></ion-icon></button>
+                  <button *ngIf="!isEmpty(element)" ion-button (click)="callCompany(element.phone)" clear no-margin [ngClass]="{'uk-hidden' : (!element.phone)}"><ion-icon name="call" class="icon-m"></ion-icon></button>
+                  <button *ngIf="!isEmpty(element)" ion-button  (click)="emailCompany(element.email)" clear no-margin [ngClass]="{'uk-hidden' : (!element.email)}"><ion-icon name="mail" class="icon-m"></ion-icon></button>
                 </div>
               </ion-col>
             </ion-row>

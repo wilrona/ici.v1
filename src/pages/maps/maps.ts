@@ -248,10 +248,11 @@ export class MapsPage {
     // })(marker, i));
 
     google.maps.event.addListener(marker, 'click', () => {
-
+        console.log(i);
         let DetailElement = document.getElementById('details');
         if(this.isEmpty(this.element)){
           this.element = i;
+
           DetailElement.classList.remove('uk-hidden');
           document.getElementById('map').style.height = 'calc(100% - 187px)';
 

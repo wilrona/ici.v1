@@ -8,8 +8,8 @@ import { CompaniesProvider } from '../../providers/companies/companies';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { CallNumber } from '@ionic-native/call-number';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-import {LoginPage} from "../../pages/login/login";
-import { ReviewFormPage } from '../../pages/review-form/review-form';
+import {LoginPage} from "../login/login";
+import { ReviewFormPage } from '../review-form/review-form';
 
 
 declare var google;
@@ -51,8 +51,8 @@ export class CompanyPage {
   description;
   repere;
   adresse;
-  
-  
+
+
 
   @ViewChild('map') mapElement: ElementRef;
   map: any;
@@ -69,7 +69,7 @@ export class CompanyPage {
     private iab: InAppBrowser,
     private events: Events
 
-  ) { 
+  ) {
 
 
 
@@ -77,8 +77,8 @@ export class CompanyPage {
      this.loadData(this.idcompagnie);
      //this.desc=this.business.description;
      var currentUser = JSON.parse(localStorage.getItem('userId'));
-     
-     
+
+
      this.user = currentUser;
 
      if(localStorage.getItem("userId")) {
@@ -102,7 +102,7 @@ export class CompanyPage {
       this.latitude=data.latitude;
       this.longitude=data.longitude;
       this.repere=data.repere;
-      this.adresse=data.adresse;*/  
+      this.adresse=data.adresse;*/
      });
 
 }
@@ -118,11 +118,11 @@ export class CompanyPage {
               this.description=data.description;
               this.repere=data.repere;
               this.adresse=data.adresse;
-              
-              
-              
 
-              
+
+
+
+
             }
         );
   }
@@ -204,7 +204,7 @@ export class CompanyPage {
     let MapEl = this.mapElement.nativeElement;
     this.map = new google.maps.Map(MapEl, mapOptions);
 
-   
+
 
 
   }
@@ -244,7 +244,7 @@ export class CompanyPage {
 
 websiteCompany(siteweb){
   const browser = this.iab.create(siteweb);
-  
+
 }
 
 

@@ -226,6 +226,7 @@ export class AnnuairePage {
 
 
   loadData(){
+    this.loading = true;
 
     this.listingService.getListing().subscribe(
         data => {
