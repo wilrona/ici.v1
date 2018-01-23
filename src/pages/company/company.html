@@ -4,7 +4,6 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-
 <ion-header shadow>
 
   <ion-navbar [class.show-background]="showToolbar">
@@ -31,7 +30,7 @@
 
   <div class="contents">
 
-    <button ion-button block class="uk-block-button">Consultez notre vidéo</button>
+    <button ion-button block class="uk-block-button" *ngIf="(business | json) != ({} | json)">Consultez notre vidéo</button>
 
     <ion-card no-margin class="card-info">
       <ion-card-content no-padding>
@@ -40,21 +39,23 @@
             <ion-col col-9>
               <ion-item class="item-compagny uk-padding-remove">
                 <ion-thumbnail item-start>
-
-                  <img  *ngIf="business.logo==''" src="assets/imgs/default.jpg" class="uk-responsive-height uk-border-circle">
-                  <img  *ngIf="business.logo!=''" src="{{business.logo}}" class="uk-responsive-height uk-border-circle">
+                  <img  *ngIf="(business | json) == ({} | json)" src="assets/imgs/default.jpg" class="uk-responsive-height uk-border-circle">
+                  <img  *ngIf="business.logo==''" [ngClass]="{'uk-hidden': (business | json) == ({} | json)}" src="assets/imgs/default.jpg" class="uk-responsive-height uk-border-circle" imageViewer>
+                  <img  *ngIf="business.logo!=''" [ngClass]="{'uk-hidden': (business | json) == ({} | json)}" src="{{business.logo}}" class="uk-responsive-height uk-border-circle" imageViewer>
                 </ion-thumbnail>
                 <div>
                   <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-muted" style="margin-bottom: 4px !important;">{{business.ville}} {{business.quartier}}</div>
+                  <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-muted" *ngIf="(business | json) == ({} | json)" style="margin-bottom: 4px !important; background-color: #eeeeee; height: 20px"></div>
                   <!--  <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-success uk-text-small"> <ion-icon name="checkmark-circle"></ion-icon> Entreprise validé</div>
                   <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-danger uk-text-small"> <ion-icon name="close"></ion-icon> Validation en cours</div> -->
                   <ion-badge item-end class="uk-margin-remove-top uk-margin-remove-left uk-margin-remove-right">{{business.maincategorie}}</ion-badge>
+                  <div item-end class="uk-margin-small-top uk-margin-remove-left uk-margin-remove-right" style="height: 15px; background-color: #eeeeee;" *ngIf="(business | json) == ({} | json)"></div>
                 </div>
 
               </ion-item>
             </ion-col>
             <ion-col col-3 class="uk-position-relative">
-              <div class="">
+              <div class="" *ngIf="(business | json) != ({} | json)">
                 <rating  [(ngModel)]="business.ratecount"
                          readOnly="true"
                          max="5"
@@ -63,15 +64,22 @@
                          starIconName="star"
                          nullable="false" ></rating>
                 <div class="uk-text-right uk-h4 uk-margin-remove">{{business.reviewcount}} avis</div>
-                <div class="uk-text-right uk-text-danger uk-text-bold uk-h4 uk-margin-remove">Fermé</div>
+                <!-- div class="uk-text-right uk-text-danger uk-text-bold uk-h4 uk-margin-remove">Fermé</div -->
               </div>
             </ion-col>
           </ion-row>
         </ion-grid>
       </ion-card-content>
     </ion-card>
-
-    <ion-card no-margin margin-top class="card-info">
+    <ion-card no-margin margin-top class="card-info" *ngIf="(business | json) == ({} | json)">
+      <div class="uk-height-small uk-flex uk-flex-middle uk-flex-center">
+        <div class="uk-text-center">
+          <span class="uk-display-block uk-margin-medium-bottom">Chargement ....</span>
+          <div uk-spinner></div>
+        </div>
+      </div>
+    </ion-card>
+    <ion-card no-margin margin-top class="card-info" *ngIf="(business | json) != ({} | json)">
       <ion-card-header no-padding>
         <ion-segment [(ngModel)]="segmentation">
           <ion-segment-button value="desc" (ionSelect)="activeLocation()">
@@ -98,9 +106,9 @@
           <ion-slides loop="true" slidesPerView="4" margin-top spaceBetween="3" *ngIf="business.gallery?.length > 0">
 
 
-              <ion-slide *ngFor="let item of business.gallery">
-                <img alt="city"  src="http://yoomeeonl.webfactional.com/media/pictures/companies/{{item.url}}"  imageViewer>
-              </ion-slide>
+            <ion-slide *ngFor="let item of business.gallery">
+              <img alt="city"  src="http://yoomeeonl.webfactional.com/media/pictures/companies/{{item.url}}"  imageViewer>
+            </ion-slide>
 
 
           </ion-slides>
@@ -108,8 +116,8 @@
 
           <div class="uk-text-break uk-position-relative" *ngIf="business.description?.length > 0">
             <div class="uk-height-max-small" style="overflow: hidden">
-               {{business.description}}
-             </div>
+              {{business.description}}
+            </div>
             <div class="show-more-end"></div>
 
             <div class="uk-text-center" *ngIf="business.description != ''">
@@ -145,12 +153,12 @@
               </ion-col>
               <ion-col col-7>
                 <div ion-text class="uk-text-break">
-                    <p *ngFor="let item of business.tags">
-                      <span *ngIf="item.cat==1">{{item.key}} </span>
-                    </p>
-                    <div>
-                      <button ion-button clear small class="button-custom-size" (click)="openCategoryEdit()">Gérer vos categories</button>
-                    </div>
+                  <p *ngFor="let item of business.tags">
+                    <span *ngIf="item.cat==1">{{item.key}} </span>
+                  </p>
+                  <div>
+                    <button ion-button clear small class="button-custom-size" (click)="openCategoryEdit()">Gérer vos categories</button>
+                  </div>
                 </div>
               </ion-col>
             </ion-row>
@@ -199,12 +207,12 @@
               <div class="uk-position-relative uk-comments">
                 <h2>{{item.username}}</h2>
                 <rating  [(ngModel)]="item.rate"
-                                          readOnly="true"
-                                          max="5"
-                                          emptyStarIconName="star-outline"
-                                          halfStarIconName="star-half"
-                                          starIconName="star"
-                                          nullable="false" ></rating>
+                         readOnly="true"
+                         max="5"
+                         emptyStarIconName="star-outline"
+                         halfStarIconName="star-half"
+                         starIconName="star"
+                         nullable="false" ></rating>
                 <ion-note class="uk-position-center-right">{{item.date}}</ion-note>
               </div>
               <p>{{item.review}}</p>

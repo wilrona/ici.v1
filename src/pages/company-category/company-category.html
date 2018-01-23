@@ -21,7 +21,25 @@
 
 
 <ion-content padding-vertical>
-  <filtre [showVille]="false" [categoriesselect]="categories"></filtre>
+<ion-searchbar (ionInput)="searchInCatetegory($event)" > </ion-searchbar>
+
+<!--ion-list *ngFor="let item of cat">
+
+
+  <ion-list-header color="primary">
+    {{item.name}}
+  </ion-list-header-->
+  <ion-list no-padding no-margin  *ngFor="let it of subcat" >
+
+    <ion-item [class.hover]="defaultSelect(it._id.$id)" (click)="itemAdd(it._id.$id, $event, it.name)">  {{it.name}}
+      <ion-icon item-end name="checkmark" small class="icon-check" color="primary"></ion-icon>
+
+    </ion-item> <!-- [checked]="defaultSelect(it)"-->
+
+  </ion-list>
+<!--/ion-list-->
+
+  <!--filtre [showVille]="false" [categoriesselect]="categories"></filtre-->
 
   <div class="uk-height-fab"></div>
 </ion-content>

@@ -7,6 +7,11 @@
 <ion-header>
 
   <ion-navbar>
+    <ion-buttons start *ngIf="dismissed">
+      <button ion-button color="primary" icon-only small (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>Inscrivez-vous !</ion-title>
   </ion-navbar>
 
@@ -45,11 +50,11 @@
 
         <ion-item no-padding>
           <ion-label floating color="primary">Adresse Email</ion-label>
-          <ion-input type="email" formControlName="login"></ion-input>
+          <ion-input type="email" formControlName="email"></ion-input>
         </ion-item>
         <div class="validation-errors">
           <ng-container *ngFor="let validation of validation_messages.login">
-            <div class="error-message uk-text-danger" *ngIf="validations_form.get('login').hasError(validation.type) && (validations_form.get('login').dirty || validations_form.get('login').touched)">
+            <div class="error-message uk-text-danger" *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)">
               {{ validation.message }}
             </div>
           </ng-container>
@@ -67,13 +72,21 @@
           </ng-container>
         </div>
 
+        <ion-item no-padding>
+          <ion-label floating color="primary">Confirmation Mot de passe</ion-label>
+          <ion-input type="password" formControlName="confirm_password"></ion-input>
+        </ion-item>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.confirm_password">
+            <div class="error-message uk-text-danger" *ngIf="validations_form.get('confirm_password').hasError(validation.type) && (validations_form.get('confirm_password').dirty || validations_form.get('confirm_password').touched)">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
 
-        <button ion-button full type="submit" [disabled]="!validations_form.valid" class="uk-margin-medium-top">Connexion</button>
+
+        <button ion-button full type="submit" [disabled]="!validations_form.valid" class="uk-margin-medium-top">Enregistre</button>
       </form>
-      <div class="uk-grid uk-child-width-1-2">
-        <div class="uk-text-left uk-text-small"><button ion-button clear (click)="loginForget()" small>Mot de passe oublié?</button></div>
-        <div class="uk-text-right uk-text-small"><button ion-button clear (click)="inscription()" small>Inscrivez vous.</button></div>
-      </div>
     </div>
   </div>
 </ion-content>

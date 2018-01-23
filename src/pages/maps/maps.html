@@ -27,62 +27,51 @@
 
   <div #map id="map"></div>
   <div class="uk-background-default uk-box-shadow-medium uk-hidden" id="details">
-    <ion-list>
+    <ion-list *ngIf="(element | json) != ({} | json)">
       <ion-card>
         <ion-card-content>
           <ion-grid>
-
             <ion-row>
-              <ion-col col-9>
-                <h2 class="uk-text-truncate uk-margin-remove" *ngIf="!isEmpty(element)" (click)="openDetail(element._id.$id)">{{element.name}} </h2>
-                <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-muted" style="margin-bottom: 4px !important;" *ngIf="!isEmpty(element)">{{element.ville}} {{element.quartier}}</div>
-                <!-- div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-success uk-text-small"> <ion-icon name="checkmark-circle"></ion-icon> Entreprise validé</div -->
-                <!-- <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-danger uk-text-small"> <ion-icon name="close"></ion-icon> Validation en cours</div> -->
+              <ion-col col-9 no-padding>
+                <ion-item class="item-compagny">
+                  <ion-thumbnail item-start>
+                    <img  *ngIf="element.imageune==null"  src="http://yoomeeonl.webfactional.com/media/pictures/companies/default.jpg" class="uk-responsive-height uk-border-circle" imageViewer>
+                    <img  *ngIf="element.imageune!=null"  src="http://yoomeeonl.webfactional.com/media/pictures/companies/{{element.imageune}}" class="uk-responsive-height uk-border-circle" imageViewer>
+                  </ion-thumbnail>
+
+
+                  <div (click)="openDetail(element._id.$id)" tappable>
+                    <h3 class="uk-text-truncate uk-margin-remove">{{element.name}}</h3>
+                    <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-muted">{{element.ville}} {{element.quartier}}</div>
+                    <ion-badge class="uk-margin-remove-top uk-margin-remove-left uk-margin-remove-right">{{element.maincategorie}}</ion-badge>
+                  </div>
+
+
+                </ion-item>
+                <!--  <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-success uk-text-small"> <ion-icon name="checkmark-circle"></ion-icon> Entreprise validé</div>
+                <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-danger uk-text-small"> <ion-icon name="close"></ion-icon> Validation en cours</div> -->
               </ion-col>
-              <ion-col col-3 *ngIf="!isEmpty(element)">
+              <ion-col col-3 (click)="openDetail(element._id.$id)" tappable no-padding>
                 <rating  [(ngModel)]="element.ratecount"
                          readOnly="true"
                          max="5"
                          emptyStarIconName="star-outline"
                          halfStarIconName="star-half"
                          starIconName="star"
-                         nullable="false" ></rating>
-                <div class="uk-text-right uk-h4 uk-margin-remove">{{element.reviewcount}} avis</div>
-                <!-- div class="uk-text-right uk-text-success uk-h4 uk-margin-remove">8h à 18h30</div -->
-              </ion-col>
-              <ion-col col class="uk-padding-remove-vertical">
-                <hr no-margin="">
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col col-9>
-                <ion-item class="item-compagny">
-                  <ion-thumbnail item-start>
-                    <img src="http://yoomeeonl.webfactional.com/media/pictures/companies/default.jpg" class="uk-responsive-height">
-                  </ion-thumbnail>
-                  <div>
-                    <ion-badge item-end class="uk-margin-remove-top uk-margin-remove-left uk-margin-remove-right" *ngIf="!isEmpty(element)">{{element.maincategorie}}</ion-badge>
-                  </div>
-
-                  <div class="uk-h4 uk-margin-remove">
-                    <ul class="uk-text-small uk-padding-small uk-padding-remove-vertical uk-padding-remove-right" no-margin>
-                      <li *ngIf="!isEmpty(element)" [ngClass]="{'uk-hidden' : (!element.addresse)}">{{element.adresse}}</li>
-                      <li *ngIf="!isEmpty(element)" [ngClass]="{'uk-hidden' : (!element.repere)}">{{element.repere}}</li>
-                    </ul>
-                  </div>
-
-                </ion-item>
-              </ion-col>
-              <ion-col col-3 class="uk-position-relative">
-                <div class="uk-position-bottom-right uk-flex uk-flex-right anbutton">
-                  <button *ngIf="!isEmpty(element)" ion-button (click)="callCompany(element.phone)" clear no-margin [ngClass]="{'uk-hidden' : (!element.phone)}"><ion-icon name="call" class="icon-m"></ion-icon></button>
-                  <button *ngIf="!isEmpty(element)" ion-button  (click)="emailCompany(element.email)" clear no-margin [ngClass]="{'uk-hidden' : (!element.email)}"><ion-icon name="mail" class="icon-m"></ion-icon></button>
-                </div>
+                         nullable="false"
+                         (ngModelChange)="onModelChange($event, element._id.$id)"></rating>
+                <div class="uk-text-right uk-h4 uk-margin-remove" >{{element.reviewcount}} avis</div>
+                <!-- div class="uk-text-right uk-text-success uk-h4 uk-margin-remove uk-text-bold">8h à 18h30</div -->
+                <!--  <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-success uk-text-small"> <ion-icon name="checkmark-circle"></ion-icon> Entreprise validé</div> -->
+                <!-- div class="uk-margin-remove uk-text-truncate uk-text-danger uk-text-small uk-text-right"> <ion-icon name="close"></ion-icon> Validation en cours</div -->
               </ion-col>
             </ion-row>
+            <ion-col col class="uk-padding-remove-vertical uk-margin-small-top">
+              <hr no-margin="">
+            </ion-col>
             <ion-row no-padding no-margin>
               <ion-col col-12 class="uk-position-relative" no-padding>
-                <div class="uk-text-center">
+                <div class="uk-text-center uk-margin-small-top">
                   <button ion-button clear small icon-only block (tap)="closedModal()">Fermé</button>
                 </div>
               </ion-col>

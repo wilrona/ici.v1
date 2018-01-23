@@ -36,8 +36,8 @@ export class MapsPage {
   val: number;
   // public listMarker = new Array();
   public newMarkers: Array<any> = [];
-  public currentMaker: any;
-  public element: object;
+  // public currentMaker: any;
+  public element:object =  {};
 
   // @Output() refresh: EventEmitter<object>;
 
@@ -248,16 +248,15 @@ export class MapsPage {
     // })(marker, i));
 
     google.maps.event.addListener(marker, 'click', () => {
-        console.log(i);
-        let DetailElement = document.getElementById('details');
-        if(this.isEmpty(this.element)){
-          this.element = i;
 
+        let DetailElement = document.getElementById('details');
+        if(this.element != {} ){
+
+          this.element = i;
           DetailElement.classList.remove('uk-hidden');
-          document.getElementById('map').style.height = 'calc(100% - 187px)';
+          document.getElementById('map').style.height = 'calc(100% - 127px)';
 
         }else{
-
           if(this.element != i){
             this.element = i;
           }else{
@@ -270,7 +269,7 @@ export class MapsPage {
 
     });
 
-    this.currentMaker = i;
+    // this.currentMaker = i;
     this.newMarkers.push(marker);
 
   }

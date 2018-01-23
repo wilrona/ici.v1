@@ -54,8 +54,8 @@
         <button ion-button full type="submit" [disabled]="!validations_form.valid" class="uk-margin-medium-top">Connexion</button>
       </form>
       <div class="uk-grid uk-child-width-1-2">
-        <div class="uk-text-left uk-text-small"><button ion-button clear (click)="openModal()" small>Mot de passe oublié?</button></div>
-        <div class="uk-text-right uk-text-small"><button ion-button clear (click)="openModal()" small>Inscrivez vous.</button></div>
+        <div class="uk-text-left uk-text-small"><button ion-button clear (tap)="loginForget()" small>Mot de passe oublié?</button></div>
+        <div class="uk-text-right uk-text-small"><button ion-button clear (tap)="inscription()" small>Inscrivez vous.</button></div>
       </div>
     </div>
   </div>

@@ -4,4 +4,21 @@ page-company-category {
     background-color: #ffffff;
   }
 
+  .item-inner{
+    border: none !important;
+
+    .icon-check{
+      display: none;
+    }
+  }
+
+  .hover {
+    ion-label{
+      color: map_get($colors, primary) !important;
+    }
+    .icon-check{
+      display: block;
+    }
+  }
+
 }

@@ -24,6 +24,23 @@
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content>
+    <ion-item-group>
+      <ion-item-divider color="primary">Mon Compte</ion-item-divider>
+      <ion-item *ngIf="userconnect==false" (click)="login()">
+          Connexion
+      </ion-item>
+      <ion-item *ngIf="userconnect==false" (click)="inscription()">
+          Inscription
+      </ion-item>
+      <ion-item *ngIf="userconnect==true">
+          Mes Entreprises
+      </ion-item>
+      <ion-item>
+          Ajouter une entreprise
+      </ion-item>
+      <ion-item *ngIf="userconnect==true" (click)="logout()">
+          Déconnexion
+      </ion-item>
+    </ion-item-group>
 </ion-content>

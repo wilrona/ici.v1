@@ -18,23 +18,23 @@ page-annuaire {
   }
 
   ion-thumbnail{
-    margin: 0 16px 0 0 !important;
-    max-width: 70px !important;
-    min-width: 70px !important;
-    max-height: 70px !important;
-    min-height: 70px !important;
+    margin: 0 15px 0 0 !important;
+    max-width: 50px !important;
+    min-width: 50px !important;
+    max-height: 55px !important;
+    min-height: 55px !important;
   }
 
   ion-thumbnail img{
-    width: 70px !important;
-    height: 70px !important;
+    width: 50px !important;
+    height: 50px !important;
   }
 
   ion-label{
     white-space:inherit !important;
     margin: 0 !important;
-    position: absolute;
-    top: 0px;
+    //position: absolute;
+    //top: 0px;
   }
 
   .icon-m{

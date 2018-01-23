@@ -29,11 +29,11 @@ export class ReviewFormPage {
     this.validations_form = this.formBuilder.group({
         titre: ['',Validators.required],
         message: ['',Validators.required]
-        
+
      });
 
      this.validation_messages = {
-        
+
         'login': [
           { type: 'required', message: 'Login is required.' }
         ],
@@ -62,7 +62,7 @@ export class ReviewFormPage {
     var myData = JSON.stringify({titre: value.titre, message: value.message, note: this.note,companyId: this.companyId, userId: this.user.id.$id});
     console.log(" id "+this.companyId);
    // alert(value.titre+"  "+this.note+"  "+value.message+" "+this.companyId);
-    this.http.post("http://yoomeeonl.webfactional.com/MobileApp/saveReview",myData)    
+    this.http.post("http://yoomeeonl.webfactional.com/MobileApp/saveReview",myData)
     .subscribe(data => {
      //  console.log(data["_body"]);
        this.events.publish('companyInfoupdate', data["_body"]);
@@ -72,6 +72,10 @@ export class ReviewFormPage {
     //console.log("Oooops!");
     });
   }
- 
+
+  dismiss() {
+    this.viewCtrl.dismiss();
+  }
+
 
 }

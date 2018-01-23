@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validator, ValidatorFn, Validators} from "@angular/forms";
 
 /**
@@ -15,27 +15,17 @@ import {AbstractControl, FormBuilder, FormControl, FormGroup, Validator, Validat
   templateUrl: 'inscription.html',
 })
 export class InscriptionPage{
-  areEqual(arg0: any): any {
-    throw new Error("Method not implemented.");
-  }
 
   validations_form;
   validation_messages;
 
   matching_passwords_group;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder:FormBuilder) {
+  dismissed: boolean = false;
 
-    this.matching_passwords_group = new FormGroup({
-      password: new FormControl('', Validators.compose([
-        Validators.minLength(5),
-        Validators.required,
-        Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')
-      ])),
-      confirm_password: new FormControl('', Validators.required)
-    }, (formGroup: FormGroup) => {
-      return this.areEqual(formGroup);
-    });
+  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder:FormBuilder, public viewCtrl: ViewController) {
+
+    this.dismissed = this.navParams.get('showDismiss');
 
     this.validations_form = this.formBuilder.group({
       nom: new FormControl('', Validators.required),
@@ -44,18 +34,38 @@ export class InscriptionPage{
         Validators.required,
         Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
       ])),
-      matching_passwords: this.matching_passwords_group
+      password: new FormControl('', Validators.compose([
+        Validators.minLength(5),
+        Validators.required,
+      ])),
+      confirm_password: new FormControl('', Validators.compose([
+          Validators.required,
+          Validators.minLength(5),
+          this.equalto('password')
+        ]
+      ))
     });
 
     this.validation_messages = {
 
-      'login': [
-        { type: 'required', message: 'Email obligatoire' },
-        { type: 'pattern', message: 'Email invalid'}
+      'nom': [
+        { type: 'required', message: 'Information obligatoire' }
+      ],
+      'prenom': [
+        { type: 'required', message: 'Information obligatoire' }
+      ],
+      'email': [
+        { type: 'required', message: 'Information obligatoire' },
+        { type: 'pattern', message: 'Email Invalide' }
       ],
       'password': [
         { type: 'required', message: 'Mot de passe obligatoire' },
         { type: 'minLength', message: 'Le mot de passe doit etre superieur ou egale à 6 caracteres' }
+      ],
+      'confirm_password': [
+        { type: 'required', message: 'Inserer votre confirmation de mot passe' },
+        { type: 'minLength', message: 'Le mot de passe doit etre superieur ou egale à 6 caracteres' },
+        { type: 'equalTo', message: 'La confirmation n\'est pas correcte.' },
       ]
     }
 
@@ -65,31 +75,22 @@ export class InscriptionPage{
     console.log('ionViewDidLoad InscriptionPage');
   }
 
-  static areEqual(formGroup: FormGroup) {
-    let val;
-    let valid = true;
+  equalto(field_name): ValidatorFn {
+    return (control: AbstractControl): {[key: string]: any} => {
 
-    for (let key in formGroup.controls) {
-      if (formGroup.controls.hasOwnProperty(key)) {
-        let control: FormControl = <FormControl>formGroup.controls[key];
-        if (val === undefined) {
-          val = control.value
-        } else {
-          if (val !== control.value) {
-            valid = false;
-            break;
-          }
-        }
-      }
-    }
-
-    if (valid) {
-      return null;
-    }
-
-    return {
-      areEqual: true
-    }
+      let input = control.value;
+      console.log(control);
+      let isValid=control.root.value[field_name]==input
+      if(!isValid)
+        return { 'equalTo': {isValid} }
+      else
+        return null;
+    };
   }
+
+  dismiss() {
+    this.viewCtrl.dismiss();
+  }
+
 
 }

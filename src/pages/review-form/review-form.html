@@ -7,50 +7,60 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>review-formPage</ion-title>
+    <ion-buttons start>
+      <button ion-button color="primary" icon-only small (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title class="uk-title-color-red">Laissez un commentaire</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-  <rating  [(ngModel)]="note"
-                     readOnly="false"
-                     max="5"
-                     emptyStarIconName="star-outline"
-                     halfStarIconName="star-half"
-                     starIconName="star"
-                     nullable="false" ></rating>
-  <form class="form" [formGroup]="validations_form"  >
-   
-    
+<ion-content>
+  <div class="uk-padding uk-height-1-1">
+    <div class="uk-padding-small uk-margin-large-top rating-block uk-text-center">
+      <div ion-text class="uk-h2 uk-text-center" color="dark">Laissez un commentaire à votre note</div>
+      <rating  [(ngModel)]="note"
+               readOnly="false"
+               max="5"
+               emptyStarIconName="star-outline"
+               halfStarIconName="star-half"
+               starIconName="star"
+               nullable="false" ></rating>
 
-    <ion-item>
-      <ion-label floating color="primary">Titre</ion-label>
-      <ion-input type="text" formControlName="titre"></ion-input>
-    </ion-item>
-    <div class="validation-errors">
-      <ng-container *ngFor="let validation of validation_messages.titre">
-        <div class="error-message" *ngIf="validations_form.get('titre').hasError(validation.type) && (validations_form.get('titre').dirty || validations_form.get('titre').touched)">
-          {{ validation.message }}
-        </div>
-      </ng-container>
     </div>
+    <form class="form uk-padding-small" [formGroup]="validations_form">
 
-    <ion-item>
-      <ion-label floating color="primary">Message</ion-label>
-      <ion-textarea type="message" formControlName="message"></ion-textarea>
-    </ion-item>
-    <div class="validation-errors">
-      <ng-container *ngFor="let validation of validation_messages.message">
-        <div class="error-message" *ngIf="validations_form.get('message').hasError(validation.type) && (validations_form.get('message').dirty || validations_form.get('message').touched)">
-          {{ validation.message }}
-        </div>
-      </ng-container>
-    </div>
 
-    <button ion-button full type="submit" [disabled]="!validations_form.valid" (click)="addreview(validations_form.value)">Save</button>
-    <button ion-button full type="submit" [disabled]="!validations_form.valid">Annuler</button>
-    
-  </form>
+
+      <ion-item no-padding>
+        <ion-label floating color="primary">Titre</ion-label>
+        <ion-input type="text" formControlName="titre"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.titre">
+          <div class="error-message" *ngIf="validations_form.get('titre').hasError(validation.type) && (validations_form.get('titre').dirty || validations_form.get('titre').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+      <ion-item no-padding>
+        <ion-label floating color="primary">Message</ion-label>
+        <ion-textarea type="message" formControlName="message"></ion-textarea>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.message">
+          <div class="error-message" *ngIf="validations_form.get('message').hasError(validation.type) && (validations_form.get('message').dirty || validations_form.get('message').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+      <button ion-button full type="submit" [disabled]="!validations_form.valid" (click)="addreview(validations_form.value)" class="uk-margin-small-top">Save</button>
+
+    </form>
+  </div>
 </ion-content>

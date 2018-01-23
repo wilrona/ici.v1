@@ -32,18 +32,31 @@
   </div>
   <div *ngIf="!loading">
     <div *ngIf="!showNoItem">
-      <ion-list>
-        <ion-card *ngFor="let liste of listing ">
+      <ion-list no-margin>
+        <ion-card *ngFor="let liste of listing " no-margin style="width: 100% !important;">
           <ion-card-content>
             <ion-grid>
               <ion-row>
-                <ion-col col-9>
-                  <h2 class="uk-text-truncate uk-margin-remove" (click)="openDetail(liste._id.$id)">{{liste.name}}</h2>
-                  <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-muted" style="margin-bottom: 4px !important;">{{liste.ville}} {{liste.quartier}}</div>
+                <ion-col col-9 no-padding>
+                  <ion-item class="item-compagny">
+                    <ion-thumbnail item-start>
+                      <img  *ngIf="liste.imageune==null"  src="http://yoomeeonl.webfactional.com/media/pictures/companies/default.jpg" class="uk-responsive-height uk-border-circle" imageViewer>
+                      <img  *ngIf="liste.imageune!=null"  src="http://yoomeeonl.webfactional.com/media/pictures/companies/{{liste.imageune}}" class="uk-responsive-height uk-border-circle" imageViewer>
+                    </ion-thumbnail>
+
+
+                    <div (click)="openDetail(liste._id.$id)" tappable>
+                      <h3 class="uk-text-truncate uk-margin-remove">{{liste.name}}</h3>
+                      <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-muted">{{liste.ville}} {{liste.quartier}}</div>
+                      <ion-badge class="uk-margin-remove-top uk-margin-remove-left uk-margin-remove-right">{{liste.maincategorie}}</ion-badge>
+                    </div>
+
+
+                  </ion-item>
                   <!--  <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-success uk-text-small"> <ion-icon name="checkmark-circle"></ion-icon> Entreprise validé</div>
                   <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-danger uk-text-small"> <ion-icon name="close"></ion-icon> Validation en cours</div> -->
                 </ion-col>
-                <ion-col col-3>
+                <ion-col col-3 (click)="openDetail(liste._id.$id)" tappable no-padding>
                   <rating  [(ngModel)]="liste.ratecount"
                            readOnly="true"
                            max="5"
@@ -53,46 +66,19 @@
                            nullable="false"
                            (ngModelChange)="onModelChange($event, liste._id.$id)"></rating>
                   <div class="uk-text-right uk-h4 uk-margin-remove" >{{liste.reviewcount}} avis</div>
-                  <!-- <div class="uk-text-right uk-text-success uk-h4 uk-margin-remove uk-text-bold">8h à 18h30</div> -->
-                </ion-col>
-                <ion-col col class="uk-padding-remove-vertical">
-                  <hr no-margin="">
-                </ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col col-10>
-                  <ion-item class="item-compagny">
-                    <ion-thumbnail item-start>
-                      <img  *ngIf="liste.imageune==null"  src="http://yoomeeonl.webfactional.com/media/pictures/companies/default.jpg" class="uk-responsive-height">
-                      <img  *ngIf="liste.imageune!=null"  src="http://yoomeeonl.webfactional.com/media/pictures/companies/{{liste.imageune}}" class="uk-responsive-height">
-                    </ion-thumbnail>
-                    <div>
-                      <ion-badge item-end class="uk-margin-remove-top uk-margin-remove-left uk-margin-remove-right">{{liste.maincategorie}}</ion-badge>
-                    </div>
-
-                    <div class="uk-h4 uk-margin-remove">
-                      <ul class="uk-text-small uk-padding-small uk-padding-remove-vertical uk-padding-remove-right" no-margin>
-                        <li *ngIf="liste.adresse!=''">{{liste.adresse}}</li>
-                        <li *ngIf="liste.repere!=''">{{liste.repere}}</li>
-                        <!--li>Localisation</li-->
-                      </ul>
-                    </div>
-
-                  </ion-item>
-                </ion-col>
-                <ion-col col-2 class="uk-position-relative">
-                  <div class="uk-position-bottom-right">
-                    <ion-icon name="call" class="icon-m" (click)="callCompany(liste.phone)"></ion-icon>
-                    <ion-icon name="mail" class="icon-m" (click)="emailCompany(liste.email)"></ion-icon>
-                  </div>
+                  <!-- div class="uk-text-right uk-text-success uk-h4 uk-margin-remove uk-text-bold">8h à 18h30</div -->
+                  <!--  <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-success uk-text-small"> <ion-icon name="checkmark-circle"></ion-icon> Entreprise validé</div> -->
+                  <!-- div class="uk-margin-remove uk-text-truncate uk-text-danger uk-text-small uk-text-right"> <ion-icon name="close"></ion-icon> Validation en cours</div -->
                 </ion-col>
               </ion-row>
             </ion-grid>
           </ion-card-content>
         </ion-card>
-        <ion-infinite-scroll (ionInfinite)="doInfinite($event)" > <!--*ngIf="page < totalPage"-->
-          <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..."></ion-infinite-scroll-content>
-        </ion-infinite-scroll>
+        <ion-card no-margin style="width: 100% !important;" padding-top>
+          <ion-infinite-scroll (ionInfinite)="doInfinite($event)" > <!--*ngIf="page < totalPage"-->
+            <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..."></ion-infinite-scroll-content>
+          </ion-infinite-scroll>
+        </ion-card>
       </ion-list>
     </div>
     <div *ngIf="showNoItem">

@@ -1,0 +1,115 @@
+<!--
+  Generated template for the AnnuairePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-toolbar padding-horizontal>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="openMenu('right')">
+        <ion-icon name="menu" color="primary"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      <img alt="logo" height="40"  src="assets/imgs/logoici.png" ><!--icicm1-->
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openMenu('left')">
+        <ion-icon name="funnel" color="primary"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="uk-height-small uk-flex uk-flex-middle uk-flex-center uk-margin-large-top" *ngIf="loading">
+    <div class="uk-text-center">
+      <span class="uk-display-block uk-margin-medium-bottom">Chargement ....</span>
+      <div uk-spinner></div>
+    </div>
+  </div>
+  <div *ngIf="!loading">
+    <div *ngIf="!showNoItem">
+      <ion-list>
+        <ion-card *ngFor="let liste of listing ">
+          <ion-card-content>
+            <ion-grid>
+              <ion-row (click)="openDetail(liste._id.$id)" tappable>
+                <ion-col col-9>
+                  <h2 class="uk-text-truncate uk-margin-remove">{{liste.name}}</h2>
+                  <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-muted" style="margin-bottom: 4px !important;">{{liste.ville}} {{liste.quartier}}</div>
+                  <!--  <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-success uk-text-small"> <ion-icon name="checkmark-circle"></ion-icon> Entreprise validé</div>
+                  <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-danger uk-text-small"> <ion-icon name="close"></ion-icon> Validation en cours</div> -->
+                </ion-col>
+                <ion-col col-3>
+                  <rating  [(ngModel)]="liste.ratecount"
+                           readOnly="true"
+                           max="5"
+                           emptyStarIconName="star-outline"
+                           halfStarIconName="star-half"
+                           starIconName="star"
+                           nullable="false"
+                           (ngModelChange)="onModelChange($event, liste._id.$id)"></rating>
+                  <div class="uk-text-right uk-h4 uk-margin-remove" >{{liste.reviewcount}} avis</div>
+                  <!-- <div class="uk-text-right uk-text-success uk-h4 uk-margin-remove uk-text-bold">8h à 18h30</div> -->
+                </ion-col>
+                <ion-col col class="uk-padding-remove-vertical">
+                  <hr no-margin="">
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col col-10>
+                  <ion-item class="item-compagny">
+                    <ion-thumbnail item-start>
+                      <img  *ngIf="liste.imageune==null"  src="http://yoomeeonl.webfactional.com/media/pictures/companies/default.jpg" class="uk-responsive-height">
+                      <img  *ngIf="liste.imageune!=null"  src="http://yoomeeonl.webfactional.com/media/pictures/companies/{{liste.imageune}}" class="uk-responsive-height">
+                    </ion-thumbnail>
+                    <div>
+                      <ion-badge item-end class="uk-margin-remove-top uk-margin-remove-left uk-margin-remove-right">{{liste.maincategorie}}</ion-badge>
+                    </div>
+
+                    <div class="uk-h4 uk-margin-remove">
+                      <ul class="uk-text-small uk-padding-small uk-padding-remove-vertical uk-padding-remove-right" no-margin>
+                        <li *ngIf="liste.adresse!=''">{{liste.adresse}}</li>
+                        <li *ngIf="liste.repere!=''">{{liste.repere}}</li>
+                        <!--li>Localisation</li-->
+                      </ul>
+                    </div>
+
+                  </ion-item>
+                </ion-col>
+                <ion-col col-2 class="uk-position-relative">
+                  <div class="uk-position-bottom-right">
+                    <ion-icon name="call" class="icon-m" (click)="callCompany(liste.phone)" [ngClass]="{'uk-hidden' : (!liste.phone)}"></ion-icon>
+                    <ion-icon name="mail" class="icon-m" (click)="emailCompany(liste.email)" [ngClass]="{'uk-hidden' : (!liste.email)}"></ion-icon>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+        </ion-card>
+        <ion-infinite-scroll (ionInfinite)="doInfinite($event)" > <!--*ngIf="page < totalPage"-->
+          <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..."></ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+      </ion-list>
+    </div>
+    <div *ngIf="showNoItem">
+      <div class="uk-height-small uk-flex uk-flex-middle uk-flex-center uk-NoItem uk-margin-large-top">
+        <div class="uk-text-center uk-padding-large">
+          <ion-icon name="funnel" class="uk-margin-auto"></ion-icon>
+          <div ion-text color="dark" class="uk-margin-medium-top uk-h2">
+            Changer les paramètres de votre filtre pour obtenir plus d'entreprise
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</ion-content>
+
+
+

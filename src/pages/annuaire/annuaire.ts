@@ -3,8 +3,8 @@ import { IonicPage, NavController, NavParams, LoadingController, Loading, MenuCo
 import { CompaniesProvider } from '../../providers/companies/companies';
 import { CallNumber } from '@ionic-native/call-number';
 import { EmailComposer } from '@ionic-native/email-composer';
-import {CompanyPage} from "../company/company";
 import {VariableProvider} from "../../providers/variable/variable";
+import {CompanyPage} from "../company/company";
 
 
 
@@ -189,7 +189,7 @@ export class AnnuairePage {
   }
 
   openDetail(id) {
-     this.navCtrl.push('CompanyPage', {
+     this.navCtrl.push(CompanyPage, {
       idcompagnie: id
     });
 

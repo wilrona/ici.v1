@@ -47,7 +47,7 @@ export class CompanyInfoPage {
   bp;
   repere;
   validations_form;
-  map: any; 
+  map: any;
   addressElement: HTMLInputElement = null;
   @Input() categorie:Array<any> = [];
   @Output() refresh: EventEmitter<Array<object>>;
@@ -69,24 +69,25 @@ export class CompanyInfoPage {
   @ViewChild('searchbar', { read: ElementRef }) searchbar: ElementRef;
 
   constructor(
-  public geolocation : Geolocation, 
+  public geolocation : Geolocation,
   public mapService: MapProvider,
-  public formBuilder: FormBuilder, 
-  public navCtrl: NavController, 
-  public navParams: NavParams, 
+  public formBuilder: FormBuilder,
+  public navCtrl: NavController,
+  public navParams: NavParams,
   public viewCtrl: ViewController,
   public modalCtrl: ModalController,
   public http: Http,
   public events: Events,
   public loadingCtrl: LoadingController,
   public toastCtrl: ToastController,
-  private transfer: FileTransfer, 
-  private file: File, 
-  private filePath: FilePath, 
+  private transfer: FileTransfer,
+  private file: File,
+  private filePath: FilePath,
   public actionSheetCtrl: ActionSheetController,
   private camera: Camera,
   public platform: Platform) {
-    var company = navParams.get("company");
+    let company = navParams.get("company");
+
     var i=0;
     for(let t of company.tags){
       if(t.cat==0){
@@ -98,11 +99,11 @@ export class CompanyInfoPage {
     var currentUser = JSON.parse(localStorage.getItem('userId'));
       this.user = currentUser;
 
-    
+
 
     this.maincategorie={"name": company.maincategorie, "id": company.maincategorieId};
 
-    this.cat= company.maincategorieId;
+    this.cat = company.maincategorieId;
 
     this.refresh = new EventEmitter<Array<object>>();
 
@@ -113,7 +114,7 @@ export class CompanyInfoPage {
     events.subscribe('selectcategoriesid', (cat, name) => {
           console.log("c " +cat);
           console.log("name "+name);
-          
+
          // alert("ar");
           i=0;
           for(let c of cat){
@@ -122,10 +123,10 @@ export class CompanyInfoPage {
             i++;
           }
           this.refresh.emit(this.categorie);
-          
-      });
 
-      this.validations_form = this.formBuilder.group({
+    });
+
+    this.validations_form = this.formBuilder.group({
         ville: [company.ville,Validators.required],
         name: [company.name,Validators.required],
         phone: [company.phone,Validators.required],
@@ -133,7 +134,7 @@ export class CompanyInfoPage {
         region: [company.region,''],
         quartier: [company.quartier,''],
         latitude: [company.latitude,''],
-        longitude: [company.longitude,''],  
+        longitude: [company.longitude,''],
         adresse: [company.adresse,''],
         email: [company.email, ''],
         siteweb: [company.siteweb, ''],
@@ -151,15 +152,15 @@ export class CompanyInfoPage {
     console.log('ionViewDidLoad CompanyInfoPage');
   }
 
-  
+
 
   ngAfterViewInit(){
       this.loadMaps();
-    
+
   }
-  
-  openCategoryEdit(categories){
-    let categoryModal = this.modalCtrl.create(CompanyCategoryPage, {"categories": categories} );
+
+  openCategoryEdit(data){
+    let categoryModal = this.modalCtrl.create(CompanyCategoryPage, { categories: data} );
     categoryModal.present();
   }
 
@@ -210,20 +211,20 @@ export class CompanyInfoPage {
             address => {
               //console.log(address);
               this.validations_form.patchValue({quartier: address.results[0].address_components[1].long_name, region: address.results[0].address_components[4].long_name, ville: address.results[0].address_components[2].long_name, longitude: latLngObj.long, latitude: latLngObj.lat, adresse : address.results[0].address_components[0].long_name});
-            
+
              // this.addressChange.emit(this.address);
               this.getAddressComponentByPlace(address.results[0], latLngObj);
             },
             err => console.log("Error in getting the street address " + err)
           )
         } else {
-          
+
           //this.address = s_address.results[0].formatted_address;
            this.validations_form.patchValue({quartier: s_address.results[0].address_components[1].long_name, region: s_address.results[0].address_components[4].long_name, ville: s_address.results[0].address_components[2].long_name, longitude: latLngObj.long, latitude: latLngObj.lat, adresse : s_address.results[0].address_components[0].long_name});
-            
-          
+
+
           this.getAddressComponentByPlace(s_address.results[0], latLngObj);
-          
+
         }
       },
       err => {
@@ -237,7 +238,7 @@ export class CompanyInfoPage {
   }
 
   createAutocomplete(addressEl: HTMLInputElement): Observable<any> {
-    
+
     var options = {
                 types: [],
                 componentRestrictions: {country: 'cm'}
@@ -342,7 +343,7 @@ public takePicture(sourceType) {
     saveToPhotoAlbum: false,
     correctOrientation: true
   };
- 
+
   // Get the data of an image
   this.camera.getPicture(options).then((imagePath) => {
     // Special handling for Android library
@@ -391,9 +392,9 @@ public presentActionSheet() {
 
 
 uploadImage() {
- 
+
   var url = "http://yoomeeonl.webfactional.com/assets/external/upload.php";
- 
+
   // File for Upload
   var filename = this.lastImage; // this.lastImage;
   var targetPath =this.pathForImage(this.lastImage); //this.pathForImage(this.lastImage);
@@ -403,12 +404,12 @@ uploadImage() {
 
   this.logoLocation=this.imagedir+"/"+filename;
   // File name only
-  
+
   let options: FileUploadOptions = {
      fileKey: 'files',
      fileName: filename,
      chunkedMode: false,
-     mimeType: "multipart/form-data",   //"image/jpeg", 
+     mimeType: "multipart/form-data",   //"image/jpeg",
      params : {'files': filename, 'imagedir': this.imagedir}
   }
   var trustHosts = true;
@@ -432,7 +433,7 @@ uploadImage() {
      this.loading.dismissAll();
     this.presentToast('Error while uploading file.');
    });
-  
+
 }
 
 private presentToast(text) {
@@ -444,7 +445,7 @@ private presentToast(text) {
   toast.present();
 }
 
-saveInfo(value){ 
+saveInfo(value){
 
     if(!(this.lastImage === null)){
       this.uploadImage();
@@ -456,19 +457,19 @@ saveInfo(value){
     if(this.maincat==undefined){
       this.maincat= this.cat;
     }
-    
+
     var myData = JSON.stringify({  quartier:value.quartier, userid: this.user.id.$id, tags: value.tags, adresse:value.adresse,
       region: value.region,website: value.siteweb,longitude: value.longitude,
       latitude: value.latitude, description: value.description, name: value.name,repere: value.repere,ville: value.ville,
       email: value.email,phone: value.phone,idcategorie: this.categorie
       ,maincategorie: this.maincat.$id, id:value.id, bp:value.bp,
-      imagedir:this.imagedir, logoLocation:this.logoLocation, logoexist: this.logoexist});      
-    
+      imagedir:this.imagedir, logoLocation:this.logoLocation, logoexist: this.logoexist});
 
-   // console.log(this.maincat); 
-    console.log(myData); 
 
-    /*this.http.post("http://yoomeeonl.webfactional.com/MobileApp/updatecompanyInfo",myData)    
+   // console.log(this.maincat);
+    console.log(myData);
+
+    /*this.http.post("http://yoomeeonl.webfactional.com/MobileApp/updatecompanyInfo",myData)
     .subscribe(data => {
       this.events.publish('companyInfoupdate', data["_body"]);
       //this.presentToast(data["_body"]);

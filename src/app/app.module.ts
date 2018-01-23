@@ -1,6 +1,6 @@
-import { NgModule, ErrorHandler } from '@angular/core';
+import {NgModule, ErrorHandler} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
+import {IonicApp, IonicModule, IonicErrorHandler, Tabs} from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { HomePage } from '../pages/home/home';
@@ -44,10 +44,10 @@ import { MapProvider } from '../providers/map/map';
 import {IonicStorageModule} from "@ionic/storage";
 import {AuthProvider} from "../providers/auth/auth";
 import { VariableProvider } from '../providers/variable/variable';
-import {CompanyPage} from "../pages/company/company";
 import {MapsComponent} from "../components/maps/maps";
 import {LoginForgetPage} from "../pages/login-forget/login-forget";
 import {InscriptionPage} from "../pages/inscription/inscription";
+import {CompanyPage} from "../pages/company/company";
 
 
 @NgModule({
@@ -56,7 +56,7 @@ import {InscriptionPage} from "../pages/inscription/inscription";
     AnnuairePage,
     ComptePage,
     HomePage,
-    // CompanyPage,
+    CompanyPage,
     CompanyDescriptionPage,
     CompanyImagesPage,
     CompanyInfoPage,
@@ -70,7 +70,7 @@ import {InscriptionPage} from "../pages/inscription/inscription";
 
 
     // components
-    // MapsComponent,
+    MapsComponent,
     FiltreComponent,
 
 
@@ -91,7 +91,7 @@ import {InscriptionPage} from "../pages/inscription/inscription";
     AnnuairePage,
     ComptePage,
     HomePage,
-    // CompanyPage,
+    CompanyPage,
     CompanyDescriptionPage,
     CompanyImagesPage,
     CompanyInfoPage,
