@@ -184,7 +184,7 @@ export class CompanyPage {
       myModal.present();
 
    } else{
-      let myModal = this.modalCtrl.create(LoginPage);
+      let myModal = this.modalCtrl.create(LoginPage,{type:"review",vote: val, companyId: companyId });
       myModal.present();
    }
 

@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 724:
+/***/ 725:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CompanyPageModule", function() { return CompanyPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__company__ = __webpack_require__(164);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__company__ = __webpack_require__(163);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic2_rating__ = __webpack_require__(378);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_maps_maps__ = __webpack_require__(732);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ionic_img_viewer__ = __webpack_require__(166);
@@ -26,7 +26,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var CompanyPageModule = (function () {
+var CompanyPageModule = /** @class */ (function () {
     function CompanyPageModule() {
     }
     CompanyPageModule = __decorate([
@@ -76,7 +76,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * See https://angular.io/api/core/Component for more info on Angular
  * Components.
  */
-var MapsComponent = (function () {
+var MapsComponent = /** @class */ (function () {
     function MapsComponent(navParams) {
         //var business=this.navParams.get("business");
         this.navParams = navParams;
@@ -117,7 +117,7 @@ var MapsComponent = (function () {
     ], MapsComponent.prototype, "business", void 0);
     MapsComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'maps',template:/*ion-inline-start:"/Users/online2/Documents/projets/mobile/ici-tab.v1/src/components/maps/maps.html"*/'<!-- Generated template for the MapsComponent component -->\n<div #map id="map"></div>\n'/*ion-inline-end:"/Users/online2/Documents/projets/mobile/ici-tab.v1/src/components/maps/maps.html"*/
+            selector: 'maps',template:/*ion-inline-start:"D:\lab\icicmapp\ici.v1\src\components\maps\maps.html"*/'<!-- Generated template for the MapsComponent component -->\n\n<div #map id="map"></div>\n\n'/*ion-inline-end:"D:\lab\icicmapp\ici.v1\src\components\maps\maps.html"*/
             // template: '<p>Hello, {{test}}!</p>'
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* NavParams */]])

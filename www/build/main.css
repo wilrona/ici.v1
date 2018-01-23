@@ -42732,6 +42732,35 @@ page-company-category .scroll-content {
   background-color: #ffffff;
 }
 
+page-company-category ion-list {
+  margin-bottom: 18px !important;
+}
+
+page-company-category .expand-wrapper {
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
+}
+
+page-company-category .item-inner {
+  border: none !important;
+}
+
+page-company-category .item-inner .icon-check {
+  display: none;
+}
+
+page-company-category .hover ion-label {
+  color: #f44336 !important;
+}
+
+page-company-category .hover .icon-check {
+  display: block;
+}
+
+page-company-category .item-ios {
+  border: none !important;
+}
+
 page-company-description .scroll-content {
   background-color: transparent;
 }

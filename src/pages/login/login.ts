@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {
   IonicPage, NavController, NavParams, ToastController, App, Events,
-  ViewController, AlertController
+  ViewController, AlertController, ModalController
 } from 'ionic-angular';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
 /*import { ModalPage } from '../../pages/modal-page/modal-page';
@@ -13,6 +13,7 @@ import {AuthProvider} from "../../providers/auth/auth";
 import {VariableProvider} from "../../providers/variable/variable";
 import {LoginForgetPage} from "../login-forget/login-forget";
 import {InscriptionPage} from "../inscription/inscription";
+import { ReviewFormPage } from '../review-form/review-form';
 //import {JwtHelper} from "angular2-jwt";
 //import {Storage} from "@ionic/storage";
 /**
@@ -32,6 +33,7 @@ export class LoginPage {
   validation_messages;
   username;
   password;
+  type="";
 
 
 
@@ -49,7 +51,8 @@ export class LoginPage {
               public http: Http, public toastCtrl: ToastController,
               public navParams: NavParams, public formBuilder: FormBuilder,
               public viewCtrl: ViewController, public users:AuthProvider,
-              public variable: VariableProvider, public alertCtrl: AlertController
+              public variable: VariableProvider, public alertCtrl: AlertController,
+              public modalCtrl: ModalController
   ) {
 
     this.validations_form = this.formBuilder.group({
@@ -75,6 +78,8 @@ export class LoginPage {
         { type: 'minLength', message: 'Le mot de passe doit etre superieur ou egale à 6 caracteres' }
       ]
     }
+
+    this.type = navParams.get("type");
 
   }
 
@@ -122,7 +127,12 @@ export class LoginPage {
           // let nav = this.app.getRootNav();
           // nav.setRoot('CpanelPage');
           this.events.publish('userconnect', true);
-          this.navCtrl.popToRoot();
+          this.dismiss();
+          if(this.type=="review"){
+            let myModal = this.modalCtrl.create(ReviewFormPage,{vote: this.navParams.get("vote"), companyId: this.navParams.get("companyId") });
+            myModal.present();
+          }
+          //this.navCtrl.popToRoot();
           // this.navCtrl.setRoot ('CpanelPage');
         }
 

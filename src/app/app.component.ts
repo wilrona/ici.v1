@@ -53,12 +53,13 @@ export class MyApp {
 
     if(localStorage.getItem("userId")) {
       this.userconnect = true;
+     // this.disconnect.emit(this.userconnect);
     }
 
     this.disconnect = new EventEmitter<boolean>();
 
     events.subscribe('userconnect', (user) => {
-    this.userconnect =true;
+    this.userconnect =user;
     this.disconnect.emit(this.userconnect);
     });
 
@@ -120,6 +121,7 @@ export class MyApp {
    localStorage.clear();
    this.userconnect=false;
    this.disconnect.emit(this.userconnect);
+   console.log("test");
    this.events.publish('userconnect', false);
   }
 

@@ -50,6 +50,10 @@ export class CompanyInfoPage {
   map: any; 
   addressElement: HTMLInputElement = null;
   @Input() categorie:Array<any> = [];
+  namecategorie:Array<any> = [];
+ idcategorie:Array<any> = [];
+  
+  
   @Output() refresh: EventEmitter<Array<object>>;
   maincategorie:{};
   maincat;
@@ -101,14 +105,23 @@ export class CompanyInfoPage {
     
 
     this.maincategorie={"name": company.maincategorie, "id": company.maincategorieId};
+    this.idcategorie=company.idcategorie;
 
     this.cat= company.maincategorieId;
+
+    
 
     this.refresh = new EventEmitter<Array<object>>();
 
     this.categorie=company.categorie;
     this.imagedir=company.imagedir;
     this.logoLocation=company.logo;
+
+    console.log("namecategorie "+this.namecategorie);
+
+    for(let cat of this.categorie){
+      this.namecategorie.push(cat.name);
+    }
 
     events.subscribe('selectcategoriesid', (cat, name) => {
           console.log("c " +cat);
@@ -159,7 +172,8 @@ export class CompanyInfoPage {
   }
   
   openCategoryEdit(categories){
-    let categoryModal = this.modalCtrl.create(CompanyCategoryPage, {"categories": categories} );
+    console.log("nn "+categories);
+    let categoryModal = this.modalCtrl.create(CompanyCategoryPage, {"categoriesselect": categories, "categoriesselectname" : this.namecategorie} );
     categoryModal.present();
   }
 
@@ -466,9 +480,9 @@ saveInfo(value){
     
 
    // console.log(this.maincat); 
-    console.log(myData); 
+   // console.log(myData); 
 
-    /*this.http.post("http://yoomeeonl.webfactional.com/MobileApp/updatecompanyInfo",myData)    
+    this.http.post("http://yoomeeonl.webfactional.com/MobileApp/updatecompanyInfo",myData)    
     .subscribe(data => {
       this.events.publish('companyInfoupdate', data["_body"]);
       //this.presentToast(data["_body"]);
@@ -477,7 +491,7 @@ saveInfo(value){
       console.log( data["_body"]);
     }, error => {
     console.log("Oooops!");
-  });*/
+  });
 
 }
 

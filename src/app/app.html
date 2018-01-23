@@ -17,7 +17,7 @@
     </ion-list>
     <ion-item-group>
       <ion-item-divider color="light">Mon Compte</ion-item-divider>
-      <button ion-item *ngIf="userconnect==false" (tap)="login()">
+      <button ion-item *ngIf="userconnect==false" (click)="login()">
         Connexion
       </button>
        <button ion-item *ngIf="userconnect==true">
@@ -26,7 +26,7 @@
       <button ion-item >
         Ajouter une entreprise
       </button>
-       <button ion-item *ngIf="userconnect==true" (tab)="logout()">
+       <button ion-item *ngIf="userconnect==true" (click)="logout()">
         Déconnexion
       </button>
     </ion-item-group>
@@ -42,7 +42,7 @@
   </ion-header>
 
   <ion-content>
-    <filtre></filtre>
+    <!--filtre></filtre-->
   </ion-content>
 
   <ion-footer>
