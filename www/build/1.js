@@ -5,10 +5,10 @@ webpackJsonp([1],{
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MapsPageModule", function() { return MapsPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReviewFormPageModule", function() { return ReviewFormPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__maps__ = __webpack_require__(168);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__review_form__ = __webpack_require__(169);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,23 +18,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var MapsPageModule = (function () {
-    function MapsPageModule() {
+var ReviewFormPageModule = (function () {
+    function ReviewFormPageModule() {
     }
-    MapsPageModule = __decorate([
+    ReviewFormPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["K" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__maps__["a" /* MapsPage */],
+                __WEBPACK_IMPORTED_MODULE_2__review_form__["a" /* ReviewFormPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__maps__["a" /* MapsPage */]),
-            ]
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__review_form__["a" /* ReviewFormPage */]),
+            ],
         })
-    ], MapsPageModule);
-    return MapsPageModule;
+    ], ReviewFormPageModule);
+    return ReviewFormPageModule;
 }());
 
-//# sourceMappingURL=maps.module.js.map
+//# sourceMappingURL=review-form.module.js.map
 
 /***/ })
 

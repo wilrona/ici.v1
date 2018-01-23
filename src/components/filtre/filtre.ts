@@ -15,7 +15,7 @@ export class FiltreComponent {
 
   shownGroup = null;
   @Input('showVille') ville: boolean = true;
-  @Input() categoriesselect :Array<any> = [];
+  @Input('categoriesselect') categoriesselect :Array<any> = [];
 
   @Input('clear') clear: boolean = false;
   itenSelect:Array<any> = [];
@@ -23,15 +23,24 @@ export class FiltreComponent {
 
 
   cities: Array<[any]>;
-  categories: Array<[any]>;
+  //categories: Array<[any]>;
+  categories;
+  
   cat: Array<[any]>;
   city: Array<any>;
+  hover;
 
   constructor(public listingService: CompaniesProvider, public events: Events) {
+    
     this.loadCategory();
     this.getCities();
+    
+    //
+    
+    //console.log("vill "+this.ville);
+    //console.log(this.categories);
 
-    this.events.subscribe('clearFilter', (clear) => {
+   this.events.subscribe('clearFilter', (clear) => {
       if(clear === true){
         this.itenSelect = [];
         this.city = [];
@@ -42,6 +51,41 @@ export class FiltreComponent {
         });
       }
     });
+  }
+
+  ngAfterViewInit(){
+    this.defaultSelect();
+  }
+
+
+  
+  defaultSelect(){
+    // for(let cat of this.categoriesselect){
+      console.log("categoriesselect "+this.categoriesselect);
+      console.log(document.getElementById('589351566bbd3c32897fc288'));
+
+      for(let cat of this.categoriesselect){
+        //(<HTMLInputElement>document.getElementById(cat)).className="hover";
+      //  document.getElementById('589351566bbd3c32897fc288').className="hover";
+        console.log(document.getElementById('589351566bbd3c32897fc288'));
+        console.log("catrS   "+cat);
+        this.itenSelect.push(cat.id.$id);
+        this.itenSelect2.push(cat.name);
+      }
+
+      /*const index = categoriesselect.indexOf(item.name);
+      console.log("i  "+index);
+      if(index>-1){
+         this.hover="hover";
+         console.log("yes "+item._id.$id);
+         this.itenSelect.push(item._id.$id);
+         return "hover"; 
+         
+      }
+      else{
+      return "";
+      }*/
+    
   }
 
   toggleGroup(group) {
@@ -77,6 +121,11 @@ export class FiltreComponent {
 
 
     this.events.publish('categoriesfilter', this.itenSelect);
+    //this.categoriesselect=this.itenSelect;
+
+    console.log("iten1 "+this.itenSelect);
+    //console.log("iten2 "+this.categoriesselect);
+    
 
     this.events.publish('selectcategoriesid', this.itenSelect, this.itenSelect2);
 

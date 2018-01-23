@@ -3,6 +3,39 @@ page-company-category {
   .scroll-content{
     background-color: #ffffff;
   }
+ 
+  ion-list{
+    margin-bottom: 18px !important;
+  }
+
+  .expand-wrapper {
+    transition: 0.2s linear;
+  }
+
+  .item-inner{
+    border: none !important;
+
+    .icon-check{
+      display: none;
+    }
+  }
+
+  .hover {
+    ion-label{
+      color: map_get($colors, primary) !important;
+    }
+    .icon-check{
+      display: block;
+    }
+  }
+
+  .item-ios{
+    border: none !important;
+  }
+
+
+
+
 
   .item-inner{
     border: none !important;

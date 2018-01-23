@@ -86,8 +86,7 @@ export class CompanyInfoPage {
   public actionSheetCtrl: ActionSheetController,
   private camera: Camera,
   public platform: Platform) {
-    let company = navParams.get("company");
-
+    var company = navParams.get("company");
     var i=0;
     for(let t of company.tags){
       if(t.cat==0){
@@ -103,7 +102,7 @@ export class CompanyInfoPage {
 
     this.maincategorie={"name": company.maincategorie, "id": company.maincategorieId};
 
-    this.cat = company.maincategorieId;
+    this.cat= company.maincategorieId;
 
     this.refresh = new EventEmitter<Array<object>>();
 
@@ -124,9 +123,9 @@ export class CompanyInfoPage {
           }
           this.refresh.emit(this.categorie);
 
-    });
+      });
 
-    this.validations_form = this.formBuilder.group({
+      this.validations_form = this.formBuilder.group({
         ville: [company.ville,Validators.required],
         name: [company.name,Validators.required],
         phone: [company.phone,Validators.required],
@@ -159,8 +158,8 @@ export class CompanyInfoPage {
 
   }
 
-  openCategoryEdit(data){
-    let categoryModal = this.modalCtrl.create(CompanyCategoryPage, { categories: data} );
+  openCategoryEdit(categories){
+    let categoryModal = this.modalCtrl.create(CompanyCategoryPage, {"categories": categories} );
     categoryModal.present();
   }
 
