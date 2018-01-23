@@ -23,8 +23,6 @@ export class CompaniesProvider implements AutoCompleteService{
   city:any;
   categories:[any];
   perpage:number = 20;
-
-  
  
   constructor(public http: Http) {
     this.data = null;

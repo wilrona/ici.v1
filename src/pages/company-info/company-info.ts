@@ -50,11 +50,13 @@ export class CompanyInfoPage {
   map: any;
   addressElement: HTMLInputElement = null;
   @Input() categorie:Array<any> = [];
+  namecategorie:Array<any> = [];
+  idcategorie:Array<any> = [];
+
+
   @Output() refresh: EventEmitter<Array<object>>;
   maincategorie:{};
   maincat;
-  id;
-  cat;
 
   lastImage: string = null;
   loading: Loading;
@@ -86,7 +88,8 @@ export class CompanyInfoPage {
   public actionSheetCtrl: ActionSheetController,
   private camera: Camera,
   public platform: Platform) {
-    var company = navParams.get("company");
+    let company = navParams.get("company");
+
     var i=0;
     for(let t of company.tags){
       if(t.cat==0){
@@ -102,13 +105,18 @@ export class CompanyInfoPage {
 
     this.maincategorie={"name": company.maincategorie, "id": company.maincategorieId};
 
-    this.cat= company.maincategorieId;
+    this.idcategorie=company.idcategorie;
 
     this.refresh = new EventEmitter<Array<object>>();
 
     this.categorie=company.categorie;
     this.imagedir=company.imagedir;
     this.logoLocation=company.logo;
+
+    for(let cat of this.categorie){
+      this.namecategorie.push(cat.name);
+    }
+
 
     events.subscribe('selectcategoriesid', (cat, name) => {
           console.log("c " +cat);
@@ -123,9 +131,9 @@ export class CompanyInfoPage {
           }
           this.refresh.emit(this.categorie);
 
-      });
+    });
 
-      this.validations_form = this.formBuilder.group({
+    this.validations_form = this.formBuilder.group({
         ville: [company.ville,Validators.required],
         name: [company.name,Validators.required],
         phone: [company.phone,Validators.required],
@@ -159,7 +167,7 @@ export class CompanyInfoPage {
   }
 
   openCategoryEdit(categories){
-    let categoryModal = this.modalCtrl.create(CompanyCategoryPage, {"categories": categories} );
+    let categoryModal = this.modalCtrl.create(CompanyCategoryPage, {"categoriesselect": categories, "categoriesselectname" : this.namecategorie} );
     categoryModal.present();
   }
 
@@ -468,16 +476,16 @@ saveInfo(value){
    // console.log(this.maincat);
     console.log(myData);
 
-    /*this.http.post("http://yoomeeonl.webfactional.com/MobileApp/updatecompanyInfo",myData)
-    .subscribe(data => {
-      this.events.publish('companyInfoupdate', data["_body"]);
-      //this.presentToast(data["_body"]);
-      // console.log( data["_body"]);
-      this.dismiss();
-      console.log( data["_body"]);
-    }, error => {
-    console.log("Oooops!");
-  });*/
+    this.http.post("http://yoomeeonl.webfactional.com/MobileApp/updatecompanyInfo",myData)
+      .subscribe(data => {
+        this.events.publish('companyInfoupdate', data["_body"]);
+        //this.presentToast(data["_body"]);
+        // console.log( data["_body"]);
+        this.dismiss();
+        console.log( data["_body"]);
+      }, error => {
+      console.log("Oooops!");
+    });
 
 }
 

@@ -13,7 +13,7 @@ import {AuthProvider} from "../../providers/auth/auth";
 import {VariableProvider} from "../../providers/variable/variable";
 import {LoginForgetPage} from "../login-forget/login-forget";
 import {InscriptionPage} from "../inscription/inscription";
-import { ReviewFormPage } from '../review-form/review-form';
+import {ReviewFormPage} from "../review-form/review-form";
 //import {JwtHelper} from "angular2-jwt";
 //import {Storage} from "@ionic/storage";
 /**
@@ -36,7 +36,6 @@ export class LoginPage {
   type="";
 
 
-
   // When the page loads, we want the Login segment to be selected
   authType: string = "login";
 
@@ -51,8 +50,8 @@ export class LoginPage {
               public http: Http, public toastCtrl: ToastController,
               public navParams: NavParams, public formBuilder: FormBuilder,
               public viewCtrl: ViewController, public users:AuthProvider,
-              public variable: VariableProvider, public alertCtrl: AlertController,
-              public modalCtrl: ModalController
+              public variable: VariableProvider, public alertCtrl: AlertController, public modalCtrl: ModalController
+
   ) {
 
     this.validations_form = this.formBuilder.group({
@@ -129,12 +128,10 @@ export class LoginPage {
           this.events.publish('userconnect', true);
           this.dismiss();
           if(this.type=="review"){
-            let myModal = this.modalCtrl.create(ReviewFormPage,{vote: this.navParams.get("vote"), companyId: this.navParams.get("companyId") });
-            myModal.present();
+             let myModal = this.modalCtrl.create(ReviewFormPage,{vote: this.navParams.get("vote"), companyId: this.navParams.get("companyId") });
+             myModal.present();
+           }
           }
-          //this.navCtrl.popToRoot();
-          // this.navCtrl.setRoot ('CpanelPage');
-        }
 
       }
 

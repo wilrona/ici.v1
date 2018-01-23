@@ -21,8 +21,15 @@
 
 
 <ion-content padding-vertical>
-  <filtre [showVille]="false" [categoriesselect]="categories"></filtre>
+  <ion-searchbar [(ngModel)]="searchString" (ionInput)="searchCat($event)"
+                                    placeholder="Search"  (ionClear)="onCancelCategory($event)"></ion-searchbar>
+        <ion-list no-padding no-margin>
 
+         <ion-item *ngFor="let it of cat"  (tap)="itemAdd(it._id.$id, $event,it.name)"  [ngClass]="defaultSelect(it)">  {{it.name}}
+           <ion-icon item-end name="checkmark" small class="icon-check" color="primary"></ion-icon>
+         </ion-item>
+
+       </ion-list>
   <div class="uk-height-fab"></div>
 </ion-content>
 

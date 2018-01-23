@@ -42478,23 +42478,21 @@ page-annuaire .item-compagny {
 }
 
 page-annuaire ion-thumbnail {
-  margin: 0 16px 0 0 !important;
-  max-width: 70px !important;
-  min-width: 70px !important;
-  max-height: 70px !important;
-  min-height: 70px !important;
+  margin: 0 15px 0 0 !important;
+  max-width: 50px !important;
+  min-width: 50px !important;
+  max-height: 55px !important;
+  min-height: 55px !important;
 }
 
 page-annuaire ion-thumbnail img {
-  width: 70px !important;
-  height: 70px !important;
+  width: 50px !important;
+  height: 50px !important;
 }
 
 page-annuaire ion-label {
   white-space: inherit !important;
   margin: 0 !important;
-  position: absolute;
-  top: 0px;
 }
 
 page-annuaire .icon-m {
@@ -42511,100 +42509,100 @@ page-annuaire .uk-NoItem ion-icon {
   display: block;
 }
 
-page-company .scroll-content {
+page-company-details .scroll-content {
   margin-top: 0 !important;
   padding-top: 0;
   background-color: transparent;
 }
 
-page-company ion-navbar {
+page-company-details ion-navbar {
   -webkit-transition: all .3s;
   transition: all .3s;
 }
 
-page-company ion-navbar .back-button, page-company ion-navbar .bar-button {
+page-company-details ion-navbar .back-button, page-company-details ion-navbar .bar-button {
   color: #ffffff;
 }
 
-page-company ion-navbar.show-background .back-button, page-company ion-navbar.show-background .bar-button {
+page-company-details ion-navbar.show-background .back-button, page-company-details ion-navbar.show-background .bar-button {
   color: #f44336;
 }
 
-page-company .header-md::after {
+page-company-details .header-md::after {
   background-image: none;
 }
 
-page-company .header-ios .toolbar-background-ios, page-company .toolbar-background-md, page-company .toolbar-background-wp {
+page-company-details .header-ios .toolbar-background-ios, page-company-details .toolbar-background-md, page-company-details .toolbar-background-wp {
   border-style: none;
   background: none;
   border-color: transparent;
 }
 
-page-company .show-background {
+page-company-details .show-background {
   background: #fff;
   color: #f44336;
 }
 
-page-company .toolbar-title {
+page-company-details .toolbar-title {
   color: #f44336;
 }
 
-page-company .transition {
+page-company-details .transition {
   -webkit-transition: background-size .3s ease-in;
   transition: background-size .3s ease-in;
 }
 
-page-company .content {
+page-company-details .content {
   background-color: #fff;
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: top center;
 }
 
-page-company .user-info {
+page-company-details .user-info {
   width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-page-company .user-info .uk-size {
+page-company-details .user-info .uk-size {
   color: #fff;
   text-align: center;
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.31);
 }
 
-page-company .user-info .uk-size {
+page-company-details .user-info .uk-size {
   font-size: 1.2em;
   margin: 20px 0 5px;
 }
 
-page-company .content-ios .user-info .uk-size {
+page-company-details .content-ios .user-info .uk-size {
   margin-top: 40px !important;
 }
 
-page-company .contents {
+page-company-details .contents {
   background-color: #e1e1e1;
   height: auto;
 }
 
-page-company .contents .card-info {
+page-company-details .contents .card-info {
   width: 100% !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
 }
 
-page-company .contents .card-info ul.rating {
+page-company-details .contents .card-info ul.rating {
   text-align: right;
 }
 
-page-company .contents .card-info .uk-text-success {
+page-company-details .contents .card-info .uk-text-success {
   color: #5cb462 !important;
 }
 
-page-company .contents .card-info .item-compagny {
+page-company-details .contents .card-info .item-compagny {
   padding: 0 !important;
 }
 
-page-company .contents .card-info ion-thumbnail {
+page-company-details .contents .card-info ion-thumbnail {
   margin: 0 10px 0 0 !important;
   max-width: 50px !important;
   min-width: 50px !important;
@@ -42612,41 +42610,41 @@ page-company .contents .card-info ion-thumbnail {
   min-height: 50px !important;
 }
 
-page-company .contents .card-info ion-thumbnail img {
+page-company-details .contents .card-info ion-thumbnail img {
   width: 50px !important;
   height: 50px !important;
 }
 
-page-company .contents .card-info ion-label {
+page-company-details .contents .card-info ion-label {
   white-space: inherit !important;
   margin: 0 !important;
 }
 
-page-company .contents .uk-block-button {
+page-company-details .contents .uk-block-button {
   border-radius: 0px !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
   margin: 0;
 }
 
-page-company .contents .card-header-ios {
+page-company-details .contents .card-header-ios {
   padding: 16px;
 }
 
-page-company .contents .show-more-end {
+page-company-details .contents .show-more-end {
   display: inline-block;
 }
 
-page-company .contents .slide-zoom img {
+page-company-details .contents .slide-zoom img {
   max-height: 150px;
   width: 150px;
 }
 
-page-company .contents ion-slide.swiper-slide {
+page-company-details .contents ion-slide.swiper-slide {
   left: 15%;
 }
 
-page-company .contents .show-more-end {
+page-company-details .contents .show-more-end {
   bottom: 40px;
   height: 20px;
   left: 0;
@@ -42654,37 +42652,37 @@ page-company .contents .show-more-end {
   width: 100%;
 }
 
-page-company .contents .show-more-end {
+page-company-details .contents .show-more-end {
   background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0), white);
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(white));
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0), white);
   filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#00ffffff',EndColorStr='#ffffff');
 }
 
-page-company .contents .card-content-ios .show-more-end {
+page-company-details .contents .card-content-ios .show-more-end {
   bottom: 35px;
 }
 
-page-company .bgFooter {
+page-company-details .bgFooter {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-page-company .bgFooter ion-icon {
+page-company-details .bgFooter ion-icon {
   font-size: 30px;
 }
 
-page-company .articles {
+page-company-details .articles {
   background-color: #fff;
 }
 
-page-company .articles .article-item {
+page-company-details .articles .article-item {
   margin-bottom: 10px;
   background-color: #eee;
   padding: 10px;
   height: 80px;
 }
 
-page-company .articles .article-item img {
+page-company-details .articles .article-item img {
   float: left;
   display: block;
   width: 44px;
@@ -42693,13 +42691,13 @@ page-company .articles .article-item img {
   border: 3px solid rgba(255, 255, 255, 0.8);
 }
 
-page-company .articles .article-item .placeholders {
+page-company-details .articles .article-item .placeholders {
   float: left;
   width: 220px;
   margin-left: 20px;
 }
 
-page-company .articles .article-item .placeholders .placeholder {
+page-company-details .articles .article-item .placeholders .placeholder {
   width: 100%;
   height: 10px;
   margin-bottom: 5px;
@@ -42707,29 +42705,49 @@ page-company .articles .article-item .placeholders .placeholder {
   float: left;
 }
 
-page-company .articles .article-item .placeholders .p20 {
+page-company-details .articles .article-item .placeholders .p20 {
   width: 20%;
 }
 
-page-company .rating-block ul.rating {
+page-company-details .rating-block ul.rating {
   text-align: center !important;
 }
 
-page-company .rating-block ul.rating.rating li ion-icon {
+page-company-details .rating-block ul.rating.rating li ion-icon {
   font-size: 50px;
 }
 
-page-company .uk-comments ul.rating {
+page-company-details .uk-comments ul.rating {
   text-align: left !important;
   display: inline-block;
 }
 
-page-company .uk-comments ul.rating.rating li ion-icon {
+page-company-details .uk-comments ul.rating.rating li ion-icon {
   font-size: 13px;
 }
 
 page-company-category .scroll-content {
   background-color: #ffffff;
+}
+
+page-company-category .item-inner {
+  border: none !important;
+}
+
+page-company-category .item-inner .icon-check {
+  display: none;
+}
+
+page-company-category .hover ion-label {
+  color: #f44336 !important;
+}
+
+page-company-category .hover .icon-check {
+  display: block;
+}
+
+page-company-category .item-ios {
+  border: none !important;
 }
 
 page-company-description .scroll-content {
@@ -42829,6 +42847,10 @@ page-company-info .ion-tags-input .iti-tag {
   padding: 4px 10px;
   max-height: 30px;
   border-radius: 0;
+}
+
+page-compte .scroll-content {
+  background-color: transparent;
 }
 
 page-home .hidden {
@@ -43291,16 +43313,16 @@ page-maps .item-compagny {
 }
 
 page-maps ion-thumbnail {
-  margin: 0 16px 0 0 !important;
-  max-width: 70px !important;
-  min-width: 70px !important;
-  max-height: 70px !important;
-  min-height: 70px !important;
+  margin: 0 15px 0 0 !important;
+  max-width: 50px !important;
+  min-width: 50px !important;
+  max-height: 50px !important;
+  min-height: 55px !important;
 }
 
 page-maps ion-thumbnail img {
-  width: 70px !important;
-  height: 70px !important;
+  width: 50px !important;
+  height: 50px !important;
 }
 
 page-maps ion-label {
@@ -43325,6 +43347,18 @@ page-maps .icon-m {
 
 page-maps .icon-m:last-child {
   padding: 0px;
+}
+
+page-review-form .scroll-content {
+  background-color: transparent;
+}
+
+page-review-form .rating-block ul.rating {
+  text-align: center !important;
+}
+
+page-review-form .rating-block ul.rating.rating li ion-icon {
+  font-size: 50px;
 }
 
 .title img {
