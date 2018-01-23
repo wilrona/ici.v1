@@ -1,6 +1,6 @@
 webpackJsonp([2],{
 
-/***/ 721:
+/***/ 719:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18,7 +18,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var LoginPageModule = (function () {
+var LoginPageModule = /** @class */ (function () {
     function LoginPageModule() {
     }
     LoginPageModule = __decorate([

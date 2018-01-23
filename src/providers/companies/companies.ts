@@ -30,9 +30,9 @@ export class CompaniesProvider implements AutoCompleteService{
     this.category=null;
   }
 
-   getMarkers(category=[], city=[]) {
+   getMarkers(category=[], city=[], keyword="") {
    
-   return this.http.get('http://yoomeeonl.webfactional.com/mobileApp/allCompaniesForMap?category='+category+'&city='+city)
+   return this.http.get('http://yoomeeonl.webfactional.com/mobileApp/allCompaniesForMap?query='+keyword+'&category='+category+'&city='+city)
     .map(
       res =>
       { 
@@ -43,10 +43,10 @@ export class CompaniesProvider implements AutoCompleteService{
    
   }
  
-  getListing(category=[], city=[] , start:number=0){
+  getListing(category=[], city=[], keyword="" , start:number=0){
   
     // return this.http.get('http://yoomeeonl.webfactional.com/MobileApp/searchmobile?limit='+this.perpage+'&start='+start)
-    return this.http.get('http://yoomeeonl.webfactional.com/MobileApp/searchmobile?category='+category+'&city='+city+'&limit='+this.perpage+'&start='+start)
+    return this.http.get('http://yoomeeonl.webfactional.com/MobileApp/searchmobile?query='+keyword+'&category='+category+'&city='+city+'&limit='+this.perpage+'&start='+start)
     //return this.http.get('http://yoomeeonl.webfactional.com/MobileApp/searchmobile?query='+query+'&city='+city+'&limit='+this.perpage+'&start='+start)
    
    

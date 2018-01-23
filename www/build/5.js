@@ -18,7 +18,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AnnuairePageModule = (function () {
+var AnnuairePageModule = /** @class */ (function () {
     function AnnuairePageModule() {
     }
     AnnuairePageModule = __decorate([

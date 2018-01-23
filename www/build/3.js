@@ -18,7 +18,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var LoginForgetPageModule = (function () {
+var LoginForgetPageModule = /** @class */ (function () {
     function LoginForgetPageModule() {
     }
     LoginForgetPageModule = __decorate([

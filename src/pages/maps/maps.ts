@@ -38,6 +38,7 @@ export class MapsPage {
   public newMarkers: Array<any> = [];
   // public currentMaker: any;
   public element:object =  {};
+  keyword;
 
   // @Output() refresh: EventEmitter<object>;
 
@@ -62,17 +63,22 @@ export class MapsPage {
       this.categories = categories;
     });
 
+    this.events.subscribe('searchfilter', (keyword) => {
+      this.keyword = keyword;
+    });
 
-    events.subscribe('listingMap', (listing) => {
+    events.subscribe('listingMap', () => {
       this.newMarkers = [];
-      this.platform.ready().then(() => this.loadMaps());
+      this.platform.ready().then(() =>{ this.loadMaps() });
 
     });
 
-    events.subscribe('reloadMaps', (cities, categories) => {
+    events.subscribe('reloadMaps', (cities, categories, keyword) => {
 
       this.categories = categories;
       this.cities = cities;
+      this.keyword=keyword;
+      
 
       if (this.variable.getInitTabMaps() === false) {
         this.newMarkers = [];
@@ -288,7 +294,7 @@ export class MapsPage {
   }
 
   getMarkers() {
-    this.listingService.getMarkers(this.categories, this.cities).subscribe(data => {
+    this.listingService.getMarkers(this.categories, this.cities, this.keyword).subscribe(data => {
       this.placeMarkers(data);
       this.placeCluster();
     });
