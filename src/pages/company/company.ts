@@ -4,10 +4,6 @@ import {CompaniesProvider} from "../../providers/companies/companies";
 import {EmailComposer} from "@ionic-native/email-composer";
 import {CallNumber} from "@ionic-native/call-number";
 import {InAppBrowser} from "@ionic-native/in-app-browser";
-import {CompanyDescriptionPage} from "../company-description/company-description";
-import {CompanyImagesPage} from "../company-images/company-images";
-import {CompanyInfoPage} from "../company-info/company-info";
-import {CompanyCategoryPage} from "../company-category/company-category";
 import {ReviewFormPage} from "../review-form/review-form";
 import {LoginPage} from "../login/login";
 
@@ -143,27 +139,6 @@ export class CompanyPage {
       this.headerImgSize = '100%'
     }
     this.ref.detectChanges();
-  }
-
-  openDescriptionEdit(descr, name, id) {
-    let descriptionModal = this.modalCtrl.create(CompanyDescriptionPage,{"description": descr, "name": name, "id": id} );
-    descriptionModal.present();
-  }
-
-  openImageEdit() {
-    let imageModal = this.modalCtrl.create(CompanyImagesPage);
-    imageModal.present();
-  }
-
-  openInfoEdit(){
-    //console.log(this.business);
-    let infoModal = this.modalCtrl.create(CompanyInfoPage,{"company": this.business});
-    infoModal.present();
-  }
-
-  openCategoryEdit(){
-    let categoryModal = this.modalCtrl.create(CompanyCategoryPage);
-    categoryModal.present();
   }
 
   onModelChange(val, companyId){

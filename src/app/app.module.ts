@@ -14,10 +14,6 @@ import {AnnuairePage} from "../pages/annuaire/annuaire";
 import {FiltreComponent} from "../components/filtre/filtre";
 
 import {IonicImageViewerModule} from "ionic-img-viewer";
-import {CompanyDescriptionPage} from "../pages/company-description/company-description";
-import {CompanyImagesPage} from "../pages/company-images/company-images";
-import {CompanyInfoPage} from "../pages/company-info/company-info";
-import {CompanyCategoryPage} from "../pages/company-category/company-category";
 import {ReviewFormPage} from "../pages/review-form/review-form";
 import {LoginPage} from "../pages/login/login";
 
@@ -34,7 +30,6 @@ import { HttpModule } from '@angular/http';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { CallNumber } from '@ionic-native/call-number';
 import { CompaniesProvider } from '../providers/companies/companies';
-import {ComptePage} from "../pages/compte/compte";
 
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 
@@ -54,13 +49,8 @@ import {CompanyPage} from "../pages/company/company";
   declarations: [
     MyApp,
     AnnuairePage,
-    ComptePage,
     HomePage,
     CompanyPage,
-    CompanyDescriptionPage,
-    CompanyImagesPage,
-    CompanyInfoPage,
-    CompanyCategoryPage,
     MapsPage,
     TabsPage,
     ReviewFormPage,
@@ -89,13 +79,8 @@ import {CompanyPage} from "../pages/company/company";
   entryComponents: [
     MyApp,
     AnnuairePage,
-    ComptePage,
     HomePage,
     CompanyPage,
-    CompanyDescriptionPage,
-    CompanyImagesPage,
-    CompanyInfoPage,
-    CompanyCategoryPage,
     MapsPage,
     ReviewFormPage,
     LoginPage,

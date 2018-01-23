@@ -98,9 +98,6 @@
 
           <div class="uk-position-relative" *ngIf="business.gallery?.length > 0">
             <ion-label ion-text class="uk-text-bold uk-display-block">Image</ion-label>
-            <div class="uk-position-center-right">
-              <button ion-button clear small class="button-custom-size" (click)="openImageEdit()">Gérer</button>
-            </div>
           </div>
 
           <ion-slides loop="true" slidesPerView="4" margin-top spaceBetween="3" *ngIf="business.gallery?.length > 0">
@@ -119,10 +116,6 @@
               {{business.description}}
             </div>
             <div class="show-more-end"></div>
-
-            <div class="uk-text-center" *ngIf="business.description != ''">
-              <button ion-button clear small (click)="openDescriptionEdit(business.description, business.name, business._id.$id)">Lire la suite</button>
-            </div>
           </div>
           <hr *ngIf="business.description?.length > 0">
 
@@ -156,9 +149,6 @@
                   <p *ngFor="let item of business.tags">
                     <span *ngIf="item.cat==1">{{item.key}} </span>
                   </p>
-                  <div>
-                    <button ion-button clear small class="button-custom-size" (click)="openCategoryEdit()">Gérer vos categories</button>
-                  </div>
                 </div>
               </ion-col>
             </ion-row>

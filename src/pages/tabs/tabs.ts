@@ -4,7 +4,6 @@ import { HomePage } from '../home/home';
 import {Events, MenuController, ModalController, Nav, NavController, Tab, Tabs} from "ionic-angular";
 import {AnnuairePage} from "../annuaire/annuaire";
 import {MapsPage} from "../maps/maps";
-import {ComptePage} from "../compte/compte";
 import {VariableProvider} from "../../providers/variable/variable";
 import {CompaniesProvider} from "../../providers/companies/companies";
 import {LoginPage} from "../login/login";
@@ -18,7 +17,6 @@ export class TabsPage {
   tab1Root = HomePage;
   tab2Root = AnnuairePage;
   tab3Root = MapsPage;
-  tab4Root = ComptePage;
 
   @ViewChild('myTabs') tabRef: Tabs;
 
