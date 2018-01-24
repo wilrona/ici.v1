@@ -60,16 +60,17 @@ export class AnnuairePage {
         this.userconnect = true;
       }
 
-      events.subscribe('reloadAnnuaire', (cities, categories) => {
+      events.subscribe('reloadAnnuaire', (cities, categories, keyword) => {
 
         this.cities = cities;
         this.categories = categories;
+        this.keyword=keyword;
 
         if(this.variable.getInitTabAnnuaire() === false){
 
           this.loading = true;
 
-          this.listingService.getListing(this.categories, this.cities).subscribe(
+          this.listingService.getListing(this.categories, this.cities, this.keyword).subscribe(
             data => {
               if(data.length !== 0){
 
@@ -90,7 +91,7 @@ export class AnnuairePage {
 
       this.loading = true;
 
-      this.listingService.getListing(this.categories, this.cities).subscribe(
+      this.listingService.getListing(this.categories, this.cities, this.keyword).subscribe(
         data => {
           if(data.length !== 0){
 
@@ -104,6 +105,7 @@ export class AnnuairePage {
         }
 
       );
+
       // this.loading = true;
       // if(listing.length !== 0){
       //   this.listing=listing;
@@ -125,6 +127,9 @@ export class AnnuairePage {
       });
       this.events.subscribe('categoriesfilter', (categories) => {
           this.categories=categories;
+      });
+       this.events.subscribe('searchfilter', (search) => {
+          this.keyword=search;
       });
 
   }
@@ -207,7 +212,7 @@ export class AnnuairePage {
 
     setTimeout(() => {
 
-      this.listingService.getListing(this.categories, this.cities, this.start*this.perpage)
+      this.listingService.getListing(this.categories, this.cities, this.keyword, this.start*this.perpage)
          .subscribe(
            res => {
              this.companies = res;

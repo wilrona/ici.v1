@@ -23,7 +23,12 @@
     <div class="uk-position-cover cover"></div>
     <div class="uk-content-cover">
       <div class="uk-h2 uk-margin-large-bottom">Bienvenue sur ICI.CM</div>
-      <ion-auto-complete [options]="{ placeholder : 'Rechercher un lieu' }" [(ngModel)]="keyword"></ion-auto-complete>
+      <div>
+      <ng-template #withFlags let-attrs="attrs">
+              <span [innerHTML]="attrs.data.name | boldprefix:attrs.keyword"></span>
+      </ng-template>
+      <ion-auto-complete [dataProvider]="companyprovider" [options]="{ placeholder : 'Rechercher un lieu' }"  [(ngModel)]="keyword"></ion-auto-complete>
+      </div>    
     </div>
   </div>
 

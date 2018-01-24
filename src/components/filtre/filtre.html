@@ -1,5 +1,10 @@
 <!-- Generated template for the FilterComponent component -->
-
+<div class="uk-padding-small">
+ <ion-item no-margin no-padding>
+	  <ion-label stacked>Mot clé</ion-label>
+	  <ion-input type="text" [(ngModel)]="keyword"  (keyup)="keyUpSearch($event)"></ion-input>
+</ion-item>
+</div>
 <div class="uk-padding-small" [hidden]="!ville">
   <ion-item no-margin no-padding>
     <ion-label stacked>Par ville</ion-label>

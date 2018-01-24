@@ -26,6 +26,7 @@ export class FiltreComponent {
   categories: Array<[any]>;
   cat: Array<[any]>;
   city: Array<any>;
+  keyword;
 
   constructor(public listingService: CompaniesProvider, public events: Events) {
     this.loadCategory();
@@ -35,6 +36,7 @@ export class FiltreComponent {
       if(clear === true){
         this.itenSelect = [];
         this.city = [];
+        // this.keyword = "";
         let elems = document.getElementsByClassName('item-block');
 
         [].forEach.call(elems, function(el) {
@@ -101,6 +103,13 @@ export class FiltreComponent {
     this.events.publish('citiesfilter', value);
 
 
+  }
+
+  keyUpSearch(e){
+    //console.log("e");
+    //console.log(e.target.value);
+
+    this.events.publish('searchfilter', e.target.value);
   }
 
 

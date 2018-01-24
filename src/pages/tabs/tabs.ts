@@ -26,6 +26,7 @@ export class TabsPage {
 
   citiesfilter:Array<any>;
   categoriesfilter:Array<any>;
+  searchfilter;
   // listing:Array<any>;
   listingMap:Array<any>;
   @Input() userconnect:boolean=false;
@@ -50,6 +51,11 @@ export class TabsPage {
     this.events.subscribe('categoriesfilter', (categories) => {
       this.categoriesfilter=categories;
     });
+    this.events.subscribe('searchfilter', (search) => {
+      this.searchfilter=search;
+    });
+
+   
 
     if(localStorage.getItem("userId")) {
       this.userconnect = true;
@@ -71,16 +77,20 @@ export class TabsPage {
     this.events.subscribe('categoriesfilter', (categories) => {
       this.categories = categories;
     });
+    this.events.subscribe('searchfilter', (search) => {
+      this.searchfilter=search;
+    });
   }
 
   menuToggle(e : Tab){
     this.menu.enable(true, 'menu');
 
     if(e.index === 2){
-      this.events.publish('reloadMaps', this.cities, this.categories);
-    }
+      this.events.publish('reloadMaps', this.cities, this.categories, this.searchfilter);
+      
+      }
     if (e.index === 1) {
-      this.events.publish('reloadAnnuaire', this.cities, this.categories);
+      this.events.publish('reloadAnnuaire', this.cities, this.categories, this.searchfilter);
     }
   }
 
@@ -91,31 +101,34 @@ export class TabsPage {
   filtre(){
     //   console.log("nn0 ");
 
-    this.listingService.getListing(this.categoriesfilter, this.citiesfilter).subscribe(
+    /*this.listingService.getListing(this.categoriesfilter, this.citiesfilter, this.searchfilter).subscribe(
       data => {
-        // this.listing= data;
         this.events.publish('listing', data)
       }
-    );
+    );*/
 
-    this.listingService.getMarkers(this.categoriesfilter, this.citiesfilter).subscribe(
+    this.events.publish('listing', this.categoriesfilter, this.citiesfilter, this.searchfilter);
+    this.events.publish('listingMap', this.categoriesfilter, this.citiesfilter, this.searchfilter);
+    
+
+    /*this.listingService.getMarkers(this.categoriesfilter, this.citiesfilter, this.searchfilter).subscribe(
       data => {
-        // this.listingMap= data
         this.events.publish('listingMap', data)
       }
-
-    );
+    );*/
 
     this.events.publish('citiesfilter', this.citiesfilter);
     this.events.publish('categoriesfilter', this.categoriesfilter);
+    this.events.publish('searchfilter', this.searchfilter);
+    
 
-    if(this.citiesfilter || this.categoriesfilter){
+    if(this.citiesfilter || this.categoriesfilter || this.searchfilter){
       this.variable.setInitTabMaps(false);
     }else{
       this.variable.setInitTabMaps(true);
     }
 
-    if(this.citiesfilter || this.categoriesfilter){
+    if(this.citiesfilter || this.categoriesfilter || this.searchfilter){
       this.variable.setInitTabAnnuaire(false);
     }else{
       this.variable.setInitTabAnnuaire(true);
