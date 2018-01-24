@@ -8,9 +8,9 @@
 
   <ion-navbar [class.show-background]="showToolbar">
     <ion-title [hidden]="!showToolbar" class="uk-text-truncate">{{business.name}}</ion-title>
-    <ion-buttons end *ngIf="userconnect==true">
-      <button ion-button icon-only small (click)="openInfoEdit(business._id.$id)">
-        <ion-icon name="create"></ion-icon>
+    <ion-buttons end>
+      <button ion-button icon-only small>
+        <ion-icon name="heart"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -113,9 +113,12 @@
 
           <div class="uk-text-break uk-position-relative" *ngIf="business.description?.length > 0">
             <div class="uk-height-max-small" style="overflow: hidden">
-              {{business.description}}
+                  {{business.description}}
             </div>
             <div class="show-more-end"></div>
+            <div class="uk-text-center" *ngIf="business.description != ''">
+              <button ion-button clear small (click)="openDescriptionEdit(business.description, business.name)">Lire la suite</button>
+            </div>
           </div>
           <hr *ngIf="business.description?.length > 0">
 

@@ -24,10 +24,13 @@
         Inscription
       </button>
       <button ion-item *ngIf="userconnect==true">
-        Mes Entreprises
+        Mes Commentaires
       </button>
-      <button ion-item >
-        Ajouter une entreprise
+      <button ion-item *ngIf="userconnect==true">
+        Mes Messages
+      </button>
+      <button ion-item *ngIf="userconnect==true">
+        Mes Favoris
       </button>
       <button ion-item *ngIf="userconnect==true" (click)="logout()">
         Déconnexion
@@ -40,7 +43,7 @@
 <ion-menu [content]="content" side="right" id="filtre" swipeEnabled="false" (ionClose)="closedFiltre()">
   <ion-header class="uk-box-shadow-medium">
     <div class="uk-position-relative uk-height-small">
-      <ion-title class="uk-position-center"><ion-icon name="funnel" icon-left></ion-icon> Filtre</ion-title>
+      <ion-title class="uk-position-center"><ion-icon name="search" icon-left></ion-icon> Recherche</ion-title>
     </div>
   </ion-header>
 
@@ -58,7 +61,7 @@
 </ion-menu>
 
 <ion-tabs tabsHighlight="true" selectedIndex="0" tabsPlacement="bottom" (ionChange)="menuToggle($event)" #content swipeBackEnabled="false" #myTabs>
-  <ion-tab [root]="tab1Root" tabIcon="home" ></ion-tab>
-  <ion-tab [root]="tab2Root" tabIcon="list"></ion-tab>
-  <ion-tab [root]="tab3Root" tabIcon="locate"></ion-tab>
+  <ion-tab [root]="tab1Root" tabIcon="home" tabTitle="Accueil" ></ion-tab>
+  <ion-tab [root]="tab2Root" tabIcon="list" tabTitle="Annuaire"></ion-tab>
+  <ion-tab [root]="tab3Root" tabIcon="map" tabTitle="Carte"></ion-tab>
 </ion-tabs>

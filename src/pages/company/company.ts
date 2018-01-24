@@ -6,6 +6,7 @@ import {CallNumber} from "@ionic-native/call-number";
 import {InAppBrowser} from "@ionic-native/in-app-browser";
 import {ReviewFormPage} from "../review-form/review-form";
 import {LoginPage} from "../login/login";
+import {CompanyDescriptionPage} from "../company-description/company-description";
 
 declare var google;
 /**
@@ -86,14 +87,6 @@ export class CompanyPage {
       //alert("ss la");
       var data = JSON.parse(data);
       this.business=data;
-      /*this.name=data.name;
-      this.ville=data.ville;
-      this.quartier=data.quartier;
-      this.description=data.description;
-      this.latitude=data.latitude;
-      this.longitude=data.longitude;
-      this.repere=data.repere;
-      this.adresse=data.adresse;*/
     });
   }
   loadData(id){
@@ -152,6 +145,11 @@ export class CompanyPage {
       myModal.present();
     }
 
+  }
+
+  openDescriptionEdit(descr, name) {
+    let descriptionModal = this.modalCtrl.create(CompanyDescriptionPage,{description: descr, name: name} );
+    descriptionModal.present();
   }
 
   loadMap(){

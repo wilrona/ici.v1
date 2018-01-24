@@ -17,7 +17,7 @@
 
     <ion-buttons end>
       <button ion-button icon-only (click)="openMenu('left')">
-        <ion-icon name="funnel" color="primary"></ion-icon>
+        <ion-icon name="search" color="primary"></ion-icon>
       </button>
     </ion-buttons>
   </ion-toolbar>
@@ -35,8 +35,8 @@
       <ion-list no-margin>
         <ion-card *ngFor="let liste of listing " no-margin style="width: 100% !important;">
           <ion-card-content>
-            <ion-grid>
-              <ion-row>
+            <ion-grid class="uk-padding-remove-right">
+              <ion-row class="uk-padding-remove-right">
                 <ion-col col-9 no-padding>
                   <ion-item class="item-compagny">
                     <ion-thumbnail item-start>
@@ -48,7 +48,7 @@
                     <div (click)="openDetail(liste._id.$id)" tappable>
                       <h3 class="uk-text-truncate uk-margin-remove">{{liste.name}}</h3>
                       <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-muted">{{liste.ville}} {{liste.quartier}}</div>
-                      <ion-badge class="uk-margin-remove-top uk-margin-remove-left uk-margin-remove-right">{{liste.maincategorie}}</ion-badge>
+                      <ion-badge class="uk-margin-remove-left uk-margin-remove-right">{{liste.maincategorie}}</ion-badge>
                     </div>
 
 
@@ -56,19 +56,23 @@
                   <!--  <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-success uk-text-small"> <ion-icon name="checkmark-circle"></ion-icon> Entreprise validé</div>
                   <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-danger uk-text-small"> <ion-icon name="close"></ion-icon> Validation en cours</div> -->
                 </ion-col>
-                <ion-col col-3 (click)="openDetail(liste._id.$id)" tappable no-padding>
-                  <rating  [(ngModel)]="liste.ratecount"
-                           readOnly="true"
-                           max="5"
-                           emptyStarIconName="star-outline"
-                           halfStarIconName="star-half"
-                           starIconName="star"
-                           nullable="false"
-                           (ngModelChange)="onModelChange($event, liste._id.$id)"></rating>
-                  <div class="uk-text-right uk-h4 uk-margin-remove" >{{liste.reviewcount}} avis</div>
-                  <!-- div class="uk-text-right uk-text-success uk-h4 uk-margin-remove uk-text-bold">8h à 18h30</div -->
-                  <!--  <div class="uk-h4 uk-margin-remove uk-text-truncate uk-text-success uk-text-small"> <ion-icon name="checkmark-circle"></ion-icon> Entreprise validé</div> -->
-                  <!-- div class="uk-margin-remove uk-text-truncate uk-text-danger uk-text-small uk-text-right"> <ion-icon name="close"></ion-icon> Validation en cours</div -->
+                <ion-col col-3 no-padding>
+                  <div tappable (click)="openDetail(liste._id.$id)">
+                    <rating  [(ngModel)]="liste.ratecount"
+                             readOnly="true"
+                             max="5"
+                             emptyStarIconName="star-outline"
+                             halfStarIconName="star-half"
+                             starIconName="star"
+                             nullable="false"
+                             (ngModelChange)="onModelChange($event, liste._id.$id)"></rating>
+                    <div class="uk-text-right uk-h4 uk-margin-remove" >{{liste.reviewcount}} avis</div>
+                  </div>
+                  <!-- div class="uk-flex uk-flex-right uk-favoris">
+                    <ion-icon name="heart-outline" ion-text clear class="uk-text-right" color="primary"></ion-icon>
+                  </div -->
+
+
                 </ion-col>
               </ion-row>
             </ion-grid>

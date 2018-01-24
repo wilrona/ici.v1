@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, Input, Output, EventEmitter } from '@angular/core';
+import {Component, ElementRef, ViewChild, Input, Output, EventEmitter, NgZone} from '@angular/core';
 import {IonicPage, MenuController, NavController, NavParams, ToastController, Events, Platform} from 'ionic-angular';
 import { CompaniesProvider } from '../../providers/companies/companies';
 
@@ -49,6 +49,7 @@ export class MapsPage {
               private emailComposer: EmailComposer,
               private callNumber: CallNumber,
               public variable: VariableProvider,
+              public ngzone: NgZone,
               public events: Events) {
 
     menu.enable(true);
@@ -228,48 +229,13 @@ export class MapsPage {
       content: markerContent,
       flat: true
     });
-    /* google.maps.event.addListener(marker, 'click', (function(marker, i) {
-
-       return function(i) {
-         this.element={"name": "ari"};
-         this.refresh.emit(this.element);
-         alert(i["name"]);
-         let heightDetail = document.getElementById('details').offsetHeight;
-         document.getElementById('map').style.height = 'calc(100% - '+heightDetail+'px)';
-       }
-     })(marker, i));*/
-    // google.maps.event.addListener(marker, 'click', (function(marker, i) {
-    //   // this.element = i;
-    //
-    //   document.getElementById('details').classList.toggle('uk-hidden');
-    //   let heightDetail = document.getElementById('details').offsetHeight;
-    //   document.getElementById('map').style.height = 'calc(100% - '+heightDetail+'px)';
-    //
-    // })(marker, i));
 
     google.maps.event.addListener(marker, 'click', () => {
-
-        let DetailElement = document.getElementById('details');
-        if(this.element != {} ){
-
-          this.element = i;
-          DetailElement.classList.remove('uk-hidden');
-          document.getElementById('map').style.height = 'calc(100% - 127px)';
-
-        }else{
-          if(this.element != i){
-            this.element = i;
-          }else{
-            DetailElement.classList.add('uk-hidden');
-            document.getElementById('map').style.height = '100%';
-            this.element = {};
-          }
-        }
-
-
+      this.ngzone.run(()=>{
+        this.openDetail(i._id.$id);
+      });
     });
 
-    // this.currentMaker = i;
     this.newMarkers.push(marker);
 
   }

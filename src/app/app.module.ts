@@ -43,6 +43,7 @@ import {MapsComponent} from "../components/maps/maps";
 import {LoginForgetPage} from "../pages/login-forget/login-forget";
 import {InscriptionPage} from "../pages/inscription/inscription";
 import {CompanyPage} from "../pages/company/company";
+import {CompanyDescriptionPage} from "../pages/company-description/company-description";
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import {CompanyPage} from "../pages/company/company";
     AnnuairePage,
     HomePage,
     CompanyPage,
+    CompanyDescriptionPage,
     MapsPage,
     TabsPage,
     ReviewFormPage,
@@ -81,6 +83,7 @@ import {CompanyPage} from "../pages/company/company";
     AnnuairePage,
     HomePage,
     CompanyPage,
+    CompanyDescriptionPage,
     MapsPage,
     ReviewFormPage,
     LoginPage,

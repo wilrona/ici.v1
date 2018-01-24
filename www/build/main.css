@@ -42509,6 +42509,11 @@ page-annuaire .uk-NoItem ion-icon {
   display: block;
 }
 
+page-annuaire .uk-favoris {
+  margin-top: 3px;
+  margin-right: 7px;
+}
+
 page-company-details .scroll-content {
   margin-top: 0 !important;
   padding-top: 0;
@@ -42724,6 +42729,10 @@ page-company-details .uk-comments ul.rating {
 
 page-company-details .uk-comments ul.rating.rating li ion-icon {
   font-size: 13px;
+}
+
+page-company-description .scroll-content {
+  background-color: transparent;
 }
 
 page-home .hidden {
