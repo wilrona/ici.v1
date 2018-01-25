@@ -42461,6 +42461,10 @@ maps #map {
   height: 300px;
 }
 
+page-annuaire .scroll-content {
+  background-color: transparent;
+}
+
 page-annuaire ul.rating {
   text-align: right;
 }

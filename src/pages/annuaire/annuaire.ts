@@ -32,7 +32,7 @@ export class AnnuairePage {
    pushPage: any;
    listlength = 20;
    private start:number=0;
-   public keyword: string="";
+   public keyword: string= null;
    perpage:number = 20;
    totalPage = 0;
    companies:any;
@@ -45,10 +45,9 @@ export class AnnuairePage {
 
 
   constructor(public navCtrl: NavController,
-    private loadingCtrl: LoadingController, private emailComposer: EmailComposer, public navParams: NavParams, public menu: MenuController,
+              private emailComposer: EmailComposer, public navParams: NavParams, public menu: MenuController,
     public listingService: CompaniesProvider,
-    private callNumber: CallNumber,
-    private modalCtrl: ModalController, public variable: VariableProvider,
+    private callNumber: CallNumber, public variable: VariableProvider,
     public events: Events) {
 
       menu.enable(true);
@@ -116,11 +115,11 @@ export class AnnuairePage {
       // this.loading = false;
     });
 
-    if(this.variable.getInitTabAnnuaire() === true){
+      if(this.variable.getInitTabAnnuaire() === true){
 
-      this.loadData();
+        this.loadData();
 
-    }
+      }
 
       this.events.subscribe('citiesfilter', (cities) => {
           this.cities=cities;
@@ -199,13 +198,6 @@ export class AnnuairePage {
     });
 
   }
-
-
-
-
-
-
-
 
   doInfinite(infiniteScroll) {
     this.start = this.start+1;

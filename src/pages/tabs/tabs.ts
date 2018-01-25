@@ -26,7 +26,7 @@ export class TabsPage {
 
   citiesfilter:Array<any>;
   categoriesfilter:Array<any>;
-  searchfilter;
+  searchfilter: string = "";
   // listing:Array<any>;
   listingMap:Array<any>;
   @Input() userconnect:boolean=false;
@@ -55,7 +55,7 @@ export class TabsPage {
       this.searchfilter=search;
     });
 
-   
+
 
     if(localStorage.getItem("userId")) {
       this.userconnect = true;
@@ -87,7 +87,7 @@ export class TabsPage {
 
     if(e.index === 2){
       this.events.publish('reloadMaps', this.cities, this.categories, this.searchfilter);
-      
+
       }
     if (e.index === 1) {
       this.events.publish('reloadAnnuaire', this.cities, this.categories, this.searchfilter);
@@ -107,20 +107,19 @@ export class TabsPage {
       }
     );*/
 
+    this.events.publish('citiesfilter', this.citiesfilter);
+    this.events.publish('categoriesfilter', this.categoriesfilter);
+    this.events.publish('searchfilter', this.searchfilter);
+
     this.events.publish('listing', this.categoriesfilter, this.citiesfilter, this.searchfilter);
     this.events.publish('listingMap', this.categoriesfilter, this.citiesfilter, this.searchfilter);
-    
+
 
     /*this.listingService.getMarkers(this.categoriesfilter, this.citiesfilter, this.searchfilter).subscribe(
       data => {
         this.events.publish('listingMap', data)
       }
     );*/
-
-    this.events.publish('citiesfilter', this.citiesfilter);
-    this.events.publish('categoriesfilter', this.categoriesfilter);
-    this.events.publish('searchfilter', this.searchfilter);
-    
 
     if(this.citiesfilter || this.categoriesfilter || this.searchfilter){
       this.variable.setInitTabMaps(false);
@@ -144,6 +143,7 @@ export class TabsPage {
   clearfilter(){
     this.citiesfilter = [];
     this.categoriesfilter = [];
+    this.searchfilter = "";
     this.filtre();
     this.events.publish('clearFilter', true)
   }

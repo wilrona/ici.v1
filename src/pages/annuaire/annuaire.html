@@ -33,7 +33,7 @@
   <div *ngIf="!loading">
     <div *ngIf="!showNoItem">
       <ion-list no-margin>
-        <ion-card *ngFor="let liste of listing " no-margin style="width: 100% !important;">
+        <ion-card *ngFor="let liste of listing " no-margin style="width: 100% !important; border-bottom: 1px solid #eeeeee;">
           <ion-card-content>
             <ion-grid class="uk-padding-remove-right">
               <ion-row class="uk-padding-remove-right">
@@ -78,11 +78,11 @@
             </ion-grid>
           </ion-card-content>
         </ion-card>
-        <ion-card no-margin style="width: 100% !important;" padding-top>
+        <div no-margin style="width: 100% !important; background-color: #fff;" padding-top>
           <ion-infinite-scroll (ionInfinite)="doInfinite($event)" > <!--*ngIf="page < totalPage"-->
             <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..."></ion-infinite-scroll-content>
           </ion-infinite-scroll>
-        </ion-card>
+        </div>
       </ion-list>
     </div>
     <div *ngIf="showNoItem">

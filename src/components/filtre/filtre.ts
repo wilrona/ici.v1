@@ -26,7 +26,7 @@ export class FiltreComponent {
   categories: Array<[any]>;
   cat: Array<[any]>;
   city: Array<any>;
-  keyword;
+  keyword:string = "";
 
   constructor(public listingService: CompaniesProvider, public events: Events) {
     this.loadCategory();
@@ -36,7 +36,8 @@ export class FiltreComponent {
       if(clear === true){
         this.itenSelect = [];
         this.city = [];
-        // this.keyword = "";
+        this.keyword = "";
+        // this.events.publish('searchfilter', this.keyword);
         let elems = document.getElementsByClassName('item-block');
 
         [].forEach.call(elems, function(el) {
