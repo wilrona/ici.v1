@@ -16,18 +16,6 @@ page-home {
     z-index: 200;
   }
 
-  ion-slides {
-    height: auto !important;
-  }
-
-  .swiper-slide{
-    background-color: transparent !important;
-  }
-
-  .header{
-    background-color: #fff;
-  }
-
   .uk-h2{
     color: #ffffff;
     text-align: center;
@@ -35,5 +23,50 @@ page-home {
 
   .slide-zoom{
     text-align: left;
+  }
+
+  .scroll-content{
+    margin-top: 0 !important;
+    padding-top: 56px !important;
+    background-color: transparent;
+  }
+
+  ion-toolbar{
+    transition: all .3s;
+  }
+
+  .header-md::after{
+    background-image: none;
+  }
+
+  .header-ios .toolbar-background-ios,.toolbar-background-md,.toolbar-background-wp{
+    border-style: none;
+    background: none;
+    border-color: rgba(0, 0, 0, 0)
+
+  }
+
+  .content{
+    background-color: #fff;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+  }
+
+  .toolbar-title{
+    color: map_get($colors, primary);
+  }
+
+  .transition{
+    transition: background-size .3s ease-in;
+  }
+
+  .content-ios{
+    .user-info{
+      .uk-size{
+        margin-top: 40px !important;
+      }
+    }
   }
 }

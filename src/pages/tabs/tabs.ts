@@ -40,7 +40,7 @@ export class TabsPage {
   ) {
 
     this.pages = [
-      { title: 'Accueil', component: HomePage, index: 0 },
+      { title: 'Recherche', component: HomePage, index: 0 },
       { title: 'Annuaires', component: AnnuairePage, index: 1 },
       { title: 'Maps', component: MapsPage, index: 2 }
     ];
@@ -174,5 +174,11 @@ export class TabsPage {
     this.tabRef.select(page.index)
   }
 
+  keyUpSearch(e){
+    //console.log("e");
+    //console.log(e.target.value);
+
+    this.events.publish('searchfilter', e.target.value);
+  }
 
 }

@@ -106,12 +106,4 @@ export class FiltreComponent {
 
   }
 
-  keyUpSearch(e){
-    //console.log("e");
-    //console.log(e.target.value);
-
-    this.events.publish('searchfilter', e.target.value);
-  }
-
-
 }

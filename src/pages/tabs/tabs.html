@@ -42,9 +42,10 @@
 
 <ion-menu [content]="content" side="right" id="filtre" swipeEnabled="false" (ionClose)="closedFiltre()">
   <ion-header class="uk-box-shadow-medium">
-    <div class="uk-position-relative uk-height-small">
+    <div class="uk-position-relative uk-height-xsmall">
       <ion-title class="uk-position-center"><ion-icon name="search" icon-left></ion-icon> Recherche</ion-title>
     </div>
+    <ion-searchbar placeholder="Entreprise, Catégorie" (ionInput)="keyUpSearch($event)" [(ngModel)]="searchfilter"></ion-searchbar>
   </ion-header>
 
   <ion-content>
@@ -61,7 +62,7 @@
 </ion-menu>
 
 <ion-tabs tabsHighlight="true" selectedIndex="0" tabsPlacement="bottom" (ionChange)="menuToggle($event)" #content swipeBackEnabled="false" #myTabs>
-  <ion-tab [root]="tab1Root" tabIcon="home" tabTitle="Accueil" ></ion-tab>
+  <ion-tab [root]="tab1Root" tabIcon="search" tabTitle="Recherche" ></ion-tab>
   <ion-tab [root]="tab2Root" tabIcon="list" tabTitle="Annuaire"></ion-tab>
   <ion-tab [root]="tab3Root" tabIcon="map" tabTitle="Carte"></ion-tab>
 </ion-tabs>

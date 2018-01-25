@@ -1,87 +1,32 @@
-<ion-header>
-  <ion-toolbar padding-horizontal>
+<ion-header shadow>
+  <ion-toolbar padding-horizontal class="show-background">
     <ion-buttons left>
       <button ion-button icon-only (click)="openMenu('right')">
-        <ion-icon name="menu" color="primary"></ion-icon>
+        <ion-icon name="menu" color="white"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title>
-      <img alt="logo" height="40"  src="assets/imgs/logoici.png" ><!--icicm1-->
+    <ion-title class="uk-title-color-white">
+      Recherche
     </ion-title>
-
-    <ion-buttons end>
-      <button ion-button icon-only>
-        <ion-icon name="pin" color="primary"></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 
-<ion-content>
-  <div class="uk-height-medium uk-background-cover uk-position-relative uk-flex uk-flex-center uk-flex-middle" style="background-image: url('assets/imgs/back.jpg');">
+<ion-content class="transition content uk-background-cover" style="background-image: url('assets/imgs/back.jpg');">
+  <div class="uk-height-1-1">
     <div class="uk-position-cover cover"></div>
-    <div class="uk-content-cover">
-      <div class="uk-h2 uk-margin-large-bottom">Bienvenue sur ICI.CM</div>
-      <div>
-      <ng-template #withFlags let-attrs="attrs">
-              <span [innerHTML]="attrs.data.name | boldprefix:attrs.keyword"></span>
-      </ng-template>
-      <ion-auto-complete [dataProvider]="companyprovider" [options]="{ placeholder : 'Rechercher un lieu' }"  [(ngModel)]="keyword"></ion-auto-complete>
-      </div>    
+    <div class="uk-height-1-1 uk-position-relative uk-flex uk-flex-center uk-flex-middle">
+      <div class="uk-content-cover">
+        <img src="http://yoomeeonl.webfactional.com/assets/images/icicm1.png" alt="" class="uk-display-block uk-margin-auto">
+        <div class="uk-h2 uk-margin-large-bottom">Bienvenue sur ICI.CM</div>
+        <div>
+          <ng-template #withFlags let-attrs="attrs">
+            <span [innerHTML]="attrs.data.name | boldprefix:attrs.keyword"></span>
+          </ng-template>
+          <ion-auto-complete [dataProvider]="companyprovider" [options]="{ placeholder : 'Rechercher un lieu' }"  [(ngModel)]="keyword"></ion-auto-complete>
+        </div>
+      </div>
     </div>
   </div>
-
-  <div class="uk-card uk-card-default">
-    <div class="uk-card-header uk-text-left uk-padding-small uk-position-relative">
-      <h6 class="uk-margin-remove">Nouveaux lieux</h6>
-
-    </div>
-    <div class="uk-card-body uk-padding-remove">
-      <ion-slides slidesPerView=1.5 autoplay="5000" loop="false" speed="1000" >
-        <ion-slide>
-          <ion-card>
-            <img src="http://yoomeeonl.webfactional.com/media/pictures/companies/default.jpg"/>
-            <ion-card-content class="uk-position-relative">
-              <ion-badge item-end class="uk-margin-small">Catégorie Catégorie Catégorie</ion-badge>
-              <h2 class="uk-text-truncate uk-margin-remove" (click)="OpenDetail()">Nom de l'entreprise</h2>
-              <small>Ville</small>
-              <div class="uk-position-bottom-right uk-padding-small">
-                <rating  [(ngModel)]="rate"
-                         readOnly="true"
-                         max="5"
-                         emptyStarIconName="star-outline"
-                         halfStarIconName="star-half"
-                         starIconName="star"
-                         nullable="false" ></rating>
-
-              </div>
-            </ion-card-content>
-          </ion-card>
-        </ion-slide>
-        <ion-slide>
-          <ion-card>
-            <img src="http://yoomeeonl.webfactional.com/media/pictures/companies/default.jpg"/>
-            <ion-card-content class="uk-position-relative">
-              <ion-badge item-end class="uk-margin-small">Catégorie Catégorie Catégorie</ion-badge>
-              <h2 class="uk-text-truncate uk-margin-remove">Nom de l'entreprise</h2>
-              <small>Ville</small>
-              <div class="uk-position-bottom-right uk-padding-small">
-                <rating  [(ngModel)]="rate"
-                         readOnly="true"
-                         max="5"
-                         emptyStarIconName="star-outline"
-                         halfStarIconName="star-half"
-                         starIconName="star"
-                         nullable="false" ></rating>
-
-              </div>
-            </ion-card-content>
-          </ion-card>
-        </ion-slide>
-      </ion-slides>
-    </div>
-  </div>
-
 </ion-content>
 

@@ -42755,18 +42755,6 @@ page-home .uk-content-cover {
   z-index: 200;
 }
 
-page-home ion-slides {
-  height: auto !important;
-}
-
-page-home .swiper-slide {
-  background-color: transparent !important;
-}
-
-page-home .header {
-  background-color: #fff;
-}
-
 page-home .uk-h2 {
   color: #ffffff;
   text-align: center;
@@ -42774,6 +42762,47 @@ page-home .uk-h2 {
 
 page-home .slide-zoom {
   text-align: left;
+}
+
+page-home .scroll-content {
+  margin-top: 0 !important;
+  padding-top: 56px !important;
+  background-color: transparent;
+}
+
+page-home ion-toolbar {
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+page-home .header-md::after {
+  background-image: none;
+}
+
+page-home .header-ios .toolbar-background-ios, page-home .toolbar-background-md, page-home .toolbar-background-wp {
+  border-style: none;
+  background: none;
+  border-color: transparent;
+}
+
+page-home .content {
+  background-color: #fff;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+page-home .toolbar-title {
+  color: #f44336;
+}
+
+page-home .transition {
+  -webkit-transition: background-size .3s ease-in;
+  transition: background-size .3s ease-in;
+}
+
+page-home .content-ios .user-info .uk-size {
+  margin-top: 40px !important;
 }
 
 page-inscription .scroll-content {
@@ -43259,4 +43288,8 @@ ion-tabs .tabbar {
 
 .scroll-content {
   background-color: #e1e1e1;
+}
+
+.uk-height-xsmall {
+  height: 70px;
 }
