@@ -45,6 +45,13 @@ export class CompaniesProvider implements AutoCompleteService{
 
   getListing(category=[], city=[], keyword="" , start:number=0){
 
+    if(start==0){
+      this.perpage=20;
+    }else{
+      this.perpage=5;
+    }
+
+
     // return this.http.get('http://yoomeeonl.webfactional.com/MobileApp/searchmobile?limit='+this.perpage+'&start='+start)
     return this.http.get('http://yoomeeonl.webfactional.com/MobileApp/searchmobile?query='+keyword+'&category='+category+'&city='+city+'&limit='+this.perpage+'&start='+start)
     //return this.http.get('http://yoomeeonl.webfactional.com/MobileApp/searchmobile?query='+query+'&city='+city+'&limit='+this.perpage+'&start='+start)
@@ -145,18 +152,25 @@ export class CompaniesProvider implements AutoCompleteService{
 
   }
 
-/* getAllimageUne(){
+ getFavorite(userId){
 
-      return this.http.get('http://yoomeeonl.webfactional.com/MobileApp/getAllUneCompanyPicture')
-        .map(res => res.json());
- }*/
-
- /*getAverageRate(){
-
-      return this.http.get('http://yoomeeonl.webfactional.com/MobileApp/getAverageRate')
+      return this.http.get('http://yoomeeonl.webfactional.com/MobileApp/listoffavorite?userId='+userId)
         .map(res => res.json());
  }
 
+ myMessages(userId, start:number=0){
+
+      return this.http.get('http://yoomeeonl.webfactional.com/MobileApp/mymessages?userId='+userId+'&start='+start+'&limit='+this.perpage)
+        .map(res => res.json());
+ }
+
+ myReviews(userId, start:number=0){
+
+      return this.http.get('http://yoomeeonl.webfactional.com/MobileApp/myreviews?userId='+userId+'&start='+start+'&limit='+this.perpage)
+        .map(res => res.json());
+ }
+
+/*
  getAverageReview(){
 
       return this.http.get('http://yoomeeonl.webfactional.com/MobileApp/getAverageReview')
@@ -184,16 +198,57 @@ getListingCount(){
 
   getResults(keyword:string) {
 
-    return this.http.get("http://yoomeeonl.webfactional.com/MobileApp/searchmobile?query="+keyword+"&limit=10")
+    return this.http.get("http://yoomeeonl.webfactional.com/MobileApp/searchBusiness?query="+keyword+"&limit=10")
 
       .map(
         result =>
         {
-         // console.log(result.json())
           return result.json()
-          //  .filter(item => item.name.toLowerCase().startsWith(keyword.toLowerCase()) )
         });
   }
+
+  saveStats(companyId, userId, type) {
+    
+    this.http.get("http://yoomeeonl.webfactional.com/MobileApp/saveStats?companyId="+companyId+"&userId="+userId+"&type="+type)
+    .subscribe(data => {
+      // this.events.publish('companyInfoupdate', data["_body"]);
+    }, error => {
+    //console.log("Oooops!");
+    });
+  }
+  
+  sendmail(myData) {
+    
+    this.http.post("http://yoomeeonl.webfactional.com/MobileApp/sendmail", myData)
+    .subscribe(data => {  
+    }, error => {
+    });
+  }
+
+   
+   checkfavorite(companyId, userId)  {
+
+   return this.http.get("http://yoomeeonl.webfactional.com/MobileApp/checkfavorite?companyId="+companyId+"&userId="+userId)
+    .map((res) => res.json());
+
+  }
+
+ 
+
+  favorite(companyId, userId, type) {
+
+     let value=false;
+    
+    this.http.get("http://yoomeeonl.webfactional.com/MobileApp/favorite?companyId="+companyId+"&userId="+userId+"&type="+type)
+    .subscribe(data => {
+     }, error => {
+      console.log("Oooops!");
+   });
+      console.log("val!");
+    
+  }
+
+  
 
  /* getCategorybyId(id){
 

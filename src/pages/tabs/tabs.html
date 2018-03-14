@@ -23,13 +23,13 @@
       <button ion-item *ngIf="userconnect==false" (click)="inscription()">
         Inscription
       </button>
-      <button ion-item *ngIf="userconnect==true">
+      <button ion-item *ngIf="userconnect==true" (click)="commentaires()">
         Mes Commentaires
       </button>
-      <button ion-item *ngIf="userconnect==true">
+      <button ion-item *ngIf="userconnect==true"  (click)="messages()">
         Mes Messages
       </button>
-      <button ion-item *ngIf="userconnect==true">
+      <button ion-item *ngIf="userconnect==true" (click)="favoris()">
         Mes Favoris
       </button>
       <button ion-item *ngIf="userconnect==true" (click)="logout()">

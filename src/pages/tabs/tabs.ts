@@ -8,6 +8,11 @@ import {VariableProvider} from "../../providers/variable/variable";
 import {CompaniesProvider} from "../../providers/companies/companies";
 import {LoginPage} from "../login/login";
 import {InscriptionPage} from "../inscription/inscription";
+import {FavorisPage} from "../favoris/favoris";
+import {CommentairesPage} from "../commentaires/commentaires";
+import {MessagesPage} from "../messages/messages";
+
+
 
 @Component({
   templateUrl: 'tabs.html'
@@ -169,6 +174,18 @@ export class TabsPage {
     this.menu.toggle();
   }
 
+
+  favoris(){
+    this.navCtrl.push(FavorisPage);
+  }
+
+  messages(){
+    this.navCtrl.push(MessagesPage);
+  }
+
+  commentaires(){
+    this.navCtrl.push(CommentairesPage);
+  }
 
   openTab(page){
     this.tabRef.select(page.index)
