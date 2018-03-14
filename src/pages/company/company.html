@@ -9,8 +9,11 @@
   <ion-navbar [class.show-background]="showToolbar">
     <ion-title [hidden]="!showToolbar" class="uk-text-truncate">{{business.name}}</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only small>
-        <ion-icon name="heart"></ion-icon>
+      <button ion-button icon-only small *ngIf="userconnect==false"  (click)="connectFavorite()">
+        <ion-icon [name]="color"></ion-icon>
+      </button>
+      <button ion-button icon-only small  *ngIf="userconnect==true" (click)="favorite()">
+        <ion-icon [name]="color" ></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>

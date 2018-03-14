@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
-
+import { Http} from '@angular/http';
 /**
  * Generated class for the LoginForgetPage page.
  *
@@ -18,9 +18,10 @@ export class LoginForgetPage {
 
   validations_form;
   validation_messages;
+  message;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, public http:Http, public toastCtrl: ToastController) {
 
     this.validations_form = this.formBuilder.group({
       login: new FormControl('', Validators.compose([
@@ -41,5 +42,36 @@ export class LoginForgetPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginForgetPage');
   }
+  
+   onSubmit(value){
+    //console.log(value.email);
+    let link = 'http://yoomeeonl.webfactional.com/MobileApp/resetpasswordConfirm';
+    let myData = JSON.stringify({email: value.email});
+
+    this.http.post(link,myData)    
+    .subscribe(data => {
+    
+    
+      if(data["_body"]=="0"){
+        this.message="Adresse email nexiste pas.";
+      } else { 
+        this.message="Mot réinitialisé et envoyé par mail.";
+      }
+
+    }, error => {
+    console.log("Oooops!");
+    });
+    this.presentToast(this.message);
+
+  }
+
+ private presentToast(text) {
+  let toast = this.toastCtrl.create({
+    message: text,
+    duration: 3000,
+    position: 'top'
+  });
+  toast.present();
+ }
 
 }

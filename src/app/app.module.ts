@@ -25,6 +25,8 @@ import { Camera } from '@ionic-native/camera';
 import {IonTagsInputModule} from "ionic-tags-input";
 import {MapsPage} from "../pages/maps/maps";
 
+import {SearchPage} from "../pages/search/search";
+
 import { HttpModule } from '@angular/http';
 
 import { EmailComposer } from '@ionic-native/email-composer';
@@ -44,6 +46,11 @@ import {LoginForgetPage} from "../pages/login-forget/login-forget";
 import {InscriptionPage} from "../pages/inscription/inscription";
 import {CompanyPage} from "../pages/company/company";
 import {CompanyDescriptionPage} from "../pages/company-description/company-description";
+import {SendMailPage} from "../pages/send-mail/send-mail";
+import {FavorisPage} from "../pages/favoris/favoris";
+import {MessagesPage} from "../pages/messages/messages";
+import {CommentairesPage} from "../pages/commentaires/commentaires";
+
 
 
 @NgModule({
@@ -59,8 +66,11 @@ import {CompanyDescriptionPage} from "../pages/company-description/company-descr
     LoginPage,
     InscriptionPage,
     LoginForgetPage,
-
-
+    SearchPage,
+    SendMailPage,
+    FavorisPage,
+    MessagesPage,
+    CommentairesPage,
     // components
     MapsComponent,
     FiltreComponent,
@@ -89,7 +99,12 @@ import {CompanyDescriptionPage} from "../pages/company-description/company-descr
     LoginPage,
     TabsPage,
     InscriptionPage,
-    LoginForgetPage
+    LoginForgetPage,
+    SearchPage,
+    SendMailPage,
+    FavorisPage,
+    MessagesPage,
+    CommentairesPage
   ],
   providers: [
     StatusBar,

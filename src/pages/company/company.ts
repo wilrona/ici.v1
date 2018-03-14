@@ -1,10 +1,11 @@
-import {ChangeDetectorRef, Component, ElementRef, Renderer, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, Component, ElementRef, Renderer, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import {Content, Events, ModalController, NavController, NavParams} from 'ionic-angular';
 import {CompaniesProvider} from "../../providers/companies/companies";
 import {EmailComposer} from "@ionic-native/email-composer";
 import {CallNumber} from "@ionic-native/call-number";
 import {InAppBrowser} from "@ionic-native/in-app-browser";
 import {ReviewFormPage} from "../review-form/review-form";
+import {SendMailPage} from "../send-mail/send-mail";
 import {LoginPage} from "../login/login";
 import {CompanyDescriptionPage} from "../company-description/company-description";
 
@@ -30,6 +31,7 @@ export class CompanyPage {
   // articles:Array<any> = new Array(20).fill('');
   segmentation:string;
   dark:boolean = true;
+  
 
   /*public ;*/
   business={};
@@ -40,7 +42,7 @@ export class CompanyPage {
   name;
   valiRate;
   userconnect=false;
-  user;
+  user=null;
   ville;
   quartier;
   description;
@@ -51,6 +53,9 @@ export class CompanyPage {
 
   @ViewChild('map') mapElement: ElementRef;
   map: any;
+  //checkfavorite:boolean;
+  @Input() color:string="heart-outline";
+  @Output() refreshfavorite: EventEmitter<string>;
 
   constructor(
     public navCtrl: NavController,
@@ -68,27 +73,38 @@ export class CompanyPage {
     this.idcompagnie = navParams.get("idcompagnie");
     this.loadData(this.idcompagnie);
     //this.desc=this.business.description;
-    var currentUser = JSON.parse(localStorage.getItem('userId'));
+    let currentUser = JSON.parse(localStorage.getItem('userId'));
 
+    console.log(currentUser);
+    this.refreshfavorite = new EventEmitter<string>();
 
-    this.user = currentUser;
+    //this.user = currentUser;
 
     if(localStorage.getItem("userId")) {
-      // console.log("true1");
+      
       this.userconnect = true;
+      this.user = currentUser.id.$id;
+      if(currentUser.favorite){
+        console.log("true11   "+currentUser);
+        this.checkfavorite(currentUser.favorite, this.idcompagnie);
+      }
+
     }
+  
 
     events.subscribe('userconnect', (user) => {
-      // console.log("true2");
       this.userconnect =true;
     });
 
     events.subscribe('companyInfoupdate', (data) => {
-      //alert("ss la");
       var data = JSON.parse(data);
       this.business=data;
     });
+
+    
+    listingService.saveStats(this.idcompagnie, this.user,"pageview");
   }
+
   loadData(id){
     this.listingService.getCompanyById(id).subscribe(
       data => {
@@ -104,6 +120,15 @@ export class CompanyPage {
       }
     );
   }
+
+
+
+  checkfavorite(favorite, id){
+    if (favorite.find(x => x.$id === id)!=null){
+        this.color="heart";
+    }
+  }
+
 
   ionViewWillEnter(){
     this.segmentation ='desc';
@@ -135,7 +160,6 @@ export class CompanyPage {
   }
 
   onModelChange(val, companyId){
-    //alert(this.user);
     if(this.userconnect==true){
       let myModal = this.modalCtrl.create(ReviewFormPage, {vote: val, companyId: companyId});
       myModal.present();
@@ -145,6 +169,12 @@ export class CompanyPage {
       myModal.present();
     }
 
+  }
+
+
+  connectFavorite(){
+      let myModal = this.modalCtrl.create(LoginPage,{type:"favorite",  companyId: this.idcompagnie });
+      myModal.present();
   }
 
   openDescriptionEdit(descr, name) {
@@ -180,13 +210,16 @@ export class CompanyPage {
   }
 
   callCompany(phonenumber:any){
+    this.listingService.saveStats(this.idcompagnie, this.user,"phoneview");
     this.callNumber.callNumber(phonenumber, true)
       .then(() => console.log('Launched dialer!'))
       .catch(() => console.log('Error launching dialer '+phonenumber));
   }
 
   emailCompany(emailcpy:any){
-    this.emailComposer.isAvailable().then((available: boolean) =>{
+    let sendmailModal = this.modalCtrl.create(SendMailPage,{emailcpy: emailcpy, idcompagnie: this.idcompagnie} );
+    sendmailModal.present();
+    /*this.emailComposer.isAvailable().then((available: boolean) =>{
       if(available) {
       }
     });
@@ -197,11 +230,45 @@ export class CompanyPage {
       body: '',
       isHtml: true
     };
-    this.emailComposer.open(email);
+    this.emailComposer.open(email);*/
   }
 
   websiteCompany(siteweb){
-    const browser = this.iab.create(siteweb);
+    this.listingService.saveStats(this.idcompagnie, this.user,"websiteview");
+    siteweb="http://yoomee.cm";
+    const browser = this.iab.create(siteweb, '_self');
 
   }
+
+  favorite(){
+    let type="add";
+    let data = JSON.parse(localStorage.getItem('userId'));
+    if(this.color=="heart"){
+       type="remove"; 
+       let favorite=data.favorite;
+       let idx=favorite.findIndex(x => x.$id==this.idcompagnie);
+       console.log("idx "+idx);
+       favorite.splice(idx, 1);
+       data["favorite"]=favorite;
+       localStorage.setItem('userId', JSON.stringify(data));
+       this.color="heart-outline";
+    }
+    else{
+      
+      let favorite=[];
+      if(data.favorite){
+        favorite=data.favorite;
+      }
+      console.log(favorite);
+      favorite.push({$id : this.idcompagnie});
+      data["favorite"]=favorite;
+      localStorage.setItem('userId', JSON.stringify(data));
+      this.color="heart";
+    }
+     this.listingService.favorite(this.idcompagnie, this.user, type);
+
+    this.refreshfavorite.emit(this.color);
+  }
+
+
 }

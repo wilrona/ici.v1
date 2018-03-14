@@ -14,6 +14,7 @@ import {VariableProvider} from "../../providers/variable/variable";
 import {LoginForgetPage} from "../login-forget/login-forget";
 import {InscriptionPage} from "../inscription/inscription";
 import {ReviewFormPage} from "../review-form/review-form";
+import {CompaniesProvider} from "../../providers/companies/companies";
 //import {JwtHelper} from "angular2-jwt";
 //import {Storage} from "@ionic/storage";
 /**
@@ -50,6 +51,7 @@ export class LoginPage {
               public http: Http, public toastCtrl: ToastController,
               public navParams: NavParams, public formBuilder: FormBuilder,
               public viewCtrl: ViewController, public users:AuthProvider,
+              public listingService:CompaniesProvider,
               public variable: VariableProvider, public alertCtrl: AlertController, public modalCtrl: ModalController
 
   ) {
@@ -91,6 +93,39 @@ export class LoginPage {
     myModal.present();*/
   // }
 
+  favorite(idcompagnie, data){
+    let val=0;
+    let favorite=[];
+   // let data = JSON.parse(localStorage.getItem('userId'));
+   console.log(data);
+    if(data.favorite){
+        favorite=data.favorite;
+        if (favorite.find(x => x.$id === idcompagnie)!=null){
+        val=1;
+        }
+    }
+
+    let type="add";
+    
+    if(val==1){
+       type="remove"; 
+       let favorite=data.favorite;
+       let idx=favorite.findIndex(x => x.$id==idcompagnie);
+       console.log("idx "+idx);
+       favorite.splice(idx, 1);
+       data["favorite"]=favorite;
+       localStorage.setItem('userId', JSON.stringify(data));
+    }
+    else{
+      console.log(favorite);
+      favorite.push({$id : idcompagnie});
+      data["favorite"]=favorite;
+      localStorage.setItem('userId', JSON.stringify(data));
+    }
+     this.listingService.favorite(idcompagnie, data.id.$id, type);
+
+    
+  }
 
   connexion(val){
     let myData = JSON.stringify({email: val.login, password: val.password});
@@ -120,8 +155,10 @@ export class LoginPage {
             });
             alert.present();
         }else{
-          // console.log(data["_body"]);
-          localStorage.setItem('userId', JSON.stringify({ id: data["id"], lastName: data["last_name"], firstName: data["first_name"],  email: data["email"] }));
+          // console.log(data);
+          //localStorage.setItem('userId', JSON.stringify({ id: data["id"], lastName: data["last_name"], firstName: data["first_name"],  email: data["email"], favorite: data["favorite"]}));
+          localStorage.setItem('userId', JSON.stringify(data));
+          
           // this.navCtrl.push('CpanelPage');
           // let nav = this.app.getRootNav();
           // nav.setRoot('CpanelPage');
@@ -131,6 +168,13 @@ export class LoginPage {
              let myModal = this.modalCtrl.create(ReviewFormPage,{vote: this.navParams.get("vote"), companyId: this.navParams.get("companyId") });
              myModal.present();
            }
+
+           if(this.type=="favorite"){
+             //this.favorite(this.navParams.get("companyId"), data);
+            
+           }
+
+
           }
 
       }

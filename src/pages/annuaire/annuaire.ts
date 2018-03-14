@@ -55,6 +55,10 @@ export class AnnuairePage {
       var currentUser = JSON.parse(localStorage.getItem('userId'));
       this.user = currentUser;
 
+      this.keyword= navParams.get("query");
+
+      console.log("query11  "+this.keyword);
+
       if(localStorage.getItem("userId")) {
         this.userconnect = true;
       }
@@ -115,20 +119,28 @@ export class AnnuairePage {
       // this.loading = false;
     });
 
+     
+
+
+      
       if(this.variable.getInitTabAnnuaire() === true){
 
+        //console.log("q  "+this.keyword);
         this.loadData();
 
       }
 
+      
       this.events.subscribe('citiesfilter', (cities) => {
           this.cities=cities;
       });
       this.events.subscribe('categoriesfilter', (categories) => {
           this.categories=categories;
       });
-       this.events.subscribe('searchfilter', (search) => {
+      
+      this.events.subscribe('searchfilter', (search) => {
           this.keyword=search;
+          console.log("query11  "+this.keyword);
       });
 
   }
@@ -137,11 +149,14 @@ export class AnnuairePage {
 
 
 
- /* ngOnInit(){
+  ngAfterViewInit(){
 
-   this.loadData();
+   //this.loadData();
+   this.keyword= this.navParams.get("query");
+   console.log("query112  "+this.keyword);
+    ;
 
-  }*/
+  }
 
 
 
@@ -159,25 +174,6 @@ export class AnnuairePage {
 
  }*/
 
- getImagesUneByCompany(id){
-    return this.imageune.find(x => x.idcompagnie.$id === id);
- }
-
- getAllAverageRate(id){
-    let countrate = 0;
-    if (this.rate.find(x => x._id.$id === id)!=null){
-       countrate=this.rate.find(x => x._id.$id === id).count;
-    }
-    return countrate;
-  }
-
-  getAllAverageReview(id){
-     let countreview=0;
-     if (this.reviews.find(x => x._id.$id === id)!=null){
-         countreview=this.reviews.find(x => x._id.$id === id).count;
-     }
-     return countreview;
-  }
 
 
 
@@ -225,7 +221,7 @@ export class AnnuairePage {
   loadData(){
     this.loading = true;
 
-    this.listingService.getListing().subscribe(
+    this.listingService.getListing(this.categories, this.cities, this.keyword).subscribe(
         data => {
           if(data.length !== 0){
 

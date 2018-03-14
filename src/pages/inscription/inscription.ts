@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
+import {IonicPage, NavController, NavParams, ViewController, ToastController} from 'ionic-angular';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validator, ValidatorFn, Validators} from "@angular/forms";
-
+import { Http} from '@angular/http'
 /**
  * Generated class for the InscriptionPage page.
  *
@@ -23,7 +23,8 @@ export class InscriptionPage{
 
   dismissed: boolean = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder:FormBuilder, public viewCtrl: ViewController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder:FormBuilder, public toastCtrl: ToastController,
+  public viewCtrl: ViewController, public http: Http) {
 
     this.dismissed = this.navParams.get('showDismiss');
 
@@ -91,6 +92,26 @@ export class InscriptionPage{
   dismiss() {
     this.viewCtrl.dismiss();
   }
+
+  connexion(value){
+  var myData = JSON.stringify({last_name: value.nom, first_name: value.prenom,  email: value.email,password: value.password});
+    this.http.post("http://yoomeeonl.webfactional.com/MobileApp/registration",myData)    
+    .subscribe(data => {
+    this.presentToast(data["_body"]);
+    }, error => {
+    console.log("Oooops!");
+    });
+
+  }
+
+  private presentToast(text) {
+  let toast = this.toastCtrl.create({
+    message: text,
+    duration: 3000,
+    position: 'top'
+  });
+  toast.present();
+ }
 
 
 }
