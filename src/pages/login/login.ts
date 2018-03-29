@@ -106,9 +106,9 @@ export class LoginPage {
     }
 
     let type="add";
-    
+
     if(val==1){
-       type="remove"; 
+       type="remove";
        let favorite=data.favorite;
        let idx=favorite.findIndex(x => x.$id==idcompagnie);
        console.log("idx "+idx);
@@ -124,12 +124,12 @@ export class LoginPage {
     }
      this.listingService.favorite(idcompagnie, data.id.$id, type);
 
-    
+
   }
 
   connexion(val){
     let myData = JSON.stringify({email: val.login, password: val.password});
-    this.http.post("http://yoomeeonl.webfactional.com/MobileApp/login",myData)
+    this.http.post("http://ici.cm/MobileApp/login",myData)
     .map(
         result =>
         {
@@ -158,7 +158,7 @@ export class LoginPage {
           // console.log(data);
           //localStorage.setItem('userId', JSON.stringify({ id: data["id"], lastName: data["last_name"], firstName: data["first_name"],  email: data["email"], favorite: data["favorite"]}));
           localStorage.setItem('userId', JSON.stringify(data));
-          
+
           // this.navCtrl.push('CpanelPage');
           // let nav = this.app.getRootNav();
           // nav.setRoot('CpanelPage');
@@ -171,7 +171,7 @@ export class LoginPage {
 
            if(this.type=="favorite"){
              //this.favorite(this.navParams.get("companyId"), data);
-            
+
            }
 
 

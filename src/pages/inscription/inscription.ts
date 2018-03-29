@@ -95,7 +95,7 @@ export class InscriptionPage{
 
   connexion(value){
   var myData = JSON.stringify({last_name: value.nom, first_name: value.prenom,  email: value.email,password: value.password});
-    this.http.post("http://yoomeeonl.webfactional.com/MobileApp/registration",myData)    
+    this.http.post("http://ici.cm/MobileApp/registration",myData)
     .subscribe(data => {
     this.presentToast(data["_body"]);
     }, error => {

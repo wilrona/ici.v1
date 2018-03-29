@@ -42,19 +42,19 @@ export class LoginForgetPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginForgetPage');
   }
-  
+
    onSubmit(value){
     //console.log(value.email);
-    let link = 'http://yoomeeonl.webfactional.com/MobileApp/resetpasswordConfirm';
+    let link = 'http://ici.cm/MobileApp/resetpasswordConfirm';
     let myData = JSON.stringify({email: value.email});
 
-    this.http.post(link,myData)    
+    this.http.post(link,myData)
     .subscribe(data => {
-    
-    
+
+
       if(data["_body"]=="0"){
         this.message="Adresse email nexiste pas.";
-      } else { 
+      } else {
         this.message="Mot réinitialisé et envoyé par mail.";
       }
 

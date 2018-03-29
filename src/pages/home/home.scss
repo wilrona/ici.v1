@@ -31,6 +31,14 @@ page-home {
     background-color: transparent;
   }
 
+  ion-label{
+    margin: 0 !important;
+  }
+
+  ion-item{
+    padding-left: 10px !important;
+  }
+
   ion-toolbar{
     transition: all .3s;
   }

@@ -14,10 +14,10 @@ import 'rxjs/Rx';
 */
 @Injectable()
 export class AuthProvider {
-  
- 
-  
-  
+
+
+
+
   constructor(public http:Http) {
     console.log('Hello AuthProvider Provider');
   }
@@ -30,7 +30,7 @@ export class AuthProvider {
 
     let options = new RequestOptions({headers: headers});
 
-    return this.http.post('http://yoomeeonl.webfactional.com/MobileApp/login', body, options)
+    return this.http.post('http://ici.cm/MobileApp/login', body, options)
      .map(this.extractData)
       .catch(this.handleError);
   }

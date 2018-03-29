@@ -79,7 +79,7 @@ export class MapsPage {
       this.categories = categories;
       this.cities = cities;
       this.keyword=keyword;
-      
+
 
       if (this.variable.getInitTabMaps() === false) {
         this.newMarkers = [];
@@ -176,14 +176,14 @@ export class MapsPage {
       let markerContent = document.createElement('div');
       let thumbnailImage;
 
-      thumbnailImage = "http://yoomeeonl.webfactional.com/media/pictures/categories/bar.jpg";
+      thumbnailImage = "http://ici.cm/media/pictures/categories/bar.jpg";
 
       // if ((point["logo"] != undefined) || (point["logo"] != '')) {
       //   thumbnailImage = point["logo"];
       // }
       // else {
       //   // thumbnailImage = base_url+"/assets/img/items/default.png";
-      //   thumbnailImage = "http://yoomeeonl.webfactional.com/media/pictures/categories/bar.jpg";
+      //   thumbnailImage = "http://ici.cm/media/pictures/categories/bar.jpg";
       // }
 
       // if (point["featured"] == 1) {
@@ -250,7 +250,7 @@ export class MapsPage {
 
     let clusterStyles = [
       {
-        url: 'http://yoomeeonl.webfactional.com/assets/img/cluster.png',
+        url: '',
         height: 36,
         width: 36,
       }

@@ -16,21 +16,21 @@ export class UserProvider {
   }
 
   getCompaniesUser(userid) {
-    
-   
-   return this.http.get('http://yoomeeonl.webfactional.com/MobileApp/myListing?userid='+userid)
+
+
+   return this.http.get('http://ici.cm/MobileApp/myListing?userid='+userid)
     .map((res) => res.json());
-   
+
   }
 
   getPackage() {
-   
-   return this.http.get('http://yoomeeonl.webfactional.com/MobileApp/getPackage')
+
+   return this.http.get('http://ici.cm/MobileApp/getPackage')
     .map((res) => res.json());
-   
+
   }
 
-  
+
 
 
 }

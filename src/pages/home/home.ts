@@ -1,7 +1,6 @@
 import {Component, } from '@angular/core';
-import {MenuController, NavController, App} from 'ionic-angular';
+import {MenuController, NavController} from 'ionic-angular';
 import {CompanyPage} from "../company/company";
-import {SearchPage} from "../search/search";
 import { CompaniesProvider } from '../../providers/companies/companies';
 
 @Component({
@@ -12,7 +11,7 @@ export class HomePage {
   keyword;
   listing;
 
-  constructor(public navCtrl: NavController, public menu: MenuController,public companyprovider: CompaniesProvider, public appCtrl: App) {
+  constructor(public navCtrl: NavController, public menu: MenuController,public companyprovider: CompaniesProvider) {
     menu.enable(true);
   }
 
@@ -30,13 +29,6 @@ export class HomePage {
   OpenDetail(){
       this.navCtrl.push(CompanyPage);
   }
-
-  SearchDetail(){
-      this.navCtrl.push(SearchPage);
-      //this.navCtrl.setRoot(SearchPage);     
-      //this.appCtrl.getRootNav().push(SearchPage);
-  }
-
   search(){
 
   this.navCtrl.push('ListingPage');

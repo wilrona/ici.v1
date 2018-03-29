@@ -32,7 +32,7 @@ export class CompaniesProvider implements AutoCompleteService{
 
    getMarkers(category=[], city=[], keyword="") {
 
-   return this.http.get('http://yoomeeonl.webfactional.com/mobileApp/allCompaniesForMap?query='+keyword+'&category='+category+'&city='+city)
+   return this.http.get('http://ici.cm/mobileApp/allCompaniesForMap?query='+keyword+'&category='+category+'&city='+city)
     .map(
       res =>
       {
@@ -52,9 +52,9 @@ export class CompaniesProvider implements AutoCompleteService{
     }
 
 
-    // return this.http.get('http://yoomeeonl.webfactional.com/MobileApp/searchmobile?limit='+this.perpage+'&start='+start)
-    return this.http.get('http://yoomeeonl.webfactional.com/MobileApp/searchmobile?query='+keyword+'&category='+category+'&city='+city+'&limit='+this.perpage+'&start='+start)
-    //return this.http.get('http://yoomeeonl.webfactional.com/MobileApp/searchmobile?query='+query+'&city='+city+'&limit='+this.perpage+'&start='+start)
+    // return this.http.get('http://ici.cm/MobileApp/searchmobile?limit='+this.perpage+'&start='+start)
+    return this.http.get('http://ici.cm/MobileApp/searchmobile?query='+keyword+'&category='+category+'&city='+city+'&limit='+this.perpage+'&start='+start)
+    //return this.http.get('http://ici.cm/MobileApp/searchmobile?query='+query+'&city='+city+'&limit='+this.perpage+'&start='+start)
 
 
       .map(
@@ -73,8 +73,8 @@ export class CompaniesProvider implements AutoCompleteService{
     return new Promise(resolve => {
 
       //this.http.get('http://localhost:8080/compagnie?filter[limit]='+this.perpage+'&filter[skip]='+start)
-      this.http.get('http://yoomeeonl.webfactional.com/MobileApp/searchmobile?filter[limit]='+this.perpage+'&filter[skip]='+start)
-      //this.http.get('http://yoomeeonl.webfactional.com/data.json?filter[limit]='+this.perpage+'&filter[skip]='+start)
+      this.http.get('http://ici.cm/MobileApp/searchmobile?filter[limit]='+this.perpage+'&filter[skip]='+start)
+      //this.http.get('http://ici.cm/data.json?filter[limit]='+this.perpage+'&filter[skip]='+start)
 
         .map(res => res.json())
         .subscribe(data => {
@@ -95,7 +95,7 @@ export class CompaniesProvider implements AutoCompleteService{
 
     return new Promise(resolve => {
 
-      this.http.get('http://yoomeeonl.webfactional.com/MobileApp/searchCity')
+      this.http.get('http://ici.cm/MobileApp/searchCity')
         .map(res => res.json())
         .subscribe(city => {
           this.city = city;
@@ -107,14 +107,14 @@ export class CompaniesProvider implements AutoCompleteService{
 
    getRecentPlaces() {
 
-   return this.http.get('http://yoomeeonl.webfactional.com/MobileApp/getRecentPlaces')
+   return this.http.get('http://ici.cm/MobileApp/getRecentPlaces')
     .map((res) => res.json());
 
   }
 
   getCities() {
 
-   return this.http.get('http://yoomeeonl.webfactional.com/MobileApp/searchCity')
+   return this.http.get('http://ici.cm/MobileApp/searchCity')
     .map((res) => res.json());
 
   }
@@ -123,7 +123,7 @@ export class CompaniesProvider implements AutoCompleteService{
 
   getCompanyById(id){
 
-      return this.http.get('http://yoomeeonl.webfactional.com/MobileApp/getCompanyById?id='+id)
+      return this.http.get('http://ici.cm/MobileApp/getCompanyById?id='+id)
         .map(res => res.json());
 
 
@@ -131,14 +131,14 @@ export class CompaniesProvider implements AutoCompleteService{
 
    getCategories(){
 
-      return this.http.get('http://yoomeeonl.webfactional.com/MobileApp/getAllCategories')
+      return this.http.get('http://ici.cm/MobileApp/getAllCategories')
         .map(res => res.json());
 
 
   }
   getSubcats(){
 
-      return this.http.get('http://yoomeeonl.webfactional.com/MobileApp/getCategoriesClass')
+      return this.http.get('http://ici.cm/MobileApp/getCategoriesClass')
         .map(res => res.json());
 
 
@@ -146,7 +146,7 @@ export class CompaniesProvider implements AutoCompleteService{
 
   getAllCategories(){
 
-      return this.http.get('http://yoomeeonl.webfactional.com/MobileApp/getAllCategories')
+      return this.http.get('http://ici.cm/MobileApp/getAllCategories')
         .map(res => res.json());
 
 
@@ -154,26 +154,26 @@ export class CompaniesProvider implements AutoCompleteService{
 
  getFavorite(userId){
 
-      return this.http.get('http://yoomeeonl.webfactional.com/MobileApp/listoffavorite?userId='+userId)
+      return this.http.get('http://ici.cm/MobileApp/listoffavorite?userId='+userId)
         .map(res => res.json());
  }
 
  myMessages(userId, start:number=0){
 
-      return this.http.get('http://yoomeeonl.webfactional.com/MobileApp/mymessages?userId='+userId+'&start='+start+'&limit='+this.perpage)
+      return this.http.get('http://ici.cm/MobileApp/mymessages?userId='+userId+'&start='+start+'&limit='+this.perpage)
         .map(res => res.json());
  }
 
  myReviews(userId, start:number=0){
 
-      return this.http.get('http://yoomeeonl.webfactional.com/MobileApp/myreviews?userId='+userId+'&start='+start+'&limit='+this.perpage)
+      return this.http.get('http://ici.cm/MobileApp/myreviews?userId='+userId+'&start='+start+'&limit='+this.perpage)
         .map(res => res.json());
  }
 
 /*
  getAverageReview(){
 
-      return this.http.get('http://yoomeeonl.webfactional.com/MobileApp/getAverageReview')
+      return this.http.get('http://ici.cm/MobileApp/getAverageReview')
         .map(res => res.json());
  }*/
 
@@ -198,7 +198,7 @@ getListingCount(){
 
   getResults(keyword:string) {
 
-    return this.http.get("http://yoomeeonl.webfactional.com/MobileApp/searchBusiness?query="+keyword+"&limit=10")
+    return this.http.get("http://ici.cm/MobileApp/searchBusiness?query="+keyword+"&limit=10")
 
       .map(
         result =>
@@ -208,47 +208,47 @@ getListingCount(){
   }
 
   saveStats(companyId, userId, type) {
-    
-    this.http.get("http://yoomeeonl.webfactional.com/MobileApp/saveStats?companyId="+companyId+"&userId="+userId+"&type="+type)
+
+    this.http.get("http://ici.cm/MobileApp/saveStats?companyId="+companyId+"&userId="+userId+"&type="+type)
     .subscribe(data => {
       // this.events.publish('companyInfoupdate', data["_body"]);
     }, error => {
     //console.log("Oooops!");
     });
   }
-  
+
   sendmail(myData) {
-    
-    this.http.post("http://yoomeeonl.webfactional.com/MobileApp/sendmail", myData)
-    .subscribe(data => {  
+
+    this.http.post("http://ici.cm/MobileApp/sendmail", myData)
+    .subscribe(data => {
     }, error => {
     });
   }
 
-   
+
    checkfavorite(companyId, userId)  {
 
-   return this.http.get("http://yoomeeonl.webfactional.com/MobileApp/checkfavorite?companyId="+companyId+"&userId="+userId)
+   return this.http.get("http://ici.cm/MobileApp/checkfavorite?companyId="+companyId+"&userId="+userId)
     .map((res) => res.json());
 
   }
 
- 
+
 
   favorite(companyId, userId, type) {
 
      let value=false;
-    
-    this.http.get("http://yoomeeonl.webfactional.com/MobileApp/favorite?companyId="+companyId+"&userId="+userId+"&type="+type)
+
+    this.http.get("http://ici.cm/MobileApp/favorite?companyId="+companyId+"&userId="+userId+"&type="+type)
     .subscribe(data => {
      }, error => {
       console.log("Oooops!");
    });
       console.log("val!");
-    
+
   }
 
-  
+
 
  /* getCategorybyId(id){
 

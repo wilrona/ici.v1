@@ -25,7 +25,7 @@
               (ionScroll)="onScroll($event)"
               [class.transition]="transition"
               [style.background-size]="headerImgSize"
-              [style.backgroundImage]="'url(http://yoomeeonl.webfactional.com/media/pictures/companies/'+ business.imageune +')'"><!--headerImgUrl-->
+              [style.backgroundImage]="'url(http://ici.cm/media/pictures/companies/'+ business.imageune +')'"><!--headerImgUrl-->
 
   <div class="user-info uk-height-small uk-flex uk-flex-middle uk-flex-center">
     <h2 class="uk-size" padding-horizontal>{{business.name}}</h2>
@@ -82,7 +82,7 @@
         </div>
       </div>
     </ion-card>
-    <ion-card no-margin margin-top class="card-info" *ngIf="(business | json) != ({} | json)">
+    <ion-card no-margin margin-top class="card-info" *ngIf="(business | json) != ({} | json)" uk-height-viewport="offset-top:true">
       <ion-card-header no-padding>
         <ion-segment [(ngModel)]="segmentation">
           <ion-segment-button value="desc" (ionSelect)="activeLocation()">
@@ -107,7 +107,7 @@
 
 
             <ion-slide *ngFor="let item of business.gallery">
-              <img alt="city"  src="http://yoomeeonl.webfactional.com/media/pictures/companies/{{item.url}}"  imageViewer>
+              <img alt="city"  src="http://ici.cm/media/pictures/companies/{{item.url}}"  imageViewer>
             </ion-slide>
 
 
@@ -197,7 +197,7 @@
           <ion-list>
             <ion-item *ngFor="let item of business.reviews">
               <ion-avatar item-start>
-                <img src="http://yoomeeonl.webfactional.com/{{item.picture}}">
+                <img src="http://ici.cm/{{item.picture}}">
 
               </ion-avatar>
               <div class="uk-position-relative uk-comments">
